@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<title>Application Bundles ------------ [cSupp001StellariumAppBund]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Load common code for calculation pages -->
+<script src="../fJscriptLib/fFoundationObj.js">
+  </script>
+<!-- End of common code -->
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<div class="Header" style="background-color:#FFFF99" >
+<h3>Application Bundles ------------ [cSupp001StellariumAppBund]</h3>
+</div>
+
+<!-- **************** Content **************** -->
+
+
+<table cellspacing="0" cellpadding="6" width="750" bgcolor="white">
+<tbody>
+<tr>
+<td valign="top" width="520" bgcolor="white">
+<h1>Application Bundles</h1>
+<p>When you look at the contents of a disk in the Finder, almost every item you 
+see corresponds to a single file. But sometimes, the Finder is not giving you 
+the entire story.&nbsp; Mac OS X provides a way 
+to collect related files into a single entity called a <em>bundle</em>, and OS X 
+conspires with the Finder to present bundles as one icon.</p>
+<p>Applications are the most prominent kinds of bundles, but they&#39;re far from 
+the only bundles on your Mac. Bundles provide a handy general mechanism for 
+keeping a load of stuff behind a single icon. Mac OS X uses 
+bundles in various situations that require code to be kept together with 
+images, property lists, and other flotsam. Screen savers, preference 
+panes, Dashboard widgets, frameworks, and application plug-ins are all 
+bundles, each one with some files that have code and others containing 
+data.</p>
+<p>A bundle is basically a folder that appears in the Finder as a single 
+file. This convenient fiction allows users to easily install and move 
+applications without having to worry about keeping their support files 
+around, and it also prevents casual users from messing up their 
+applications by trashing a necessary file.</p>
+<p>Although Mac OS X uses bundles primarily as a way to hide collections 
+of code plus other resources, no rule says that bundles must include 
+pieces of code. A database developer might choose to store databases and 
+indices together in a bundle, for example.</p>
+<p>The Mac OS X Installer uses a bundle technology called 
+<em>packages</em> to gather all the files needed for installing software 
+into a unit, an installation package. The Installer then extracts the 
+files it needs from the package and puts them where they belong.</p>
+<h2>Looking at Bundles</h2>
+<p>Bundles are folders in disguise, to see inside a bundle, 
+you can simply use the Finder.</p>
+<p>1. In the Finder, choose a bundle to inspect. You can pick any 
+application, screen saver, preference pane, Dashboard widget, or other 
+bundle you like. For this example, use the Spotlight preference pane. You 
+can find it in /System/Library/PreferencePanes/Spotlight.prefPane.</p>
+<p>2. Pull down the Action menu in the Finder window (the one with a 
+picture of a gear) and choose Show Package Contents. This opens a new 
+window with a Contents folder, as shown in Figure 11-1.<br />
+<br />
+</p>
+<blockquote><img id="_x0000_i1025" height="280" 
+        src="../../AstrolabNB/cSupp001Stellarium/ImageLibStellarium/58345X-fg1101.jpg" width="400" 
+        name="_x0000_i1025" /> 
+<p>Figure 11-1: This folder is hidden inside bundles.</p></blockquote>
+<p>3. Look inside the Contents folder to see all the other stuff hidden by 
+the bundle (Figure 11-2).</p>
+<blockquote>
+<p><img id="_x0000_i1033" height="280" 
+        src="../../AstrolabNB/cSupp001Stellarium/ImageLibStellarium/58345X-fg1102.jpg" width="400" 
+        name="_x0000_i1033" /></p>
+<p>Figure 11-2: The bundle's Contents folder contains files and 
+subfolders.</p></blockquote>
+<p>Apple is a little schizophrenic about the terms <em>bundle</em> and 
+<em>package</em>. Although Apple's developer documentation defines a 
+<em>bundle</em> as the fundamental mechanism behind applications, screen 
+savers, and the like, note that the Finder's menu item uses the term 
+<em>package</em> instead of <em>bundle</em>.</p>
+<p>Mac OS X and the Finder collaborate on the bundle illusion to show you 
+a single icon instead of the full bundle contents. But the command line 
+isn't fooled. If you use Terminal, bundles appear like the folders they 
+truly are.</p>
+<p>To see how this works, go to a Terminal window and type the 
+following:</p>
+<p><code>ls 
+/System/Library/PreferencePanes/Spotlight.prefPane/Contents/</code></p>
+<p>That command results in this output:</p>
+<p><code>Info.plist MacOS Resources version.plist</code></p>
+<p class="GX">Those are exactly the same contents you saw in the Finder 
+using the Show Package Contents command. So, you can examine what's inside 
+a bundle using either the Finder or Terminal, whichever you prefer.</p>
+<blockquote>
+<p><i><b>Thanks for Showing Up</b></i></p>
+<p><i>The Action menu provides a surefire way to tell if an icon is a 
+bundle. If the Show Package Contents item is in the menu, the selected 
+item is a bundle-if the item isn't a bundle, that item simply doesn't 
+appear.</i></p>
+<p><i>You don't have to use the Action menu to look inside a bundle. The 
+Finder provides a contextual menu shortcut for Show Package Contents. 
+Just Control-click (or right-click) on the bundle you want to explore, 
+and Show Package Contents appears in the contextual 
+menu.</i></p></blockquote>
+<h2>A Tour of Bundle Contents</h2>
+<p>When you open an application bundle, or most any other kind of bundle, 
+you see a Contents folder at the first level inside. Let's take a look at 
+what's inside the Contents folder.</p>
+<p>In this example, you investigate the TextEdit application. You start by 
+seeing (almost) everything there is to see.</p>
+<p>1. In the Finder, go to the Applications folder and select 
+TextEdit.</p>
+<p>2. Choose Show Package Contents from the Action menu.</p>
+<p>3. Click the List View button in the Finder window.</p>
+<p>4. Click the triangle next to the Contents folder to see what's inside. 
+The result should look like Figure 11-3. The Contents folder has five 
+items: Info.plist, MacOS folder, PkgInfo, Resources folder, and 
+version.plist. I talk about these in more detail later.</p>
+<blockquote>
+<p><img id="_x0000_i1026" height="201" 
+        src="../../AstrolabNB/cSupp001Stellarium/ImageLibStellarium/58345X-fg1103.jpg" width="400" 
+        name="_x0000_i1026" /></p>
+<p>Figure 11-3: Finder shows what's in the Contents 
+folder.</p></blockquote>
+<p>5. Click the triangle next to MacOS to see what it contains. There 
+should be a single object, a file named TextEdit. This is a file 
+containing the executable code for TextEdit. When you double-click the 
+TextEdit icon to launch it, Mac OS X runs the code in this file.</p>
+<p>6. Click the triangle to open the Resources folder. There's a lot of 
+stuff in there! You see a bunch of folders with the names of various 
+languages (English.lproj, Dutch.lproj, and so on), some files with 
+recognizable file types (Edit.icns contains icons and DocumentWindow.nib 
+comes from the Interface Builder development tool), and a few others 
+(Figure 11-4).</p>
+<blockquote>
+<p><img id="_x0000_i1027" height="299" 
+        src="../../AstrolabNB/cSupp001Stellarium/ImageLibStellarium/58345X-fg1104.jpg" width="400" 
+        name="_x0000_i1027" /></p>
+<p>Figure 11-4: The Resources folder in TextEdit bundle.</p></blockquote>
+<p>Now that you have an idea of all the files that are hanging around 
+inside application bundles, I discuss what all that stuff is for.</p>
+<p><br />
+</p></td>
+</tr>
+</tbody></table>
+<br />
+<br /></DIV>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cSupp003StelAppBund</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

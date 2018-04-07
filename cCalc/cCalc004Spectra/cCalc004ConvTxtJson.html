@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Converting Text data files to .json ------------ [cCalc004ConvTxtJson]</title>
+
+<!-- Load common code for calculation pages -->
+
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+
+<script src="../../fEnvironment.js">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Load common code for calculation pages -->
+<script src="../../fJscriptLib/fFoundationObj.js">
+</script>
+<!-- End of common code -->
+
+<!-- Page Specific Code -->
+
+
+</head>
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:75%">Converting Text data files to .json</td>
+    <td style="width:25%" id="menuCell">
+      <nav><a href="mMainSpectra.html">mMainSpectra</a></nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+  <br/>
+  <b>Converting spectra data in txt format to json files for Javascript, using Excel.<br/>
+&nbsp;</b>
+<hr/>
+This example is for Excel and imports simple two column (wavelength and relative intensity) text files delimited by spaces, it avoids having to write a program to do the same task.  In Excel select &quot;Open&quot; and choose the text data file - Fig 1
+<p><img src="../../fImageLib/fig003.png" alt="fig002"></p>
+<p>Choose &quot;Fixed WIdth&quot;</p>
+<p><img src="../../fImageLib/fig004.png" alt="fig003"></p>
+<p>Ensure the separator splits the two columns correctly.</p>
+<p><img src="../../fImageLib/fig005.png" alt="fig005"></p>
+<p>Choose &quot;General&quot;.</p>
+<p><img src="../../fImageLib/fig006.png" alt="fig006"></p>
+<p>Figures then appear in the two columns below in the sheet.</p>
+<p><img src="../../fImageLib/fig007.png" alt="fig007"></p>
+<p>Insert two rows at the top, and one column to the left of &quot;A&quot; and one to left of &quot;B&quot;.</p>
+<p>Update &quot;A3', &quot;C3&quot; and &quot;E3' as below, then copy these characters all the way down the colums to the last row of figures only.</p>
+<p><img src="../../fImageLib/fig008.png" alt="fig008"></p>
+<p>Then make sure last closing &quot;}&quot; has no comma after it.</p>
+<p><img src="../../fImageLib/fig009.png" alt="fig009"></p>
+<p>Select and copy cell &quot;F1&quot; and paste down column F to last row of column, then select and copy entire column &quot;F&quot;.</p>
+<p><img src="../../fImageLib/fig010.png" alt="fig010"></p>
+<p>Paste into adjacent sheet &quot;+&quot; using &quot;Paste Special&quot; to paste values only.</p>
+<p><img src="../../fImageLib/fig012.png" alt="fig012"></p>
+<p>Sheet column &quot;A&quot; then appears as below.</p>
+<p><img src="../../fImageLib/fig013.png" alt="fig013"></p>
+<p>Save as a json extension file.</p>
+<p><img src="../../fImageLib/fig014.png" alt="fig014"></p>
+<p>Select &quot;Use Both&quot;.</p>
+<p><img src="../../fImageLib/fig015.png" alt="fig015"></p>
+<p>Select &quot;Save Active Sheet&quot;</p>
+<p><img src="../../fImageLib/fig016.png" alt="fig016"></p>
+<p>Select 'Continue&quot;.</p>
+<p><img src="../../fImageLib/fig017.png" alt="fig017"></p>
+<p>Open the file with say &quot;TextWrangler&quot;.</p>
+<p><img src="../../fImageLib/fig018.png" alt="fig018"></p>
+<p>Use &quot;Find&quot; to select all the &quot; characters and replace with 'nothing'.</p>
+<p><img src="../../fImageLib/fig019.png" alt="fig019"></p>
+<p>Save the file and rename the file deleting the &quot;.txt&quot; extension to leave &quot;.json&quot; OR as a pure &quot;.json' file extension and delete the old file. Open the file in say Dreamweaver&quot; and it should show the correct format for &quot;json&quot; data format.</p>
+<p><img src="../../fImageLib/fig020.png" alt="fig020"></p>
+
+
+
+
+<p>&nbsp;</p>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cCalc004ConvTxtJson</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

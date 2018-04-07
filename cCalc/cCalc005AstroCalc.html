@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Astrophysics Calculator ------------ [cCalc005AstroCalc]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+
+<script>
+function pageStart() {
+
+    document.calculatorInputForm.line.focus();
+
+}
+</script>
+
+
+<!-- Based on original source from - Stephen Ostermiller / ostermiller.org released under the GNU General Public Licence -->
+
+<script>
+<!--
+
+// Global Variables
+
+var lastResult = "";
+var savedResult = "";
+var lastInput = "";
+var lastPrinted = "";
+var answer = "";
+var modifyingHistory = false;
+var historyIndex = 1;
+var regexDigit = '(?:[0-9])';
+var regexNonZeroDigit = '(?:[1-9])';
+var regexSign = '(?:[\+]|[\-])';
+var regexDecimalNum = '(?:(?:[0]|' + regexNonZeroDigit + regexDigit +'*))';
+var regexSignedInt = '(?:'+ regexSign +'?'+ regexDigit + '+)';
+var regexExpo = '(?:[e]|[E])';
+var regexExponentPart = '(?:' + regexExpo + regexSignedInt + ')';
+var regexFloat1 = '(?:'+ regexDigit + '+[\.]' + regexDigit + '*' + regexExponentPart + '?)';
+var regexFloat2 = '(?:[\.]'+ regexDigit +'+'+ regexExponentPart +'?)';
+var regexFloat3 = '(?:'+ regexDigit +'+'+ regexExponentPart +')';
+var regexFloat4 = '(?:'+ regexDigit +'+)';
+var regexFloat = '(?:'+ regexFloat1 +'|'+ regexFloat2 +'|'+ regexFloat3 +'|'+ regexFloat4 +')';
+var regexZeroFloat1 = '(?:[0]+[\.][0]*'+ regexExponentPart +'?)';
+var regexZeroFloat2 = '(?:[\.][0]+'+ regexExponentPart +'?)';
+var regexZeroFloat3 = '(?:[0]+'+ regexExponentPart +')';
+var regexZeroFloat4 = '(?:[0]+)';
+var regexZeroFloat = '(?:' + regexZeroFloat1 + '|' + regexZeroFloat2 + '|' + regexZeroFloat3 + '|' + regexZeroFloat4 + ')';
+var regexSpace = '(?:[\n\ \t])';
+var regexOperands = '(?:[\(\)\+\-\/\*\|\&\,\~\^]|\<\<|\>\>|\>\>\>|\%)'
+var regexMathStuff = '(?:E|LN10|LN2|LOG10E|LOG2E|PI|SQRT1_2|SQRT2|abs|acos|asin|atan2|atan|ceil|cos|exp|floor|log|max|min|pow|random|round|sin|sqrt|tan)'
+var regexFunctions = '(?:(?:Math[\.]' + regexMathStuff + ')|' + regexMathStuff + ')';
+var regexAllowable = new RegExp(
+	regexFloat + '|' + regexDecimalNum + '|' +
+	regexZeroFloat + '|' + regexSpace + '|' + regexOperands + '|' + regexFunctions + '|ans','g');
+
+var E=MATH_CONST_E;
+var LN10=Math.LN10;
+var LN2=Math.LN2;
+var LOG10E=Math.LOG10E;
+var LOG2E=Math.LOG2E;
+var PI=MATH_CONST_PI;
+var SQRT1_2=Math.SQRT1_2;
+var SQRT2=Math.SQRT2;
+
+var currentEq = "0";
+
+
+function abs(x){return Math.abs(x);}
+function acos(x){return Math.acos(x);}
+function asin(x){return Math.asin(x);}
+function atan(x){return Math.atan(x);}
+function atan2(x,y){return Math.atan2(x,y);}
+function ceil(x){return Math.ceil(x);}
+function cos(x){return Math.cos(x);}
+function exp(x){return Math.exp(x);}
+function floor(x){return Math.floor(x);}
+function log(x){return Math.log(x);}
+function max(x,y){return Math.max(x,y);}
+function min(x,y){return Math.min(x,y);}
+function pow(x,y){return Math.pow(x,y);}
+function random(){return Math.random();}
+function round(x){return Math.round(x);}
+function sin(x){return Math.sin(x);}
+function sqrt(x){return Math.sqrt(x);}
+function tan(x){return Math.tan(x);}
+
+
+
+function replaceAns(s){
+
+// Local Variable
+
+    var r=new RegExp("^((?:[a]|[^a])*)ans((?:[a]|[^a])*)$");
+	
+    while(r.exec(s)){
+        s=RegExp.$1+" "+savedResult+" "+RegExp.$2;
+    }
+	return s;
+}
+
+
+function doCalculation(){
+
+// Local Variables
+	var currentCalc = document.calculatorInputForm.line.value;
+	var modCalc = replaceAns(currentCalc);
+	
+	if(modCalc != lastPrinted && modCalc != lastInput &&! modifyingHistory) {
+		var notAllowed = modCalc.split(regexAllowable);
+		var numBadTokens = 0;
+		for(var k = 0; k < notAllowed.length; k++){
+			if(notAllowed[k].length != 0){
+				numBadTokens++;
+			}
+		}
+		
+		if(numBadTokens == 0){
+			try{
+				var calcResult = "" + eval(modCalc);
+				if(calcResult != undefined){
+					lastResult = calcResult;
+					savedResult = calcResult;
+					lastInput = "";
+					displayResult();
+					addToHistory(currentCalc);
+					
+				}
+			}catch(ex){
+				alert("Error type: " + ex.name + "\n" + "Error message: " + ex.message);
+				lastInput = document.calculatorInputForm.line.value;
+			}
+		}else{
+			alert(numBadTokens + ' unknown tokens:\n' + notAllowed);
+			lastInput=document.calculatorInputForm.line.value;
+		}
+		document.calculatorInputForm.line.focus();
+	}
+}
+
+function lineChange(){
+	if(lastPrinted != document.calculatorInputForm.line.value){
+		lastResult = '';
+	}
+}
+
+
+function displayResult(){
+	if(lastResult != ''){
+		var shouldDisplay = document.calculatorInputForm.display.selectedIndex;
+		var intVal = parseInt(lastResult);
+		var floatVal = parseFloat(lastResult);
+		var toPrint = "";
+		if("" + floatVal != "NaN" && shouldDisplay == 1){
+			toPrint = to_sci(lastResult,false);
+		}else if('' + floatVal != 'NaN' && shouldDisplay == 2){
+			toPrint = to_sci(lastResult,true);
+			
+		}else{
+			toPrint = roundExtraSf(floatVal);
+		}
+		lastPrinted = toPrint;
+		answer = toPrint;
+		document.outputResultForm1.result.value = toPrint;
+		document.calculatorInputForm.line.value = toPrint;
+		historyIndex = 1;
+		document.calculatorInputForm.line.style.backgroundColor = '#aacc99';
+
+        }else{
+		document.calculatorInputForm.line.style.backgroundColor = '#cccc99';
+        }
+}
+
+
+function roundExtraSf(f){
+    var s = f.toPrecision(14);
+    s = s.replace(/^([\+\-0-9\\.]*[1-9\.])0+((?:e[0-9\+\-]+)?)$/g,'$1$2');
+    s = s.replace(/\.((?:e[0-9\+\-]+)?)$/g,'$1');
+    return s;
+}
+
+
+function to_sci(s,eng){
+    var theExp = 0;
+    var isNegative = false;
+    if(s.length > 0 && s.charAt(0) == '-'){
+        isNegative = true;
+        s = s.substring(1,s.length);
+    }
+
+    var regexSplitter = s.split(new RegExp('[eE]'));
+    if(regexSplitter.length > 1){
+        theExp = parseInt(regexSplitter[1]);
+        s = regexSplitter[0];
+    }
+    
+    regexSplitter = s.split(/[\.]/);
+    
+    if(regexSplitter.length > 1){
+        s = regexSplitter[0] + regexSplitter[1];
+        theExp += regexSplitter[0].length-1;
+    }else{
+        theExp += s.length-1;
+    }
+  
+    var leading_zeros = 0;
+    for(leading_zeros = 0;leading_zeros<s.length && s.charAt(leading_zeros) == '0';leading_zeros++){
+        theExp = theExp - 1;
+    }
+    
+    s = s.substring(leading_zeros,s.length);
+	
+    var moveDec;
+
+    if(eng){
+        if(theExp >= 0){
+            moveDec = (theExp %3)+1;
+        }else{
+            moveDec = 4-((-theExp)%3);
+            if(moveDec == 4){
+                moveDec = 1;
+            }
+        }
+        theExp -= (moveDec - 1);
+    }else{
+        moveDec = 1;
+    }
+
+// ***************************************** CODE JAVA STYLED TO THIS POINT *************************
+
+	var trailing_zeros = '';
+	for(var i = s.length;i < moveDec;i++){
+		trailing_zeros += '0';
+	}
+	return(
+		(isNegative?'-':'')+
+		((s.length == 0)?'0':s.substring(0,moveDec))+
+		((s.length <= moveDec)? trailing_zeros:('.' + s.substring(moveDec,s.length)))+
+		((s.length == 0 || theExp == 0)?'':('e' + theExp))
+	);
+}
+
+var digitArray = new Array('0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f');
+
+
+
+
+function setCalc(s){
+
+    if(!modifyingHistory && s != ''){
+		lastResult = '';
+		lastInput = s;
+		document.calculatorInputForm.line.value = s;
+		document.calculatorInputForm.line.focus();
+		lastInput = '';
+		lastPrinted = '';
+		historyIndex = 1;
+		document.calculatorInputForm.line.style.backgroundColor = '#cccc99';
+		document.calculatorInputForm.line.focus();
+	}
+}
+
+function appendCalc(s,replaceLast){
+	if(!modifyingHistory&&s!=''){
+		lastResult='';
+		var new_contents
+		if(replaceLast==0&&document.calculatorInputForm.line.value==lastPrinted){
+			new_contents=s;
+		}else if(replaceLast==1&&document.calculatorInputForm.line.value==lastPrinted){
+			new_contents='ans '+s;
+		}else{
+			new_contents=document.calculatorInputForm.line.value+s;
+		}
+		lastInput=new_contents;
+		document.calculatorInputForm.line.value=new_contents;
+		document.calculatorInputForm.line.focus();
+		lastInput='';
+		lastPrinted='';
+		historyIndex=1;
+		document.calculatorInputForm.line.style.backgroundColor='#cccc99';
+		document.calculatorInputForm.line.focus();
+	}
+}
+
+
+function appendEquation(e,d){
+	if(e == "1"){
+	  clearEquation();
+		currentEq = e;
+		document.calculatorInputForm.eqText.value = "AREA: A = length * width";
+		document.calculatorInputForm.eqVariable01.value = "length";
+		document.calculatorInputForm.eqVariable02.value = "width";
+		}
+	if(e == "2"){
+	  clearEquation();
+		currentEq = e;
+		document.calculatorInputForm.eqText.value = "volume";
+		document.calculatorInputForm.eqVariable01.value = "length";
+		document.calculatorInputForm.eqVariable02.value = "width";
+		}
+	if(e == "3"){
+	  clerEquation();
+		currentEq = e;
+		document.calculatorInputForm.eqText.value = "Kepler";
+		document.calculatorInputForm.eqVariable01.value = "Period";
+		document.calculatorInputForm.eqVariable02.value = "Max";
+		}
+	if(e == "4"){
+	  clearEquation();
+		currentEq = e;
+		document.calculatorInputForm.eqText.value = "DRAKE: N = R * f_p * n_e * f_l * f_i * f_c * L";
+		document.calculatorInputForm.eqVariable01.value = "R";
+		document.calculatorInputForm.eqVariable02.value = "f_p";
+		document.calculatorInputForm.eqVariable03.value = "n_e";
+		document.calculatorInputForm.eqVariable04.value = "f_l";
+		document.calculatorInputForm.eqVariable05.value = "f_i";
+		document.calculatorInputForm.eqVariable06.value = "f_c";
+		document.calculatorInputForm.eqVariable07.value = "L";
+		}
+	if(e == "5"){
+	  clearEquation();
+		currentEq = e;
+		document.calculatorInputForm.eqText.value = "PARALLAX: d = 1 / p";
+		document.calculatorInputForm.eqVariable01.value = "parallax p (arcsecs)";
+		}
+	if(e == "7"){
+	  clearEquation();
+		currentEq = e;
+		document.calculatorInputForm.eqText.value = "T (K) = 2897768.5 / Wavelength(nm)";
+		document.calculatorInputForm.eqVariable01.value = "Wave Length (nm)";
+		}
+
+
+
+}
+
+function evaluateEquation( ){
+
+	if(currentEq == "1"){
+	appendCalc(document.calculatorInputForm.eqValue01.value,0);
+	appendCalc("*",0);
+    appendCalc(document.calculatorInputForm.eqValue02.value,0);
+    
+    doCalculation();
+    }
+	if(currentEq == "2"){
+	appendCalc(document.calculatorInputForm.eqValue01.value,0);
+	appendCalc("*",0);
+    appendCalc(document.calculatorInputForm.eqValue02.value,0);
+    
+    doCalculation();
+    }
+	if(currentEq == "4"){
+	appendCalc(document.calculatorInputForm.eqValue01.value,0);
+	appendCalc("*",0);
+    appendCalc(document.calculatorInputForm.eqValue02.value,0);
+	appendCalc("*",0);
+    appendCalc(document.calculatorInputForm.eqValue03.value,0);
+	appendCalc("*",0);
+    appendCalc(document.calculatorInputForm.eqValue04.value,0);
+	appendCalc("*",0);
+    appendCalc(document.calculatorInputForm.eqValue05.value,0);
+	appendCalc("*",0);
+    appendCalc(document.calculatorInputForm.eqValue06.value,0);
+	appendCalc("*",0);
+    appendCalc(document.calculatorInputForm.eqValue07.value,0);
+
+    doCalculation();
+    }
+	if(currentEq == "5"){
+	appendCalc("1/",0);
+    appendCalc(document.calculatorInputForm.eqValue01.value,0);
+    
+    doCalculation();
+    }
+    
+	if(currentEq == "7"){
+	appendCalc("2897768.5/",0);
+    appendCalc(document.calculatorInputForm.eqValue01.value,0);
+ 
+    doCalculation();
+    }
+
+}
+
+
+
+function clearEquation(){
+
+  document.calculatorInputForm.eqText.value = "";
+	document.calculatorInputForm.eqVariable01.value = "";
+	document.calculatorInputForm.eqValue01.value = ""
+	document.calculatorInputForm.eqVariable02.value = "";
+  document.calculatorInputForm.eqValue02.value = "";
+  document.calculatorInputForm.eqVariable03.value = "";
+	document.calculatorInputForm.eqValue03.value = ""
+	document.calculatorInputForm.eqVariable04.value = "";
+  document.calculatorInputForm.eqValue04.value = "";
+	document.calculatorInputForm.eqVariable05.value = "";
+  document.calculatorInputForm.eqValue05.value = "";
+  document.calculatorInputForm.eqVariable06.value = "";
+	document.calculatorInputForm.eqValue06.value = ""
+	document.calculatorInputForm.eqVariable07.value = "";
+  document.calculatorInputForm.eqValue07.value = "";
+
+  clearCalc();
+}
+
+
+function clearCalc(){
+	document.calculatorInputForm.line.value='';
+	historyIndex=1;
+	document.calculatorInputForm.line.style.backgroundColor='#cccc99';
+	document.calculatorInputForm.line.focus();
+}
+
+function addToHistory(s){
+	modifyingHistory = true;
+	var is_found = false;
+	var the_last=s;
+	var next_history;
+	var history_elements=document.calculatorInputForm.history.options;
+	for(var i=1;i<history_elements.length&&!is_found;i++){
+		next_history=history_elements[i].text;
+		history_elements[i].text=the_last;
+		if(next_history==s){
+			is_found=true;
+		}
+		the_last=next_history;
+	}
+	document.calculatorInputForm.history.selectedIndex=0;
+	modifyingHistory=false;
+}
+
+
+
+function display_nextHistory(){
+	var history_elements=document.calculatorInputForm.history.options;
+	var next_history="";
+	if(historyIndex>=history_elements.length||history_elements[historyIndex].text==""){
+		historyIndex=1;
+	}
+	if(history_elements[historyIndex].text!=""){
+		var temp_history=historyIndex;
+		setCalc(history_elements[historyIndex].text);
+		historyIndex=temp_history;
+		document.calculatorInputForm.history.selectedIndex=historyIndex;
+		historyIndex++;
+	}
+	document.calculatorInputForm.line.focus();
+}
+
+function nextDisplayMethod(){
+	var d=document.calculatorInputForm.display;
+	var s=d.selectedIndex;
+	s++;
+	if(s>=d.options.length)s=0;
+	display_method(s)
+}
+
+function displayMethod(index) {
+
+    document.calculatorInputForm.display.selectedIndex=index;
+    displayResult();
+    document.calculatorInputForm.line.focus();
+}
+
+//-->
+</script>
+
+<style type="text/css">
+body {
+font-size:10pt;
+}
+
+input.Advanced {
+font-size:9pt;
+width:.75cm;
+padding:0;
+margin:0;
+}
+input.Clear, input.Number, input.Operand, input.Equal, input.Other {
+font-size:15pt;
+width:1.25cm;
+font-weight:bold;
+padding:2px;
+}
+input.KeyShortcut {
+background-color:white;
+color:white;
+text-decoration:none;
+border:none;
+}
+input.Clear {
+background-color:#aa2222;
+border-color:#aa2222;
+color:white;
+}
+input.Number {
+background-color:#CCaa99;
+border-color:#CCaa99;
+color:black;
+}
+input.MathFn {
+width:1.5cm;
+}
+input.Operand {
+background-color:#aaaacc;
+border-color:#aaaacc;
+color:black;
+}
+input.Equal {
+background-color:#444444;
+border-color:#444444;
+color:white;
+}
+input.Other {
+background-color:#9ac693;
+border-color:#9ac693;
+color:black;
+}
+input.Advanced {
+background-color:lightgray;
+border-color:lightgray;
+color:black;
+}
+input.Line {
+background-color:#cccc99;
+border-color:#cccc99;
+font-size:15pt;
+font-weight:bold;
+width:100%;
+}
+
+input.Result {
+background-color:#cccc99;
+border-color:#cccc99;
+font-size:15pt;
+font-weight:bold;
+width:25%;
+}
+
+
+select {
+background-color:#cccccc;
+border-color:#cccccc;
+color:black;
+}
+.style1 {font-size: 10}
+</style>
+
+</head>
+
+<body onload="pageStart();">
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">Astrophysics Calculator</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMainCalculations.html'" >Calculations Menu</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+
+<br/>
+<!-- **************** Content **************** -->
+<div class="Content">
+
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Calculation</a></li>
+		<li><a href="#tabs-2">User Guide</a></li>
+		<li><a href="#tabs-3">Credits</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="table1">
+	<tr>
+		<td style="width:76px"><b>Functions</b></td>
+		<td style="width:129px"><small>(<a title="Maths Constants - cInfo003MathConst.html" href="../cData/cConst002Math.html">Maths 
+        Constant Data </a>)</small></td>
+		<td style="width:10px"><small>(<a title="Physics Contants - cInfo004PhyConst.html" href="../cData/cConst003Phy.html">Physical 
+        Constant Data)</a></small></td>
+		<td style="width:138px">
+<p><small>(<a title="Astrophysics Contants - cInfo001AstroConst.html" href="../cData/cConst001Astro.html">Astro 
+Constant Data </a>)</small></p>		</td>
+	  <td style="width:179px">&nbsp;</td>
+	  <td style="width:87px"></td>
+	  <td style="width:101px">&nbsp;</td>
+	</tr>
+	<tr>
+	  <td style="width:129px"><select name="mathFunctions0" class="MathFunctions" onchange="appendCalc(this.options[this.selectedIndex].value,0);this.selectedIndex=0;">
+      <option>Math Functions:</option>
+      <option value="abs(">abs</option>
+      <option value="acos(">acos</option>
+      <option value="asin(">asin</option>
+      <option value="atan(">atan</option>
+      <option value="atan2(">atan2</option>
+      <option value="ceil(">ceil</option>
+      <option value="cos(">cos</option>
+      <option value="exp(">exp</option>
+      <option value="floor(">floor</option>
+      <option value="log(">log</option>
+      <option value="max(">max</option>
+      <option value="min(">min</option>
+      <option value="pow(">pow</option>
+      <option value="random()">random</option>
+      <option value="round(">round</option>
+      <option value="sin(">sin</option>
+      <option value="sqrt(">sqrt</option>
+      <option value="tan(">tan</option>
+      </select></td>
+    <td>
+      <select name="mathConstants0" class="MathConstants" onchange="appendCalc(this.options[this.selectedIndex].value,0);this.selectedIndex=0;">
+      <option>Math Constants:</option>
+      <option value="ans ">last result</option>
+      <option value="E ">e</option>
+      <option value="LN10 ">ln(10)</option>
+      <option value="LN2 ">ln(2)</option>
+      <option value="LOG10E ">log10(e)</option>
+      <option value="LOG2E ">log2(e)</option>
+      <option value="PI ">p</option>
+      <option value="SQRT1_2 ">sqrt(1/2)</option>
+      <option value="SQRT2 ">sqrt(2)</option>
+     </select></td>
+		<td>
+      <select name="physicsConstants0" class="PhysicsConstants" onchange="appendCalc(this.options[this.selectedIndex].value,0);this.selectedIndex=0;">
+      <option>Physics Constants</option>
+      <option value="299792458">c</option>
+      <option value="acos(">acos</option>
+      <option value="asin(">asin</option>
+      <option value="atan(">atan</option>
+      <option value="sqrt(">sqrt</option>
+      <option value="tan(">tan</option>
+      </select>
+    </td>
+		<td>
+      <select name="astrophysicsConstants0" class="AstrophysicsConstants" onchange="appendCalc(this.options[this.selectedIndex].value,0);this.selectedIndex=0;">
+      <option>Astrophysics Constants</option>
+      <option value="70">Hubble</option>
+      <option value="acos(">acos</option>
+      <option value="asin(">asin</option>
+      </select>
+    </td>
+		<td>
+      <select name="conversions0" class="Conversions" onchange="appendCalc(this.options[this.selectedIndex].value,0);this.selectedIndex=0;">
+      <option>Convert</option>
+      <option value="*6.241506363e+18">J to eV</option>
+      <option value="*1.60217733e-19">eV to J</option>
+      </select>
+    </td>
+		<td>
+      <select name="equations0" class="Equations" onchange="appendEquation(this.options[this.selectedIndex].value,0);this.selectedIndex=0;">
+      <option>Equations</option>
+      <option value="1">Area</option>
+      <option value="4">Drake</option>
+      <option value="6">E=mc^2</option>
+      <option value="3">Kepler</option>
+      <option value="5">Parallax</option>
+      <option value="2">Volume</option>
+      <option value="7">Wein's Law</option>
+      </select>
+    </td>
+    <td></td>
+	</tr>
+</table>
+
+<!-- **************** Content **************** -->
+ <p>
+
+
+<form name="outputResultForm1" id="outputResultForm1">
+Output Last Results:
+     
+        <input class="Result" type="text" name="result" id="result" size="25" />  
+
+
+</form>
+
+<form name="calculatorInputForm" id="calculatorInputForm" onsubmit="doCalculation();return false;">
+  <input class="Line" type="text" name="line" onchange="lineChange();" />
+  <br/>
+<table style="width:1222px">
+  <tr>
+    <td style="width:328px">
+      <table class="Keypad">
+        <tr>
+          <td><input type="button" value="Pi" class="MathFn" onclick="appendCalc(PI,0);" title="Pi" /></td>
+          <td><input type="button" value="C" class="Clear" accesskey="c" onclick="clearCalc();" title="Clear (Alt-c)" /></td>
+          <td><input type="button" value="(" class="Other" onclick="appendCalc('(',0);" title="Grouping Parenthesis" /></td>
+          <td><input type="button" value=")" class="Other" onclick="appendCalc(')',0);" title="Grouping Parenthesis" /></td>
+          <td><input type="button" value="+" class="Operand" onclick="appendCalc(' + ',1);" title="Addition" /></td>
+          <td>&nbsp;&nbsp; </td>
+          <td rowspan="6" style="width:28px"><br/></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="e" class="MathFn" onclick="appendCalc(E,0);" title="e" /></td>
+          <td><input type="button" value="7" class="Number" onclick="appendCalc('7',0);" title="Seven" /></td>
+          <td><input type="button" value="8" class="Number" onclick="appendCalc('8',0);" title="Eight" /></td>
+          <td><input type="button" value="9" class="Number" onclick="appendCalc('9',0);" title="Nine" /></td>
+          <td><input type="button" value="-" class="Operand" onclick="appendCalc(' - ',1);" title="Subtraction" /></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><input type="button" value="log10(e)" class="MathFn" onclick="appendCalc(LOG10E,0);" title="log10(e)" /></td>
+          <td><input type="button" value="4" class="Number" onclick="appendCalc('4',0);" title="Four" /></td>
+          <td><input type="button" value="5" class="Number" onclick="appendCalc('5',0);" title="Five" /></td>
+          <td><input type="button" value="6" class="Number" onclick="appendCalc('6',0);" title="Six" /></td>
+          <td><input type="button" value="*" class="Operand" onclick="appendCalc(' * ',1);" title="Multiplication" /></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><input name="button" type="button" class="MathFn" title="log2(e)" onclick="appendCalc(LOG2E,0);" value="log2(e)" /></td>
+          <td><input type="button" value="1" class="Number" onclick="appendCalc('1',0);" title="One" /></td>
+          <td><input type="button" value="2" class="Number" onclick="appendCalc('2',0);" title="Two" /></td>
+          <td><input type="button" value="3" class="Number" onclick="appendCalc('3',0);" title="Three" /></td>
+          <td><input type="button" value="÷" class="Operand" onclick="appendCalc(' / ',1);" title="Division" /></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><input type="button" value="ln(10)" class="MathFn" onclick="appendCalc(LN10,0);" title="ln(10)" /></td>
+          <td><input type="button" value="EE" class="Other" onclick="appendCalc('e',2);" title="Scientific Notation Exponent" /></td>
+          <td><input type="button" value="0" class="Number" onclick="appendCalc('0',0);" title="Zero" /></td>
+          <td><input type="button" value="." class="Other" onclick="appendCalc('.',2);" title="Decimal Point" /></td>
+          <td><input type="button" value="=" class="Equal" accesskey="e" onclick="doCalculation();" title="Enter (Alt-e)" /></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="button" value="Ans" class="Equal" accesskey="e" onclick="appendCalc(answer,0);" title="Enter (Alt-e)" /></td>
+          <td>
+            <input type="button" value="," class="Other" onclick="appendCalc(', ',2);" title="Comma for functions" /></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+<br />
+Display:<br />
+    <select name="display" class="Display" onchange="displayResult();" title="(Alt-d)">
+    <option selected="selected">Decimal (Mixed Notation)</option>
+    <option>Decimal (Scientific Notation)</option>
+    <option>Decimal (Engineering Notation)</option>
+    </select>
+    </td>
+    <td style="width:91px">
+<p>
+      <select name="history" class="History" onchange="if(this.selectedIndex&gt;0) setCalc(this.options[this.selectedIndex].text);" title="View previous entries (Alt-h)">
+      <option>History:</option>
+       </select>
+</p>
+<p>&nbsp;</p>
+    </td>
+    <td style="width:787px">
+      <table class="EqValues">
+        <tr>
+          <td>Equation Description</td>
+        </tr>
+        <tr>
+          <td style="width:460px"><input class="Line" type="text" name="eqText" size="40" /></td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td style="width:307px">Variable</td><td style="width:293px">Value</td></tr>
+        <tr>
+          <td style="width:307px"><input class="Line" type="text" name="eqVariable01" /></td>
+          <td style="width:293px"><input class="Line" type="text" name="eqValue01" /></td>
+        </tr>
+        <tr>
+          <td style="width:307px"><input class="Line" type="text" name="eqVariable02" /></td>
+          <td style="width:293px"><input class="Line" type="text" name="eqValue02" /></td>
+        </tr>
+        <tr>
+          <td style="width:307px"><input class="Line" type="text" name="eqVariable03" /></td>
+          <td style="width:293px"><input class="Line" type="text" name="eqValue03" /></td>
+        </tr>
+        <tr>
+          <td style="width:307px"><input class="Line" type="text" name="eqVariable04" /></td>
+          <td style="width:293px"><input class="Line" type="text" name="eqValue04" /></td>
+        </tr>
+        <tr>
+          <td style="width:307px"><input class="Line" type="text" name="eqVariable05" /></td>
+          <td style="width:293px"><input class="Line" type="text" name="eqValue05" /></td>
+        </tr>
+        <tr>
+          <td style="width:307px"><input class="Line" type="text" name="eqVariable06" /></td>
+          <td style="width:293px"><input class="Line" type="text" name="eqValue06" /></td>
+        </tr>
+        <tr>
+          <td style="width:307px"><input class="Line" type="text" name="eqVariable07" /></td>
+          <td style="width:293px"><input class="Line" type="text" name="eqValue07" /></td>
+        </tr>
+        <tr>
+          <td style="width:307px"><input type="button" value="  Evaluate  "  onclick="evaluateEquation();" title="Evaluate" /></td>
+          <td style="width:293px"><input type="button" value="  Clear  "  onclick="clearEquation();" title="Clear Equation" /></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</form>
+
+
+</div>
+
+<div id="tabs-2">
+
+<table style="width:1028px">
+  <tr>
+    <td>
+    <h3>Instructions</h3>
+
+    <b>Keyboard shortcuts (Alt or Cmd):</b><br/>
+    
+    <ul>
+      <li><u>C</u>lear</li>
+      <li><u>E</u>quals</li>
+      <li><u>H</u>istory (previous)</li>
+      <li><u>D</u>isplay (cycle)</li>
+      <li>Decimal <u>m</u>ixed display</li>
+      <li>Decimal <u>S</u>cientific display</li>
+      <li>Decimal En<u>g</u>ineering display</li> 
+      <li>Last <u>A</u>nswer</li>
+    </ul>
+    </td>
+    <td style="width:643px">
+      <p>Enter an expression into the tan bar and press enter to calculate the results.</p>
+
+      <p>This calculator remembers up to twenty past calculations in history. To save the history between visits you must have cookies enabled.</p>
+
+<p>All results are calculated using the Javascript eval() 
+function. Syntax for expressions is the same as that for Javascript.<br />
+To raise a number to a power use pow() function.<br />
+The Display option works as follows: <br />
+<br />
+5689 * 13 = 73957 Decimal<br/>
+Display Sci = 7.3957E4 Scientific notation<br/>
+Engineering notation ( where E always some mutiple of 10^3 - e.g. 73.957e3 
+73.957e6 73.957e9 etc) = 73.957E3 <br/>
+the letter E or e represents times ten raised to the power, E is preffered to e 
+so as not to confuse with the maths constant &#39;e&#39;<br/>
+<br />
+</p>
+    </td>
+  </tr>
+</table>
+</div>
+
+<div id="tabs-3">
+Based on original source from - Stephen Ostermiller / ostermiller.org released under the GNU General Public Licence.
+</div>
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cCalc005AstroCalc</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

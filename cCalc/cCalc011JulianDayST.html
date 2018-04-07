@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Julian Day ~(Number) and Sidereal Time ------------ [cCalc011JulianDay] </title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+<!-- Use latest MathJax code -->
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script>
+
+  MathJax.Hub.Config({
+    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+  });
+
+
+
+/*
+
+Calculate Julian Day and Sidereal Time
+
+*/
+
+
+function compute1() {
+
+    Y = parseInt(inputDataForm1.input1.value);
+    M = parseInt(inputDataForm1.input2.value);
+    D = parseInt(inputDataForm1.input3.value);
+	thours = parseInt(inputDataForm1.input4.value);
+	tminutes = parseInt(inputDataForm1.input5.value);
+    tseconds = parseInt(inputDataForm1.input6.value);
+
+    HR = thours + tminutes / 60 + tseconds / 3600;
+	
+with (Math) { 
+
+// Jean-Meeus algorithm	
+
+        if (M<3) {
+                Y = Y - 1;
+                M = M + 12;
+                }
+
+       var A = floor( Y / 100 );
+       var B = floor(2 - A + floor( A / 4 ));
+
+       var JD = floor(365.25 * (Y + 4716)) + floor(30.6001*(M+1)) + D + B -1524.5;
+	   var JDN = JD;
+	   
+	   // Include day fraction if time input
+		JD = JD + ( HR / 24);
+		
+}
+        
+
+    var outputResult1 = new Number(JDN);
+    document.outputResultForm1.result1.value = outputResult1.toFixed(0);
+
+    var outputResult2 = new Number(JD);
+    document.outputResultForm1.result2.value = outputResult2.toFixed(2);
+
+}
+
+
+</script>
+
+
+</head>
+
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderDev">
+  <tr>
+    <td style="width:60%">Julian Day (Number) and Sidereal Time</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+     	<li><a href="#tabs-1">Calculation - JD</a></li>
+		<li><a href="#tabs-2">Calculation - ST</a></li>
+		<li><a href="#tabs-3">Notes</a></li>
+        <li><a href="#tabs-4">Live Sheet</a></li>
+        <li><a href="#tabs-5">JD via jscript time</a></li>
+	
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td>
+      <br/>
+            
+            Here we take the Julian Day (also refered to as JD) is a continuous count of days and fractions of days from January 1st year -4715 in the Julian calendar. We take the Julian Day Number ( or JDN) as being the integer value of this day count.<br/><br/>
+            To calculate from our current (Gregorian) calendar, using the Jean-Meeus algorithm, take Y as the required Year, M as the required month and D as the required calendar day.
+            <br/><br/>
+            Then if M &gt; 2 leave Y and M at input values, if M = 1 or 2, <br/><br/>
+            <div style="font-size: 120%;">
+            then \[ Y = Y - 1 \] and  \[ M = M + 12 \]
+            <br/>
+            then 
+           
+            \[ A = INT ( \frac{Y}{100} ) \] 
+            
+            and  
+            
+            \[ B = INT ( 2 - A + INT( \frac{A}{4} )) \]
+            
+            <br/>
+            
+            \[ 
+            JD = INT ( 365.25 \times ( Y + 4716 )) 
+            \]
+            \[
+                 + INT ( 30.6001 \times ( M + 1 )) + D + B - 1524.5
+            \]
+            </div>
+            <br/>
+    
+   <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+  Variables / Constants:
+    </td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td>Year</td>
+    <td>
+      <input type="text" name="input1" id="input1" size="12" value="2016" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Month</td>
+    <td><input type="text" name="input2" id="input2" size="12" value="7" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Day</td>
+    <td>
+      <input type="text" name="input3" id="input3" size="12" value="12" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Hour</td>
+    <td><input type="text" name="input4" id="input4" size="12" value="0" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Min</td>
+    <td><input type="text" name="input5" id="input5" size="12" value="0" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Sec</td>
+    <td><input type="text" name="input6" id="input6" size="12" value="0" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:compute1();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td>JDN</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>n/a&nbsp;</td>
+  </tr>
+  <tr>
+    <td>JD</td>
+    <td><input type="text" name="result2" id="result2" size="12" /> </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+
+
+
+</div>
+
+<div id="tabs-2">
+
+
+<hr/>
+
+
+<form name="inputDataForm2" id="inputDataForm2">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="inputTable2">
+    <tr>
+      <th>Parameter Description</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Parameter Description</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Parameter Description</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Year</td>
+      <td><input type="text" name="input7" id="input7" size="12" value="2013" /></td>
+      <td>m</td>
+      <td>Month</td>
+      <td>
+        <input type="text" name="input8" id="input8" size="12" value="06" /></td>
+      <td>m</td>
+      <td>Day</td>
+      <td>
+        <input type="text" name="input9" id="input9" size="12" value="10" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Hours</td>
+      <td>
+        <input type="text" name="input10" id="input10" size="12" value="0" /></td>
+      <td>&nbsp;</td>
+      <td>Minutes</td>
+      <td>
+        <input type="text" name="input11" id="input11" size="12" value="0" /></td>
+      <td>&nbsp;</td>
+      <td>Seconds</td>
+      <td>
+        <input type="text" name="input12" id="input12" size="12" value="0" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LongDegrees</td>
+      <td>
+        <input type="text" name="input13" id="input13" size="12" value="49" /></td>
+      <td>&nbsp;</td>
+      <td>Minutes</td>
+      <td>
+        <input type="text" name="input14" id="input14" size="12" value="26" /></td>
+      <td>&nbsp;</td>
+      <td title="acceleration m s^2">Seconds</td>
+      <td>
+        <input type="text" name="input15" id="input15" size="12" value="10" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>LatDegrees</td>
+      <td>
+        <input type="text" name="input16" id="input16" size="12" value="2" /></td>
+      <td>&nbsp;</td>
+      <td title="effect at n km distance">Minutes</td>
+      <td>
+        <input type="text" name="input17" id="input17" size="12" value="36" /></td>
+      <td>&nbsp;</td>
+      <td>Seconds</td>
+      <td>
+        <input type="text" name="input18" id="input18" size="12" value="02" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="9"><input type="button" value="Calculate" onclick="javascript:compute();" />
+                <input type="reset" value=" Click here to clear input values " />
+      </td>
+    </tr>
+  </table>
+</form>
+
+<hr/>
+
+<form name="outputResultForm2" id="outputResultForm2">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="outputTable2">
+      <tr>
+      <th>Results</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Results</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Results </th>
+      <th>&nbsp;</th>
+      <th>units</th>
+    </tr>
+    <tr>
+      <td title="">JD</td>
+      <td>
+        <input type="text" name="result3" id="result3" size="30" />      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="impactor mass">GM SDT</td>
+      <td>
+        <input type="text" name="result4" id="result4" size="30" /></td>
+      <td>&nbsp;</td>
+      <td title="yield scaling result">&nbsp;</td>
+      <td>
+        <input type="text" name="result5" id="result5" size="30" /></td>
+      <td>&nbsp;</td>
+      <td title="ejecta blanket">&nbsp;</td>
+      <td>
+        <input type="text" name="result6" id="result6" size="30" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="yield energy joules">LST</td>
+      <td>
+        <input type="text" name="result7" id="result7" size="30" /></td>
+      <td>&nbsp;</td>
+      <td title="pi scaling result">&nbsp;</td>
+      <td>
+        <input type="text" name="result8" id="result8" size="30" /></td>
+      <td>&nbsp;</td>
+      <td title="ejecta spread">&nbsp;</td>
+      <td>
+	    <input type="text" name="result9" id="result9" size="30" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="9">
+        <input type="reset" value=" Click here to clear result values " />      </td>
+    </tr>
+  </table>
+</form>
+
+<input type="button" value="Diag" onclick="javascript:openDiagWindow()" />&nbsp;
+
+</div>
+
+<div id="tabs-3">
+
+<p>The Julian Day is the continuous count of days since the beginning of the Julian Period, used primarily by astronomers. The Julian Day Number (JDN) is the integer assigned to a whole solar day in the Julian day count starting from noon Greenwich Mean Time, with Julian day number 0 assigned to the day starting at noon on January 1, 4713 BC, proleptic Julian calendar (November 24, 4714 BC, in the proleptic Gregorian calendar). For example, the Julian day number for the day starting at 12:00 UT on January 1, 2000, was 2,451,545 <br/><br/>
+    The Julian Day (JD) of any instant is the Julian day number for the preceding noon in Greenwich Mean Time plus the fraction of the day since that instant. Julian dates are expressed as a Julian day number with a decimal fraction added. For example, the Julian Date for 00:30:00.0 UT January 1, 2013, is 2,456,293.520833</p>
+  <p>The link below is an independent means of verifying calculations on this page.</p>
+  <p><a href="http://aa.usno.navy.mil/data/docs/JulianDate.php" target="_blank" title="US Navy Astro Calculations">http://aa.usno.navy.mil/data/docs/JulianDate.php</a></p>
+  Enter the date and time in the appropriate fields; also enter the desired longitude and latitude. Then press the Calculate button to calculate the Julian Date and Sidereal times, local and Greenwich. Each field MUST have a valid value in it. A Julian date is valid from January 1, 4713 B.C., or to those that do not accept Christianity, BCE, to present, sometime after 2004 A.D., or for the non-Christians, CE.  Sidereal time is the hour angle of the vernal equinox, the ascending node of the ecliptic on the celestial equator. The daily motion of this point provides a measure of the rotation of the Earth with respect to the stars, rather than the Sun. Local mean sidereal time is computed from the current Greenwich Mean Sidereal Time plus an input offset in longitude (converted to a sidereal offset by the ratio 1.00273790935 of the mean solar day to the mean sidereal day.) Applying the equation of equinoxes, or nutation of the mean pole of the Earth from mean to true position, yields local apparent sidereal time. Astronomers use local sidereal time because it corresponds to the coordinate right ascension of a celestial body that is presently on the local meridian. Nutation is a slight irregular motion (etymologically a "nodding") in the axis of rotation of a planet, due to the fact that the tidal forces which cause precession of the equinoxes vary over time so that the speed of precession is not constant. In the case of Earth, the principal sources of tidal force are the Sun and Moon, which continually change location relative to each other and thus cause nutation in Earth's axis. The largest component of Earth's nutation has a period of 18.6 years, the same as that of the precession of the Moon's orbital nodes. However, there are other significant periodical terms which must be calculated depending on the desired accuracy of the result. Values of nutation are usually divided into components parallel and perpendicular to the ecliptic. The component which works along the ecliptic is known as the nutation in longitude. The component perpendicular to the ecliptic is known as the nutation in obliquity. These values are important in observation from Earth for calculating the apparent position of astronomical objects. Nutation was discovered in 1728 by the English astronomer James Bradley, but was not explained until 20 years later. Our appreciation to ServiAstro for providing the script. 
+<br/>
+<br>
+        In chapter 11 Meeus gives a method of calculating GST from JD, and it 
+        would<br>
+        be possible to use this in reverse. However, in Practical Astronomy with<br>
+        your Calculator chapter 13, Peter Duffett-Smith gives the following 
+        method.<br>
+        I believe my copy is at the Observatory. GST is in decimal hours. JD is 
+        the<br>
+        JD for 0h UT on the relevant calendar date.<br>
+        <br>
+        T=(JD-2451545.0)/36525<br>
+        T0=6.697374558 + (2400.051336 x T) - (0.000025862 xT^2)<br>
+        Reduce T0 to the range 0-24 by adding or subtracting multiples of 24.<br>
+        Subtract T0 from GST, and reduce to the range 0-24 by subtracting or 
+        adding<br>
+        24. Multiply by 0.9972695663 This is the UT in decimal hours.<br>
+        <br>
+        I can let you have copies of the relevant chapters, if you wish.<br>
+        <br>
+        - David Le Conte<br/>
+</div>
+
+<div id="tabs-4">
+  <iframe width="480" height="570" src="http://uncharted.livesheets.com/forms/7b86fc11ff785826b30434da5577a17b116cec74"></iframe>
+</div>
+
+<div id="tabs-5">
+<br/>
+Calculate JD via Java Script time function.<br/><br/>
+
+<script>
+var SEC_MS = 1000;  // convert s to ms
+var DAY_MS = 24 * 60 * 60 * SEC_MS;  // ms in a day
+var JD_1970_0 = 2440587.5;   // JD start 1970
+
+
+  var ms1970 = new Date ().getTime (); // get ms since 1970.0 UT
+  
+  document.write("1970.0 UT is Julian Day (JD) : ");
+  document.writeln(JD_1970_0, "<br/><br/>");
+  document.write("ms since 1970 : ");
+  document.writeln(ms1970, "<br/><br/>");
+  document.write( 'Julian Date (JD) : ');
+  
+  var JDJS = (ms1970 / DAY_MS) + JD_1970_0;
+   var outputResult = new Number(JDJS);
+     
+  document.writeln( outputResult.toFixed(2) );
+  
+</script>
+</div>
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cCalc011JulianDate</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

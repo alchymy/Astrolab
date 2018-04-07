@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Telescope ------------ [cCalc009TScope]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+    
+<script>
+
+cTelescope = {
+	calcFRatio: function(focalLen, aperture)
+	{
+		return focalLen / aperture;
+	},
+
+	calcFocalLen: function(fRatio, aperture)
+	{
+		return fRatio * aperture;
+	},
+
+	calcAperture: function(fRatio, focalLen)
+	{
+		return focalLen / fRatio;
+	},
+
+	calcWavelengthAiry: function(airyDiam, apertureAiry)
+	{
+		return airyDiam * apertureAiry / 1.22;
+	},
+
+	calcApertureAiry: function(airyDiam, wavelengthAiry)
+	{
+		return wavelengthAiry * 1.22 / airyDiam;
+	},
+
+	calcAiryDiam: function(apertureAiry, wavelengthAiry)
+	{
+		return wavelengthAiry * 1.22 / apertureAiry;
+	},
+
+	calcTeleFocalLenMag: function(EPFocalLen, mag)
+	{
+		return EPFocalLen * mag;
+	},
+
+	calcEPFocalLenMag: function(teleFocalLen, mag)
+	{
+		return teleFocalLen / mag;
+	},
+
+	calcMagnification: function(teleFocalLen, EPFocalLen)
+	{
+		return teleFocalLen / EPFocalLen;
+	}
+};
+
+// define all Global variables
+
+function main()
+{
+
+var scopeFocalLength = document.inputDataForm1.input4.value;
+var eyepFocalLength = document.inputDataForm1.input5.value;
+var magnification = document.inputDataForm1.input6.value;
+
+if ((scopeFocalLength > 0) && (eyepFocalLength > 0) && (magnification > 0))
+{
+  alert("Only two values can be entered");
+  
+ }
+
+
+
+magnification = cTelescope.calcMagnification(scopeFocalLength, eyepFocalLength);
+
+//   ***************** Output Section **************** 
+// Output Results grid on outputResultForm1
+// var outputResultn used where required, e.g. in the case where number formating is required.
+
+//    var outputResult1 = "";
+    document.outputResultForm1.result1.value = scopeFocalLength;
+    
+//    var outputResult2 = "";
+    document.outputResultForm1.result2.value = eyepFocalLength;
+    
+//    var outputResult3 = "";
+    document.outputResultForm1.result3.value = magnification;
+
+//    var outputResult4 = "";
+    document.outputResultForm1.result4.value = "";
+
+//    var outputResult5 = "";
+    document.outputResultForm1.result5.value = "";
+/*
+
+Add outputResultn lines for each of the 3 output columns as required - see examples below.
+
+    var outputResultn = myCalcVariableResult";
+    document.outputResultForm1.resultn.value = outputResultn
+
+For numbers the Number object is an object wrapper for primitive numeric values.
+Number objects are created with new Number(), e.g.
+var num = new Number(value);  an error will be given if "value" is not numeric
+
+Methods include
+toExponential(x) Converts a number into an exponential notation 
+toFixed(x) Formats a number with x numbers of digits after the decimal point 
+
+
+    var outputResult20 = new Number(yourNumericVaraiable);
+    document.outputResultForm1.result20.value = outputResult20.toExponential(2);
+    
+    var outputResult21 = new Number(yourNumericVaraiable);
+    document.outputResultForm1.result21.value = outputResult21.toFixed(2);
+    
+    document.outputResultForm1.result22.value = "";
+    document.outputResultForm1.result23.value = "";
+    document.outputResultForm1.result24.value = "";
+*/
+
+}
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+
+
+function openDiagWindow() {
+
+// used to display values at various stages of calculation for verification
+// that formulas are translated correctly, using electronic calculator
+
+//    diagWindow = window.open("","Diagnostics -","toolbar=no, location=no, directories=no, status=no,menubar=no, scrollbars=no, resizable=no, copyhistory=yes, width=220, height=350");
+  
+    diagWindow = window.open();
+    diagWindow.document.open();
+    diagWindow.document.write("<title>Diagnostics</title>");
+    diagWindow.document.write("<pre>Diagnostic Window  :<p/>");
+  
+    diagWindow.document.write("</pre>");
+    diagWindow.focus();
+
+}
+
+
+</script>
+
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">Telescope</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Calculation</a></li>
+	     </ul>
+    
+<div id="tabs-1">
+
+
+
+<!--
+ID vs. Name in Form Fields
+When creating a form and form field, you should give them both an id and a name and make them the same, e.g. 
+
+<form id="form1" name="form1">
+<input type="text" id="form1Field1" name="form1Field1" />
+<input type="text" id="form1Field2" name="form1Field2" />
+</form>
+
+This is because browsers use the name field when they submit to a server, but when working with JavaScript it's best to use id (and the associated document.getElementById()) to identify elements. You could use something like document.getElementsByName(), but it is a lot harder to work with, because names aren't guaranteed to be unique and thus that function returns a collection of elements, not just one. 
+You should also always name your name and id the same thing (and not reuse that identifier anywhere else), 
+because of IE's poor implementation of getElementById() which can sometimes return an element whose "name" matches the "id"
+you asked for. 
+
+Always use both, make them the same string, and make that string unique in the document. 
+XHTML spec [1] says that name is deprecated for id, and that eventually name will go away completely.  
+The spec also recommends using both the name and the id attributes, set identically, for forwards and backwards compatibility.
+-->
+
+<form action="cCalc009TScope.html" name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+  <table width="100%" border="1" cellspacing="0">
+    <tr align="center">
+      <th width="10%">&nbsp;</th>
+      <th width="15%">&nbsp;</th>
+      <th width="5%">units</th>
+      <th width="10%">&nbsp;</th>
+      <th width="15%">&nbsp;</th>
+      <th width="5%">units</th>
+      <th width="10%">&nbsp;</th>
+      <th width="15%">&nbsp;</th>
+      <th width="5%">units</th>
+    </tr>
+    <tr>
+      <td align="left" title="projectile diameter km">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="left">&nbsp;</td>
+      <td >&nbsp;
+        </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left" title="projectile diameter km">Scope Focal Length</td>
+      <td><input type="text" title="projectile diameter m" name="input4" id="input4" size="12" value="" /></td>
+      <td>&nbsp;</td>
+      <td align="left" title="projectile velocity km s">Eyepiece Focal Length</td>
+      <td>
+        <input type="text" name="input5" id="input5" size="12" value="" /></td>
+      <td>&nbsp;</td>
+      <td title="target density kg m^3">Magnification</td>
+      <td>
+        <input type="text" name="input6" id="input6" size="12" value="" /></td>
+      <td width="40">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left" width="89">&nbsp;</td>
+      <td width="68">&nbsp;
+        </td>
+      <td width="38">&nbsp;</td>
+      <td width="84">&nbsp;</td>
+      <td width="303">&nbsp;</td>
+      <td width="38">&nbsp;</td>
+      <td width="89">&nbsp;</td>
+      <td width="74">&nbsp;
+        </td>
+      <td width="40">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left" width="89" title="projectile density kg m^3">&nbsp;</td>
+      <td width="68">&nbsp;</td>
+      <td width="38">&nbsp;</td>
+      <td width="84" title="impact angle degrees">&nbsp;</td>
+      <td width="303">&nbsp;
+        </td>
+      <td width="38">&nbsp;</td>
+      <td width="89" title="acceleration m s^2">&nbsp;</td>
+      <td width="74">&nbsp;
+        </td>
+      <td width="40">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left" width="89">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="effect at n km distance">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td width="38">&nbsp;</td>
+      <td width="89">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td width="40">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left" width="89" title="default number of decimal places for results reported">&nbsp;</td>
+      <td>&nbsp;
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="target type">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left" height="26">&nbsp;</td>
+      <td height="26"><input type="button" value="Calculate" onclick="javascript:main();" /></td>
+      <td height="26">&nbsp;</td>
+      <td height="26">&nbsp;</td>
+      <td height="26"><input type="reset" value=" Clear input values" /></td>
+      <td height="26">&nbsp;</td>
+      <td height="26">&nbsp;</td>
+      <td height="26">&nbsp;</td>
+      <td height="26">&nbsp;</td>
+    </tr>
+  </table>
+</form>
+
+<hr/>
+
+<form action="cCalc009TScope.html" name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+  <table width="100%" border="1" cellspacing="0">
+    <tr align="center">
+      <th width="10%">Local</th>
+      <th width="15%">&nbsp;</th>
+      <th width="5%">units</th>
+      <th width="10%">UTC</th>
+      <th width="15%">&nbsp;</th>
+      <th width="5%">units</th>
+      <th width="10%">&nbsp;</th>
+      <th width="15%">&nbsp;</th>
+      <th width="5%">units</th>
+    </tr>
+    <tr>
+      <td align="left" title="impactor volume">Today</td>
+      <td>
+      <input type="text" name="result1" id="result1" size="32" />
+      </td>
+      <td>&nbsp;</td>
+      <td align="left">Today UTC</td>
+      <td><input type="text" name="result2" id="result2" size="32" /></td>
+      <td>&nbsp;</td>
+      <td title="crater type">&nbsp;</td>
+      <td>
+        <input type="text" name="result3" id="result3" size="25" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left" title="impactor mass">Local Time</td>
+      <td>
+        <input type="text" name="result4" id="result4" size="27" />      </td>
+      <td>&nbsp;</td>
+      <td align="left" title="yield scaling result">UTC Time</td>
+      <td>
+        <input type="text" name="result5" id="result5" size="28" />      </td>
+      <td>&nbsp;</td>
+      <td title="ejecta blanket">&nbsp;</td>
+      <td>
+        <input type="text" name="result6" id="result6" size="12" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="yield energy joules">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+      <td align="left" title="pi scaling result">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+      <td title="ejecta spread">&nbsp;</td>
+      <td>&nbsp;
+	    </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="yield energy megatons">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+      <td title="Gault Scaling Result" align="left">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+      <td title="magnitude on the Richter scale">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left" title="no of near earth asteroids larger">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="effective magnitude">&nbsp;</td>
+      <td>&nbsp;
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="rim to rim diameter">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="formation time">&nbsp;</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;</td>
+      <td>
+        <input type="reset" value=" Clear result values" /></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+
+<input type="button" value="Diag" onclick="javasript:openDiagWindow()" />
+<input type="button" value="Copy / Paste Results" onclick="javascript:openCopyResultWindow();" />
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%"> | cCalc009TScope</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

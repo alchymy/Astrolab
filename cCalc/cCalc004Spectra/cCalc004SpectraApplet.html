@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<title>Spectra from Gas Discharges ------------ [cCalc004SpectraApplet]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+
+<script src="../../fEnvironment.js">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Load common code for calculation pages -->
+<script src="../../fJscriptLib/fFoundationObj.js">
+</script>
+<!-- End of common code -->
+
+<!-- Page Specific Code -->
+
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<div class="Header" style="background-color:#FF00FF" >
+  <h3>Spectra Calculations Applet ------------ [cCalc004SpectraApplet]</h3>
+</div>
+
+
+<!-- **************** Content **************** -->
+
+<br/>
+
+<div class="description">
+<table border="0" cellspacing="1" cellpadding="0" bgcolor="white">
+  <tr>
+    <td valign="top" bgcolor="#66FFFF" height="167" width="70%">
+        <h1 align="left">Spectra of Gas Discharges</h1>
+        <p align="left"><b>Colour spectra of elements undergoing electrical discharge excitation.</b></p>
+        
+        This page contains an Applet to simulate spectra from simple text data 
+        files. A &quot;userdata.txt&quot; file can be populated with specific data from 
+      other sources to plot as a comparison.&nbsp;</td>
+    <td width="10%"></td>
+        <td width="20%">Acknowledgments -  Joachim Köppen and John Talbot</td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="top" bgcolor="#CCCCCC">      &nbsp;
+      <p> This Java program reads a file containing a list
+        of emission line wavelengths and their corresponding strengths
+        then simulates the appearance of the spectrum in a good visual
+        spectroscope. </p>
+      <p> <b><font color="FFFF00">Note</font></b>: This program generates deep 24 bit color plots,
+        therefore you may need to increase the color depth of your system
+        to view subtle details in these spectra.</p>
+      <p> <b><font color="FF0000">Warning</font></b>: There may be a small delay as the 
+        Applet loads it&#39;s element emission line file and computes the spectra...<br />
+      </p>
+      <br/>
+    &nbsp;
+    
+    <br/>
+    
+<object type="application/x-java-applet" height="300" width="800">
+  <param name="code" value="discharge.class" />
+<param name="version" value="1" />
+<param name="eye" value="0" />
+<param name="element" value="Data/hydrogen.txt" />
+<param name="startWavelength" value="3950" />
+<param name="endWavelength" value="7050" />
+<param name="lineWidth" value="2.5" />
+<param name="contrast" value="1" />
+<param name="continuum" value="0.35" />
+    Youre browser doesn't support Java.<br />
+    Here is a lower quality jpeg of the spectrum:<br />
+    <img src="ImageLibSpectra/argon.png" height="64" width="784" alt="Argon" /><br />
+</object>    
+      <br/>
+&nbsp;<ul>
+   <li> After entering a number in the textfields, hit the 
+          <b>return</b> key or the <b>show</b> button
+           to make the spectrum appear. </li>
+    <li> Click on any position in the spectrum will display
+           the wavelength just left to the show button </li>
+    <li> Please note that for the solar spectrum image, it is 
+           not possible to change some of the parameters ... </li>
+</ul>
+    
+    </td>
+  </tr>
+</table>
+</div>
+
+
+<hr/>
+
+<!--
+ID vs. Name in Form Fields
+When creating a form and form field, you should give them both an id and a name and make them the same, e.g. 
+
+<form id="form1" name="form1">
+<input type="text" id="form1Field1" name="form1Field1" />
+<input type="text" id="form1Field2" name="form1Field2" />
+</form>
+
+This is because browsers use the name field when they submit to a server, but when working with JavaScript it's best to use id (and the associated document.getElementById()) to identify elements. You could use something like document.getElementsByName(), but it is a lot harder to work with, because names aren't guaranteed to be unique and thus that function returns a collection of elements, not just one. 
+You should also always name your name and id the same thing (and not reuse that identifier anywhere else), 
+because of IE's poor implementation of getElementById() which can sometimes return an element whose "name" matches the "id"
+you asked for. 
+
+Always use both, make them the same string, and make that string unique in the document. 
+XHTML spec [1] says that name is deprecated for id, and that eventually name will go away completely.  
+The spec also recommends using both the name and the id attributes, set identically, for forwards and backwards compatibility.
+-->
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%"></td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

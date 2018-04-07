@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Current Web Browser Standard Check ------------ [cUtil001WebBrTst]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js">
+  </script>
+  
+<script> 
+<!--
+
+// Note missing out the start and end comment lines within 'script' tag can give html validation errors.
+
+function pageStart() {
+
+}
+
+// -->
+</script>
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page specific css and js for formating and layout -->
+
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+
+<script>
+
+// jquery dialog and other setup
+
+	$(function() {
+		
+		
+		$( "#button" ).button();
+	
+		
+		$( "#tabs" ).tabs();
+		
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+	
+
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+</script>
+
+<!-- Page specific code for this application -->
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:75%">Current Web Browser Standard Check</td>
+    <td style="width:25%" id="menuCell">
+          <nav>
+      <a href="../mMain.html">mMain</a>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+<br/>
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Information</a></li>
+		</ul>
+
+
+<div id="tabs-1">
+
+<p>This page contains links to diagnostic tests for web browsers to test their 
+compliance with web standards.&nbsp; These standards are important to ensure all 
+browsers work the same way and that code does not have to be re-written to cope 
+with individual browsers from different sources!!<br />
+<br />
+The <a href="http://acid3.acidtests.org/">ACID 3 Test</a>  from the Web Standards Project is the latest test for your browser's compatibility with current standards, 
+for more information on this test read the <a href="http://en.wikipedia.org/wiki/Acid3">Wikipedia entry</a> </p>
+<p><u><b>The above test is based on default browser settings.</b></u></p>
+<p>Load <a href="../fImageLibSvg/cVectorG001.svg">SVG file test</a> - core Web Browser must support Vector Graphics files (.svg) without plugins, 
+this application may require vector graphics. </p>
+<p>For more information on standards visit the
+  <a href="http://www.webstandards.org/">Web Standards Project</a>&nbsp; or the <a href="http://www.w3.org/">World Wide Web Consortium</a><br/>
+  <br />
+  Other &#39;older&#39; ACID tests from the Web Standards Project can be found at this 
+link <a href="http://www.acidtests.org/">http://www.acidtests.org/</a><br />
+<br />
+For MathML rendering try <a href="http://www.w3.org/Math/XSL/pmathml2.xml">Maths 1 </a>or <a href="http://www.w3.org/Math/XSL/csmall2.xml">Maths 2</a> (this is still experimental). </p>
+
+</div>
+</div>
+<br/>
+</div>
+
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cUtil001WebBrTst</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

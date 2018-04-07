@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>The Seager Equation ------------ [cEqu017DrakeRev1]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+<!-- Page Specific Code using MVC -->
+
+<script>
+
+// define all variables
+
+    var sampleStarsNo;  // see descriptions below
+    var fracQuietStars; 
+    var fracRockyHZone;  
+    var fracObsSys;  
+    var fracLife; 
+    var fracDSpecSig;   
+    var decPlaces; // decimal places
+    var numberCivil
+
+// CONTROLLER
+
+function main() {
+
+getParameters();
+calcEquation();
+outputResult();
+
+}
+
+function getParameters()  {
+
+// get input parameters
+ 
+    sampleStarsNo = document.inputDataForm1.input1.value;
+    fracQuietStars = document.inputDataForm1.input2.value;
+    fracRockyHZone = document.inputDataForm1.input3.value;
+    fracObsSys = document.inputDataForm1.input4.value;
+    fracLife = document.inputDataForm1.input5.value;
+    fracDSpecSig = document.inputDataForm1.input6.value;
+    decPlaces = document.inputDataForm1.input99.value;
+
+}
+
+function outputResult() {
+
+// Output Results grid on outputResultForm1
+
+    var outputResult1 = new Number(numberCivil);
+    document.outputResultForm1.result1.value = outputResult1.toExponential(decPlaces);
+  
+}
+
+function clearInputValues() {
+
+    document.inputDataForm1.input1.value = "";
+    document.inputDataForm1.input2.value = "";
+    document.inputDataForm1.input3.value = "";
+    document.inputDataForm1.input4.value = "";
+    document.inputDataForm1.input5.value = "";
+    document.inputDataForm1.input6.value = "";
+    document.inputDataForm1.input7.value = "";
+    
+}
+
+
+// MODEL
+
+function calcEquation() {
+
+    numberCivil = sampleStarsNo * fracQuietStars * fracRockyHZone * fracObsSys * fracLife * fracDSpecSig;
+
+}
+
+</script>
+
+
+</head>
+
+<body>
+<!-- VIEW -->
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">The Seager Equation</td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Equation and Calculation</a></li>
+		<li><a href="#tabs-2">Notes</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+            
+        \[
+           N = N_* \times F_Q \times F_{HZ} \times F_O \times F_L \times F_S
+        \]
+       
+   <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+		Variables / Constants:
+  Where:
+<ul>
+<li>N is the number of planets with detectable signs of life</li>
+<li>N<sub>*</sub> is the number of stars observed within the sample</li>
+<li>F<sub>Q</sub> is the fraction of quiet stars</li>
+<li>F<sub>HZ</sub> is the fraction of stars with rocky planets in the habitable zone</li>
+<li>F<sub>O</sub> is the fraction of planets tha can be observed</li>
+<li>F<sub>L</sub> is the fraction that have life</li>
+<li>F<sub>S</sub> is the fraction with detectable spectroscopic signatures, i.e. life produces a detectable signature gas</li>
+</ul>
+</td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td>N<sub>*</sub></td>
+    <td>
+      <input type="text" name="input1" id="input1" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>F<sub>Q</sub></td>
+    <td><input type="text" name="input2" id="input2" size="12" value="0.2" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>F<sub>HZ</sub></td>
+    <td>
+      <input type="text" name="input3" id="input3" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>F<sub>O</sub> </td>
+    <td><input type="text" name="input4" id="input4" size="12" value="0.1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>F<sub>L</sub></td>
+    <td><input type="text" name="input5" id="input5" size="12" value="0.01" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>F<sub>S</sub></td>
+    <td><input type="text" name="input6" id="input6" size="12" value="0.01" /></td>
+    <td>&nbsp;</td>
+  </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td title="number of civilisations in our galaxy with which we might be able to communicate with">N</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>n/a&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+
+
+<div id="tabs-2">
+Astronomer Sara Seager proposed a revised Drake equation that focuses on the search for planets with biosignature gases. These gases are produced by living organisms that can accumulate in a planet atmosphere to levels that can be detected with remote space telescopes.
+<br/><br/>
+Seager stresses,"We're not throwing out the Drake Equation, which is really a different topic," explaining, "Since Drake came up with the equation, we have discovered thousands of exoplanets. We as a community have had our views revolutionized as to what could possibly be out there. And now we have a real question on our hands, one that's not related to intelligent life: Can we detect any signs of life in any way in the very near future?"
+
+</div>
+
+</div>
+<br/>
+</div>
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu017DrakeRev1</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

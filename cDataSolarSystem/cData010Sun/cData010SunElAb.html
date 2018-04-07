@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Abundance in the Sun for all the elements in the Periodic Table ------------ [cData010Sun]</title>
+	
+<!-- Load common environment -->
+	<link href="../../fCss/fDefault.css" rel="stylesheet" type="text/css" />
+
+<style>
+<!--
+#lineobject {position: absolute;
+	background: #AAAAFF;
+	color: #ffffff;
+	z-index: 3;
+}
+
+a {text-decoration:none}
+//-->
+}
+</style>
+
+
+<script>
+
+function lid2(z,name,abundance,imageToLoad,left,top) {
+	document.getElementById('datadisplay1').innerHTML=z;
+        document.getElementById('datadisplay2').innerHTML=name;
+        document.getElementById('datadisplay3').innerHTML=abundance;
+
+	//var thisFrame=new Image(64,64);
+//	thisFrame.src = "../../GridImages/small/" + imageToLoad + ".JPG";
+ //       document.elementicon.src=thisFrame.src;
+    
+	var coors = findPos(document.getElementById("mainplot"));
+	var x = document.getElementById("lineobject");
+	x.style.top = coors[1]+top + 'px';
+	x.style.left = coors[0]+left + 'px';
+	
+	x.innerHTML='<table border=0 cellpadding=0 cellspacing=0 width=1px height=400px background="#FFFFFF"><tr><td></td></tr></table>';
+}
+
+function findPos(obj)
+{
+	var curleft = curtop = 0;
+	if (obj.offsetParent) {
+		curleft = obj.offsetLeft
+		curtop = obj.offsetTop
+		while (obj = obj.offsetParent) {
+			curleft += obj.offsetLeft
+			curtop += obj.offsetTop
+		}
+	}
+	return [curleft,curtop];
+}
+</script>
+
+</head>
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+	<tbody>
+		<tr>
+			<td style="width:75%">Abundance in the Sun of the elements</td>
+			<td id="menuCell" style="width:25%">
+			<nav><button class="mnubutton2" onclick="location.href='../../mMain.html'" type="button">mMain</button></nav>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</header>
+
+<p><br />
+<!-- **************** Content **************** --></p>
+
+<div class="Content"><!-- Tabs -->
+
+<div id="lineobject"></div>
+
+
+<br/>
+Point to the graph to see details, or click for full data on that element.
+<p></p>
+
+<map name='map_1'>
+<area shape='rect' coords='79,406,86,-956' 
+onMouseOver="lid2(1,'Hydrogen','75.%','',83,20)" >
+<area shape='rect' coords='86,406,94,-956' 
+onMouseOver="lid2(2,'Helium','23.%','',90,20)" >
+<area shape='rect' coords='94,406,102,-956' 
+onMouseOver="lid2(8,'Oxygen','0.9%','',98,20)" >
+<area shape='rect' coords='102,406,110,-956' 
+onMouseOver="lid2(6,'Carbon','0.3%','',106,20)" >
+<area shape='rect' coords='110,406,118,-956' onMouseOver="lid2(26,'Iron','0.1%','',114,20)" >
+<area shape='rect' coords='118,406,126,-956' onMouseOver="lid2(10,'Neon','0.1%','',122,20)" >
+<area shape='rect' coords='126,406,134,-956' 
+onMouseOver="lid2(7,'Nitrogen','0.1%','',130,20)" >
+<area shape='rect' coords='134,406,142,-956' onMouseOver="lid2(14,'Silicon','0.09%','',138,20)" >
+<area shape='rect' coords='142,406,149,-956' onMouseOver="lid2(12,'Magnesium,'0.07%','',146,20)" >
+<area shape='rect' coords='149,406,157,-956' onMouseOver="lid2(16,'Sulfur','0.04%','',153,20)" >
+<area shape='rect' coords='157,406,165,-956' onMouseOver="lid2(28,'Nickel','0.008%','',161,20)" >
+<area shape='rect' coords='165,406,173,-956' onMouseOver="lid2(20,'Calcium','0.007%','',169,20)" >
+<area shape='rect' coords='173,406,181,-956' onMouseOver="lid2(18,'Argon','0.007%','',177,20)" >
+<area shape='rect' coords='181,406,189,-956' onMouseOver="lid2(13,'Aluminum','0.006%','',185,20)" >
+<area shape='rect' coords='189,406,197,-956' onMouseOver="lid2(11,'Sodium','0.004%','',193,20)" >
+<area shape='rect' coords='197,406,205,-956' onMouseOver="lid2(24,'Chromium','0.002%','',201,20)" >
+<area shape='rect' coords='205,406,212,-956' onMouseOver="lid2(25,'Manganese','0.001%','',208,20)" >
+<area shape='rect' coords='212,406,220,-956' onMouseOver="lid2(17,'Chlorine','0.0008%','',216,20)" >
+<area shape='rect' coords='220,406,228,-956' onMouseOver="lid2(15,'Phosphorus','0.0007%','',224,20)" >
+<area shape='rect' coords='228,406,236,-956' onMouseOver="lid2(27,'Cobalt','0.0004%','',232,20)" >
+<area shape='rect' coords='236,406,244,-956' onMouseOver="lid2(22,'Titanium','0.0004%','',240,20)" >
+<area shape='rect' coords='244,406,252,-956' onMouseOver="lid2(19,'Potassium','0.0004%','',248,20)" >
+<area shape='rect' coords='252,406,260,-956' onMouseOver="lid2(30,'Zinc','0.0002%','',256,20)" >
+<area shape='rect' coords='260,406,268,-956' onMouseOver="lid2(29,'Copper','0.00007%','',264,20)" >
+<area shape='rect' coords='268,406,275,-956' onMouseOver="lid2(9,'Fluorine','0.00005%','',271,20)" >
+<area shape='rect' coords='275,406,283,-956' onMouseOver="lid2(23,'Vanadium','0.00004%','',279,20)" >
+<area shape='rect' coords='283,406,291,-956' onMouseOver="lid2(32,'Germanium','0.00002%','',287,20)" >
+<area shape='rect' coords='291,406,299,-956' onMouseOver="lid2(38,Strontium','5.&times;10<sup>-6</sup>%','',295,20)" >
+<area shape='rect' coords='299,406,307,-956' onMouseOver="lid2(40,'Zirconium','4.&times;10<sup>-6</sup>%','',303,20)" >
+<area shape='rect' coords='307,406,315,-956' onMouseOver="lid2(31,'Gallium','4.&times;10<sup>-6</sup>%','',311,20)" >
+<area shape='rect' coords='315,406,323,-956' onMouseOver="lid2(21,'Scandium','4.&times;10<sup>-6</sup>%','',319,20)" >
+<area shape='rect' coords='323,406,330,-956' onMouseOver="lid2(37,'Rubidium','3.&times;10<sup>-6</sup>%','',327,20)" >
+<area shape='rect' coords='330,406,338,-956' onMouseOver="lid2(80,'Mercury','2.&times;10<sup>-6</sup>%','',334,20)" >
+<area shape='rect' coords='338,406,346,-956' onMouseOver="lid2(83,'Bismuth','1.&times;10<sup>-6</sup>%','',342,20)" >
+<area shape='rect' coords='346,406,354,-956' onMouseOver="lid2(82,'Lead','1.&times;10<sup>-6</sup>%','',350,20)" >
+<area shape='rect' coords='354,406,362,-956' onMouseOver="lid2(56,'Barium','1.&times;10<sup>-6</sup>%','',358,20)" >
+<area shape='rect' coords='362,406,370,-956' onMouseOver="lid2(39,'Yttrium','1.&times;10<sup>-6</sup>%','',366,20)" >
+<area shape='rect' coords='370,406,378,-956' onMouseOver="lid2(78,'Platinum','9.&times;10<sup>-7</sup>%','',374,20)" >
+<area shape='rect' coords='378,406,386,-956' onMouseOver="lid2(50,'Tin','9.&times;10<sup>-7</sup>%','',382,20)" >
+<area shape='rect' coords='386,406,393,-956' onMouseOver="lid2(42,'Molybdenum','9.&times;10<sup>-7</sup>%','',390,20)" >
+<area shape='rect' coords='393,406,401,-956' onMouseOver="lid2(55,'Cesium','8.&times;10<sup>-7</sup>%','',397,20)" >
+<area shape='rect' coords='401,406,409,-956' onMouseOver="lid2(48,'Cadmium','6.&times;10<sup>-7</sup>%','',405,20)" >
+<area shape='rect' coords='409,406,417,-956' onMouseOver="lid2(44,'Ruthenium','5.&times;10<sup>-7</sup>%','',413,20)" >
+<area shape='rect' coords='417,406,425,-956' onMouseOver="lid2(74,'Tungsten','4.&times;10<sup>-7</sup>%','',421,20)" >
+<area shape='rect' coords='433,406,441,-956' onMouseOver="lid2(49,'Indium','4.&times;10<sup>-7</sup>%','',437,20)" >
+<area shape='rect' coords='441,406,449,-956' onMouseOver="lid2(41,'Niobium','4.&times;10<sup>-7</sup>%','',445,20)" >
+<area shape='rect' coords='449,406,456,-956' onMouseOver="lid2(60,'Neodymium','3.&times;10<sup>-7</sup>%','',452,20)" >
+<area shape='rect' coords='456,406,464,-956' onMouseOver="lid2(46,'Palladium','3.&times;10<sup>-7</sup>%','',460,20)">
+<area shape='rect' coords='464,406,472,-956' onMouseOver="lid2(77,'Iridium','2.&times;10<sup>-7</sup>%','',468,20)" >
+<area shape='rect' coords='472,406,480,-956' onMouseOver="lid2(76,'Osmium','2.&times;10<sup>-7</sup>%','',476,20)" >
+<area shape='rect' coords='480,406,488,-956' onMouseOver="lid2(66,'Dysprosium','2.&times;10<sup>-7</sup>%','',484,20)" >
+<area shape='rect' coords='488,406,496,-956' onMouseOver="lid2(64,'Gadolinium','2.&times;10<sup>-7</sup>%','',492,20)" >
+<area shape='rect' coords='496,406,504,-956' onMouseOver="lid2(57,'Lanthanum','2.&times;10<sup>-7</sup>%','',500,20)" >
+<area shape='rect' coords='504,406,512,-956' onMouseOver="lid2(45,'Rhodium','2.&times;10<sup>-7</sup>%','',508,20)" >
+<area shape='rect' coords='512,406,519,-956' onMouseOver="lid2(5,'Boron','2.&times;10<sup>-7</sup>%','',515,20)" >
+<area shape='rect' coords='519,406,527,-956' onMouseOver="lid2(92,'Uranium','1.&times;10<sup>-7</sup>%','',523,20)" >
+<area shape='rect' coords='527,406,535,-956' onMouseOver="lid2(81,'Thallium','1.&times;10<sup>-7</sup>%','',531,20)" >
+<area shape='rect' coords='535,406,543,-956' onMouseOver="lid2(79,'Gold','1.&times;10<sup>-7</sup>%','',539,20)" >
+<area shape='rect' coords='543,406,551,-956' onMouseOver="lid2(72,'Hafnium','1.&times;10<sup>-7</sup>%','',547,20)" >
+<area shape='rect' coords='551,406,559,-956' onMouseOver="lid2(71,'Lutetium','1.&times;10<sup>-7</sup>%','',555,20)" >
+<area shape='rect' coords='559,406,567,-956' onMouseOver="lid2(70,'Ytterbium','1.&times;10<sup>-7</sup>%','',563,20)" >
+<area shape='rect' coords='567,406,574,-956' onMouseOver="lid2(68,'Erbium','1.&times;10<sup>-7</sup>%','',571,20)" >
+<area shape='rect' coords='574,406,582,-956' onMouseOver="lid2(62,'Samarium','1.&times;10<sup>-7</sup>%','',578,20)" >
+<area shape='rect' coords='582,406,590,-956' onMouseOver="lid2(59,'Praseodymium','1.&times;10<sup>-7</sup>%','',586,20)" >
+<area shape='rect' coords='590,406,598,-956' onMouseOver="lid2(51,'Antimony','1.&times;10<sup>-7</sup>%','',594,20)" >
+<area shape='rect' coords='598,406,606,-956' onMouseOver="lid2(47,'Silver','1.&times;10<sup>-7</sup>%','',602,20)" >
+<area shape='rect' coords='606,406,614,-956' onMouseOver="lid2(63,'Europium','5.&times;10<sup>-8</sup>%','',610,20)" >
+<area shape='rect' coords='614,406,622,-956' onMouseOver="lid2(90,'Thorium','3.&times;10<sup>-8</sup>%','',618,20)" >
+<area shape='rect' coords='622,406,630,-956' onMouseOver="lid2(69,'Thulium','2.&times;10<sup>-8</sup>%','',626,20)" >
+<area shape='rect' coords='630,406,637,-956' onMouseOver="lid2(75,'Rhenium','1.&times;10<sup>-8</sup>%','',634,20)" >
+<area shape='rect' coords='637,406,645,-956' onMouseOver="lid2(65,'Terbium','1.&times;10<sup>-8</sup>%','',641,20)" >
+<area shape='rect' coords='645,406,653,-956' onMouseOver="lid2(4,'Beryllium','1.&times;10<sup>-8</sup>%','',649,20)" >
+<area shape='rect' coords='653,406,661,-956' onMouseOver="lid2(3,'Lithium','6.&times;10<sup>-9</sup>%','',657,20)" >
+</map>
+
+<img id="mainplot" border=0 usemap="#map_1" alt="data plot" src="SolarAbundanceLog.gif"><br/><br/>
+
+<table id="InformationTable_1">
+<tr>
+<th>z</th><th>element</th><th>abundance</th>
+</tr>
+<tr>
+<td id="datadisplay1">1</td>
+<td id="datadisplay2">Hydrogen</td>
+<td id="datadisplay3">75%</td>
+</tr>
+</table>
+<br/>
+
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+<table>
+  <tr>
+    <td style="width:25%">
+      <script>
+        document.write( "Last updated "+ document.lastModified );
+      </script>
+    </td>
+    <td style="width:50%"></td>
+    <td style="width:25%">cData010SunElAb</td>
+  </tr>
+</table>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+

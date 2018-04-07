@@ -1,0 +1,352 @@
+/*
+Comments are used to explain your code, and may help you when you edit the source code at a later date. Comments are ignored by browsers.
+
+A CSS comment begins with "/*" and ends with 
+*/
+
+/*
+Difference between "#" and "." in CSS
+
+#foo {} will style the single element declared with an attribute id="foo"
+
+.foo {} will style all elements with an attribute class="foo" (you can have multiple classes assigned to an element too, just separate them with spaces, e.g. class="foo bar").
+
+table.foo {} will limit that class to the element table.
+
+h1 {}  an html element can be specified (with no # or .) and the style will then default into all elements of that type, so all headers <h1> would adopt the style automatically.
+
+*/
+
+
+/* Common to any Astrolab page CSS */
+
+
+body {
+	font-size: 12px; font-family: Arial, Helvetica, sans-serif;
+  	background-color:#F3F3F3;
+}
+
+
+.h1style {
+	color: #0000ff
+}
+
+.Equation {
+        font-family: Times New Roman; font-style: italic; color: #0000ff
+
+}
+
+.menubar {
+	border-collapse: collapse
+}
+
+.anytable {
+	border-collapse: collapse
+}
+
+table.rsrclist {
+	font-size: 8pt; font-family: Arial, Helvetica, sans-serif
+}
+
+h3 {
+	color: #000080
+}
+
+a:active {
+	color: #cc0000
+}
+
+a:hover {
+	color: #ff0000
+}
+
+a:link {
+	color: #000080
+}
+
+.mnubutton1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+	border-radius: 4px;
+	width: 250px;
+}
+
+.mnubutton2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+	border-radius: 4px;
+	width: 175px;
+}
+
+/* ----- Headers ----- */
+
+header {
+	margin-left:auto;
+    margin-right:auto;
+    width:95%;
+	font-size: 12px; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #0099FF;
+	text-align:left;
+}
+
+/* 
+background colour for 'table' with class HeaderXxx - heading for page under development test or finished.
+*/
+
+
+table.HeaderDev { 
+    background-color:#FF00FF; 
+    font-size: 150%;
+	width:100%;
+	border-collapse:collapse;
+	}
+
+table.HeaderTest { 
+    background-color:#FFFFCC; 
+	font-size: 150%;
+	width:100%;
+	border-collapse:collapse;
+	}
+
+table.HeaderLive { 
+    background-color:#CCFFCC; 
+	font-size: 150%;
+	width:100%;
+	border-collapse:collapse;
+	}
+	
+table.HeaderSys { 
+    background-color:white; 
+	font-size: 150%;
+	width:100%;
+	border-collapse:collapse;
+	}
+	
+/* ----- Css for drop down menu ----- */
+
+#sddm
+{	margin: 0;
+	padding: 0;
+	z-index: 30}
+
+#sddm li
+{	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font: bold 11px arial}
+
+#sddm li a
+{	display: block;
+	margin: 0 1px 0 0;
+	padding: 4px 10px;
+	width: 60px;
+	background: #5970B2;
+	color: #FFF;
+	text-align: center;
+	text-decoration: none}
+
+#sddm li a:hover
+{	background: #49A3FF}
+
+#sddm div
+{	position: absolute;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+	background: #EAEBD8;
+	border: 1px solid #5970B2}
+
+	#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: auto;
+		white-space: nowrap;
+		text-align: left;
+		text-decoration: none;
+		background: #EAEBD8;
+		color: #2875DE;
+		font: 11px arial}
+
+	#sddm div a:hover
+	{	background: #49A3FF;
+		color: #FFF}
+	
+/* ----- Body Content ----- */
+
+div.Content
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:95%;
+}
+
+table.MenuTable td {
+	border:1px solid black;
+	border-collapse:collapse;
+	background-color:#FFFFFF;
+	margin-left:auto;
+    margin-right:auto;
+}
+
+/* Notes */
+
+.NotesBox1 {
+	margin-left:auto;
+    margin-right:auto;
+    width:80%;
+    background-color:#FFFFFF;
+	border:2px solid #98bf21;
+	font-size: 12px; 
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Layout for information tables - number 1 */
+
+#InformationTable_1
+{
+   font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+   margin-left:auto;
+   margin-right:auto;
+   width:auto;
+   border-collapse:collapse;
+}
+
+#InformationTable_1 td, #InformationTable_1 th 
+{
+	font-size: 12px;
+	border: 1px solid #00CCFF;
+	padding: 3px 7px 2px 7px;
+	color: #00F;
+}
+
+#InformationTable_1 th 
+{
+font-size:15px;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#6699CC;
+color:#ffffff;
+}
+
+#InformationTable_1 tr.alt td 
+{
+color:#000000;
+background-color:#EAF2D3;
+}
+
+/* Layout for information tables - class */
+
+.InformationTable1
+{
+   font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+   margin-left:auto;
+   margin-right:auto;
+   width:auto;
+   border-collapse:collapse;
+}
+
+.InformationTable1 td, th 
+{
+font-size:12px;
+border:1px solid #00CCFF;
+padding:3px 7px 2px 7px;
+}
+
+.InformationTable1 th 
+{
+font-size:15px;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#6699CC;
+color:#ffffff;
+}
+
+.InformationTable1 tr.alt td 
+{
+color:#000000;
+background-color:#EAF2D3;
+}
+
+/* Layout for calculation tables - class */
+
+.CalcTable1
+{
+   font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+   margin-left:auto;
+   margin-right:auto;
+   width:auto;
+   border-collapse:collapse;
+}
+
+.CalcTable1 td, th 
+{
+	font-size: 12px;
+	border: 1px solid #00CCFF;
+	padding: 3px 7px 2px 7px;
+}
+
+.CalcTable1 th 
+{
+font-size:15px;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#6699CC;
+color:#ffffff;
+}
+
+.CalcTable1 tr.alt td 
+{
+color:#000000;
+background-color:#EAF2D3;
+}
+
+
+/* ----- Data Validation bgnd ----- */
+.DevDat { 
+    background-color:#FF00FF; 
+	}
+
+.TstDat { 
+    background-color:#FFFFCC; 
+	}
+
+.LiveDat { 
+    background-color:#CCFFCC; 
+	}
+	
+.FormulaTable1
+{
+   margin-left:auto;
+   margin-right:auto;
+   width:auto;
+   border-collapse:collapse;
+}
+
+
+/* ----- Page footers -----  */
+
+footer {
+	margin-left:auto;
+    margin-right:auto;
+    width:95%;
+    font-size: 12px; 
+	font-family: Arial, Helvetica, sans-serif;
+	background-color:#E5ECF9;
+}
+
+footer table {
+	border:1px solid black;
+	border-collapse:collapse;
+	width:100%;
+	}

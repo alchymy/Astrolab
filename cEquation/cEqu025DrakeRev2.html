@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>The Frank-Sullivan Equation ------------ [cEqu025DrakeRev2]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+<!-- Page Specific Code -->
+
+<script>
+
+function main() {
+	
+// define all variables
+
+    var Rate;   // star form rate
+    var fracp;  // frac with planets
+    var nume;   // number planets
+    var fracl;  // frac develop life
+    var fraci;  // frac intelligent
+    var fracc;  // frac technology
+    var decPlaces; // decimal places
+    var A;      // Number civilisations over life of universe
+
+// get input parameters
+ 
+    Rate = document.inputDataForm1.input1.value;
+    fracp = document.inputDataForm1.input2.value;
+    nume = document.inputDataForm1.input3.value;
+    fracl = document.inputDataForm1.input4.value;
+    fraci = document.inputDataForm1.input5.value;
+    fracc = document.inputDataForm1.input6.value;
+    decPlaces = document.inputDataForm1.input99.value;
+
+    A =  Rate * fracp * nume * fracl * fraci * fracc;
+
+
+// Output Results grid on outputResultForm1
+
+    var outputResult1 = new Number(A);
+    document.outputResultForm1.result1.value = outputResult1.toFixed(decPlaces);
+  
+}
+
+function clearInputValues() {
+
+    document.inputDataForm1.input1.value = "";
+    document.inputDataForm1.input2.value = "";
+    document.inputDataForm1.input3.value = "";
+    document.inputDataForm1.input4.value = "";
+    document.inputDataForm1.input5.value = "";
+    document.inputDataForm1.input6.value = "";
+    document.inputDataForm1.input99.value = "";
+    
+}
+
+
+
+</script>
+
+
+</head>
+
+<body>
+<!-- VIEW -->
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:50%">The Frank-Sullivan Equation</td>
+    <td style="width:50%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Equation and Calculation</a></li>
+		<li><a href="#tabs-2">Notes</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+            
+        \[
+           A = N_{ast}  \times f_{bt} 
+        \]
+       
+   <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+		Variables / Constants:
+  <ul>
+   <li><i>A</i> is the number of technological species that have evolved over the history of the observable universe</li>
+   <li>N<sub>ast</sub> is the number of habitable planets in a given volume of the universe</li>
+   <li>f<sub>bt</sub> is the chance of a technological species evolving on one of these planets</li>
+   </ul>
+  <p>The conventional Drake parameters below make up the above two.</p>
+  <ul>
+    <li><i>R*</i> is the average rate of star formation in our galaxy</li>
+    <li><i>f</i><sub><i>p</i></sub> is the fraction of those stars that have planets</li>
+    <li><i>n</i><sub><i>e</i></sub> is the average number of planets that can potentially support life per star that has planets </li>
+    <li><i>f</i><sub>e</sub> is the fraction of the above that actually go on to develop life at some point </li>
+    <li><i>f</i><sub><i>i</i></sub> is the fraction of the above that actually go on to develop intelligent life </li>
+    <li><i>f</i><sub><i>c</i></sub> is the fraction of civilizations that develop a technology that releases detectable signs of their existence into space </li>
+  </ul>
+  <br/><br/>
+  Example: Using Drake's 1961 figures in the order above 1, 0.2, 1, 1, 1, 0.1
+    </td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td>R*</td>
+    <td>
+      <input type="text" name="input1" id="input1" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>f<sub>p</sub></td>
+    <td><input type="text" name="input2" id="input2" size="12" value="0.2" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>n<sub>e</sub></td>
+    <td>
+      <input type="text" name="input3" id="input3" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>f<sub>e</sub></td>
+    <td><input type="text" name="input4" id="input4" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>f<sub>i</sub></td>
+    <td><input type="text" name="input5" id="input5" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>f<sub>c</sub></td>
+    <td><input type="text" name="input6" id="input6" size="12" value="0.1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td title="number of civilisations in our galaxy with which we might be able to communicate with">A</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>n/a&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<div id="tabs-2">
+<p>Another alternative modification to the Drake equation. </p>
+<p>The Drake Equation, at the top of figure 21, multiplies several factors (fractions) to come up with an estimate of the number of extraterrestrial civilizations in the Milky Way that may currently be transmitting radio signals. The Frank-Sullivan Equation, underneath, eliminates the time factor L and just  estimates the number of advanced cvilizations likely to have developed over the history of the observable universe, using the remaining factors.</p>
+<p><a href="http://www.geekwire.com/2016/aliens-civilizations-existed-can-bet-astrophysicists/">http://www.geekwire.com/2016/aliens-civilizations-existed-can-bet-astrophysicists/</a></p>
+<p>Figure 021 - Credit:  University of Rochester. </p>
+<p><img src="../fImageLib/fig021.jpg" width="630" height="314" alt=""/></p>
+</div>
+
+</div>
+<br/>
+</div>
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu017DrakeRev1</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

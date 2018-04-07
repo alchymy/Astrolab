@@ -1,0 +1,86 @@
+2012-09-03T21:55:47
+Unsupported Mac version
+Compiled using GCC 4.2.1
+Qt runtime version: 4.8.1
+Qt compilation version: 4.8.1
+Addressing mode: 64-bit
+Model Name: iMac
+Model Identifier: iMac11,2
+Processor Name: Intel Core i5
+Processor Speed: 3.6 GHz
+Number of Processors: 1
+Memory: 12 GB
+Processor Interconnect Speed: 6.4 GT/s
+Chipset Model: ATI Radeon HD 5670
+VRAM (Total): 512 MB
+/Applications/Stellarium.app/Contents/MacOS/stellarium 
+ ------------------------------------------------------- 
+[ This is Stellarium 0.11.4 - http://www.stellarium.org ] 
+[ Copyright (C) 2000-2012 Fabien Chereau et al          ] 
+ ------------------------------------------------------- 
+Writing log file to: "/Users/alchymylab/Library/Application Support/Stellarium/log.txt" 
+File search paths: 
+  0 .  "/Users/alchymylab/Library/Application Support/Stellarium" 
+  1 .  "/Applications/Stellarium.app/Contents/Resources" 
+Config file  "/Users/alchymylab/Library/Application Support/Stellarium/config.ini"  does not exist. Copying the default file. 
+Config file is:  "/Users/alchymylab/Library/Application Support/Stellarium/config.ini" 
+OpenGL supported version:  "2.1 ATI-7.18.18" 
+Qt GL paint engine is:  "OpenGL2" 
+Cache directory is:  "/Users/alchymylab/Library/Caches/stellarium/stellarium" 
+Sky language is  "C" 
+Application language is  "C" 
+Loading Solar System data ... 
+Loaded 69 / 69 planet orbits from "/Applications/Stellarium.app/Contents/Resources/data/ssystem.ini" 
+Could not find the starsConfig.json file: will copy the default one. 
+Creating directory  "/Users/alchymylab/Library/Application Support/Stellarium/stars/default" 
+Creates file  "/Users/alchymylab/Library/Application Support/Stellarium/stars/default/starsConfig.json" 
+Loading star data ... 
+"Loading "/Applications/Stellarium.app/Contents/Resources/stars/default/stars_0_0v0_1.cat": 0_0v0_1; 5013" 
+"Loading "/Applications/Stellarium.app/Contents/Resources/stars/default/stars_1_0v0_1.cat": 1_0v0_1; 21999" 
+"Loading "/Applications/Stellarium.app/Contents/Resources/stars/default/stars_2_0v0_1.cat": 2_0v0_1; 151416" 
+"Loading "/Applications/Stellarium.app/Contents/Resources/stars/default/stars_3_1v0_0.cat": 3_1v0_0; 434064" 
+Finished loading star catalogue data, max_geodesic_level:  3 
+navigation/preset_sky_time is a double - treating as jday: 2.45151e+06 
+Loaded 10051 NGC records 
+Loading NGC name data ... 
+Loaded 223 / 223 NGC name records successfully 
+Loading star names from "/Applications/Stellarium.app/Contents/Resources/skycultures/western/star_names.fab" 
+Loaded 230 / 230 common star names 
+Loading star names from "/Applications/Stellarium.app/Contents/Resources/stars/default/name.fab" 
+Loaded 3215 / 4359 scientific star names 
+Loaded 88 / 88 constellation records successfully for culture "western" 
+Loaded 85 / 85 constellation art records successfully for culture "western" 
+Loaded 89 / 89 constellation names 
+Loading constellation boundary data ...  
+Loaded 782 constellation boundary segments 
+Creating GUI ... 
+Loaded plugin  "Oculars" . 
+Ocular plugin - press Command-O to toggle eyepiece view mode. Press ALT-o for configuration. 
+Creating directory  "/Users/alchymylab/Library/Application Support/Stellarium/modules/Oculars" 
+Oculars::validateIniFile copied default_ocular.ini to  "/Users/alchymylab/Library/Application Support/Stellarium/modules/Oculars/ocular.ini" 
+Loaded plugin  "Satellites" . 
+Creating directory  "/Users/alchymylab/Library/Application Support/Stellarium/modules/Satellites" 
+Stellites::init no Satellites section exists in main config file - creating with defaults 
+Satellites::init satellites.json does not exist - copying default file to  "/Users/alchymylab/Library/Application Support/Stellarium/modules/Satellites/satellites.json" 
+Satellites::init copied default satellites.json to  "/Users/alchymylab/Library/Application Support/Stellarium/modules/Satellites/satellites.json" 
+Satellites::init using satellite.json file:  "/Users/alchymylab/Library/Application Support/Stellarium/modules/Satellites/satellites.json" 
+Satellite has invalid orbit: "OPS 8180 (RADCAT)" 
+Loaded plugin  "SolarSystemEditor" . 
+Trying to copy ssystem.ini to "/Users/alchymylab/Library/Application Support/Stellarium/data/ssystem.ini" 
+Loaded plugin  "TimeZoneConfiguration" . 
+Satellites: starting update... 
+Satellites: could not update orbital elements for "OPS 8180 (RADCAT)" "06212" : no entry found in the source TLE lists. 
+Satellites: could not update orbital elements for "INTELSAT 602 (IS-602)" "20315" : no entry found in the source TLE lists. 
+Satellites: could not update orbital elements for "INSAT-2B" "22724" : no entry found in the source TLE lists. 
+Satellites: could not update orbital elements for "EXPRESS 1" "23319" : no entry found in the source TLE lists. 
+Satellites: could not update orbital elements for "COSMOS 2319" "23653" : no entry found in the source TLE lists. 
+Satellites: could not update orbital elements for "AMOS-5I" "23723" : no entry found in the source TLE lists. 
+Satellites: could not update orbital elements for "INTELSAT 24 (IS-24)" "23865" : no entry found in the source TLE lists. 
+Satellites: could not update orbital elements for "COSMOS 2397" "27775" : no entry found in the source TLE lists. 
+Satellites::saveTleMap() writing to: "/Users/alchymylab/Library/Application Support/Stellarium/modules/Satellites/satellites.json" 
+Satellites: updated 747 / 755 satellites.  Update URLs contained 832 objects.  There were 8 satellies missing from the update URLs 
+Unloaded plugin  "TimeZoneConfiguration" . 
+Unloaded plugin  "SolarSystemEditor" . 
+Unloaded plugin  "Satellites" . 
+Unloaded plugin  "Oculars" . 
+Downloaded 0 files (0 kbytes) in a session of 78.11 sec (average of 0 kB/s + 0 files from cache (0 kB)). 

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Spectra Data ------------ [cCalc004SpectraData]</title>
+
+<!-- Load common environment -->
+<script src="../../fJscriptLib/jquery.js"></script>
+<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+
+<script src="../../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+<style>
+	
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	
+	#dialog-link2 {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link2 span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	
+	
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	</style>
+
+
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Spectra Data</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+     <button class="mnubutton2" type="button" onClick="location.href='mMainSpectra.html'" >mMainSpectra</button>
+       </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Data</a></li>
+		<li><a href="#tabs-2">Help</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table width="100%">
+<tr>
+<td>
+<center>
+
+<table class="InformationTable1">
+<tr>
+<th colspan="6">
+Most common elements in solar spectrum - atomic number order<br />
+&nbsp;</th>
+</tr>
+
+<tr>
+<th>Atomic<br/>
+    No. Z</th>
+<th>Element</th>
+<th>Symbol</th>
+<th>Data File</th>
+<th>Emission Lines<br/>
+  4000-7000 &Aring;</th>
+<th>PNG<br/>
+  Image</th>
+</tr>
+<tr>
+<th>1</th>
+<td><a href="hydrogen.html">Hydrogen</a></td>
+<td>H </td>
+<td><a href="DataTxt/hydrogen.txt">hydrogen.txt</a></td>
+<td>5</td>
+<td><a href="ImageLibSpectra/hydrogen.png">PNG</a></td>
+</tr>
+<tr>
+<th>2</th>
+<td><a href="helium.html">Helium</a><br />
+Helium I<br />
+Helium II</td>
+<td>He</td>
+<td><a href="DataTxt/helium.txt" class="style1">helium.txt</a></td>
+<td>23</td>
+<td><a href="ImageLibSpectra/helium.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+  <th>6</th>
+  <td><a href="carbon.html" class="style1">Carbon</a></td>
+  <td align="center">C </td>
+  <td><a href="DataTxt/carbon.txt" class="style1">carbon.txt</a></td>
+  <td align="center">27</td>
+  <td><a href="ImageLibSpectra/carbon.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+  <th>7</th>
+  <td><a href="nitrogen.html" class="style1">Nitrogen</a></td>
+  <td>N </td>
+  <td><a href="DataTxt/nitrogen.txt">nitrogen.txt</a></td>
+  <td>84</td>
+  <td><a href="ImageLibSpectra/nitrogen.png">PNG</a></td>
+</tr>
+<tr>
+<th>8</th>
+<td><a href="oxygen.html">Oxygen</a></td>
+<td align="center">O </td>
+<td><a href="DataTxt/oxygen.txt" class="style1">oxygen.txt</a></td>
+<td align="center">73</td>
+<td><a href="ImageLibSpectra/oxygen.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+<th>10</th>
+<td><a href="neon.html" class="style1">Neon</a></td>
+<td align="center">Ne</td>
+<td><a href="DataTxt/neon.txt">neon.txt</a></td>
+<td align="center">75</td>
+<td><a href="ImageLibSpectra/neon.png">PNG</a></td>
+</tr>
+<tr>
+  <th>11</th>
+  <td><a href="sodium.html">Sodium</a></td>
+  <td align="center">Na</td>
+  <td><a href="DataTxt/sodium.txt">sodium.txt</a></td>
+  <td align="center">90</td>
+  <td><a href="ImageLibSpectra/sodium.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+  <th>12</th>
+  <td><a href="magnesium.html" class="style1">Magnesium</a></td>
+  <td align="center">Mg</td>
+  <td><a href="DataTxt/magnesium.txt" class="style1">magnesium.txt</a></td>
+  <td align="center">54</td>
+  <td><a href="ImageLibSpectra/magnesium.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+  <th>13</th>
+  <td><a href="aluminium.html" target="_blank" class="style1">Aluminium</a></td>
+  <td align="center">Al</td>
+  <td><a href="DataTxt/aluminium.txt" class="style1">aluminium.txt</a></td>
+  <td align="center">38</td>
+  <td><a href="ImageLibSpectra/aluminium.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+<th>14</th>
+<td><a href="silicon.html" class="style1">Silicon</a></td>
+<td align="center">Si</td>
+<td><a href="DataTxt/silicon.txt" class="style1">silicon.txt</a></td>
+<td align="center">109</td>
+<td><a href="ImageLibSpectra/silicon.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+<th>16</th>
+<td><a href="sulphur.html" class="style1">Sulfur</a></td>
+<td align="center">S </td>
+<td><a href="DataTxt/sulfur.txt" class="style1">sulfur.txt</a></td>
+<td align="center">39</td>
+<td><a href="ImageLibSpectra/sulphur.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+  <th>18</th>
+  <td><a href="argon.html" class="style1">Argon</a></td>
+  <td align="center">Ar</td>
+  <td><a href="DataTxt/argon.txt" class="style1">argon.txt</a></td>
+  <td align="center">159</td>
+  <td><a href="ImageLibSpectra/argon.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+  <th>19</th>
+  <td>Potassium</td>
+  <td align="center">K</td>
+  <td>potassium.txt</td>
+  <td align="center">?</td>
+  <td>PNG</td>
+</tr>
+<tr>
+  <th>20</th>
+  <td><a href="calcium.html" class="style1">Calcium</a><br />
+  Calcium I<br />
+  Calcium II<br />
+  Calcium III</td>
+  <td align="center">Ca</td>
+  <td><a href="DataTxt/calcium.txt" class="style1">calcium.txt</a></td>
+  <td align="center">78</td>
+  <td><a href="ImageLibSpectra/calcium.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+  <th>26</th>
+  <th><a href="iron.html" class="style1">Iron</a></th>
+  <td align="center">Fe</td>
+  <td><a href="DataTxt/iron.txt" class="style1">iron.txt</a></td>
+  <td align="center">235</td>
+  <td><a href="ImageLibSpectra/iron.png" class="style1">PNG</a></td>
+</tr>
+<tr>
+  <th bgcolor="#FFFF00">36</th>
+  <th bgcolor="#FFFF00">Krypton</th>
+  <td align="center" bgcolor="#FFFF00">Kr</td>
+  <td bgcolor="#FFFF00">krypton.txt</td>
+  <td align="center" bgcolor="#FFFF00">&nbsp;</td>
+  <td bgcolor="#FFFF00">PNG</td>
+</tr>
+<tr>
+  <th>38</th>
+  <th>Strontium<br />
+  Strontium I</th>
+  <td align="center">Sr</td>
+  <td>strontium.txt</td>
+  <td align="center">72</td>
+  <td>PNG</td>
+</tr>
+<tr>
+  <th bgcolor="#FFFF00">54</th>
+  <th bgcolor="#FFFF00">Xenon</th>
+  <td align="center" bgcolor="#FFFF00">Xe</td>
+  <td bgcolor="#FFFF00">xenon.txt</td>
+  <td align="center" bgcolor="#FFFF00">&nbsp;</td>
+  <td bgcolor="#FFFF00">PNG</td>
+</tr>
+<tr>
+  <th>56</th>
+  <th>Barium<br />
+  Barium I</th>
+  <td align="center">Ba</td>
+  <td>barium.txt</td>
+  <td align="center">116</td>
+  <td>PNG</td>
+</tr>
+<tr>
+  <th bgcolor="#FFFF00">80</th>
+  <th bgcolor="#FFFF00">Mercury</th>
+  <td align="center" bgcolor="#FFFF00">Hg</td>
+  <td bgcolor="#FFFF00">mercury.txt</td>
+  <td align="center" bgcolor="#FFFF00">&nbsp;</td>
+  <td bgcolor="#FFFF00">PNG</td>
+</tr>
+</table>
+</center>
+<br/>
+</td>
+<td></td>
+<td>
+
+<table class="InformationTable1">
+
+<tr>
+<th bgcolor="#FFFFFF" colspan="6">
+Most common elements in solar spectrum.<br/>
+(listed in order of decreasing abundance by mass)</th>
+</tr>
+
+<tr>
+<th>Atomic<br/>
+    No. Z</th>
+<th>Element</th>
+<th>Symbol</th>
+<th>Data File</th>
+<th>Emission Lines<br/>
+    4000-7000 &Aring;</th>
+<th>PNG<br/>
+  Image</th>
+</tr>
+<tr>
+<th>1</th>
+<th><a href="hydrogen.html">Hydrogen</a></th>
+<td>H </td>
+<td><a href="DataTxt/hydrogen.txt">hydrogen.txt</a></td>
+<td>5</td>
+<td><a href="ImageLibSpectra/hydrogen.png">PNG</a></td>
+</tr>
+<tr>
+<th>2</th>
+<th><a href="helium.html">Helium</a><br />
+Helium I<br />
+Helium II</th>
+<td>He</td>
+<td><a href="DataTxt/helium.txt">helium.txt</a></td>
+<td>23</td>
+<td><a href="ImageLibSpectra/helium.png">PNG</a></td>
+</tr>
+<tr>
+<th>8</th>
+<th><a href="oxygen.html">Oxygen</a></th>
+<td align="center">O </td>
+<td><a href="DataTxt/oxygen.txt">oxygen.txt</a></td>
+<td align="center">73</td>
+<td><a href="ImageLibSpectra/oxygen.png">PNG</a></td>
+</tr>
+<tr>
+<th>6</th>
+<th><a href="carbon.html">Carbon</a></th>
+<td align="center">C </td>
+<td><a href="DataTxt/carbon.txt">carbon.txt</a></td>
+<td align="center">27</td>
+<td><a href="ImageLibSpectra/carbon.png">PNG</a></td>
+</tr>
+<tr>
+<th>10</th>
+<th><a href="neon.html">Neon</a></th>
+<td align="center">Ne</td>
+<td><a href="DataTxt/neon.txt">neon.txt</a></td>
+<td align="center">75</td>
+<td><a href="ImageLibSpectra/neon.png">PNG</a></td>
+</tr>
+<tr>
+<th>26</th>
+<th><a href="iron.html">Iron</a></th>
+<td align="center">Fe</td>
+<td><a href="DataTxt/iron.txt">iron.txt</a></td>
+<td align="center">235</td>
+<td><a href="ImageLibSpectra/iron.png">PNG</a></td>
+</tr>
+<tr>
+<th>7</th>
+<th><a href="nitrogen.html">Nitrogen</a></th>
+<td align="center">N </td>
+<td><a href="DataTxt/nitrogen.txt">nitrogen.txt</a></td>
+<td align="center">84</td>
+<td><a href="ImageLibSpectra/nitrogen.png">PNG</a></td>
+</tr>
+<tr>
+<th>14</th>
+<th><a href="silicon.html">Silicon</a></th>
+<td align="center">Si</td>
+<td><a href="DataTxt/silicon.txt">silicon.txt</a></td>
+<td align="center">109</td>
+<td><a href="ImageLibSpectra/silicon.png">PNG</a></td>
+</tr>
+<tr>
+<th>12</th>
+<th><a href="magnesium.html">Magnesium</a></th>
+<td align="center">Mg</td>
+<td><a href="DataTxt/magnesium.txt">magnesium.txt</a></td>
+<td align="center">54</td>
+<td><a href="ImageLibSpectra/magnesium.png">PNG</a></td>
+</tr>
+<tr>
+<th>16</th>
+<th><a href="sulphur.html">Sulfur</a></th>
+<td align="center">S </td>
+<td><a href="DataTxt/sulfur.txt">sulfur.txt</a></td>
+<td align="center">39</td>
+<td><a href="ImageLibSpectra/sulphur.png">PNG</a></td>
+</tr>
+<tr>
+<th>18</th>
+<th><a href="argon.html">Argon</a></th>
+<td align="center">Ar</td>
+<td><a href="DataTxt/argon.txt">argon.txt</a></td>
+<td align="center">159</td>
+<td><a href="ImageLibSpectra/argon.png">PNG</a></td>
+</tr>
+<tr>
+<th>20</th>
+<th><a href="calcium.html">Calcium</a><br />
+Calcium I<br />
+Calcium II<br />
+Calcium III</th>
+<td align="center">Ca</td>
+<td><a href="DataTxt/calcium.txt">calcium.txt</a></td>
+<td align="center">78</td>
+<td><a href="ImageLibSpectra/calcium.png">PNG</a></td>
+</tr>
+<tr>
+<th>11</th>
+<th><a href="aluminium.html">Aluminium</a></th>
+<td align="center">Al</td>
+<td><a href="DataTxt/aluminium.txt">aluminium.txt</a></td>
+<td align="center">38</td>
+<td><a href="ImageLibSpectra/aluminium.png">PNG</a></td>
+</tr>
+<tr>
+<th>11</th>
+<th><a href="sodium.html">Sodium</a></th>
+<td align="center">Na</td>
+<td><a href="DataTxt/sodium.txt">sodium.txt</a></td>
+<td align="center">90</td>
+<td><a href="ImageLibSpectra/sodium.png">PNG</a></td>
+</tr>
+<tr>
+<th>19</th>
+<th>Potassium</th>
+<td align="center">K</td>
+<td>potassium.txt</td>
+<td align="center">?</td>
+<td>PNG</td>
+</tr>
+<tr>
+<th>38</th>
+<th>Strontium<br />
+Strontium I</th>
+<td align="center">Sr</td>
+<td>strontium.txt</td>
+<td align="center">72</td>
+<td>PNG</td>
+</tr>
+<tr>
+<th>56</th>
+<th>Barium<br />
+Barium I</th>
+<td align="center">Ba</td>
+<td>barium.txt</td>
+<td align="center">116</td>
+<td>PNG</td>
+</tr>
+<tr>
+<th bgcolor="#FFFF00">36</th>
+<th bgcolor="#FFFF00">Krypton</th>
+<td align="center" bgcolor="#FFFF00">Kr</td>
+<td bgcolor="#FFFF00">krypton.txt</td>
+<td align="center" bgcolor="#FFFF00">&nbsp;</td>
+<td bgcolor="#FFFF00">PNG</td>
+</tr>
+<tr>
+<th bgcolor="#FFFF00">80</th>
+<th bgcolor="#FFFF00">Mercury</th>
+<td align="center" bgcolor="#FFFF00">Hg</td>
+<td bgcolor="#FFFF00">mercury.txt</td>
+<td align="center" bgcolor="#FFFF00">&nbsp;</td>
+<td bgcolor="#FFFF00">PNG</td>
+</tr>
+<tr>
+<th bgcolor="#FFFF00">54</th>
+<th bgcolor="#FFFF00">Xenon</th>
+<td align="center" bgcolor="#FFFF00">Xe</td>
+<td bgcolor="#FFFF00">xenon.txt</td>
+<td align="center" bgcolor="#FFFF00">&nbsp;</td>
+<td bgcolor="#FFFF00">PNG</td>
+</tr>
+</table>
+<br/>
+</td>
+</tr>
+</table>
+
+</div>
+
+<div id="tabs-2">
+
+
+
+<center><table border="2" cellspacing="2" cellpadding="4">
+<tr><th  bgcolor="#FFFFFF">Atomic Number Z</th>
+<td>The number of protons in the nucleus of the element.</td>
+</tr>
+<tr><th>Element</th>
+<td>Click on the name in this column to launch the page which displays an emission line spectrum of the corresponding element</td>
+</tr>
+<tr><th>Symbol</th>
+<td>Symbol from the table of the elements</td>
+</tr>
+<tr><th>Data File</th>
+<td>Click on the name to download a text file containing an a list of emission lines
+in &Aring;ngstroms and their associated strengths for the corresponding element</td>
+</tr>
+<tr><th>Emission Lines</th>
+<td>Number of tabulated emission lines in range 3500 - 7500 &Aring; / 350 - 
+750nm / 0.35 - 0.75 micrometer.&nbsp; Visible wavelength range typically 390 - 
+750 nm.&nbsp; </td>
+</tr>
+<tr><th>PNG Image</th>
+<td>PNG screen grab (784 X 64). The narrow
+height is to reduce transmission time, it expands to 64 pixels
+using HEIGHT=64 option in IMG tag of HTML file.
+To use images outside the context of a web browser,
+you should expand them vertically with image processor.</td>
+</tr>
+</table>
+</center>
+</div>
+</div>
+<br/>
+</div>
+
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cCalc004SpectraData</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

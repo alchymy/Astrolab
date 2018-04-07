@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Time ------------ [cCalc008Time]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+  
+<script> 
+
+
+function pageStart() {
+
+  dateTimeNow();
+
+  document.outputResultForm1.result1.focus();
+
+}
+
+
+
+
+// define all Global variables
+
+    var MM = 0;
+    var DD = 0;
+    var YY = 0;
+    var HR = 0;
+    var MN = 0;
+    var SC = 0;
+    var JD = 0;
+    var A = 0;
+    var J1 = 0;
+    var yearNow = 0;
+	  var monthNow = 0;
+	  var dayNow = 0;
+  	var hoursNow = 0;
+  	var minutesNow = 0;
+  	var secondsNow = 0;
+
+
+
+function main()
+{
+
+
+	var now = new Date(); // New date object 'now' for current data
+	
+/*
+	
+	var hours = now.getUTCHours();
+	var minutes = now.getUTCMinutes();
+	var seconds = now.getUTCSeconds()
+	var month = now.getUTCMonth() + 1;
+	var day = now.getUTCDate();
+	var year = now.getUTCFullYear();
+*/
+
+	var year = document.inputDataForm1.input1.value;
+	var month = document.inputDataForm1.input2.value;
+	var day = document.inputDataForm1.input3.value;
+	var hours = document.inputDataForm1.input4.value;
+	var minutes = document.inputDataForm1.input5.value;
+	var seconds = document.inputDataForm1.input6.value;
+
+
+
+
+// How to use toUTCString() to convert today's date (according to UTC) to a string.
+
+var todayUTC = now.toUTCString();
+
+// Return the timezone difference between UTC and Local Time
+
+var localUTCOffset = now.getTimezoneOffset();
+
+var localTime = now.toTimeString();
+
+var hourUTC = now.getUTCHours();
+var minuteUTC = now.getUTCMinutes();
+var secondUTC = now.getUTCSeconds();
+var dateUTC = hourUTC + ":" + minuteUTC + ":" + secondUTC;
+
+/* 
+    Month number.
+    The standard JavaScript methid getMonth() method returns the month (from 0 to 11) for the specified date, according to local time.
+    Note: January is 0, February is 1, and so on. Add 1 to returned value to get actual month number.
+    e.g. 
+    var d = new Date();
+    var n = d.getMonth();
+*/
+    var monthNo = now.getMonth() + 1;  
+/*
+    Day of Year Number - cAstrolab.js
+*/
+    var dayOfYearNumber = dayOfYear(now);   
+/*
+    Fractional year in radians
+*/
+    var frctnYear = (2 * Math.PI / 365) * (dayOfYearNumber - 1 + ((hourUTC - 12) / 24));
+/*
+    Equation of time
+*/
+    var eqOfTime = 229.18 * ((0.000075 + (0.001868 * Math.cos(frctnYear)) - (0.032077 * Math.sin(frctnYear)) - (0.014615 * Math.cos (2*frctnYear)) - (0.040849 * Math.sin(2*frctnYear))));
+
+
+//var dateJSON = today.toJSON();
+
+
+/* 
+Calculate Julian Day
+The Math.floor() method rounds a number DOWNWARDS to the nearest integer, and returns the result.
+If the passed argument is an integer, the value will not be rounded.
+
+Use eval() to check values are numeric.
+*/
+
+    YY = eval(year);
+    MM = eval(month);
+    DD = eval(day);
+   
+    HR = eval(hours);
+    MN = eval(minutes);
+    SC = eval(seconds);
+    
+    var JDN = 0;
+    
+     
+      HR = HR + (MN / 60) + (SC/3600);
+      GGG = 1;
+      if (YY <= 1585) GGG = 0;
+      JD = -1 * Math.floor(7 * (Math.floor((MM + 9) / 12) + YY) / 4);
+      S = 1;
+      if ((MM - 9)<0) S=-1;
+      A = Math.abs(MM - 9);
+      J1 = Math.floor(YY + S * Math.floor(A / 7));
+      J1 = -1 * Math.floor((Math.floor(J1 / 100) + 1) * 3 / 4);
+      JD = JD + Math.floor(275 * MM / 9) + DD + (GGG * J1);
+      JD = JD + 1721027 + 2 * GGG + 367 * YY - 0.5;
+      JD = JD + (HR / 24);
+      JDN = Math.floor(JD);
+      marsSolDate = (JD - 2405522) / 1.02749; //wikipedia Julian Day page formula
+
+
+/*  Output Results grid on outputResultForm1
+    var outputResultn only used where required, e.g. in the case where number formating takes place.
+
+    var outputResult7 = new Number(projectileKE);
+    document.outputResultForm1.result7.value = outputResult7.toExponential(decPlaces);
+*/
+    document.outputResultForm1.result1.value = now;
+    document.outputResultForm1.result2.value = todayUTC;
+
+//  document.outputResultForm1.result3.value = dateJSON;
+
+    document.outputResultForm1.result4.value = localTime;
+    document.outputResultForm1.result5.value = dateUTC;
+    document.outputResultForm1.result6.value = dayOfYearNumber;
+    document.outputResultForm1.result8.value = localUTCOffset;
+    document.outputResultForm1.result9.value = monthNo;
+    document.outputResultForm1.result12.value = frctnYear;
+    document.outputResultForm1.result15.value = eqOfTime;
+    document.outputResultForm1.result17.value = JD;
+    document.outputResultForm1.result23.value = JDN;
+    document.outputResultForm1.result24.value = marsSolDate;
+
+}
+
+function dateTimeNow()
+{
+
+// get current date information and initialise input form values
+
+	var now = new Date();
+	
+	yearNow = now.getUTCFullYear();
+	monthNow = now.getUTCMonth() + 1;
+	dayNow = now.getUTCDate();
+	
+	hoursNow = now.getUTCHours();
+	minutesNow = now.getUTCMinutes();
+	secondsNow = now.getUTCSeconds();
+	
+	document.inputDataForm1.input1.value = yearNow;
+	document.inputDataForm1.input2.value = monthNow;
+	document.inputDataForm1.input3.value = dayNow;
+	document.inputDataForm1.input4.value = hoursNow;
+	document.inputDataForm1.input5.value = minutesNow;
+	document.inputDataForm1.input6.value = secondsNow;
+	
+}
+
+
+
+</script>
+
+
+</head>
+
+<body onload="pageStart()">
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">Time</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button> 
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Calculation</a></li>
+		<li><a href="#tabs-2">User Guide</a></li>
+	</ul>
+    
+
+<div id="tabs-1">
+
+<p></p>
+
+<hr/>
+
+<!--
+ID vs. Name in Form Fields
+When creating a form and form field, you should give them both an id and a name and make them the same, e.g. 
+
+<form id="form1" name="form1">
+<input type="text" id="form1Field1" name="form1Field1" />
+<input type="text" id="form1Field2" name="form1Field2" />
+</form>
+
+This is because browsers use the name field when they submit to a server, but when working with JavaScript it's best to use id (and the associated document.getElementById()) to identify elements. You could use something like document.getElementsByName(), but it is a lot harder to work with, because names aren't guaranteed to be unique and thus that function returns a collection of elements, not just one. 
+You should also always name your name and id the same thing (and not reuse that identifier anywhere else), 
+because of IE's poor implementation of getElementById() which can sometimes return an element whose "name" matches the "id"
+you asked for. 
+
+Always use both, make them the same string, and make that string unique in the document. 
+XHTML spec [1] says that name is deprecated for id, and that eventually name will go away completely.  
+The spec also recommends using both the name and the id attributes, set identically, for forwards and backwards compatibility.
+-->
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+  <table class="CalcTable1" id="inputTable1">
+    <tr>
+      <th><b>Date / Time</b></th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+    </tr>
+    <tr>
+      <td>Year</td>
+      <td>
+      <input type="text" title="Year" name="input1" id="input1" size="12" value="" /></td>
+      <td>&nbsp;</td>
+      <td>Month</td>
+      <td >
+        <input type="text" title="Month" name="input2" id="input2" size="12" value="" /></td>
+      <td>&nbsp;</td>
+      <td>Day</td>
+      <td>
+        <input type="text" title="Day" name="input3" id="input3" size="12" value="" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="Hours">Hours</td>
+      <td>
+      <input type="text" title="Hours" name="input4" id="input4" size="12" value="" /></td>
+      <td>&nbsp;</td>
+      <td>Minutes</td>
+      <td >
+        <input type="text" title="Minutes" name="input5" id="input5" size="12" value="" /></td>
+      <td>&nbsp;</td>
+      <td>Seconds</td>
+      <td>
+        <input type="text" title="Seconds" name="input6" id="input6" size="12" value="" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Longitude</td>
+      <td>
+      <input type="text" title="Hours" name="input7" id="input7" size="12" value="" /></td>
+      <td>&nbsp;</td>
+      <td>Time Zone</td>
+      <td >
+        <input type="text" title="Hours" name="input8" id="input8" size="12" value="" /></td>
+      <td>&nbsp;</td>
+      <td>DST</td>
+      <td>&nbsp;
+        </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="9">
+        <input type="button" value="Now" onclick="javascript:dateTimeNow();" />
+        <input type="button" value="Calculate" onclick="javascript:main();" />
+        <input type="reset" value=" Click here to clear input values " />
+      </td>
+    </tr>
+  </table>
+</form>
+
+<hr/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+  <table class="CalcTable1" id="outputTable1">
+    <tr>
+      <th>Local</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>UTC</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+    </tr>
+    <tr>
+      <td title="impactor volume">Today</td>
+      <td>
+      <input type="text" name="result1" id="result1" size="32" />
+      </td>
+      <td>&nbsp;</td>
+      <td>Today UTC</td>
+      <td><input type="text" name="result2" id="result2" size="32" /></td>
+      <td>&nbsp;</td>
+      <td title="crater type">&nbsp;</td>
+      <td>
+        <input type="text" name="result3" id="result3" size="25" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="impactor mass">Local Time</td>
+      <td>
+        <input type="text" name="result4" id="result4" size="27" />      </td>
+      <td>&nbsp;</td>
+      <td title="yield scaling result">UTC Time</td>
+      <td>
+        <input type="text" name="result5" id="result5" size="28" />      </td>
+      <td>&nbsp;</td>
+      <td title="ejecta blanket">Day No. in Year</td>
+      <td>
+        <input type="text" name="result6" id="result6" size="12" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="yield energy joules">Universal Time</td>
+      <td>
+        <input type="text" name="result7" id="result7" size="27" /></td>
+      <td>&nbsp;</td>
+      <td title="pi scaling result">UTC / Local Diff.</td>
+      <td>
+        <input type="text" name="result8" id="result8" size="12" /></td>
+      <td>&nbsp;</td>
+      <td title="ejecta spread">Month Number</td>
+      <td>
+	    <input type="text" name="result9" id="result9" size="12" />
+	  </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="yield energy megatons">&nbsp;</td>
+      <td>
+        <input type="text" name="result10" id="result10" size="12" /></td>
+      <td>&nbsp;</td>
+      <td title="Gault Scaling Result">&nbsp;</td>
+      <td>
+        <input type="text" name="result11" id="result11" size="12" /></td>
+      <td>&nbsp;</td>
+      <td title="magnitude on the Richter scale">Fractional Year</td>
+      <td><input type="text" name="result12" id="result12" size="20" /></td>
+      <td>radians</td>
+    </tr>
+    <tr>
+      <td title="no of near earth asteroids larger">&nbsp;</td>
+      <td>
+        <input type="text" name="result13" id="result13" size="12" /></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="effective magnitude">Equation of Time</td>
+      <td>
+      <input type="text" name="result15" id="result15" size="20" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Julian Date (JD)</td>
+      <td>Epoch - 12:00 January 1, 4713 BC, Monday</td>
+      <td>&nbsp;</td>
+      <td title="rim to rim diameter">&nbsp;</td>
+      <td>
+        <input type="text" name="result17" id="result17" size="26" /></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Modified Julian Date (MJD)</td>
+      <td>00:00 November 17, 1858, Wednesday</td>
+      <td>&nbsp;</td>
+      <td title="formation time">MJD = JD − 2400000.5</td>
+      <td>
+        <input type="text" name="result20" id="result20" size="12" /></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Julian Day Number (JDN)</td>
+      <td>12:00 January 1, 4713 BC, Monday</td>
+      <td>&nbsp;</td>
+      <td>JDN = floor (JD)</td>
+      <td>
+        <input type="text" name="result23" id="result23" size="12" /></td>
+      <td>&nbsp;</td>
+      <td>Mars Sol Date</td>
+      <td>
+        <input type="text" name="result24" id="result24" size="26" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="9">
+        <input type="reset" value=" Click here to clear result values " />      </td>
+    </tr>
+  </table>
+</form>
+</div>
+
+<div id="tabs-2">
+
+<table>
+    <tr>
+        <td>
+        Short program to evaluate time</td>
+        <td></td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="3" >
+        
+        British Summer Time begins in the UK on 30th March 2013 after midnight. 
+        <b>After this 
+        date, remember that BST = UT+1. So, at 11:00 BST 
+        = 10:00 UT.</b><br/>
+        <br/>
+        (This page header is colour coded as under development, so as areas on 
+        the page are completed they are colour coded in green as tested working.&nbsp; 
+        When the whole page is complete then the colour codes are set back to 
+        &#39;background&#39; and the page header coded as &#39;green&#39;)<br/>
+         &nbsp;</td>
+    </tr>
+</table>
+</div>
+
+</div>
+</div>
+
+<br/>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cCalc008Time</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

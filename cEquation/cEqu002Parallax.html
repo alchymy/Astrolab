@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Stellar Parallax ------------ [cEqu002Parallax]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+<!-- Page Application Code using MVC -->
+
+<script>
+
+// define all global variables
+
+    var dist;
+    var parallax;
+    var lightYears;
+    var decPlaces = 3;
+
+// -- CONTROLLER --
+
+function main() {
+
+getParameters();
+dist = equParallax(parallax);
+lightyears = dist * 3.26;
+outputResult();
+
+}
+
+function getParameters()  {
+
+// get input parameters
+ 
+    parallax = document.inputDataForm1.input1.value;
+    decPlaces = document.inputDataForm1.input99.value;
+
+}
+
+function outputResult() {
+
+// Output Results grid on outputResultForm1
+
+    var outputResult1 = new Number(dist);
+    document.outputResultForm1.result1.value = outputResult1.toExponential(decPlaces);
+	var outputResult2 = new Number(lightyears);
+    document.outputResultForm1.result2.value = outputResult2.toExponential(decPlaces);
+    
+  
+}
+
+function clearInputValues() {
+
+    document.inputDataForm1.input1.value = "";
+    
+}
+
+
+// -- MODEL --
+
+function equParallax(p) {
+
+  var  d =  1 / p;
+
+return d;
+}
+
+</script>
+
+
+</head>
+
+<body>
+<!-- VIEW -->
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Stellar Parallax</td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Equation and Calculation</a></li>
+		<li><a href="#tabs-2">Notes</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+        
+\[ 
+d = \frac{1}{\pi_p}  
+\]
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+		Variables / Constants:
+  <ul>
+    <li><i>d</i> is the stellar distance in parsecs </li>
+    <li><i>p</i> is the parallax in arcseconds</li>
+     </ul>
+  	   <p>Assuming the angle is small (which it will be at stellar distances), the distance to an object (measured in 
+	     parsecs) can be expressed as the reciprocal of the parallax (measured in arcseconds): 
+	     d(pc) = 1 / p(arcsec).<br/>
+		<br/>
+		Example: the parallax for Proxima Centauri is 0.772 arcseconds, so the distance to Proxima Centauri is 1 / 0.772 = 1.295 parsecs (4.223 ly).<br/>
+&nbsp;<br />
+
+		Another Example: the parallax for Alpha Centauri is 0.74 arcseconds, so the distance to Proxima Centauri is 1 / 0.74 = 1.351 parsecs (4.405 ly).<br/>
+&nbsp;<br />
+	   To convert pc to ly multiply by 3.26 (<a href="../cData/cConst002Math.html">Maths Constants</a>).</p>
+				
+
+</td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td>p</td>
+    <td>
+      <input type="text" name="input1" id="input1" size="12" value="0.772" /></td>
+    <td>arcseconds&nbsp;</td>
+  </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="3" /></td>
+    <td>decimal places</td>
+    </tr>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td>d</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>parsecs&nbsp;</td>
+  </tr>
+  <tr>
+    <td>=</td>
+    <td><input type="text" name="result2" id="result2" size="12" /></td>
+    <td>ly</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+
+
+<div id="tabs-2">
+
+<p><u>Parsec  definition:</u></p>
+<p>The  parsec (&quot;parallax of one arcsecond&quot;, symbol pc) is a unit  of length, equal to just under 31 million million kilometres, or about 3.26 light-years. </p>
+<p>The  parsec measurement unit is used in astronomy and is defined as the  length of the adjacent side of an imaginary right triangle in space. </p>
+<p>The  two dimensions that form this triangle are the parallax angle  (defined as 1 arcsecond) and the opposite side (which is defined as 1  astronomical unit (AU), the  distance from the Earth to the Sun). Given these two measurements,  along with the rules of trigonometry, the length of the adjacent side  (the parsec) can be found.
+<br />
+
+<p>One  of the oldest methods for astronomers to calculate the distance to a  particular star was to record the difference in angle between  two measurements of the position of the star in the sky. The first  measurement was taken from the Earth on one side of the Sun, and  the second was taken half a year later when the Earth was on the  opposite side of the Sun.<br/>
+Thus, the distance between the two  measurements was known  to be twice the distance between the Earth and the Sun. The distance to the star could be found using calculations of trigonometric parallax. </p>
+<p>Since  it is based on an angle and the distance between the Earth and the  Sun, it is fundamentally derived from the degree and the AU. </p>
+<p>If  two objects, at a distance of 1 parsec, are separated on the sky by 1 arcsec,  then the physical separation between the two objects is 1 AU. Using the parsec and parallax is very convenient because for very small angles - which for stellar measurements they will be, the distance to the object is then just the reciprocal of the parallax.
+
+<br/><br/>
+
+        <h2>Calculating the value of a parsec</h2>
+        <br/>
+        <img src="../fImageLib/img0091.png" alt="diagram" width="400" height="100" />
+        <p>In the diagram above <i>(not to scale)</i>, <b>S</b> 
+        represents the        Sun, and <b>E</b> the
+        
+        Earth at one point in its orbit. Thus the distance <b>ES</b> is one        astronomical unit (AU). The angle <b>SDE</b> is one        arcsecond (1/3600 of a degree) so by definition <b>D</b> is a point 
+        in space at a distance of one parsec from the Sun. By
+        
+        trigonometry, the distance <b>SD</b> is</p>
+        <br/>
+        <img border="0" src="../fImageLib/img0092.png" alt="diagram" width="621" height="42" /><p/>
+        <p>The standard NIST value 1 AU = 1.495 978 706 91(6) × 10<sup>11</sup> m<br />
+            <br />
+        So 1 parsec ≈ 3.085 
+            678×10<sup>16</sup> metres ≈ 3.261 564
+            
+        light-years.</p>
+
+</div>
+
+
+</div>
+</div>
+<br/>
+
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu002Parallax</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

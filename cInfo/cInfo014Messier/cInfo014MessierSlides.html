@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+	<title>Image Gallery Demo</title>
+	<link type="text/css" rel="stylesheet" href="styles/screen.css" media="screen" />
+	
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific Code -->
+
+	
+	<script src="../../fJscriptLib/jquery.js"></script>	
+    <script src="../../fJscriptLib/jquery-migrate.js"></script>
+	<script src="scripts/imagepreloader.js"></script>	
+	<script src="scripts/slideshow.js"></script>	
+	
+	<script>
+	
+		$('head').append('<link href="styles/slideshow-js-only.css" rel="stylesheet" type="text/css" media="screen" />');
+		if($.browser.safari){
+			$('head').find('link:last').append(' ');
+		}
+	
+		$(document).ready(function(){
+			$('div.slideshow').slideshow();
+		});
+		
+	</script>
+	
+    
+</head>
+<body>
+
+<div class="slideshow">
+  <ul>
+	<li><a href="ImageLibMessier/imgM001.png"><img src="ImageLibMessier/thumbs/imgM001s.png" width="120" height="80" alt="Image 1" title="M1 Crab Nebula	Supernova remnant" /></a></li>
+	<li><a href="ImageLibMessier/imgM002.png"><img src="ImageLibMessier/thumbs/imgM002s.png" width="120" height="80" alt="Image 2" title="M2 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM003.png"><img src="ImageLibMessier/thumbs/imgM003s.png" width="120" height="80" alt="Image 3" title="M3 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM004.png"><img src="ImageLibMessier/thumbs/imgM004s.png" width="120" height="80" alt="Image 4" title="M4 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM005.png"><img src="ImageLibMessier/thumbs/imgM005s.png" width="120" height="80" alt="Image 5" title="M5 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM006.png"><img src="ImageLibMessier/thumbs/imgM006s.png" width="120" height="80" alt="Image 6" title="M6 Butterfly Cluster, Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM007.png"><img src="ImageLibMessier/thumbs/imgM007s.png" width="120" height="80" alt="Image 7" title="M7 Ptolemyπs Cluster, Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM008.png"><img src="ImageLibMessier/thumbs/imgM008s.png" width="120" height="80" alt="Image 8" title="M8 Lagoon Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgM009.png"><img src="ImageLibMessier/thumbs/imgM009s.png" width="120" height="80" alt="Image 9" title="M9 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM010.png"><img src="ImageLibMessier/thumbs/imgM010s.png" width="120" height="80" alt="Image 10" title="M10 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM011.png"><img src="ImageLibMessier/thumbs/imgM011s.png" width="120" height="80" alt="Image 11" title="M11 Wild Duck Cluster, Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM012.png"><img src="ImageLibMessier/thumbs/imgM012s.png" width="120" height="80" alt="Image 12" title="M12 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM013.png"><img src="ImageLibMessier/thumbs/imgM013s.png" width="120" height="80" alt="Image 13" title="M13 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM014.png"><img src="ImageLibMessier/thumbs/imgM014s.png" width="120" height="80" alt="Image 14" title="M14 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM015.png"><img src="ImageLibMessier/thumbs/imgM015s.png" width="120" height="80" alt="Image 15" title="M15 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM016.png"><img src="ImageLibMessier/thumbs/imgM016s.png" width="120" height="80" alt="Image 16" title="M16 Eagle Nebula Cluster, Open Cluster	" /></a></li>
+	<li><a href="ImageLibMessier/imgM017.png"><img src="ImageLibMessier/thumbs/imgM017s.png" width="120" height="80" alt="Image 17" title="M17 'Omega, Swan, Horseshoe Nebula', Diffuse Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgM018.png"><img src="ImageLibMessier/thumbs/imgM018s.png" width="120" height="80" alt="Image 18" title="M18 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM019.png"><img src="ImageLibMessier/thumbs/imgM019s.png" width="120" height="80" alt="Image 19" title="M19 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM020.png"><img src="ImageLibMessier/thumbs/imgM020s.png" width="120" height="80" alt="Image 20" title="M20 Trifid Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgM021.png"><img src="ImageLibMessier/thumbs/imgM021s.png" width="120" height="80" alt="Image 21" title="M21 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM022.png"><img src="ImageLibMessier/thumbs/imgM022s.png" width="120" height="80" alt="Image 22" title="M22 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM023.png"><img src="ImageLibMessier/thumbs/imgM023s.png" width="120" height="80" alt="Image 23" title="M23 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM024.png"><img src="ImageLibMessier/thumbs/imgM024s.png" width="120" height="80" alt="Image 24" title="M24 Milky Way Patch, Star Cloud" /></a></li>
+	<li><a href="ImageLibMessier/imgM025.png"><img src="ImageLibMessier/thumbs/imgM025s.png" width="120" height="80" alt="Image 25" title="M25 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM026.png"><img src="ImageLibMessier/thumbs/imgM026s.png" width="120" height="80" alt="Image 26" title="M26 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM027.png"><img src="ImageLibMessier/thumbs/imgM027s.png" width="120" height="80" alt="Image 27" title="M27 Dumbbell Nebula, Planetary Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgM028.png"><img src="ImageLibMessier/thumbs/imgM028s.png" width="120" height="80" alt="Image 28" title="M28 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM029.png"><img src="ImageLibMessier/thumbs/imgM029s.png" width="120" height="80" alt="Image 29" title="M29 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM030.png"><img src="ImageLibMessier/thumbs/ImgM030s.png" width="120" height="80" alt="Image 30" title="M30 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM031.png"><img src="ImageLibMessier/thumbs/imgM031s.png" width="120" height="80" alt="Image 31" title="M31 Andromeda Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM032.png"><img src="ImageLibMessier/thumbs/imgM032s.png" width="120" height="80" alt="Image 32" title="M32 Satellite of M31, Elliptical Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM033.png"><img src="ImageLibMessier/thumbs/imgM033s.png" width="120" height="80" alt="Image 18" title="M33 Triangulum (also Pinwheel) Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM034.png"><img src="ImageLibMessier/thumbs/imgM034s.png" width="120" height="80" alt="Image 19" title="M34 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM035.png"><img src="ImageLibMessier/thumbs/imgM035s.png" width="120" height="80" alt="Image 20" title="M35 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM036.png"><img src="ImageLibMessier/thumbs/imgM036s.png" width="120" height="80" alt="Image 21" title="M36 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM037.png"><img src="ImageLibMessier/thumbs/imgM037s.png" width="120" height="80" alt="Image 22" title="M37 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM038.png"><img src="ImageLibMessier/thumbs/imgM038s.png" width="120" height="80" alt="Image 23" title="M38 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM039.png"><img src="ImageLibMessier/thumbs/imgM039s.png" width="120" height="80" alt="Image 24" title="M39 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM040.png"><img src="ImageLibMessier/thumbs/imgM040s.png" width="120" height="80" alt="Image 25" title="M40 Winecke 4, Double Star" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM041s.png" width="120" height="80" alt="Image 26" title="M41 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM42_43s.png" width="120" height="80" alt="Image 42" title="M42 Great Orion Nebula, Diffuse Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM42_43s.png" width="120" height="80" alt="Image 28" title="M43 de Mairanπs Nebula, Diffuse Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM044s.png" width="120" height="80" alt="Image 29" title="M44 Beehive Cluster (Praesepe), Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM045.png"><img src="ImageLibMessier/thumbs/imgM045s.png" width="120" height="80" alt="Image 30" title="M45 'Pleiades, Subaru, Seven Sisters', Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM046s.png" width="120" height="80" alt="Image 16" title="M46 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM047s.png" width="120" height="80" alt="Image 17" title="M47 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM048s.png" width="120" height="80" alt="Image 18" title="M48 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM049s.png" width="120" height="80" alt="Image 19" title="M49 Elliptical Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM050s.png" width="120" height="80" alt="Image 20" title="M50 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM051.png"><img src="ImageLibMessier/thumbs/imgM051s.png" width="120" height="80" alt="Image 21" title="M51 Whirlpool Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM052s.png" width="120" height="80" alt="Image 22" title="M52 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM053s.png" width="120" height="80" alt="Image 23" title="M53 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM054s.png" width="120" height="80" alt="Image 24" title="M54 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM055s.png" width="120" height="80" alt="Image 25" title="M55 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM056s.png" width="120" height="80" alt="Image 26" title="M56 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM057s.png" width="120" height="80" alt="Image 27" title="M57 Ring Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM058s.png" width="120" height="80" alt="Image 28" title="M58 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM059s.png" width="120" height="80" alt="Image 29" title="M59 Elliptical Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM060s.png" width="120" height="80" alt="Image 30" title="M60 Elliptical Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM061s.png" width="120" height="80" alt="Image 21" title="M61 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM062s.png" width="120" height="80" alt="Image 22" title="M62 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM063s.png" width="120" height="80" alt="Image 23" title="M63 Sunflower Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM064.png"><img src="ImageLibMessier/thumbs/imgM064s.png" width="120" height="80" alt="Image 24" title="M64 Blackeye Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM065s.png" width="120" height="80" alt="Image 25" title="M65 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM066s.png" width="120" height="80" alt="Image 26" title="M66 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM067s.png" width="120" height="80" alt="Image 27" title="M67 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM068s.png" width="120" height="80" alt="Image 28" title="M68 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM069s.png" width="120" height="80" alt="Image 29" title="M69 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM070s.png" width="120" height="80" alt="Image 30" title="M70 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM071s.png" width="120" height="80" alt="Image 21" title="M71 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM072s.png" width="120" height="80" alt="Image 22" title="M72 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM073s.png" width="120" height="80" alt="Image 23" title="M73 Group/Asterism" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM074s.png" width="120" height="80" alt="Image 24" title="M74 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM075s.png" width="120" height="80" alt="Image 25" title="M75 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM076s.png" width="120" height="80" alt="Image 26" title="M76 'Little Dumbell, Cork, Butterfly Nebula' Planetary Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM077s.png" width="120" height="80" alt="Image 27" title="M77 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM078.png"><img src="ImageLibMessier/thumbs/imgM078s.png" width="120" height="80" alt="Image 28" title="M78 Diffuse Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM079s.png" width="120" height="80" alt="Image 29" title="M79 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM080s.png" width="120" height="80" alt="Image 30" title="M80 Globular Cluster" /></a></li>
+    <li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM081s.png" width="120" height="80" alt="Image 21" title="M81 Bodeπs Galaxy - 1/2 of Double Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM082s.png" width="120" height="80" alt="Image 22" title="M82 Cigar Galaxy - 1/2 of Double Galaxy, Irregular Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM083s.png" width="120" height="80" alt="Image 23" title="M83 Small Pinwheel Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM084s.png" width="120" height="80" alt="Image 24" title="M84 Lenticular (S0) Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM085s.png" width="120" height="80" alt="Image 25" title="M85 Lenticular (S0) Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM086s.png" width="120" height="80" alt="Image 26" title="M86 Lenticular (S0) Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM087s.png" width="120" height="80" alt="Image 27" title="M87 Virgo A, Elliptical Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM088s.png" width="120" height="80" alt="Image 28" title="M88 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM089s.png" width="120" height="80" alt="Image 29" title="M89 Elliptical Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM090s.png" width="120" height="80" alt="Image 30" title="M90 Spiral Galaxy" /></a></li>
+ 	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM091s.png" width="120" height="80" alt="Image 21" title="M91 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM092s.png" width="120" height="80" alt="Image 22" title="M92 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM093s.png" width="120" height="80" alt="Image 23" title="M93 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM094s.png" width="120" height="80" alt="Image 24" title="M94 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM095s.png" width="120" height="80" alt="Image 25" title="M95 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM096s.png" width="120" height="80" alt="Image 26" title="M96 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM097s.png" width="120" height="80" alt="Image 27" title="M97 Owl Nebula, Planetary Nebula" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM098s.png" width="120" height="80" alt="Image 28" title="M98 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgMnull.png"><img src="ImageLibMessier/thumbs/imgM099s.png" width="120" height="80" alt="Image 29" title="M99 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM100.png"><img src="ImageLibMessier/thumbs/imgM100s.png" width="120" height="80" alt="Image 30" title="M100 Spiral Galaxy" /></a></li>
+    <li><a href="ImageLibMessier/imgM101.png"><img src="ImageLibMessier/thumbs/imgM101s.png" width="120" height="80" alt="Image 21" title="M101 Pinwheel Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM102.png"><img src="ImageLibMessier/thumbs/imgM102s.png" width="120" height="80" alt="Image 22" title="M102 Spindle Galaxy, Lenticular (S0) Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM103.png"><img src="ImageLibMessier/thumbs/imgM103s.png" width="120" height="80" alt="Image 23" title="M103 Open Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM104.png"><img src="ImageLibMessier/thumbs/imgM104s.png" width="120" height="80" alt="Image 24" title="M104 Sombrero Galaxy, Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM105.png"><img src="ImageLibMessier/thumbs/imgM105s.png" width="120" height="80" alt="Image 25" title="M105 Elliptical Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM106.png"><img src="ImageLibMessier/thumbs/imgM106s.png" width="120" height="80" alt="Image 26" title="M106 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM107.png"><img src="ImageLibMessier/thumbs/imgM107s.png" width="120" height="80" alt="Image 27" title="M107 Globular Cluster" /></a></li>
+	<li><a href="ImageLibMessier/imgM108.png"><img src="ImageLibMessier/thumbs/imgM108s.png" width="120" height="80" alt="Image 28" title="M108 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM109.png"><img src="ImageLibMessier/thumbs/imgM109s.png" width="120" height="80" alt="Image 29" title="M109 Spiral Galaxy" /></a></li>
+	<li><a href="ImageLibMessier/imgM110.png"><img src="ImageLibMessier/thumbs/imgM110s.png" width="120" height="80" alt="Image 30" title="M110 Satellite of M31, Elliptical Galaxy" /></a></li>
+ 		</ul>
+	</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cInfo014MessierSlides</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

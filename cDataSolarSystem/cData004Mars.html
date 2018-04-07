@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Planetary Data - Mars ------------ [cData004Mars]</title>
+
+<!-- Load common environment -->
+
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+<script src="../fEnvironment.js"></script>
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page specific css and js -->
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<script src="../fJscriptLib/fFoundationObj.js"></script>
+
+<script>
+
+function pageStart() {
+
+
+
+}
+
+// jquery dialog and other setup
+
+	$(function() {
+		
+		$( "#button" ).button();
+	
+		$( "#tabs" ).tabs();
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	
+</script>
+    
+<!-- ********* Application specific functions ********* -->
+
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:75%">Planetary Data - Mars</td>
+    <td style="width:25%" id="menuCell">
+      <nav><button class="mnubutton2" onclick="location.href='../mMain.html'" type="button">mMain</button></nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Data</a></li>
+	
+	</ul>
+    
+<div id="tabs-1">
+
+
+<br/>
+<table id="InformationTable_1">
+  <tr>
+    <th>Property</th>
+    <th>Value</th>
+    <th>Units</th>
+    <th>Property</th>
+    <th>Value</th>
+    <th>Units</th>
+    </tr>
+  <tr>
+    <td style="background-color:#00FF91">Physical Property</td>
+    <td style="background-color:#00FF91">&nbsp;</td>
+    <td style="background-color:#00FF91">&nbsp;</td>
+    <td style="background-color:#00FFFF">Orbital Data</td>
+    <td style="background-color:#00FFFF">&nbsp;</td>
+    <td style="background-color:#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Equatorial Radius</td>
+    <td> 3396.19 </td>
+    <td>km</td>
+    <td>Average Distance from Sun</td>
+    <td>2.27936640E+08 </td>
+    <td>km</td>
+    </tr>
+  <tr>
+    <td>Uncertainty +-</td>
+    <td> 0.10 </td>
+    <td>km</td>
+    <td>Average Distance AU</td>
+    <td>1.52366200E+00 </td>
+    <td>AU</td>
+    </tr>
+  <tr>
+    <td> Mean Radius<br />    </td>
+    <td>3389.50 </td>
+    <td>km</td>
+    <td>Perihelion</td>
+    <td>2.06600000E+08 </td>
+    <td>km</td>
+    </tr>
+  <tr>
+    <td>Uncertainty +-</td>
+    <td>0.20 </td>
+    <td>km</td>
+    <td>Perihelion AU</td>
+    <td>1.38100000E+00 </td>
+    <td>AU</td>
+    </tr>
+  <tr>
+    <td>Mass</td>
+    <td>6.41693E+23 </td>
+    <td>kg</td>
+    <td>Aphelion</td>
+    <td>2.49200000E+08 </td>
+    <td>km</td>
+    </tr>
+  <tr>
+    <td>Uncertainty +-</td>
+        <td>6.400000E-05 </td>
+        <td>kg</td>
+        <td>Aphelion AU</td>
+        <td>1.66600000E+00 </td>
+        <td>AU</td>
+    </tr>
+  <tr>
+    <td>Density</td>
+    <td>3.93400 </td>
+    <td>g/cm<sup>3</sup></td>
+    <td>Mean Orbital Velocity</td>
+    <td>24130.90000 </td>
+    <td>m/s</td>
+    </tr>
+  <tr>
+    <td>Uncertainty +-</td>
+    <td>0.00080 </td>
+    <td>g/cm<sup>3</sup></td>
+    <td>Sidereal Orbit Period</td>
+    <td>1.88084760 </td>
+    <td>Earth Years</td>
+    </tr>
+  <tr>
+    <td>Sidereal Rotation Period</td>
+    <td>1.02595676 </td>
+    <td>Earth Days</td>
+    <td>Orbital Eccentricity</td>
+    <td>0.09340000 </td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td>Sidereal Rotation Period</td>
+    <td>24.62000 </td>
+    <td>hrs</td>
+    <td>Orbital Inclination to Ecliptic</td>
+    <td>1.80000 </td>
+    <td>deg</td>
+    </tr>
+  <tr>
+    <td>Equatorial Surface Gravity</td>
+    <td>3.71000 </td>
+    <td>m/s<sup>2</sup></td>
+    <td>Equatorial Inclination to Orbit</td>
+    <td>25.19 </td>
+    <td>deg</td>
+    </tr>
+  <tr>
+    <td>Escape Velocity</td>
+    <td>5.03000 </td>
+    <td>km/s</td>
+    <td>Orbital Circumference</td>
+    <td>1.36690E+09 </td>
+    <td>km</td>
+    </tr>
+  <tr>
+    <td>Equatorial Circumference</td>
+    <td>2.13440E+04 </td>
+    <td>km</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Volume</td>
+    <td>1.63140E+11 </td>
+    <td>km<sup>3</sup></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Surface Area</td>
+    <td>1.44100E+08 </td>
+    <td>km<sup>2</sup></td>
+    <td style="background-color:#FFFFCC">Un-validated Data</td>
+    <td style="background-color:#FFFFCC">&nbsp;</td>
+    <td style="background-color:#FFFFCC">&nbsp;</td>
+    </tr>
+  <tr>
+    <td>Atmosphere</td>
+    <td>CO2, N2, Ar </td>
+    <td>&nbsp;</td>
+    <td style="background-color:#FFFFCC">Magnitude V0</td>
+    <td style="background-color:#FFFFCC">-2.01</td>
+    <td style="background-color:#FFFFCC">&nbsp;</td>
+    </tr>
+  <tr>
+    <td>Minimum Surface Temperature</td>
+    <td>186.00</td>
+    <td>K</td>
+    <td style="background-color:#FFFFCC">Solar Irradiance</td>
+    <td style="background-color:#FFFFCC">595.00</td>
+    <td style="background-color:#FFFFCC">&nbsp;</td>
+    </tr>
+  <tr>
+    <td>Maximum Surface Temperature</td>
+    <td>268.00</td>
+    <td>K</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>V(1,0)</td>
+    <td>-1.52000 </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Uncertainty +-</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Geometric Albedo</td>
+    <td>0.15000 </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<br/>
+</div>
+
+
+
+</div>
+<br/>
+
+
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cData004Mars</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Astrolab Constants ------------ [fConstantsObjList]</title>
+
+<!-- Load common environment -->
+
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<script>
+
+// run any page startup functions
+function pageStart() {
+
+}
+</script>
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page specific css and js for formating and layout -->
+
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+
+<script>
+
+// jquery dialog and other setup
+
+	$(function() {
+		
+		$( "#button" ).button();
+	
+		$( "#tabs" ).tabs();
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	
+</script>
+
+<!-- Page specific code for this application -->
+    
+<script src="fConstantsObj.js"></script>
+
+</head>
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:75%">Astrolab Constants Objects</td>
+    <td style="width:25%" id="menuCell">
+          <nav>
+      <a href="../mMain.html">mMain</a></nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Constants Listing</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<pre>
+<script>
+<!--
+
+document.writeln("Constant          Value                     Units<br/>");
+document.writeln("AU                " + ACONST.AU.value + "              " + ACONST.AU.units);
+document.writeln("EARTH_YEAR        " + ACONST.EARTH_YEAR.value + "                  " + ACONST.EARTH_YEAR.units);
+document.writeln("galNPoleRA        " + ACONST.galNPoleRA.value + "                    " + ACONST.galNPoleRA.units);
+document.writeln("galNPoleDecl      " + ACONST.galNPoleDecl.value + "                      " + ACONST.galNPoleDecl.units);
+document.writeln("galPlaneAscNode   " + ACONST.galPlaneAscNode.value + "                        " + ACONST.galNPoleRA.units);
+
+
+
+
+// -->
+</script>
+</pre>
+</div>
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%;">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width: 25%;">fConstantsObjList</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

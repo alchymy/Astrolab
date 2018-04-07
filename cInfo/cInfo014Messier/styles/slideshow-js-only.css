@@ -1,0 +1,154 @@
+/*
+ * Hides unordered list of images
+ */
+div.slideshow ul {
+	display: none;
+}
+
+
+div.slideshow {
+	width: 722px;
+	height: 482px;
+	position: relative;
+	margin: 0 auto 0;
+	margin-top: 10px;
+	overflow: hidden;
+}
+
+
+
+/*
+ * loading-layer
+ */
+div.slideshow .loading-layer {
+	background: black url(../ImageLibMessier/ajax-loader.gif) no-repeat center center;
+	width: 722px;
+	height: 482px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 100;
+}
+
+
+
+/*
+ * image-viewer
+ */
+div.slideshow .image-viewer {
+	width: 722px;
+	height: 482px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 0;
+}
+
+div.slideshow .image-viewer div {
+	width: 722px;
+	height: 482px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+div.slideshow .image-viewer img {
+	border: 1px solid white;
+}
+
+/*
+ * Ensure that "image-viewer-next-image" has a higher
+ * z-index than "image-viewer-current-image"
+ */
+div.slideshow .image-viewer-current-image {
+	z-index: 1;
+}
+
+div.slideshow .image-viewer-next-image {
+	z-index: 2;
+}
+
+
+
+/*
+ * control-panel
+ */
+div.slideshow .control-panel {
+	width: 400px;
+	height: 50px;
+	background: black;
+	border: 1px solid white;
+	position: absolute;
+	bottom: 0px;
+	left: 160px;
+	z-index: 10;
+}
+
+div.slideshow .control-panel div {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 10px;
+	cursor: pointer;
+}
+
+div.slideshow .control-panel .previous {
+	background: url(../ImageLibMessier/previous.png) no-repeat;
+	left: 75px;
+}
+
+div.slideshow .control-panel .play {
+	background: url(../ImageLibMessier/pause.png) no-repeat;
+	left: 125px;
+}
+
+div.slideshow .control-panel .paused {
+	background: url(../ImageLibMessier/play.png) no-repeat;
+}
+
+div.slideshow .control-panel .next {
+	background: url(../ImageLibMessier/next.png) no-repeat;
+	left: 175px;
+}
+
+div.slideshow .control-panel .view-thumbnails {
+	width: 108px;
+	height: 10px;
+	background: url(../ImageLibMessier/view-thumbnails.png) no-repeat;
+	top: 20px;
+	left: 225px;
+}
+
+div.slideshow .control-panel .hide-thumbnails {
+	background: url(../ImageLibMessier/hide-thumbnails.png) no-repeat;
+}
+
+
+
+/*
+ * thumbnail-viewer 
+ */
+div.slideshow .thumbnail-viewer {
+	position: absolute;
+	width: 530px;
+	height: 265px;
+	background: black;
+	border: 1px solid white;
+	top: 80px;
+	left: 95px;
+	z-index: 99;
+	overflow-y: scroll;
+}
+
+div.slideshow .thumbnail-viewer ul {
+	display: block;
+}
+
+
+
+
+
+
+
+
+

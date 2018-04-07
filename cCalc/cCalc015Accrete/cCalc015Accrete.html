@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Impact Cratering  - Crater Size ------------ [cCalc003Crater]</title>
+
+<!-- Load common environment -->
+<script src="../../fJscriptLib/jquery.js"></script>
+<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+
+<script src="../../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+<script src="const.js"></script>
+	<script src="main.js"></script>
+
+<script>
+
+/*
+ Dole accretion model for planetary formation.
+ Adapted from Wales Larrison's BASIC code.
+ References:
+ 
+   Dole, Stephen H.  "Formation of Planetary Systems by Aggregation:   
+       a Computer Simulation"  October 1969,  Rand Corporation Paper   
+ 	P-4226.								
+ Dole, S.H. "Formation of Planetary Systems by Aggregation:
+ 	    a Computer Simulation" Icarus, vol 13, p 494, 1970
+ Isaacman, R. & Sagan, C. "Computer Simulation of Planetary
+ 	    Accretion Dynamics: Sensitivity to Initial Conditions"
+ 	    Icarus, vol 31, p 510, 1977
+ 
+  Usage:
+   acrete [-seed #] [-dump]
+ 
+ 	-seed specifies initial value to random number generator (uses time otherwise)
+ 	-dump causes a dump of the generated system on stdout
+ 
+  Jon Leech (leech@cs.unc.edu)
+ */
+
+
+
+
+
+function openDiagWindow() {
+
+// used to display values at various stages of calculation for verification
+// that formulas are translated correctly, using electronic calculator
+
+    diagWindow = window.open("","Diagnostics -","toolbar=no, location=no, directories=no, status=no,menubar=no, scrollbars=no, resizable=no, copyhistory=yes, width=350, height=350");
+  
+ //   diagWindow = window.open();
+    diagWindow.document.open();
+    diagWindow.document.write("<title>Diagnostics</title>");
+    diagWindow.document.write("<pre>Diagnostic Window  :<p/>");
+    diagWindow.document.write("projectileDensity = ",projectileDensity,"<br/>");
+    diagWindow.document.write("targetDensity     = ",targetDensity,"<br/>");
+    diagWindow.document.write("L                 = ",L,"<br/>");
+    diagWindow.document.write("v                 = ",v,"<br/>");
+    diagWindow.document.write("theta             = ",theta,"<br/>");
+    diagWindow.document.write("anglefac          = ",anglefac,"<br/>");
+    diagWindow.document.write("densfac           = ",densfac,"<br/>");
+    diagWindow.document.write("pifac             = ",pifac,"<br/>");
+    diagWindow.document.write("Ct                = ",Ct,"<br/>");
+    diagWindow.document.write("Dstar             = ",Dstar,"<br/>");
+    diagWindow.document.write("Dpr               = ",Dpr,"<br/>");
+    diagWindow.document.write("M                 = ",M,"<br/>");
+    diagWindow.document.write("m                 = ",m,"<br/>");
+    diagWindow.document.write("projectileKE      = ",projectileKE,"<br/>");
+    diagWindow.document.write("pitwo             = ",pitwo,"<br/>");
+    diagWindow.document.write("dscale            = ",dscale,"<br/>");
+    diagWindow.document.write("gsmall            = ",gsmall,"<br/>");
+    diagWindow.document.write("cratertype        = ",cratertype,"<br/>");
+    diagWindow.document.write("</pre>");
+    diagWindow.focus();
+
+}
+
+function openCopyResultWindow() {
+
+// formatted result list window for copy and paste to other applications
+
+
+   resultWindow = window.open("","Copy Results","toolbar=no, location=no, directories=no, status=no,menubar=no, scrollbars=no, resizable=no, copyhistory=yes, width=300, height=220");
+
+ //   resultWindow = window.open();
+    resultWindow.document.open();
+    resultWindow.document.write("<title>Results</title>");
+    resultWindow.document.write("<pre>Result Window for Copy / Paste  :<p/>");
+    resultWindow.document.write("projectile diameter = ",L,"<br/>");
+    resultWindow.document.write("density projectile  = ",projectileDensity,"<br/>");
+    resultWindow.document.write("projectile velocity = ",v,"<br/>");
+    resultWindow.document.write("impact angle        = ",theta,"<br/>");
+    resultWindow.document.write("density target      = ",targetDensity,"<br/>");
+    resultWindow.document.write("m                   = ",m,"<br/>");
+    resultWindow.document.write("projectileKE                   = ",projectileKE,"<br/>");
+    resultWindow.document.write("pitwo               = ",pitwo,"<br/>");
+    resultWindow.document.write("dscale              = ",dscale,"<br/>");
+    resultWindow.document.write("gsmall              = ",gsmall,"<br/>");
+    resultWindow.document.write("cratertype          = ",cratertype,"<br/>");
+    resultWindow.document.write("</pre>");
+    resultWindow.focus();
+
+
+}
+
+function openGraphic() {
+
+// display graphic example
+
+    window.open("cImageWin001.html","Graphic -","toolbar=no, location=no, directories=no, status=no,menubar=no, scrollbars=no, resizable=no, copyhistory=yes, width=500, height=582");
+}
+
+function openInfo() {
+
+    window.open("cCalc003CraterInfo.html","Help -","toolbar=no, location=no, directories=no, status=no,menubar=no, scrollbars=no, resizable=no, copyhistory=yes, width=500, height=582");
+}
+
+</script>
+
+
+</head>
+
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Accretion  - Solar System Formation sim</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../../mMain.html'" >mMain</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Calculation</a></li>
+		<li><a href="#tabs-2">User Guide</a></li>
+		<li><a href='#tabs-3'>Original Fortran Source</a></li>
+        <li><a href="#tabs-4">Credits</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table class="CalcTable1">
+    <tr>
+      <td><br/>
+        Parameters description
+        <input type="button" value="Crater Examples" onclick="javascript:openGraphic()" />
+        <input type="button" value="Crater Info." onclick="javascript:openInfo()" />
+        <br/>
+        <br/>
+        <input type="button" title="Diameter 40m, Density 8000 kg m^3" value="Meteor Crater USA" onclick="javascript:examples(1)" />
+        <input type="button" title="Diameter 40m, Density 8000 kg m^3" value="Tunguska Fireball, Siberia 1908" onclick="javascript:examples(2)" />
+        <input type="button" title="Diameter 40m, Density 8000 kg m^3" value="Ries Crater Germany" onclick="javascript:examples(3)" />
+        <input type="button" title="Diameter 40m, Density 8000 kg m^3" value="Chesapeake Bay USA" onclick="javascript:examples(4)" />&nbsp;  
+        <input type="button" title="Diameter 40m, Density 8000 kg m^3" value="Chicxulub, Mexico" onclick="javascript:examples(5)" />       
+        </td>
+    </tr>
+</table>
+
+<!--
+ID vs. Name in Form Fields
+When creating a form and form field, you should give them both an id and a name and make them the same, e.g. 
+
+<form id="form1" name="form1">
+<input type="text" id="form1Field1" name="form1Field1" />
+<input type="text" id="form1Field2" name="form1Field2" />
+</form>
+
+This is because browsers use the name field when they submit to a server, but when working with JavaScript it's best to use id (and the associated document.getElementById()) to identify elements. You could use something like document.getElementsByName(), but it is a lot harder to work with, because names aren't guaranteed to be unique and thus that function returns a collection of elements, not just one. 
+You should also always name your name and id the same thing (and not reuse that identifier anywhere else), 
+because of IE's poor implementation of getElementById() which can sometimes return an element whose "name" matches the "id"
+you asked for. 
+
+Always use both, make them the same string, and make that string unique in the document. 
+XHTML spec [1] says that name is deprecated for id, and that eventually name will go away completely.  
+The spec also recommends using both the name and the id attributes, set identically, for forwards and backwards compatibility.
+-->
+
+<form action="cCalc003Crater.html" name="inputDataView1" id="inputDataView1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+  <table class="CalcTable1">
+    <tr>
+      <th>Projectile Descriptors</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Target Descriptors</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+    </tr>
+    <tr>
+      <td title="projectile diameter km">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>
+        <select name="targetDensity_sel" onchange="document.inputDataView1.input6.value = this.options[this.selectedIndex].value">
+        <option value="-1">Selectable values</option>
+        <option value="1000">1000 kg m^3 for ice</option>
+        <option value="1500">1500 kg m^3 for porous rock</option>
+        <option value="2500">2500 kg m^3 for sedimentary rock</option>
+        <option value="2750">2750 kg m^3 for crystalline rock</option>
+        <option value="8000">8000 kg m^3 for iron</option>
+        </select>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="projectile diameter km">projectile diameter</td>
+      <td><input type="text" title="projectile diameter m" name="input4" id="input4" size="12" value="" /></td>
+      <td>m</td>
+      <td title="target density kg m^3">target density</td>
+      <td>
+        <input type="text" name="input6" id="input6" size="12" value="" /></td>
+      <td>kg m<sup>-3</sup></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>
+        <select name="projectileDensity_sel0" onchange="document.inputDataView1.input10.value = this.options[this.selectedIndex].value">
+        <option value="-1">Selectable values</option>
+        <option value="1000">1000 kg/m^3 for ice</option>
+        <option value="1500">1500 kg/m^3 for porous rock</option>
+        <option value="2500">2500 kg/m^3 for sedimentary rock</option>
+        <option value="2750">2750 kg/m^3 for crystalline rock</option>
+        <option value="8000">8000 kg/m^3 for iron</option>
+        </select>
+      </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>
+        <select name="g_sel" onchange="document.inputDataView1.input12.value = this.options[this.selectedIndex].value">
+        <option value="-1">Selectable values</option>
+        <option value="3.7">3.7 m/sec^2 for Mercury</option>
+        <option value="8.9">8.9 m/sec^2 for Venus</option>
+        <option value="9.8">9.8 m/sec^2 for Earth</option>
+        <option value="1.6">1.6 m/sec^2 for the Moon</option>
+        <option value="3.7">3.7 m/sec^2 for Mars</option>
+        <option value="1.8">1.8 m/sec^2 for Io</option>
+        <option value="1.3">1.3 m/sec^2 for Europa</option>
+        <option value="1.4">1.4 m/sec^2 for Ganymede</option>
+        <option value="1.2">1.2 m/sec for Callisto</option>
+        <option value="1.4">1.4 m/sec for Titan</option>
+        </select></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="projectile density kg m^3">projectile density</td>
+      <td><input type="text" name="input10" id="input10" size="12" value="" /></td>
+      <td>kg m<sup>-3</sup></td>
+      <td title="acceleration m s^2">g acceleration</td>
+      <td>
+        <input type="text" name="input12" id="input12" size="12" value="" /></td>
+      <td>m s<sup>-2</sup></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>
+        <select name="t_type" onchange="document.inputDataView1.input18.value = this.options[this.selectedIndex].value">
+          <option value="-1">Selectable values</option>
+          <option value="0">liquid water</option>
+          <option value="1">loose sand</option>
+          <option value="2">competent rock or saturated soil</option>
+        </select></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="default number of decimal places for results reported">default decimal places</td>
+      <td>
+      <input type="text" name="input16" id="input16" size="12" value="2" /></td>
+      <td>&nbsp;</td>
+      <td title="target type">target type 0, 1, 2</td>
+      <td>
+        <input type="text" name="input18" id="input18" size="12" value="" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><select name="v_sel0" onchange="document.inputDataView1.input5.value = this.options[this.selectedIndex].value">
+        <option value="-1">Selectable values</option>
+        <option value="17">17 km s Earth and Moon asteroidal impacts</option>
+        <option value="50">50 km s Earth and Moon cometary impacts</option>
+        <option value="72">72 km s retrograde impactors at Earth (Leonids)</option>
+        <option value="7">7 km s Martian asteroidal impacts</option>
+        <option value="45">45 km s Martian cometary impacts</option>
+        <option value="5">5 km s typical asteroid belt impact</option>
+        </select></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>projectile velocity</td>
+      <td><input type="text" name="input5" id="input5" size="12" value="" /></td>
+      <td>km s<sup>-1</sup></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>impact angle</td>
+      <td><input type="text" name="input11" id="input11" size="12" value="" /></td>
+      <td>deg</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>effect at distance from impact</td>
+      <td><input type="text" name="input14" id="input14" size="12" value="" /></td>
+      <td>km</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="6"><input type="button" value="Calculate" onclick="main();" />
+                <input type="reset" value=" Click here to clear input values " />
+      </td>
+    </tr>
+  </table>
+</form>
+
+<hr/>
+
+<form action="cCalc003Crater.html" name="outputResultView1" id="outputResultView1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+  <table class="CalcTable1">
+    <tr>
+      <th>Impactor Results</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Crater Results</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Crater Results </th>
+      <th>&nbsp;</th>
+      <th>units</th>
+    </tr>
+    <tr>
+      <td title="impactor volume">Impactor Volume</td>
+      <td>
+        <input type="text" name="result1" id="result1" size="12" />      </td>
+      <td>m3</td>
+      <td><u><b>Transient Crater Diameter</b></u></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="crater type">Crater type</td>
+      <td>
+        <input type="text" name="result3" id="result3" size="12" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="impactor mass">Impactor Mass</td>
+      <td>
+        <input type="text" name="result4" id="result4" size="12" />      </td>
+      <td>kg</td>
+      <td title="yield scaling result">Yield Scaling</td>
+      <td>
+        <input type="text" name="result5" id="result5" size="12" />      </td>
+      <td>m</td>
+      <td title="ejecta blanket">Continous Ejecta Blanket </td>
+      <td>
+        <input type="text" name="result6" id="result6" size="12" /></td>
+      <td>m</td>
+    </tr>
+    <tr>
+      <td title="yield energy joules">Yield Energy </td>
+      <td>
+        <input type="text" name="result7" id="result7" size="12" /></td>
+      <td>Joules</td>
+      <td title="pi scaling result">Pi Scaling</td>
+      <td>
+        <input type="text" name="result8" id="result8" size="12" /></td>
+      <td>m</td>
+      <td title="ejecta spread">Ejecta Spread </td>
+      <td>
+	    <input type="text" name="result9" id="result9" size="12" />
+	  </td>
+      <td>m</td>
+    </tr>
+    <tr>
+      <td title="yield energy megatons">Yield Energy</td>
+      <td>
+        <input type="text" name="result10" id="result10" size="12" /></td>
+      <td>MegaTons</td>
+      <td title="Gault Scaling Result">Gault Scaling</td>
+      <td>
+        <input type="text" name="result11" id="result11" size="12" /></td>
+      <td>m</td>
+      <td title="magnitude on the Richter scale">Richter Scale Magnitude</td>
+      <td><input type="text" name="result12" id="result12" size="12" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="no of near earth asteroids larger">Near Earth asteroids larger</td>
+      <td>
+        <input type="text" name="result13" id="result13" size="12" /></td>
+      <td>&nbsp;</td>
+      <td><u><b>Final</b></u></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="effective magnitude">Effective Magnitude</td>
+      <td>
+      <input type="text" name="result15" id="result15" size="12" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="rim to rim diameter">Final Rim to Rim diameter</td>
+      <td>
+        <input type="text" name="result17" id="result17" size="12" /></td>
+      <td>m</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td title="formation time">Crater Formation Time</td>
+      <td>
+        <input type="text" name="result20" id="result20" size="12" /></td>
+      <td>s</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="9">
+        <input type="reset" value=" Click here to clear result values " />      </td>
+    </tr>
+  </table>
+</form>
+
+<input type="button" value="Diag" onclick="openDiagWindow()" />
+<input type="button" value="Copy / Paste Results" onclick="openCopyResultWindow();" />
+<br/>
+
+</div>
+
+<div id="tabs-2">
+
+
+    <p>Short program to evaluate the scaling equations to determine the diameter of a transient crater given details on the nature of the projectile, conditions of impact, and state of the target. </p>
+    <p>Ref. http://znark.com/create/accrete.html</p>
+    <p>Eventually modified to -</p>
+    <p>http://www.eldacur.com/~brons/NerdCorner/StarGen/StarGen.html</p>
+    <p>&nbsp;</p>
+</div>
+
+<div id="tabs-3">
+  <pre>
+        program crater
+c
+c     Short program to evaluate the scaling equations to determine
+c     the diameter of a transient crater given details on the nature
+c     of the projectile, conditions of impact, and state of the
+c     target.  The diameter is evaluated by three independent methods,
+c     yield scaling, pi-scaling and Gault's semi-empirical relations
+c     supplemented by rules on how crater size depends on gravity and
+c     angle of impact.
+c
+c     Updated Nov. 1997 to compute projectile size from a given
+c     transient crater diameter.  Projectile and crater diameter
+c     computation functions merged into a single program April 1998.
+c     See Melosh, Impact Cratering, chapter 7 for more details
+c
+c     Updated Oct. 1999 to take final crater diameters as well as 
+c     transient crater diameters into account.
+c
+c     Copyright 1996, 1997 and 1998 by H. J. Melosh
+c
+      implicit none
+      real*4 Cd(3),beta(3),Ct,Dt,Dstd,L,rhoproj,v,theta,rhotarget,g,W
+      real*4 pi,third,pitwo,pifac,gearth,gmoon,m,dscale,anglefac,densfac
+      real*4 rhomoon,Dstarmoon,Dstar,Dsimple,Dpr,Dprmoon,Dfinal
+      real*4 Dpiscale,Dyield,Dgault,gsmall,Tform
+      real*4 Lpiscale,Lyield,Lgault
+      character ans,cratertype*14
+      integer targtype,comptype
+      pi=3.14159265
+      third=1./3.
+c
+c    constants for the Schmidt-Holsapple pi scaling and
+c    gravity conversion factors
+c
+      data   Cd/1.88,1.54 ,1.6 /
+      data beta/0.22,0.165,0.22/
+      data gearth,gmoon/9.8,1.67/
+	  data rhomoon,Dstarmoon,Dprmoon/2700.,1.8e4,1.4e5/
+c
+c***********************************************************************
+c
+c     get input conditions from the user's keyboard
+c
+c***********************************************************************
+  10  continue
+      write(*,999)
+      read(*,*) comptype
+	  if((comptype.ne.1).and.(comptype.ne.2)) then
+	    write(*,1010)
+		goto 10
+      endif
+      if(comptype.eq.2) then
+        write(*,1400)
+        read(*,*) Dt
+		if(Dt.eq.0.0) then
+          write(*,1500)
+          read(*,*) Dfinal
+		endif
+      endif
+      write(*,1000)
+      read(*,*) rhoproj
+      if(comptype.eq.1) then
+        write(*,2000)
+        read(*,*) L
+      endif
+      write(*,3000)
+      read(*,*) v
+      write(*,4000)
+      read(*,*) theta
+      write(*,5000)
+      read(*,*) rhotarget
+      write(*,6000)
+      read(*,*) g
+  20  write(*,7000)
+      read(*,*) targtype
+      if((targtype.lt.1).or.(targtype.gt.3)) then
+        write(*,7010)
+        goto 20
+      endif
+c
+c     convert units to SI and compute some auxiliary quantites
+c
+      v=1000.*v                         !km/sec to m/sec
+      Dt=1000.*Dt                       !km to m
+      Dfinal=1000.*Dfinal               !km to m
+      theta=theta*(pi/180.)             !degrees to radians
+      anglefac=(sin(theta))**third      !impact angle factor
+      densfac=(rhoproj**0.16667)/sqrt(rhotarget)
+      pifac=(1.61*g)/v**2               !inverse froude length factor
+      Ct=0.80                           !coefficient for formation time
+      if(targtype.eq.1) Ct=1.3
+	  Dstar=(gmoon*rhomoon*Dstarmoon)/(g*rhotarget) !transition crater
+diameter
+	  Dpr  =(gmoon*rhomoon*Dprmoon  )/(g*rhotarget) !peak-ring crater
+diameter
+c
+c***********************************************************************
+c
+c          computation for specified projectile diameter
+c
+c***********************************************************************
+      if(comptype.eq.1) then
+        m=(pi/6.)*rhoproj*L**3          !projectile mass
+        W=0.5*m*v**2                    !projectile kinetic energy
+        pitwo=pifac*L                   !inverse froude number
+        dscale=(m/rhotarget)**third     !scale for crater diameter
+c
+c     Pi Scaling (Schmidt and Holsapple 1987)
+c
+        Dpiscale=dscale*Cd(targtype)*pitwo**(-beta(targtype))
+        Dpiscale=Dpiscale*anglefac
+c
+c     Yield Scaling (Nordyke 1962) with small correction for depth
+c     of projectile penetration
+c
+        Dyield=0.0133*W**(1/3.4)+1.51*sqrt(rhoproj/rhotarget)*L
+        Dyield=Dyield*anglefac*(gearth/g)**0.165
+c
+c     Gault (1974) Semi-Empirical scaling
+c
+        gsmall=0.25*densfac*(W**0.29)*anglefac
+        if(targtype.eq.3) gsmall=0.015*densfac*(W**0.37)*anglefac**2
+        if(gsmall.lt.100.) then
+          Dgault=gsmall
+        else
+          Dgault=0.27*densfac*(W**0.28)*anglefac
+       endif
+       Dgault=Dgault*(gmoon/g)**0.165
+c
+c    Compute crater formation time from Schmidt and Housen
+c
+        Tform=(Ct*L/v)*pitwo**(-0.61)
+c
+c     Compute final crater type and diameter from pi-scaled transient dia.
+c
+        Dsimple=1.56*Dpiscale
+		if (Dsimple.lt.Dstar) then
+		  Dfinal=Dsimple
+		  cratertype='Simple'
+		else
+		  Dfinal=(Dsimple**1.18)/(Dstar**0.18)
+		  cratertype='Complex'
+		endif
+		if((Dsimple.lt.Dstar*1.4).and.(Dsimple.gt.Dstar*0.71))
+     &     cratertype='Simple/Complex'
+	    if(Dfinal.gt.Dpr) cratertype='Peak-ring'
+c
+c    Print out results
+c
+        write(*,8000) Dyield,Dpiscale,Dgault,Tform
+        write(*,8100) Dfinal/1000.,cratertype
+c
+c***********************************************************************
+c
+c        computation for specified crater diameter
+c
+c***********************************************************************
+      elseif(comptype.eq.2) then
+c
+c     convert input crater rim-to-rim diameter to transient crater dia.
+c
+        if(Dt.eq.0.) then
+          if(Dfinal.lt.Dstar) then
+		    Dt=0.64*Dfinal
+		  else
+		    Dt=0.64*(Dfinal*Dstar**0.18)**0.8475
+		  endif
+		endif
+        dscale=((6.*rhotarget)/(pi*rhoproj))**third
+c
+c     Pi Scaling (Schmidt and Holsapple 1987)
+c
+        Dstd=Dt/anglefac
+        Lpiscale=(Dstd*dscale*pifac**beta(targtype))/Cd(targtype)
+        Lpiscale=Lpiscale**(1./(1.-beta(targtype)))
+c
+c     Yield Scaling (Nordyke 1962) without correction for projectile
+c     penetration depth.
+c
+        Dstd=(Dt*(g/gearth)**0.165)/anglefac
+        W=(Dstd/0.0133)**3.4
+        Lyield=((12.*W)/(pi*rhoproj*v**2))**third
+c
+c     Gault (1974) Semi-Empirical scaling
+c
+        Dstd=Dt*(g/gmoon)**0.165
+        if((Dstd.le.10.).and.(targtype.eq.3)) then
+          W=((Dstd/0.015)/(densfac*anglefac**2))**2.70
+        elseif(Dstd.lt.300.) then
+          W=((Dstd/0.25)/(densfac*anglefac))**3.45
+        else
+          W=((Dstd/0.27)/(densfac*anglefac))**3.57
+        endif
+        Lgault=((12.*W)/(pi*rhoproj*v**2))**third
+c
+c    Compute crater formation time for Pi-scaled diameter
+c
+        Tform=(Ct*Lpiscale/v)*(pifac*Lpiscale)**(-0.61)
+c
+c    Print out results
+c
+        write(*,8500) Lyield,Lpiscale,Lgault,Tform
+      else
+        write(*,9500) comptype     !user should never get here
+      endif
+c
+c***********************************************************************
+c
+c     Check to see if user wants to quit
+c
+c***********************************************************************
+      write(*,9000)
+      read(*,*) ans
+      if((ans.eq.'Y').or.(ans.eq.'y')) goto 10
+      stop
+c
+  999 format(/
+     &'            *** IMPACT SIZE ***'//
+     &'This is a program to estimate the size of a gravity-'/
+     &'dominated impact crater or the projectile that made it.'/
+     &'Three different estimates are presented, but the '/
+     &'pi-scaling method is currently considered the best!'//
+     &'   enter the type of computation desired (1 or 2):'/
+     &'      type 1, crater size'/
+     &'      type 2, projectile size....................... ',$)
+ 1010 format(/
+     &'   entry error!  computation type must be 1 or 2.  Try again!')
+ 1400 format(/
+     &'Crater descriptor:'//
+     &'  enter the transient crater diameter in km'/
+	 &'  (if the final, not the transient crater diameter'/
+	 &'   is known, enter zero (0.0) here)................. ',$)
+ 1500 format(/
+     &'  enter the final crater diameter in km............. ',$)
+ 1000 format(/
+     &'Projectile descriptors:'//
+     &'  enter the projectile density in kg/m^3............ ',$)
+ 2000 format(
+     &'  enter the projectile diameter in m................ ',$)
+ 3000 format(/
+     &'Impact conditions:'//
+     &'  enter the impact velocity in km/sec............... ',$)
+ 4000 format(
+     &'  enter the impact angle in degrees................. ',$)
+ 5000 format(/
+     &'Target descriptors:'//
+     &'  enter the target density in kg/m^3................ ',$)
+ 6000 format(
+     &'  enter the acceleration of gravity in m/sec^2...... ',$)
+ 7000 format(
+     &'  enter the target type, (1-3):'/
+     &'    type 1 = liquid water'/
+     &'    type 2 = loose sand  '/
+     &'    type 3 = competent rock or saturated soil....... ',$)
+ 7010 format(//'target type must be 1, 2 or 3.  try again!'//)
+ 8000 format(//'Three scaling laws yield the following *transient*',
+     &' crater diameters:'/
+     &'  (note that diameters are measured at the pre-impact surface.'/
+     &'   Rim-to-rim diameters are about 1.25X larger!)'//,
+     &' Yield Scaling                       Dyield   = ',1pe10.2,' m'/
+     &' Pi Scaling    (Preferred method!)   Dpiscale = ',1pe10.2,' m'/
+     &' Gault Scaling                       Dgault   = ',1pe10.2,' m'//
+     &' Crater Formation Time               Tform    = ',1pe10.2,' sec'
+     & //)
+ 8100 format(
+     &'Using the Pi-scaled transient crater, the *final* crater has'/
+	 &'rim-to-rim diameter=',1pe10.2,' km, and is of type: ',a14//)
+ 8500 format(//'Three scaling laws yield the following projectile',
+     &' diameters:'/
+     &'  (note that diameters assume a spherical projectile)'//
+     &' Yield Scaling                       Lyield   = ',1pe10.2,' m'/
+     &' Pi Scaling    (Preferred method!)   Lpiscale = ',1pe10.2,' m'/
+     &' Gault Scaling                       Lgault   = ',1pe10.2,' m'//
+     &' Crater Formation Time               Tform    = ',1pe10.2,' sec'
+     & //)
+ 9000 format('Do you want to make another calculation (y/n)?......',$)
+ 9500 format('unrecognized computation type = ',i5,
+     &' (should be either 1 or 2)')
+      end
+</pre>
+</div>
+
+<div id="tabs-4">
+  <p>Original Source for cCalc003Crater - H J Melosh, Ross A Beyer </p>
+  <p>&nbsp;</p>
+</div>
+
+</div>
+</div>
+<br/>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cCalc003Crater</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

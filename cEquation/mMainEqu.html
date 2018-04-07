@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Astrolab Equations ------------ [mMainEqu]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+
+<!-- Page Specific Code -->
+  
+<!-- local styles to colour code table rows -->
+<style>
+.live { background-color:#CCFFCC; }
+.test { background-color:#FFFFCC; }
+.dev { background-color:#FF00FF; }
+</style>
+
+</head>
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Astrolab Equations Menu</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+          <button class="mnubutton2" type="button" title="Main Menu" onClick="location.href='../mMain.html'">mMain</button>
+          &nbsp;
+          <button class="mnubutton2" type="button" title="Live Sheets Calculations Menu" onClick="location.href='../mMainLS.html'">mMainLS</button>
+          </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">A - F</a></li>
+        <li><a href="#tabs-2">J - R</a></li>
+        <li><a href="#tabs-3">S - Z</a></li>
+        <li><a href="#tabs-4">Notes</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table class="InformationTable1" style="width:100%;">
+<tr>
+<th style="width:10%;">Sort</th>
+<th style="width:30%;">Label</th>
+<th style="width:30%;">Equation</th>
+<th style="width:30%;">Link</th>
+</tr>
+   <tr class="live">
+  <td>
+  <b>A</b>
+  </td>
+  <td>
+  <ul>
+        <li>Absolute Magnitude</li>
+      </ul>
+  </td>
+  <td>
+   \[
+           M = m - 5 (( \log D_L) -1 )
+        \]
+  </td>
+  <td><button class="mnubutton1" type="button" onClick="location.href='cEqu005AbsMag.html'">cEqu005AbsMag</button></td>
+   </tr>
+   <tr class="live">
+     <td>&nbsp;</td>
+     <td>  <ul>
+        <li>Airmass</li>
+      </ul>
+     </td>
+     <td>
+     \[ Airmass = \frac{1}{cos \; z} = sec \; z \]
+     </td>
+     <td><button class="mnubutton1" type="button" onClick="location.href='cEqu006Air.html'">cEqu006Air</button></td>
+   </tr>
+  <tr class="live">
+  <td>
+   <b>C</b></td>
+  <td>
+  <ul>
+	      <li>Circumference of a Sphere
+        </li>
+	    </ul>
+  </td>
+  <td>
+  \[ C = 2 \pi r \]
+  </td>
+  <td><button class="mnubutton1" type="button" onClick="location.href='cEqu004Circles.html'">cEqu004Circles</button></td>
+   </tr>
+   <tr class="live">
+     <td>&nbsp;</td>
+     <td><ul><li>
+     Coriolis</li></ul>
+     </td>
+     <td>\[ V = \frac{D \pi [ cos(N) - cos(F) ] }{T} \]</td>
+     <td><button class="mnubutton1" type="button" onClick="location.href='cEqu021Cor.html'">cEqu021Cor</button></td>
+   </tr>
+  <tr class="live">
+  <td>
+  <b>D</b>
+  </td>
+  <td>
+  <ul>
+	      <li>The Drake Equation </li>
+      </ul>
+  </td>
+  <td>
+  \[
+           N = R \times f_p \times n_e \times f_c \times f_l \times f_i \times L
+  \]
+  </td>
+  <td ><button class="mnubutton1" type="button" onClick="location.href='cEqu001Drake.html'">cEqu001Drake</button></td>
+  </tr>
+  <tr class="live">
+    <td><b>E</b></td>
+    <td>    <ul>
+          <li>Einstein</li>
+      </ul></td>
+    <td>\[ E = m c^2 \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu016Emc.html'">cEqu016Emc</button></td>
+  </tr>
+  <tr class="live">
+    <td>&nbsp;</td>
+    <td><ul><li>Escape Velocity, M = mass of planet</li></ul></td>
+    <td>
+\[ v_{escape} = \sqrt{\frac{2GM}{R}} \] </td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu019EscV.html'">cEqu019EscV</button></td>
+  </tr>
+  <tr class="live">
+    <td><b>F</b></td>
+    <td><ul>
+          <li>Focal Ratio 
+          </li>
+      </ul></td>
+    <td>\[ Focal\; Ratio = f-ratio = \frac{f}{D} \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu012FR.html'">cEqu012FR</button></td>
+  </tr>
+  <tr class="live">
+    <td>&nbsp;</td>
+    <td>
+    <ul>
+    <li>Force
+    </li>
+    </ul>
+    </td>
+    <td>\[ F = m \times a \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu014Force.html'">cEqu014Force</button></td>
+  </tr>
+  <tr class="test">
+    <td>&nbsp;</td>
+    <td>  <ul>
+    <li>Frank-Sullivan Equation
+    </li>
+    </ul></td>
+    <td> \[ A = N_{ast}  \times f_{bt} \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu025DrakeRev2.html'">cEqu025DrakeRev2</button></td>
+  </tr>
+  <tr class="test">
+    <td>G</td>
+    <td>
+    <ul>
+    <li> Galaxy Mass
+    </li>
+    </ul>
+    </td>
+    <td> \[ M_R = \frac{Rv^2}{G}
+    \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu015GMass.html'">cEqu015GMass</button></td>
+  </tr>
+  <tr class="live">
+    <td>&nbsp;</td>
+    <td><ul>
+    <li> Gravitational force at a surface
+    </li>
+    </ul>
+    </td>
+    <td>\[ g = \frac{GM}{r^2} \]  </td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu022g.html'">cEqu022g</button></td>
+  </tr>
+  <tr class="live">
+    <td>H</td>
+    <td><ul><li>Hubble</li></ul></td>
+    <td>\[V_r = H_o \times D \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu020Hubble.html'">cEqu020Hubble</button></td>
+  </tr>
+</table>
+<br/>
+
+</div>
+
+<div id="tabs-2">
+<table class="InformationTable1" style="width:100%;">
+<tr>
+<th style="width:10%;">Sort</th>
+<th style="width:30%;">Label</th>
+<th style="width:30%;">Equation</th>
+<th style="width:30%;">Link</th>
+</tr>
+    <tr class="test">
+    <td><b>J</b></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><b>K</b></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      
+      <strong>L</strong>
+    </td>
+    <td>
+</td>
+    <td>
+    </td>
+    <td></td>
+  </tr>
+  <tr class="test">
+    <td>&nbsp;</td>
+    <td><ul>
+        <li>Local Sidereal Time</li>
+      </ul></td>
+    <td>\[ HA = LST - RA \] \[ LST = GST - \lambda \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu007LST.html'">cEqu007LST</button></td>
+  </tr>
+  <tr class="live">
+    <td>&nbsp;</td>
+    <td><ul>
+        <li>Luminosity </li>
+      </ul></td>
+    <td>\[ L = 4 \pi R^2 \sigma T^4 \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu003Luminosity.html'">cEqu003Luminosity</button></td>
+  </tr>
+  <tr class="dev">
+    <td>M</td>
+    <td><ul>
+        <li>Molecular velocity </li>
+      </ul></td>
+    <td>\[   v_{avg} = 0.157 \sqrt{T/\mu}  \]</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>O</td>
+    <td><ul>
+      <li>Orbit Velocity</li></ul></td>
+    <td>\[ v_{orbit} = \sqrt{\frac{GM}{R}} \] </td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu018OrbV.html'">cEqu018OrbV</button></td>
+  </tr>
+  <tr class="live">
+    <td><strong>P</strong></td>
+    <td><ul>
+        <li>Plate Scale (Image Scale)</li>
+      </ul></td>
+    <td>\[ Plate\; Scale = \frac{1}{f} \]</td>
+    <td class="live"><button class="mnubutton1" type="button" onClick="location.href='cEqu008Plate.html'">cEqu008Plate</button></td>
+  </tr>
+  <tr class="test">
+    <td>&nbsp;</td>
+    <td><ul>
+      <li>Photon Energy</li></ul></td>
+    <td>\[ E = f \times h \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu024Efh.html'">cEqu024Efh</button></td>
+  </tr>
+  <tr>
+    <td><strong>R</strong></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</div>
+
+<div id="tabs-3">
+<table class="InformationTable1" style="width:100%;" >
+<tr>
+<th>Sort</th><th>Label</th><th>Equation</th><th>Link</th>
+</tr>
+  <tr class="live">
+    <td style="width:10%;"><strong>S</strong></td>
+    <td style="width:30%;"><ul>
+        <li>Seager Equation</li>
+        </ul></td>
+    <td style="width:30%;">&nbsp;</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu017DrakeRev1.html'">cEqu017DrakeRev1</button></td>
+  </tr>
+  <tr class="live">
+    <td style="width:10%;"><br />
+      </td>
+    <td style="width:30%;">
+      <ul>
+        <li>Stellar Parallax</li>
+        </ul>
+  </td>
+    <td style="width:30%;">\[ d = \frac{1}{\pi_p} \]
+      </td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu002Parallax.html'">cEqu002Parallax</button></td>
+  </tr>
+  <tr class="live">
+    <td>
+      </td>
+    <td>
+      <ul>
+        <li>Surface of Sphere</li>
+        </ul>
+  </td>
+    <td>\[ Area \; a = \frac{4}{3} \times \pi \times r^2 \]
+      </td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu004Circles.html'">cEqu004Circles</button></td>
+  </tr>
+  <tr class="test">
+    <td><b>T</b></td>
+    <td><ul>
+      <li>Time Dilation</li>
+      </ul></td>
+    <td>\[
+      dt = t0 \times \sqrt{ 1 - \frac{v^2}{c^2}}
+      \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu013TD.html'">cEqu013TD</button></td>
+  </tr>
+  <tr class="live">
+    <td><b>V</b></td>
+    <td>      <ul>
+        <li>Volume of a Sphere</li>
+      </ul></td>
+    <td>\[ Volume \; v = 4 \times \pi \times r^2 \]
+</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu004Circles.html'">cEqu004Circles</button></td>
+  </tr>
+  <tr class="live">
+    <td><b>W</b></td>
+    <td><ul>
+        <li>Wein's Law</li>
+      </ul></td>
+    <td>\[ T = \frac{b}{\lambda_{max}}  \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu009Wein.html'">cEqu009Wein</button></td>
+  </tr>
+  <tr class="test">
+    <td><b>Z</b></td>
+    <td><ul>
+        <li>Zenith Angle</li>
+      </ul></td>
+    <td>\[ cos \; z = sin \delta \; sin \phi + cos \delta \; cos \phi \; cos HA \]</td>
+    <td><button class="mnubutton1" type="button" onClick="location.href='cEqu010Zenith.html'">cEqu010Zenith</button></td>
+  </tr>
+</table>
+</div>
+
+<div id="tabs-4">
+<br/>
+Equation pages status colour coding:
+<p>
+     <table><tr><td style="background-color:#CCFFCC"> Page is tested and functioning </td><td></td><td style="background-color:#FFFFCC"> Page function is still being tested </td><td></td><td style="background-color:#FF00FF"> Page is still under development </td></tr></table>
+
+</div>
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">mMainEqu</td>
+    </tr>
+  </table>
+</footer>
+
+
+</body>
+</html>

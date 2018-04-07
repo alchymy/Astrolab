@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Calendar Date And Time To Julian Day And Sidereal Times</title>
+
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js">
+  </script>
+  
+
+<script>
+<!-- 
+
+function compute(form) {
+    DD=eval(form.dia.value);
+    MM=eval(form.mes.value);
+    YY=eval(form.any.value);
+    LG=eval(form.lond.value);
+    LM=eval(form.lonm.value);
+    LS=eval(form.lons.value);
+    BG=eval(form.latd.value);
+    BM=eval(form.latm.value);
+    BS=eval(form.lats.value);
+    TH=eval(form.hora.value);
+    TM=eval(form.min.value);
+    TS=eval(form.seg.value);
+    with (Math) { 
+
+//        longitude to latitude negative correction
+        Lon=LG+LM/60+LS/3600;
+          if (LG < 0) Lon=LG-LM/60-LS/3600;
+        Lat=BG+BM/60+BS/3600;
+          if (BG < 0) Lat=BG-BM/60-BS/3600;
+
+//        Julian Day 
+        HR = TH + TM / 60+TS/3600;
+        DD=DD+HR/24;
+        DY = Math.floor(DD);
+        if (MM<3) {
+                YY = YY - 1;
+                MM = MM + 12;
+                }
+
+        if (YY + MM / 100 + DY / 10000 >= 1582.1015)  {
+                GR =2-Math.floor(YY/100)+Math.floor(Math.floor(YY/100)/4);
+                } else {
+                        GR = 0;
+                        }
+
+        JD= Math.floor(365.25* YY)+Math.floor(30.6001*(MM+1))+DY+1720994.5+GR ; 
+        JD2=JD+HR/24;
+        
+//        time sidereal 0h
+        T=(JD- 2415020)/36525;
+        SS= 6.6460656 + 2400.051*T +0.00002581*T*T;
+        ST =(SS/24-Math.floor(SS/24))*24;
+        GSTH=Math.floor(ST);
+        GSTM=Math.floor((ST - Math.floor(ST)) * 60);
+        GSTS=((ST -Math.floor(ST)) * 60 - GSTM) * 60;
+
+//        time sidereal local
+        SA=ST+(DD-Math.floor(DD))*24*1.002737908;
+        SA=SA+Lon/15;
+        if (SA<0) {
+                SA=SA+24;
+                }
+        if (SA>24) {
+                SA=SA-24;
+                }
+
+        TSH=floor(SA);
+        TSM=floor((SA - floor(SA)) * 60);
+        TSS=((SA -floor(SA)) * 60 - TSM) * 60;
+    }
+
+    form.tsidh.value =GSTH;
+    form.tsidm.value =GSTM;
+    form.tsids.value =GSTS;
+    form.tsh.value =TSH;
+    form.tsm.value =TSM;
+    form.tss.value =TSS;
+    form.dj.value =JD2;
+
+}
+
+// -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+
+<STYLE TYPE="text/css">
+<!--
+body { font-family: Tahoma, Verdana; }
+input.btn {
+  color:black;
+  font: bold 75% 'tahoma',helvetica,sans-serif;
+  background-color:#ffd148;
+  border: 2px solid;
+  border-color: #c7c5c8;
+ }
+  
+ input.btn2 {
+  color:black;
+  font: bold 95% 'tahoma',helvetica,sans-serif;
+  background-color:#ffd148;
+  border: 2px solid;
+  border-color: #c7c5c8;
+ 
+}
+//-->
+</STYLE>
+
+
+<center>
+<TABLE ALIGN=MIDDLE width="950" BORDER=0 CELLPADDING=5>
+<TR BGCOLOR=#FFFFFF>
+<!--ROW 1-->
+<TD WIDTH=80%>
+<H1>Calendar Date And Time To Julian Day And Sidereal Times</H1>
+<center>
+<TABLE ALIGN=MIDDLE BORDER=0 CELLPADDING=5>
+<TR BGCOLOR="#FFFFFF">
+<!--ROW 1-->
+<TD WIDTH=80%>
+<center>
+<TABLE ALIGN=MIDDLE BORDER=5 CELLPADDING=5>
+<TR BGCOLOR=#FFFFFF>
+<!--ROW 1-->
+<TD WIDTH=80% BGCOLOR="#B6D4D2">
+This <B>calculator</B>requires the use of  enabled and capable browsers. This is an advanced special date and time calculator. Enter the  date and time in the appropriate fields; also enter the desired longitude and latitude. Then press the Calculate button to calculate the <A HREF="http://www.csgnetwork.com/glossaryj.html#Julian" target="blank"><B>Julian</B></a> Date and Sidereal times, local and Greenwich. Each <A HREF="http://www.csgnetwork.com/glossaryf.html#field" target="blank"><B>field</B></a> MUST have a valid value in it. A Julian date is valid from January 1, 4713 B.C., or to those that do not accept Christianity, BCE, to present, sometime after 2004 A.D., or for the non-Christians, CE. For Financial dates and legal dates, days between dates, days before a date or days after a date, day of the week for a given date in history, involving the last 2 centuries, we suggest that you use our <A HREF="http://www.csgnetwork.com/juliandaydate.html" target="blank"><b>Julian to current day and date calculator</b></a>. Sidereal time is the hour angle of the vernal equinox, the ascending node of the ecliptic on the celestial equator. The daily motion of this point provides a measure of the rotation of the Earth with respect to the stars, rather than the Sun. Local mean sidereal time is computed from the current Greenwich Mean Sidereal Time plus an input offset in longitude (converted to a sidereal offset by the ratio 1.00273790935 of the mean solar day to the mean sidereal day.) Applying the equation of equinoxes, or nutation of the mean pole of the Earth from mean to true position, yields local apparent sidereal time. Astronomers use local sidereal time because it corresponds to the coordinate right ascension of a celestial body that is presently on the local meridian. Nutation is a slight irregular motion (etymologically a "nodding") in the axis of rotation of a planet, due to the fact that the tidal forces which cause precession of the equinoxes vary over time so that the speed of precession is not constant. In the case of Earth, the principal sources of tidal force are the Sun and Moon, which continually change location relative to each other and thus cause nutation in Earth's axis. The largest component of Earth's nutation has a period of 18.6 years, the same as that of the precession of the Moon's orbital nodes. However, there are other significant periodical terms which must be calculated depending on the desired accuracy of the result. Values of nutation are usually divided into components parallel and perpendicular to the ecliptic. The component which works along the ecliptic is known as the nutation in longitude. The component perpendicular to the ecliptic is known as the nutation in obliquity. These values are important in observation from Earth for calculating the apparent position of astronomical objects. Nutation was discovered in 1728 by the English astronomer James Bradley, but was not explained until 20 years later. Our appreciation to <a target="_blank" href="http://serviastro.am.ub.es/principal_eng.html"> ServiAstro</a> for providing the script.
+<br>
+<br>
+<CENTER>
+<TABLE ALIGN=MIDDLE BORDER=5 CELLPADDING=5>
+<form>
+<TR BGCOLOR=#FFFFFF>
+<!--ROW 1-->
+<td valign="top">
+
+</td>
+<TD>
+<center>
+<h3>
+Input Valid UTC Data For Calculation<br />Entry Or Result
+</h3>
+</center>
+<CENTER>
+<TABLE ALIGN=MIDDLE BORDER=5 CELLPADDING=5>
+<TR BGCOLOR=#FFFFFF>
+<!--ROW 1-->
+<TD ALIGN=CENTER> Year (YYYY) </TD>
+<TD ALIGN=CENTER> Month (MM) </TD>
+<TD ALIGN=CENTER> Day (DD) </TD>
+</TR>
+<TR BGCOLOR=#FFFFFF>
+    <td><input type="text" name="any" value="2013" size="18"></td>
+    <td><input type="text" name="mes" value="06" size="18"></td>
+    <td><input type="text" name="dia" value="10" size="18"></td>
+</TR>
+<TR BGCOLOR=#FFFFFF>
+<TD ALIGN=CENTER> Hours </TD>
+<TD ALIGN=CENTER> Minutes </TD>
+<TD ALIGN=CENTER> Seconds </TD>
+</TR>
+<TR BGCOLOR=#FFFFFF>
+<td><input type="text" name="hora" value="0" size="18"></td>
+<td><input type="text" name="min" value="0" size="18"></td>
+<td><input type="text" name="seg" value="0" size="18"></td>
+</TR>
+<tr>
+<td align="center" colspan="3">Latitude</td></TR>
+<TR BGCOLOR=#FFFFFF>
+<TD ALIGN=CENTER> Degrees </TD>
+<TD ALIGN=CENTER> Minutes </TD>
+<TD ALIGN=CENTER> Seconds </TD>
+</TR>
+<TR BGCOLOR=#FFFFFF>
+
+<td><input type="text" name="latd" value="49" size="18"></td><td>
+<input type="text" name="latm" value="26" size="18"></td><td>
+<input type="text" name="lats" value="10" size="18"></td>
+</tr>
+<tr>
+<td align="center" colspan="3">Longitude</td></TR>
+<TR BGCOLOR=#FFFFFF>
+<TD ALIGN=CENTER> Degrees </TD>
+<TD ALIGN=CENTER> Minutes </TD>
+<TD ALIGN=CENTER> Seconds </TD>
+</TR>
+<TR BGCOLOR=#FFFFFF>
+
+<td><input type="text" name="lond" value="2" size="18"></td><td>
+<input type="text" name="lonm" value="36" size="18"></td><td>
+<input type="text" name="lons" value="02" size="18"></td>
+</tr>
+<tr>
+<td align="center" colspan="3" BGCOLOR="#B6D4D2"><INPUT TYPE="button" VALUE="Calculate" ONCLICK="compute(this.form)">
+<br><br />
+</td> 
+</tr>
+<tr>
+<td align="center" colspan="3">Julian Date <INPUT TYPE="text" NAME="dj" size="18"> </td> 
+</tr>
+<td align="center" colspan="3">Greenwich Mean 0h Sidereal Time</td></tr>
+<TR BGCOLOR=#FFFFFF>
+<TD ALIGN=CENTER> Hours </TD>
+<TD ALIGN=CENTER> Minutes </TD>
+<TD ALIGN=CENTER> Seconds </TD>
+</TR>
+<tr>
+<td><INPUT TYPE="text" NAME="tsidh" size="18"></td><td><INPUT
+TYPE="text" NAME="tsidm" size="18"></td><td><INPUT TYPE="text" NAME="tsids" size="18"></td>
+</tr>
+<tr>
+<td align="center" colspan="3">Local Sidereal Time</td></tr>
+<TR BGCOLOR=#FFFFFF>
+<TD ALIGN=CENTER> Hours </TD>
+<TD ALIGN=CENTER> Minutes </TD>
+<TD ALIGN=CENTER> Seconds </TD>
+</TR>
+<tr>
+<td><INPUT TYPE="text" NAME="tsh" size="18"></td><td><INPUT
+TYPE="text" NAME="tsm" size="18"></td><td><INPUT TYPE="text" NAME="tss" size="18"></td>
+</tr>
+</table>
+</center>
+</FORM>
+</CENTER>
+</TD>
+</TR>
+</TABLE>
+Default location<br>
+49� 26' 10&quot; N / 02� 36' 02&quot; W<br>
+Guernsey Airport</CENTER>
+</TD>
+</TR>
+</TABLE>
+</td>
+</tr>
+</table>
+</center>
+<BR>
+<BR>
+</td></tr></table>
+
+
+
+
+
+</TD>
+</TR>
+</TABLE>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%"></td>
+    </tr>
+  </table>
+</footer>
+
+</BODY> 
+</HTML>

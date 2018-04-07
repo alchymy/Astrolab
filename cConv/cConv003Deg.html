@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<title>Convert Degrees/Minutes/Seconds to/from Decimal and Radians ------------ [cConv004Deg]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+
+<script>
+
+
+    var degreesSign = 1;
+    var absDegrees = 0;
+    var absMinutes = 0;
+    var absSeconds = 0;
+    var degreesAbs = 0;
+
+
+function convDecDegrees() {
+
+    outputResultForm1.result4.value = Math.floor(degreesAbs / 1000000);
+    outputResultForm1.result5.value = (Math.floor(  ((degreesAbs/1000000) - Math.floor(degreesAbs/1000000)) * 60)  );
+    outputResultForm1.result6.value = (( Math.floor(((((degreesAbs/1000000) - Math.floor(degreesAbs/1000000)) * 60) - Math.floor(((degreesAbs/1000000) - Math.floor(degreesAbs/1000000)) * 60)) * 100000) *60/100000 ) );
+    outputResultForm1.result7.value = inputDataView1.input7.value * (0.0174543);
+
+}
+
+
+function convDegreesDec() {
+
+    outputResultForm1.result1.value = Math.round(absDegrees + (absMinutes/60.) + (absSeconds/3600.) ) * degreesSign/1000000;
+    outputResultForm1.result2.value = outputResultForm1.result1.value * (0.017453);
+    degreesSign=1;
+}
+
+ 
+//-->
+</script>
+
+
+</head>
+
+<body>
+
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">Convert Degrees/Minutes/Seconds to/from Decimal and Radians</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+         <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Calculation</a></li>
+		<li><a href="#tabs-2">Notes</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+
+<form name="inputDataView1" id="inputDataView1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="inputTable1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td title="projectile diameter km" >
+     Degrees</td>
+    <td>
+
+      <input name="input1" type="text" size="12" value="" maxlength="10" id="input1" onblur="
+
+
+      if(inputDataView1.input1.value &lt; 0) {
+      degreesSign = -1; 
+      }
+      absDegrees = Math.abs( Math.round(inputDataView1.input1.value * 1000000.));
+
+	 //Math.round is used to eliminate the small error caused by rounding in the computer:
+	 //e.g. 0.2 is not the same as 0.20000000000284
+
+     //Error checks
+     if(absDegrees &gt; (180 * 1000000)) {
+     alert(' Degrees must be in the range of 0 to 180. '); 
+     inputDataView1.input1.value = '';  
+     inputDataView1.input1.value=''; 
+     inputDataView1.input2.value=''; 
+     }
+
+" />
+     (max 180)</td>
+    <td>deg</td>
+    <td>minutes</td>
+    <td>
+      <input name="input2" type="text" size="12" value="" maxlength="2" id="input2"  onblur="
+
+    inputDataView1.input2.value = Math.abs(Math.round(inputDataView1.input2.value * 1000000.)/1000000);  //integer
+    absMinutes = Math.abs(Math.round(inputDataView1.input2.value * 1000000.));  //integer
+
+     //Error checks
+     if(absMinutes &gt;= (60 * 1000000)) {
+     alert(' Minutes must be in the range of 0 to 59. ');   
+     inputDataView1.input2.value=''; 
+     inputDataView1.input3.value=''; }
+
+
+ " />
+       
+    </td>
+    <td>&#39;</td>
+    <td>seconds</td>
+    <td>
+      <input name="input3" type="text" size="12" value="" maxlength="6" id="input3"  onblur="
+
+     inputDataView1.input3.value = Math.abs(Math.round(inputDataView1.input3.value * 1000000.)/1000000);
+     absSeconds = Math.abs(Math.round(inputDataView1.input3.value * 1000000.));         // Note: kept as big integer for now, even if submitted as decimal
+
+     //Error checks
+     if(absSeconds &gt; (59.99999999 * 1000000)) {  alert(' seconds must be 0 or greater \n and less than 60. ');   inputDataView1.input3.value=''; }
+
+" />
+       
+     </td>
+     <td>&quot;</td>
+   </tr>
+   <tr>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+     <td>&nbsp;</td>
+    </tr>
+   <tr>
+     <td>Decimal Degrees</td>
+     <td>
+       <input name="input7" type="text" size="12" value="" maxlength="10" id="input7" onblur="
+
+         degreesAbs = Math.abs( Math.round(inputDataView1.input7.value * 1000000.));
+
+	 //Math.round is used to eliminate the small error caused by rounding in the computer:
+	 //e.g. 0.2 is not the same as 0.20000000000284
+
+     //Error checks
+     if(degreesAbs &gt; (180 * 1000000)) { 
+     alert(' Degrees must be in the range of 0. to 180. '); 
+     inputDataView1.input7.value = '';  
+     degreesAbs=0; 
+     }
+
+" />
+      </td>
+      <td>deg</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="9">
+        <input type="button" size="37"  value = "  Convert to Decimal  " onclick ="javascript:convDegreesDec();" />
+        &nbsp;&nbsp;&nbsp; 
+        <input type="button" value="Convert Decimal Degrees" onclick="javascript:convDecDegrees();" />&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" value=" Click here to clear input values " />
+      </td>
+    </tr>
+  </table>
+</form>
+
+<hr/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="outputTable1">
+    <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    </tr>
+    <tr>
+      <td>decimal Degrees</td>
+      <td>
+      <input type="text" name="result1" id="result1" size="12" />      </td>
+      <td>deg</td>
+      <td>Radians</td>
+      <td>
+      <input type="text" name="result2" id="result2" size="12" /></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Degrees</td>
+      <td>
+      <input type="text" name="result4" id="result4" size="12" />      </td>
+      <td>deg</td>
+      <td>minutes</td>
+      <td>
+      <input type="text" name="result5" id="result5" size="12" />      </td>
+      <td>&#39;</td>
+      <td>seconds</td>
+      <td>
+      <input type="text" name="result6" id="result6" size="12" /></td>
+      <td>&quot;</td>
+    </tr>
+    <tr>
+      <td>Radians</td>
+      <td>
+      <input type="text" name="result7" id="result7" size="12" /></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="9">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+    </tr>
+  </table>
+</form>
+
+&nbsp;
+</div>
+
+<div id="tabs-2">
+<p></p>
+This utility permits the user to convert degrees between decimal 
+degrees and degrees, minutes, and seconds and visa versa, for latitude and 
+longitude calculations.<br/>
+<br/>
+1 degree = 60 arcmin = 3600 arcsec = &nbsp;(π / 180) radians.&nbsp; 
+1 radian = (180 / π) degrees = 206265 arcsec<b> link to std values page</b><br/>
+</div>
+
+
+</div>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">| cCalc003Deg</td>
+    </tr>
+  </table>
+</footer>
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>The Drake Equation ------------ [cEqu001Drake]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+<!-- Page Specific Code using MVC -->
+
+<script>
+
+// define all variables
+    var Rate;   // star form rate
+    var fracp;  // frac with planets
+    var nume;   // number planets
+    var fracl;  // frac develop life
+    var fraci;  // frac intelligent
+    var fracc;  // frac technology
+    var Lt;     // length time
+    var decPlaces; // decimal places
+    var N;      // Number civilisations
+	
+
+
+// CONTROLLER
+
+function main() {
+
+getParameters();
+N = equDrake(Rate,fracp,nume,fracl,fraci,fracc,Lt);
+outputResult();
+
+}
+
+function getParameters()  {
+
+// get input parameters
+ 
+    Rate = document.inputDataForm1.input1.value;
+    fracp = document.inputDataForm1.input2.value;
+    nume = document.inputDataForm1.input3.value;
+    fracl = document.inputDataForm1.input4.value;
+    fraci = document.inputDataForm1.input5.value;
+    fracc = document.inputDataForm1.input6.value;
+    Lt = document.inputDataForm1.input7.value;
+    decPlaces = document.inputDataForm1.input99.value;
+
+}
+
+function outputResult() {
+
+// Output Results grid on outputResultForm1
+
+    var outputResult1 = new Number(N);
+    document.outputResultForm1.result1.value = outputResult1.toExponential(decPlaces);
+  
+}
+
+function clearInputValues() {
+
+    document.inputDataForm1.input1.value = "";
+    document.inputDataForm1.input2.value = "";
+    document.inputDataForm1.input3.value = "";
+    document.inputDataForm1.input4.value = "";
+    document.inputDataForm1.input5.value = "";
+    document.inputDataForm1.input6.value = "";
+    document.inputDataForm1.input7.value = "";
+    
+}
+
+
+// MODEL
+
+function equDrake(R,fp,ne,fl,fi,fc,L) {
+
+   var N =  R * fp * ne * fl * fi * fc * L;
+
+return N;
+}
+
+</script>
+
+
+</head>
+
+<body>
+<!-- VIEW -->
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">The Drake Equation</td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Equation and Calculation</a></li>
+		<li><a href="#tabs-2">Notes</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+         
+  \[ N = R \times f_p \times n_e  \times f_l \times f_i \times f_c \times   \]
+          
+   <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+
+		where <i>N</i> is the number of civilisations in our galaxy 
+					with which we might be able to communicate with.<br/><br/>
+
+
+    Variables / Constants:
+  <ul>
+    <li><i>R</i> is the average rate of star formation in our galaxy</li>
+    <li><i>f</i><sub><i>p</i></sub> is the fraction of those stars that have planets</li>
+    <li><i>n</i><sub><i>e</i></sub> is the average number of planets that can potentially support life per star that has planets </li>
+    <li><i>f</i><sub>&#8467;</sub> is the fraction of the above that actually go on to develop life at some point </li>
+    <li><i>f</i><sub><i>i</i></sub> is the fraction of the above that actually go on to develop intelligent life </li>
+ <li><i>f</i><sub><i>c</i></sub> is the fraction of civilizations that develop a technology that releases detectable signs of their existence into space </li>
+    <li><i>L</i> is the length of time such civilizations release detectable signals into space </li>
+  </ul>
+  
+  <br/>
+		<br/>
+		Example: Using Drake's 1961 figures in the order above 1, 0.2, 1, 1, 1, 0.1, 1000.<br/>
+&nbsp;<br />
+</td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td>R</td>
+    <td>
+      <input type="text" name="input1" id="input1" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>f<sub>p</sub></td>
+    <td><input type="text" name="input2" id="input2" size="12" value="0.2" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>n<sub>e</sub></td>
+    <td>
+      <input type="text" name="input3" id="input3" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>f<sub>l</sub></td>
+    <td><input type="text" name="input4" id="input4" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>f<sub>i</sub></td>
+    <td><input type="text" name="input5" id="input5" size="12" value="1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>f<sub>c</sub></td>
+    <td><input type="text" name="input6" id="input6" size="12" value="0.1" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>L</td>
+    <td><input type="text" name="input7" id="input7" size="12" value="1000" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td>N</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>n/a&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+
+
+<div id="tabs-2">
+  How can we estimate the number of technological civilizations that might exist among the stars? While working as a radio astronomer at the National Radio Astronomy Observatory in Green Bank, West Virginia, Dr. Frank Drake conceived an approach to bound the terms involved in estimating the number of technological civilizations that may exist in our galaxy. The Drake Equation, as it has become known, was first presented by Drake in 1961 and identifies specific factors thought to play a role in the development of such civilizations. Although there is no unique solution to this equation, it is a generally accepted tool used by the scientific community to examine these factors.
+-- Frank Drake, 1961
+  <p>
+There is considerable disagreement on the values of these parameters, but the 'educated guesses' used by Drake and his colleagues in 1961 were:
+<ul>
+<li>
+R = 1/year (1 star formed per year, on the average over the life of the galaxy; this was regarded as conservative)
+</li>
+<li>
+f<sub>p</sub> = 0.2-0.5 (one fifth to one half of all stars formed will have planets)
+</li>
+<li>
+n<sub>e</sub> = 1-5 (stars with planets will have between 1 and 5 planets capable of developing life)
+</li>
+<li>
+f<sub>l</sub> = 1 (100% of these planets will develop life)
+</li>
+<li>
+f<sub>i</sub> = 1 (100% of which will develop intelligent life)
+</li>
+<li>
+f<sub>c</sub> = 0.1-0.2 (10-20% of which will be able to communicate)
+</li>
+<li>
+L = 1000-100,000,000 years (which will last somewhere between 1000 and 100,000,000 years)
+</li>
+</ul>
+Inserting the above minimum numbers into the equation gives a minimum N of 20. Inserting the maximum numbers gives a maximum of 50,000,000. Drake states that given the uncertainties, the original meeting concluded that N approx = L, and there were probably between 1000 and 100,000,000 civilizations in the Milky Way galaxy.
+<br/><br/>
+Additional Notes:<br/><br/>
+R - The rate of formation of Suitable Stars in the Milky Way Galaxy.  Estimates for the number of stars in the Milky Way vary from a low of 100 billion to a high of 400 billion. Estimate for the age of the Milky Way is 13 billion years. If we go with the lowest star count and the oldest age for the galaxy, the average rate of star formation works out to 7.7 new stars per year.
+<br/>
+Star formation in the galaxy is not constant over time. Early in the galactic evolution, stars were being formed at a much higher rate. Today, estimates for the overall star formation rate range from 5 to 20.  All stars are not created equal. Very massive stars are not considered suitable. A suitable star would be one that has a reasonably long life (approximately 10 billion years for our Sun) and sized so that the fusion process that powers the star produces the right amount of energy to allow a habitable zone.  Estimates are that the rate of formation of Sun sized stars is on the order of 1 per year.
+<br/><br/>
+f<sub>p</sub> - The Fraction of Stars with Planets
+At the time the Drake Equation was created, the only planets that were known were those of our own solar system. Now a large numner of extrasolar planets have been discovered.  When the Drake Equation was created, it was thought that planets would only be found in single star systems. It was believed that gravitational disruptions in multiple star systems would prevent planets from forming.  It has now been shown theoretically that these multiple star systems can have planets. 
+<br/><br/>
+n<sub>e</sub> - The Average Number of Habitable Planets per Star.  In his original equation, Drake optimistically assigned a value of 2 to this parameter meaning that there are on average two Earth-like planets per star for those stars with planets. Factors that must be considered in arriving at a value for this parameter are the chemical composition of the solar nebula from which the planets were created (the presence of sufficient quantities of the necessary elements) and the idea of a star's habitable zone (the range of orbital distances within which liquid water can exist)
+<br/><br/>
+f<sub>l</sub> - The Fraction of Habitable Planets Where Life Emerges.  It is difficult for us to say how easy or hard it is for life to start given suitable environmental conditions. One interesting point to consider is this - the Earth is approximately 4.5 billion years old; the period of heavy bombardment during which the planets were pummeled by debris left over from the birth of the solar system ended about 3.8 billion years ago;
+the oldest known sedimentary rocks and deposits, found in northwestern Australia, are estimated to be 3.5 - 3.8 billion years old;
+the oldest known fossil evidence of life is of cyanobacteria found in these deposits dated at 3.5 billion years old.
+The implication of this is that life got started rather quickly on Earth. The big unknown is just how common are the conditions which resulted in life. This is one reason why the search for evidence of past life on Mars is so important. Finding or not finding evidence of past and/or present life on Mars will help us to better answer the question of the likelihood of life elsewhere in the galaxy and universe.
+<br/><br/>
+f<sub>i</sub> - The Fraction of Planets With Life Where Intelligence Life Evolves.  Given that life evolves on a planet, how likely is it that intelligent life will appear? Of all the millions of species that have ever existed on Earth, only one has evolved the level of intelligence necessary to develop technology.  Simple life is believed to have developed quickly on Earth, complex life took far longer. The parameters do not distinguish simple microscopic life from development of complex macroscopic life that might develop intelligence.  Drake believed that life would develop on every planet that had habitable conditions, he also estimated that intelligent life would emerge on only 1 of every 100 of these planets.
+<br/>
+<br/>
+f<sub>c</sub> - The Fraction of Intelligent Civilizations with Interstellar Communication.  The aliens would have to discover radio and build transmitters. Drake was of the opinion that 1 out of every 100 civilizations would discover radio.
+<br/>
+<br/>
+L - The Number of Years an Intelligent Civilization Remains Detectable.  We are the only intelligent civilization we know of and it is unknown how long we will remain detectable. A conservative estimate for this value would be 50 years based on experience to date. Drake felt that 10,000 years was a good guess.
+<br/><br/>
+N - The Answer is the Number of Detectable Civilizations at this Time, i.e. that have produced detectable radio signals.
+
+</div>
+
+
+</div>
+<br/>
+</div>
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu001Drake</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

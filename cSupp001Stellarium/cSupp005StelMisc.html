@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Stellarium Technical Guide for iMac ------------ [cSupp001Stellarium]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Load common code for calculation pages -->
+<script src="../fJscriptLib/fFoundationObj.js">
+  </script>
+<!-- End of common code -->
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<div class="Header" style="background-color:#FFFF99" >
+<h3>Stellarium Technical Guide for iMac</h3>
+</div>
+
+<!-- **************** Content **************** -->
+
+<div class="contents">
+
+<h2>Notes for Version 0.11.0 Intel OS X&nbsp;&nbsp;running under OS X 10.6.8 on an iMac 3.6GHz Intel Core i5 with 4GB 1333MHz DDR3</h2>
+Credits - original notes from 
+<a href="http://www.stellarium.org/doc/head/index.html">http://www.stellarium.org/doc/head/index.html</a>, 
+Stellarium User Guide and Wiki<br />
+
+<h1>&nbsp;</h1>
+<p align="justify">&nbsp;</p>
+<p><b><font size="5">2. Startup</font></b></p>
+<p>Stellarium can be started by double clicking the Application in the Applications folder, Dock or dedicated apps alias folder.<br />
+  <br />
+  </p>
+<p align="justify">The main application comes as a package file which 
+  effectively hides the contents inside a folder with its own directory structure.&nbsp; The first time the 
+  Stellarium application is run it creates a folder in the OS X user library, this 
+  has its own directory structure and a folder is created under each user who runs 
+  Stellarium on the machine.&nbsp; </p>
+<p align="justify">This User Data Directory is used to store the configuration 
+  file for that user, scripts and data, all of which override configuration and 
+  data in the main application folder. The main application contents thus act as a 
+  default for new users and a backup should anything go wrong with a users 
+  configuration.&nbsp; </p>
+<p align="justify">If a file exists in the <em>User Data Directory</em>, it will be used in 
+  preference to a file with the same name existing in the <em>Installation Data 
+    Directory</em>. This allows users to customise data files, textures and so on 
+  without modifying the originally installed files.<br />
+  <br />
+  Details of the startup will be written to the <b>log.txt</b> file in the User Directory 
+  which can be checked if any problem occurs in startup.<br />
+</p>
+<p align="justify">More exact details of the main application and its &#39;bundle&#39; 
+  structure and the user directory are detailed in the sections that follow.</p>
+<p><br />
+</p>
+<h2>3. Initial Configuration</h2>
+<p>On first using Stellarium the first thing you need to do is set the location 
+  you will be working from in terms of latitude, longitude, date and time and 
+any different langauge settings.&nbsp; Stellarium will then work out the view of the sky from this point in whatever 
+  direction you choose to look in.&nbsp; In daytime hours it will show positions 
+  of the Sun and planets, although only the Sun should be visible of course.&nbsp; 
+  If you wait until nightfall or fast forward the time frame then you get the 
+  night sky objects in view.</p>
+<p>Time and date will default from the machine, although this can be amended from the left icon bar and in the User Data 
+<b>config.ini </b>file.<br />
+    </p>
+<p>Location can be set from the left icon bar (or function key <b>F6</b>) and a number of new latitude / 
+longitude locations stored, e.g. home, local observatory and the default set in 
+user <b>config.ini</b> file.<br />
+    <br />
+</p>
+<p>Some options may only be configured by editing the configuration file 
+<b>config.ini </b>, which is created in the user directory the first time Stellarium is 
+run for that user, others are updated in this file by Stellarium update screens, the original<b> 
+default_config.ini </b>file being left untouched in the Stellarium Application 
+&#39;bundle&#39;.<br />
+&nbsp;</p>
+<p>Typical User data folder layout, in this case the user_location.txt file now 
+exists so some user defined locations have been set up.<br />
+<br />
+<img src="imgLibStellarium/img3112.png" alt="User Directory" width="422" height="360" /><br />
+<br />
+<br />
+&nbsp;</p>
+<h2>4.Setting a Precise Location</h2>
+<p> The <b>config.ini </b>file in the user folder is created from the <b>default_config.ini</b> file which exists in the application package contents. The initial location is set as Paris to start with, the exact location then being looked up in the locations detail file.&nbsp; 
+The section of the config.ini file storing location details is shown below:<br />
+<br />
+<strong>[init_location]<br />
+landscape_name                      = guereins<br />
+location                            = Paris, France</span></strong></p>
+<p>Function key <b>F6</b> brings up the location selection window where existing locations can be accepted and set as the default, or new locations can be created and added to the selection list, although they are stored in 
+the file <b>user_locations.txt .</b><br />
+<br />
+Latitude and Longitude can be entered as decimal numbers and Stellarium will convert to display as Deg, Min and Secs, or they can be entered as Deg, Min and Secs.&nbsp; 
+The values for location longitude and latitude are expected in some applications 
+to be positive for North and East, negative for South and West, however 
+Stellarium only needs the N, S, E, W value.&nbsp; <b>The value for the altitude is in meters</b>. 
+<br />
+<br />
+Type in new name, country and co-ordinates and Click on &quot;Add to list&quot; to create record in
+<b>user_locations.txt </b>(see previous observatory example in list), in addition click &quot;Use as default&quot; to update &quot;<b>[init_location]</b>&quot; in
+<b>config.ini</b>. This location will be used when Stellarium restarts.</p>
+<p><img src="imgLibStellarium/img3126.png" alt="F6" width="550" height="394" /></p>
+<p> <br />
+Having just set up our observatory location, here a new location has is being 
+set up for Bordeaux in Guernsey, Latitude has been type in in decimals and 
+converts to Deg, Min, Secs when the cursor is moved to the Longitude field.&nbsp; 
+Once Longitude and Altitude are entered we can click on &quot;Use as default&quot; if 
+required and then click &quot;Add to List&quot;.&nbsp; <font color="#0000FF">Note 
+there may be an issue with closing the window by clicking on &#39;X&#39; - this is due 
+to bug in the &#39;QT&#39; application used in construction of Stellarium.</font><br />
+</p>
+
+  <img src="imgLibStellarium/img3125.png" alt="F6" width="550" height="392" /><br />
+  <br />
+  The <strong>config.ini</strong> file will be will be updated for this new location as a default location as below:<br />
+  <br />
+  <strong>[init_location]<br />
+  landscape_name                      = guereins<br />
+  location                            = Bordeaux_Vale, United Kingdom</strong><br />
+  <br />
+  and the user_locations.txt file will now contain the two new locations which are also shown in the main 
+location list when F6 / Location is brought up.<br />
+<br />
+    <img src="imgLibStellarium/img3127.png" alt="user locations" width="811" height="69"  />    <br />
+
+<hr />
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cSupp005StelMisc</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Equations ------------ [cEqu015GMass]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+
+<!-- Page Specific Code -->
+
+<script>
+
+function main() {
+
+// define all variables
+
+    var R = 0;  // radius in kpc
+    var v = 0; //orbital velocity km s-1 
+    var G = 6.67E-11;  // universal constant
+  var MR = 0;
+
+// get input parameters
+ 
+    R = document.inputDataForm1.input1.value;
+    v = document.inputDataForm1.input4.value;
+    decPlaces = document.inputDataForm1.input12.value;
+
+
+    MR = ((R * 1000 * 3.09E16) * (v * 1000) * (v * 1000)) / 6.67E-11;
+    MSuns = MR / 1.9889E30;
+
+// Output Results grid on outputResultForm1
+
+    var outputResult1 = new Number(MR);
+    document.outputResultForm1.result1.value = outputResult1.toExponential(decPlaces);
+var outputResult2 = new Number(MSuns);
+    document.outputResultForm1.result2.value = outputResult2.toExponential(decPlaces);
+}
+
+
+function clearInputValues() {
+
+    document.inputDataForm1.input1.value = "";
+    document.inputDataForm1.input4.value = "";
+    
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">Galaxy Mass EstimateEquation</td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Abstract</a></li>
+		<li><a href="#tabs-2">Calculation</a></li>
+		<li><a href="#tabs-3">Information</a></li>
+        <li><a href="#tabs-4">Live Sheet</a></li>
+	</ul>
+    
+<div id="tabs-1">
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+            
+          \[
+           F_{gravity} = m_s \times centripetal acceleration
+        \]
+       
+   <br/>
+   \[
+   - \frac{M_R m_S G}{R^2} = m_S \times - \left( \frac{v^2}{R} \right)
+   \]
+   <br/>So:
+   \[ M_R = \frac{Rv^2}{G} 
+   \]
+    </td>
+  </tr>
+  <tr>
+    <td>
+    Variables / Constants:
+      <ul>
+    <li><i>m<sub>S</sub> is massof star under consideration</i></li>
+    <li><i>M<sub>R</sub> is the mass of the galaxy interior to an orbit of radius R</i>
+    <li><i>v</i> is the stars orbital velocity </li>
+    <li><i>G is the graviational constant</i></li>
+     </ul>
+</td>
+  </tr>
+</table>
+</div>
+
+<div id="tabs-2">
+    
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td title="is the average rate of star formation in our galaxy"><i>R</i></td>
+    <td>
+      <input type="text" title="" name="input1" id="input1" size="12" value="8" /></td>
+    <td>kpc</td>
+    <td title="is the average number of planets that can potentially support life per star that has planets">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="is the fraction of the above that actually go on to develop life at some point"><i>v</i></td>
+    <td>
+      <input type="text" name="input4" id="input4" size="12" value="220" /></td>
+    <td>km s-1</td>
+    <td title="is the fraction of civilizations that develop a technology that releases detectable signs of their existence into space">&nbsp;</td>
+    <td>&nbsp;</td>
+     <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="is the length of time such civilizations release detectable signals into space"><i>G</i></td>
+    <td>
+      <input type="text" name="input7" id="input7" size="12" value="6.67E-11" /></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td title="default decimal places">dp</td>
+    <td>
+      <input type="text" name="input12" id="input12" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<hr/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td title="number of civilisations in our galaxy with which we might be able to communicate with">M<sub>R</sub></td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>Kg</td>
+  </tr>
+  <tr>
+    <td>M<sub>Sun</sub></td>
+    <td><input type="text" name="result2" id="result2" size="12" /> </td>
+    <td>Solar masses</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+</div>
+
+<div id="tabs-3">
+  This calculation
+assumes stars are in circular orbits about the galactic centre and the gravitational force that maintains them in orbit is due to the gravitational attraction of the matter in the Galaxy inside the orbit of those stars. The gravity will be just enough to give the star the centripetal acceleration to maintain a circular orbit. The negative sign on one of the equationsshows the gravity is attractive with acceleration toward the Galaxy centre. The equations on Tab 1 show how we obtain an expression to get M<sub>R</sub> the mass of the galaxy inside the radius R.</div>
+
+<div id="tabs-4">
+  
+</div>
+
+</div>
+<br/>
+</div>
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu015GMass</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

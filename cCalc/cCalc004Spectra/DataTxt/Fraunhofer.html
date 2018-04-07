@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+
+<script src="../Data/Fraunhofer.json"></script>
+
+<script>
+
+// load json into standard array 'thisarray' used in this app
+
+var thisArray = FRH_spectra;
+
+
+
+function findmax(array) {
+   
+
+    var max = array[0].w;
+    var a = array.length;
+
+    for (counter=0;counter<a;counter++)
+      {
+        if (array[counter].w > max)
+          {
+            max = array[counter].w;
+          }
+      }
+    return max;
+}
+
+
+function findmin(array) {
+   
+    var min = array[0].w;
+    var a = array.length;
+    
+    for (counter=0;counter<a;counter++)
+      {
+        if (array[counter].w < min)
+          {
+            min = array[counter].w;
+          }
+      }
+    return min;
+}
+
+
+</script>
+
+</head>
+<body>
+
+<h2>Read Fraunhofer json Object</h2>
+
+<p id="demo"></p>
+
+
+
+<script>
+
+
+
+document.write("wavelength    " + "|    relative intensity" +  "<br/>");
+
+for (i = 0; i < thisArray.length; i++) {
+
+document.write(thisArray[i].w  + "     | " + thisArray[i].i + "<br/>");
+
+}
+
+ var maxWaveLength = findmax(thisArray);
+ var minWaveLength = findmin(thisArray);
+
+var minScale = 100 * Math.floor(minWaveLength / 100); 
+var maxScale = 100 * Math.ceil(maxWaveLength / 100);
+
+
+document.write(" min wavelength " + minWaveLength + "<br/>");
+document.write(" max wavelength " + maxWaveLength + "<br/>");
+document.write(" min Scale " + minScale + "<br/>");
+document.write(" max Scale " + maxScale + "<br/>");
+
+
+
+
+
+</script>
+
+</body>
+</html>

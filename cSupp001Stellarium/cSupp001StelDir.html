@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<title>Stellarium Directory Structure ------------ [cSupp001Stellarium]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Load common code for calculation pages -->
+<script src="../fJscriptLib/fFoundationObj.js">
+  </script>
+<!-- End of common code -->
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<div class="Header" style="background-color:#FFFF99" >
+<h3>Stellarium Technical Guide for iMac ------------ [cSupp001Stellarium]</h3>
+</div>
+
+<!-- **************** Content **************** -->
+
+
+
+
+<div class="contents">
+<h2><font size="2">Notes for Version 0.11.0 Intel OS X&nbsp;&nbsp;running under OS X 10.6.8 on an iMac 3.6GHz Intel Core i5 with 4GB 1333MHz DDR3 </font></h2>
+<br />
+
+<h1><a name="SECTION00200000000000000000" id="SECTION00200000000000000000"><span class="arabic"><font size="5">1</font></span><font size="5">. 
+Introduction</font></a><font size="5"> </font> </h1>
+<p align="justify">&nbsp;</p>
+<p align="justify">&nbsp;</p>
+<p align="justify">&nbsp;</p>
+<p><br />
+  <br />
+</p>
+<h2>3.
+  Main Application Directory Structure</h2>
+<p>The main application comes as a package file or &#39;bundle&#39; which effectively 
+hides the contents inside a folder.&nbsp; A bundle is basically a folder that appears in the Finder as a single 
+file. This allows users to easily install and move 
+applications without having to worry about supporting files 
+being scattered around the system, and it can also prevents users from 
+corrupting their 
+applications by trashing a necessary file.&nbsp; To view the Stellarium 
+application contents in Finder do the following.<br />
+<br />
+1. In the Finder, choose the Stellarium bundle to inspect.</p>
+<p>2. Pull down the Action menu in the Finder window (the one with a picture of 
+a gear) and choose Show Package Contents. This opens a new window with a 
+Contents folder, as shown in the figure below.</p>
+<p> <br />
+<br />
+Files are broadly separated by the type of data. For <em>StelModules</em> 
+which need many data files, there is one directory. e.g. <em>
+StarMgr</em> files are stored in the <code>stars</code> directory, <em>
+LandscapeMgr</em> files may be found in the <code>landscapes</code> 
+directory.</p>
+<p>There are also directories which are shared among modules and other parts 
+of the program, for example the <code>textures</code> directory.<br />
+<br />
+&nbsp;</p>
+<p class="startli">The <b><em>Installation Data Directory</em></b>, which is 
+where the program executable, libraries and all data files which are 
+distributed with the program are installed. It is the place where 
+Stellarium&#39;s data files are installed on your computer. This directory 
+varies depending on the operating system. In this case, OS X, the application comes as a packaged application bundle and Finder 'Show Package Contents' must be used to explore the application folders.</p>
+<table class="stel" id="table2">
+<tr class="header">
+<td>OS</td>
+<td>Location </td>
+</tr>
+<tr class="stel">
+<td>MacOS X</td>
+<td>The Installation Data Directory is found inside the application 
+bundle. 
+</td>
+</tr>
+</table>
+<p>Important data files which may be found in the <em>Installation Data 
+Directory</em> include:</p>
+<ul>
+<li><code>data/ssystem.ini</code>: the solar system bodies description 
+file  
+</li>
+<li><code>stars/default/*</code>: star catalogues  
+</li>
+<li><code>nebulae/default/*</code>: nebula textures and data files  
+</li>
+<li><code>scripts/</code>: script files  
+</li>
+<li><code>textures/</code>: general purpose texture files (button icons 
+etc)  
+</li>
+<li><code>landscapes/*/*</code>: landscape textures and data files </li>
+</ul>
+<p>&nbsp;</p>
+<p><b><font size="5">User Directory Structure</font></b></p>
+<p>When Stellarium searches for data, texture and other files it looks in two 
+separate locations, with the User Data Directory being first.&nbsp; The <em><b>User Data Directory</b></em> stores 
+per-user copies of any customised data files. It is the place where Stellarium saves the configuration file, recorded scripts and can also be 
+used to override files in the <em>Installation Data Directory</em> if the 
+user wishes to customise Stellarium.<br />
+<br />
+<code>$HOME/Library/Preferences/Stellarium<br />
+<br />
+</code>where <code>$HOME</code> (user login id) is your home directory.&nbsp; 
+This folder is created the first time a user runs Stellarium. </p>
+<p>The directory tree within the <em>User Data Directory</em> is the same as 
+the <em>Installation Data Directory</em>. Any file which exists in the <em>User Data Directory</em> will over-ride that in the 
+<em>Installation Data 
+Directory</em>.</p>
+<p>For example, to modify the position of a nebula texture, the user may 
+copy the <code>nebulae/default/nebula_textures.fab</code> file from the <em>Installation Data Directory</em> to the 
+<code>nebulae/default</code> 
+sub-directory of the <em>User Data Directory</em> and modify it there. In 
+this manner, each user on a multi-user system may have their own customized 
+Stellarium data files.</p>
+<p>If a file exists in the <em>User Data Directory</em>, it will be used in 
+preference to a file with the same name existing in the <em>Installation Data 
+Directory</em>. This allows users to customise data files, textures and so on 
+without modifying the originally installed files.</p>
+<p>As you can see, the file is specified only by the partial path. This 
+partial path is appended first to the <em>User Data Directory</em>. If, and 
+only if the file is not found there, it is searched for in the <em>
+Installation Data Directory</em>. Thus if the user has a customised copy at:
+<code>&lt;User Data Directory&gt;/data/comets.dat</code> it will be used, else the 
+version in the <em>Installation Data Directory</em> will be used.</p>
+<p><img src="imgLibStellarium/imgStel109.png" alt="User Directory" width="998" height="447" /><br />
+<br />
+<br />
+      <br />
+  It is in this folder that the application creates a log file listing the start up process including what plugins were loaded (if any).  If configuration changes are made to Stellarium, e.g. which plugins load at startup, then this may show in the log file.  The file has diagnostic uses, if there are problems loading Stellarium then the errors may be listed here.</p>
+<h2><img src="imgLibStellarium/imgStel110.png" alt="Log file" width="555" height="522" /><br />
+    <img src="imgLibStellarium/imgStel111.png" alt="Log File" width="555" height="522" /><br />
+    <br />
+  Running Stellarium</h2>
+<p>&nbsp;</p>
+<p>Click the Stellarium icon on the desktop to start the application.&nbsp; 
+Details of the startup will be written to the log.txt file in the User Directory 
+which can be checked if any problem occurs in startup.</p>
+<hr />
+<p class="endli">&nbsp;</p>
+<h2><a class="anchor" id="exampleStarCatalogTool"></a>Example: Star Catalogue 
+Download Tool</h2>
+<p>Stellarium ships with the first four star catalogue files of nine files. 
+The implementation of a catalogue downloading tool helps ease the task for 
+users wanting the extra catalogues by automating the download and installation 
+procedure.</p>
+<p>The files which come with Stellarium are found by the partial paths: </p>
+<div class="fragment">
+<pre class="fragment">stars/default/stars_0_0v0_1.cat
+stars/default/stars_1_0v0_1.cat
+stars/default/stars_2_0v0_1.cat
+stars/default/stars_3_1v0_1.cat
+</pre>
+</div>
+<p>Naturally, these files are to be located in the <em>Installation Data 
+Directory</em> (because they ship with the installer).</p>
+<p>The catalogue downloader tool runs within Stellarium. When it downloads 
+extra star catalogue files, it should place them in the <em>User Data 
+Directory</em>. After downloading all the catalogues, the paths to the various 
+files should look like this:</p>
+<div class="fragment">
+<pre class="fragment">&lt;Installation Data Directory&gt;/stars/default/stars_0_0v0_1.cat
+&lt;Installation Data Directory&gt;/stars/default/stars_1_0v0_1.cat
+&lt;Installation Data Directory&gt;/stars/default/stars_2_0v0_1.cat
+&lt;Installation Data Directory&gt;/stars/default/stars_3_1v0_1.cat
+&lt;User Data Directory&gt;/stars/default/stars_4_1v0_0.cat
+&lt;User Data Directory&gt;/stars/default/stars_5_2v0_0.cat
+&lt;User Data Directory&gt;/stars/default/stars_6_2v0_0.cat
+&lt;User Data Directory&gt;/stars/default/stars_7_2v0_0.cat
+&lt;User Data Directory&gt;/stars/default/stars_8_2v0_0.cat
+</pre>
+</div>
+</div>
+
+
+<div class="navigation"><!--Navigation Panel-->&nbsp;&nbsp; <br />
+<br />
+<br /></div>
+<!--End of Navigation Panel-->
+<p>&nbsp;</p>
+<h1 align="center">&nbsp;</h1>
+<DIV align=center></DIV>
+<P>
+<H1><A name=SECTION00410000000000000000><SPAN class=arabic>3</SPAN>.<SPAN 
+class=arabic>1</SPAN> Tour</A> </H1>
+<P>After you run Stellarium for the first time, you will see a something like 
+one of the sides of the image shown in Figure <A 
+href="#fig:daynight"><IMG 
+alt=[*] src="imgLibStellarium/crossref.png" align=bottom 
+border=1></A> (depending on the time of day that you start the program). 
+<P>At the top of the screen you will see: the date<A name=196></A>, the time<A 
+name=197></A>, Stellarium's version number, the location of the observer, the 
+field of view<A name=198></A> (FOV<A name=199></A>) and the current frame-rate 
+(FPS). In the bottom-left corner of the screen is the main tool-bar<A 
+name=200></A>. In the bottom-right corner of the screen is the time tool-bar<A 
+name=201></A>. The rest of the screen is a graphical representation of the sky 
+and the ground. 
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cSupp001StelDir</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

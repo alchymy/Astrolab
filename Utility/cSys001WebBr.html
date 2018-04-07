@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Current Web Browser Information ------------ [cSys001WebBr]</title>
+
+<!-- Load common environment -->
+
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<script>
+
+// run any page startup functions
+function pageStart() {
+
+}
+</script>
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page specific css and js for formating and layout -->
+
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+
+<script>
+
+// jquery dialog and other setup
+
+	$(function() {
+		
+		$( "#button" ).button();
+	
+		$( "#tabs" ).tabs();
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	
+</script>
+
+<!-- Page specific code for this application -->
+    
+<script src="../fJscriptLib/fFoundationObj.js">
+</script>
+
+</head>
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:75%">Current Web Browser Information</td>
+    <td style="width:25%" id="menuCell">
+          <nav>
+      <a href="../mMain.html">mMain</a></nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Data on current Web Browser</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<pre>
+<script>
+<!--
+
+/*
+Note that the html Comment 'tags' at the start and end of this script are added inside the script tag for older browsers which may not cope with code
+in the body of the html page, however this may not matter when code is loaded inside head tag and newer browsers may not
+require these comment tags at all anyway. The two back slash characters stop the closing comment
+'tag' being processed when the comment encloses JavaScript, again this may only matter when code is in the body of a HTML page.
+
+To be consistent this comment standard is used within all style and JavaScript tags in this project,
+although they may all be removed eventually if they do not cause browser issues, to simplify coding, 
+unless intended to contain actual notes like this. Actual Comments within JavaScript to simply explain its function are better enclosed within 
+normal code comment tags as is this text.
+*/
+
+    document.write("Application Code Name     :  ", navigator.appCodeName, "<br/>"); 
+    document.write("Application Name          :  ", navigator.appName, "<br/>");
+    document.write("Application minor version :  ", navigator.appMinorVersion, "<br/>");
+    document.write("CPU Class                 :  ", navigator.cpuClass, "<br/>");
+    document.write("Platform                  :  ", navigator.platform, "<br/>");
+    document.write("Plugins                   :  ", navigator.plugins, "<br/>");
+    document.write("Ops Profile               :  ", navigator.opsProfile, "<br/>");
+    document.write("User Profile              :  ", navigator.userProfile, "<br/>");
+    document.write("System Language           :  ", navigator.systemLanguage, "<br/>");
+    document.write("User Language             :  ", navigator.userLanguage, "<br/>");
+    document.write("Application Version       :  ", navigator.appVersion, "<br/>");
+    document.write("User Agent                :  ", navigator.userAgent, "<br/>");
+    document.write("Online                    :  ", navigator.onLine, "<br/>");
+    document.write("Cookie enabled            :  ", navigator.cookieEnabled, "<br/>");
+    document.write("Mime Types                :  ", navigator.mimeTypes, "<br/>");
+    
+// -->
+</script>
+
+</pre>
+</div>
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%;">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width: 25%;">cSys001WebBr</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

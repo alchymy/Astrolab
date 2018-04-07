@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Abundance in the Sun for all the elements in the Periodic Table</title>
+
+<style type="text/css">
+#lineobject {
+	Z-INDEX: 3; BACKGROUND: #aaaaff; COLOR: #ffffff; POSITION: absolute
+}
+a {
+	TEXT-DECORATION: none
+}
+</style>
+
+<script language="JavaScript1.1" type="text/javascript">
+<!--
+/*
+function lid(text,imageToLoad) {
+	document.getElementById('datadisplay').innerHTML=text;
+	var thisFrame=new Image(64,64);
+	thisFrame.src = "Abundance_files/" + imageToLoad + ".JPG";
+        document.elementicon.src=thisFrame.src;
+}
+*/
+function lid2(text,imageToLoad,link,left,top,height) {
+	document.getElementById('datadisplay').innerHTML=text;
+	var thisFrame=new Image(64,64);
+	thisFrame.src = "imagelibspectra/" + imageToLoad + ".JPG";
+        document.elementicon.src=thisFrame.src;
+    
+	var coors = findPos(document.getElementById("mainplot"));
+	var x = document.getElementById("lineobject");
+	x.style.top = coors[1]+top + 'px';
+	x.style.left = coors[0]+left + 'px';
+	
+	x.innerHTML='<a href="../../Elements/'+link+'/data.html"><table border=0 cellpadding=0 cellspacing=0 width=1px height='+height+'px background="#FFFFFF"><tr><td></td></tr></table></a>';
+}
+
+function findPos(obj)
+{
+	var curleft = curtop = 0;
+	if (obj.offsetParent) {
+		curleft = obj.offsetLeft
+		curtop = obj.offsetTop
+		while (obj = obj.offsetParent) {
+			curleft += obj.offsetLeft
+			curtop += obj.offsetTop
+		}
+	}
+	return [curleft,curtop];
+}
+
+// -->
+</script>
+</head>
+<body>
+
+
+
+<table cellspacing="0" cellpadding="0" border="0">
+  <tbody>
+    <tr>
+      <td>
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td>
+                <h1>Abundance in the Sun of the elements</h1>
+                <table cellspacing="8" cellpadding="0" width="728" border="0">
+                  <tbody>
+                    <tr>
+                      <td valign="top" align="left"><img 
+                        src="ImageLibSpectra/1.jpg" name="elementicon" 
+                        width="64" height="64" hspace="0" border="0" id="elementicon" alt="element" />
+                      </td>
+                      <td valign="top" align="left">
+                        <table cellspacing="0" cellpadding="0" width="660" border="0">
+                          <tbody>
+                            <tr>
+                              <td id="datadisplay" valign="top" align="left">Point to 
+                              the graph to see details, or click for full data 
+                              on that element.
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            <br />
+            <map 
+                  name="map_1" id="map_1">
+              <area 
+                    onmouseover="lid2('1 Hydrogen&lt;br&gt;75.%',1,'001',83,20,400)" 
+                    shape="rect" coords="79,-956,86,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('2 Helium&lt;br&gt;23.%',2,'002',90,20,400)" 
+                    shape="rect" coords="86,-956,94,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('8 Oxygen&lt;br&gt;0.9%',8,'008',98,20,400)" 
+                    shape="rect" coords="94,-956,102,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('6 Carbon&lt;br&gt;0.3%',6,'006',106,20,400)" 
+                    shape="rect" coords="102,-956,110,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('26 Iron&lt;br&gt;0.1%',26,'026',114,20,400)" 
+                    shape="rect" coords="110,-956,118,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('10 Neon&lt;br&gt;0.1%',10,'010',122,20,400)" 
+                    shape="rect" coords="118,-956,126,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('7 Nitrogen&lt;br&gt;0.1%',7,'007',130,20,400)" 
+                    shape="rect" coords="126,-956,134,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('14 Silicon&lt;br&gt;0.09%',14,'014',138,20,400)" 
+                    shape="rect" coords="134,-956,142,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('12 Magnesium&lt;br&gt;0.07%',12,'012',146,20,400)" 
+                    shape="rect" coords="142,-956,149,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('16 Sulfur&lt;br&gt;0.04%',16,'016',153,20,400)" 
+                    shape="rect" coords="149,-956,157,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('28 Nickel&lt;br&gt;0.008%',28,'028',161,20,400)" 
+                    shape="rect" coords="157,-956,165,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('20 Calcium&lt;br&gt;0.007%',20,'020',169,20,400)" 
+                    shape="rect" coords="165,-956,173,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('18 Argon&lt;br&gt;0.007%',18,'018',177,20,400)" 
+                    shape="rect" coords="173,-956,181,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('13 Aluminum&lt;br&gt;0.006%',13,'013',185,20,400)" 
+                    shape="rect" coords="181,-956,189,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('11 Sodium&lt;br&gt;0.004%',11,'011',193,20,400)" 
+                    shape="rect" coords="189,-956,197,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('24 Chromium&lt;br&gt;0.002%',24,'024',201,20,400)" 
+                    shape="rect" coords="197,-956,205,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('25 Manganese&lt;br&gt;0.001%',25,'025',208,20,400)" 
+                    shape="rect" coords="205,-956,212,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('17 Chlorine&lt;br&gt;0.0008%',17,'017',216,20,400)" 
+                    shape="rect" coords="212,-956,220,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('15 Phosphorus&lt;br&gt;0.0007%',15,'015',224,20,400)" 
+                    shape="rect" coords="220,-956,228,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('27 Cobalt&lt;br&gt;0.0004%',27,'027',232,20,400)" 
+                    shape="rect" coords="228,-956,236,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('22 Titanium&lt;br&gt;0.0004%',22,'022',240,20,400)" 
+                    shape="rect" coords="236,-956,244,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('19 Potassium&lt;br&gt;0.0004%',19,'019',248,20,400)" 
+                    shape="rect" coords="244,-956,252,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('30 Zinc&lt;br&gt;0.0002%',30,'030',256,20,400)" 
+                    shape="rect" coords="252,-956,260,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('29 Copper&lt;br&gt;0.00007%',29,'029',264,20,400)" 
+                    shape="rect" coords="260,-956,268,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('9 Fluorine&lt;br&gt;0.00005%',9,'009',271,20,400)" 
+                    shape="rect" coords="268,-956,275,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('23 Vanadium&lt;br&gt;0.00004%',23,'023',279,20,400)" 
+                    shape="rect" coords="275,-956,283,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('32 Germanium&lt;br&gt;0.00002%',32,'032',287,20,400)" 
+                    shape="rect" coords="283,-956,291,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('38 Strontium&lt;br&gt;5.×10&lt;sup&gt;-6&lt;/sup&gt;%',38,'038',295,20,400)" 
+                    shape="rect" coords="291,-956,299,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('40 Zirconium&lt;br&gt;4.×10&lt;sup&gt;-6&lt;/sup&gt;%',40,'040',303,20,400)" 
+                    shape="rect" coords="299,-956,307,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('31 Gallium&lt;br&gt;4.×10&lt;sup&gt;-6&lt;/sup&gt;%',31,'031',311,20,400)" 
+                    shape="rect" coords="307,-956,315,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('21 Scandium&lt;br&gt;4.×10&lt;sup&gt;-6&lt;/sup&gt;%',21,'021',319,20,400)" 
+                    shape="rect" coords="315,-956,323,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('37 Rubidium&lt;br&gt;3.×10&lt;sup&gt;-6&lt;/sup&gt;%',37,'037',327,20,400)" 
+                    shape="rect" coords="323,-956,330,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('80 Mercury&lt;br&gt;2.×10&lt;sup&gt;-6&lt;/sup&gt;%',80,'080',334,20,400)" 
+                    shape="rect" coords="330,-956,338,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('83 Bismuth&lt;br&gt;1.×10&lt;sup&gt;-6&lt;/sup&gt;%',83,'083',342,20,400)" 
+                    shape="rect" coords="338,-956,346,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('82 Lead&lt;br&gt;1.×10&lt;sup&gt;-6&lt;/sup&gt;%',82,'082',350,20,400)" 
+                    shape="rect" coords="346,-956,354,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('56 Barium&lt;br&gt;1.×10&lt;sup&gt;-6&lt;/sup&gt;%',56,'056',358,20,400)" 
+                    shape="rect" coords="354,-956,362,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('39 Yttrium&lt;br&gt;1.×10&lt;sup&gt;-6&lt;/sup&gt;%',39,'039',366,20,400)" 
+                    shape="rect" coords="362,-956,370,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('78 Platinum&lt;br&gt;9.×10&lt;sup&gt;-7&lt;/sup&gt;%',78,'078',374,20,400)" 
+                    shape="rect" coords="370,-956,378,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('50 Tin&lt;br&gt;9.×10&lt;sup&gt;-7&lt;/sup&gt;%',50,'050',382,20,400)" 
+                    shape="rect" coords="378,-956,386,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('42 Molybdenum&lt;br&gt;9.×10&lt;sup&gt;-7&lt;/sup&gt;%',42,'042',390,20,400)" 
+                    shape="rect" coords="386,-956,393,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('55 Cesium&lt;br&gt;8.×10&lt;sup&gt;-7&lt;/sup&gt;%',55,'055',397,20,400)" 
+                    shape="rect" coords="393,-956,401,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('48 Cadmium&lt;br&gt;6.×10&lt;sup&gt;-7&lt;/sup&gt;%',48,'048',405,20,400)" 
+                    shape="rect" coords="401,-956,409,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('44 Ruthenium&lt;br&gt;5.×10&lt;sup&gt;-7&lt;/sup&gt;%',44,'044',413,20,400)" 
+                    shape="rect" coords="409,-956,417,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('74 Tungsten&lt;br&gt;4.×10&lt;sup&gt;-7&lt;/sup&gt;%',74,'074',421,20,400)" 
+                    shape="rect" coords="417,-956,425,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('58 Cerium&lt;br&gt;4.×10&lt;sup&gt;-7&lt;/sup&gt;%',58,'058',429,20,400)" 
+                    shape="rect" coords="425,-956,433,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('49 Indium&lt;br&gt;4.×10&lt;sup&gt;-7&lt;/sup&gt;%',49,'049',437,20,400)" 
+                    shape="rect" coords="433,-956,441,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('41 Niobium&lt;br&gt;4.×10&lt;sup&gt;-7&lt;/sup&gt;%',41,'041',445,20,400)" 
+                    shape="rect" coords="441,-956,449,406"  alt="rect" />
+              <area 
+                    onmouseover="lid2('60 Neodymium&lt;br&gt;3.×10&lt;sup&gt;-7&lt;/sup&gt;%',60,'060',452,20,400)" 
+                    shape="rect" coords="449,-956,456,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('46 Palladium&lt;br&gt;3.×10&lt;sup&gt;-7&lt;/sup&gt;%',46,'046',460,20,400)" 
+                    shape="rect" coords="456,-956,464,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('77 Iridium&lt;br&gt;2.×10&lt;sup&gt;-7&lt;/sup&gt;%',77,'077',468,20,400)" 
+                    shape="rect" coords="464,-956,472,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('76 Osmium&lt;br&gt;2.×10&lt;sup&gt;-7&lt;/sup&gt;%',76,'076',476,20,400)" 
+                    shape="rect" coords="472,-956,480,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('66 Dysprosium&lt;br&gt;2.×10&lt;sup&gt;-7&lt;/sup&gt;%',66,'066',484,20,400)" 
+                    shape="rect" coords="480,-956,488,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('64 Gadolinium&lt;br&gt;2.×10&lt;sup&gt;-7&lt;/sup&gt;%',64,'064',492,20,400)" 
+                    shape="rect" coords="488,-956,496,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('57 Lanthanum&lt;br&gt;2.×10&lt;sup&gt;-7&lt;/sup&gt;%',57,'057',500,20,400)" 
+                    shape="rect" coords="496,-956,504,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('45 Rhodium&lt;br&gt;2.×10&lt;sup&gt;-7&lt;/sup&gt;%',45,'045',508,20,400)" 
+                    shape="rect" coords="504,-956,512,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('5 Boron&lt;br&gt;2.×10&lt;sup&gt;-7&lt;/sup&gt;%',5,'005',515,20,400)" 
+                    shape="rect" coords="512,-956,519,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('92 Uranium&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',92,'092',523,20,400)" 
+                    shape="rect" coords="519,-956,527,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('81 Thallium&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',81,'081',531,20,400)" 
+                    shape="rect" coords="527,-956,535,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('79 Gold&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',79,'079',539,20,400)" 
+                    shape="rect" coords="535,-956,543,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('72 Hafnium&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',72,'072',547,20,400)" 
+                    shape="rect" coords="543,-956,551,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('71 Lutetium&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',71,'071',555,20,400)" 
+                    shape="rect" coords="551,-956,559,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('70 Ytterbium&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',70,'070',563,20,400)" 
+                    shape="rect" coords="559,-956,567,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('68 Erbium&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',68,'068',571,20,400)" 
+                    shape="rect" coords="567,-956,574,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('62 Samarium&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',62,'062',578,20,400)" 
+                    shape="rect" coords="574,-956,582,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('59 Praseodymium&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',59,'059',586,20,400)" 
+                    shape="rect" coords="582,-956,590,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('51 Antimony&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',51,'051',594,20,400)" 
+                    shape="rect" coords="590,-956,598,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('47 Silver&lt;br&gt;1.×10&lt;sup&gt;-7&lt;/sup&gt;%',47,'047',602,20,400)" 
+                    shape="rect" coords="598,-956,606,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('63 Europium&lt;br&gt;5.×10&lt;sup&gt;-8&lt;/sup&gt;%',63,'063',610,20,400)" 
+                    shape="rect" coords="606,-956,614,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('90 Thorium&lt;br&gt;3.×10&lt;sup&gt;-8&lt;/sup&gt;%',90,'090',618,20,400)" 
+                    shape="rect" coords="614,-956,622,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('69 Thulium&lt;br&gt;2.×10&lt;sup&gt;-8&lt;/sup&gt;%',69,'069',626,20,400)" 
+                    shape="rect" coords="622,-956,630,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('75 Rhenium&lt;br&gt;1.×10&lt;sup&gt;-8&lt;/sup&gt;%',75,'075',634,20,400)" 
+                    shape="rect" coords="630,-956,637,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('65 Terbium&lt;br&gt;1.×10&lt;sup&gt;-8&lt;/sup&gt;%',65,'065',641,20,400)" 
+                    shape="rect" coords="637,-956,645,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('4 Beryllium&lt;br&gt;1.×10&lt;sup&gt;-8&lt;/sup&gt;%',4,'004',649,20,400)" 
+                    shape="rect" coords="645,-956,653,406" alt="rect" />
+              <area 
+                    onmouseover="lid2('3 Lithium&lt;br&gt;6.×10&lt;sup&gt;-9&lt;/sup&gt;%',3,'003',657,20,400)" 
+                    shape="rect" coords="653,-956,661,406" alt="rect" />
+                    </map>
+            <img 
+                  id="mainplot" alt="data plot" 
+                  src="ImageLibSpectra/SolarAbundance.gif" 
+                  usemap="#map_1" border="0" /><br />
+            <br />&nbsp;
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%"></td>
+    </tr>
+  </table>
+</footer>  
+  
+</body>
+</html>

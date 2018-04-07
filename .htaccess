@@ -1,0 +1,3 @@
+Options +Indexes
+AddType application/x-javascript js
+AddType application/octet-stream .exe .bin .zip

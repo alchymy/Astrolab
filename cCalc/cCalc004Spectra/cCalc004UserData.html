@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<title>Spectra from Gas Discharges ------------ [cCalc004Spectra] / User Data</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+
+<script language="JavaScript" src="../../fEnvironment.js" type="text/javascript">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Load common code for calculation pages -->
+<script language="JavaScript" src="../../fJscriptLib/fFoundationObj.js" type="text/javascript">
+</script>
+<!-- End of common code -->
+
+<!-- Page Specific Code -->
+
+
+</head>
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<div class="Header" style="background-color:#FF00FF" >
+  <h3>Spectra Calculations ------------ [cCalc004Spectra] / User Data</h3>
+</div>
+
+<div class="MenuReturn">
+<!-- Only show main menu links for pda version -->
+<script language="JavaScript" type="text/javascript">
+<!--
+
+    if (APP_ENV == "PDA") {  
+    // single quote used as text already contains double quote
+    document.write('<a title="Main Page" href="mMain.html" >Main Page</a> &gt Lunar Phase Calc');
+    }
+    
+// -->
+</script>
+</div>
+
+<div id="MenuBar">
+  <!-- ************************* Menu Bar **************************************** -->
+  
+  <table id="Menu" class="MenuBar" cellspacing="0" cellpadding="3" width="100%" border="1">
+    <tbody>
+      <tr>
+        <td bgcolor="#ffcc00"><div align="center">
+          <a href="cCalc004SpectraMain.html">Spectra Main</a></div></td>
+        <td><div align="center"><a href="cCalc004UserData.html">User Data </a></div></td>
+        <td bgcolor="#99FF99"><div align="center">
+          <a href="cCalc004SpectraHlp.html">Help</a></div></td>
+        <td bgcolor="#FFFFFF"><div align="center">
+        <a href="cCalc004SpectraAbundOrder.html">Abundance</a></div></td>
+        <td bgcolor="#FFFFFF"><div align="center">
+          <a href="cCalc004SpectraApplet.html">Applet</a></div></td>
+        <td bgcolor="#FFFFFF"><a href="cCalc004SpectraFiles.html">Files List</a></td>
+        <td><a href="cCalc004SpectraZOrder.html">Z Order</a></td>
+        <td bgcolor="#FFFFFF"><a href="cCalc004SpectraAbund.html">Abund Graph</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- **************** Content **************** -->
+
+<br/>
+
+<h1>Spectra of User Data</h1>
+
+<b>The following image is color coded spectra of helium undergoing electrical 
+discharge excitation.</b><p/>
+
+It is computed and plotted in your browser by a Java program which reads a file 
+containing a list of emission line wavelengths and their corresponding strenghts.<p/>
+
+<b>Note</b>: This program generates deep 24 bit color plots, therefore you may 
+need to increase the color depth of your system to view subtle details in these 
+spectra.<p/>
+There may be a small delay as each Applet loads it&#39;s element emission line file 
+and computes the spectra... 
+<hr/>
+<h2>userdata.txt</h2><br/>
+<applet code="discharge.class" width="784" height="64">
+<param name="element" value="userdata.txt" />
+<param name="startWavelength" value="4000" />
+<param name="endWavelength" value="7000" />
+<param name="lineWidth" value="4" />
+<param name="contrast" value="10" />
+<param name="continuum" value="0.4" />
+Your browser doesn't support Java.<br/>
+Here is a lower quality jpeg of the spectra:<br/>
+<img src="ImageLibSpectra/helium.png" height="64" width="784" alt="helium.png" /><br/>
+</applet>
+<br/>
+Both neutral and singly ionized helium contribute to the emission lines in this 
+spectrum.<br/>
+Different trial parameters :
+<ul>
+<li>vary the lineWidth from 1 to 4 (2.5 is optimum)</li>
+<li>vary the contrast from 1 to 15 (10 is optimum)</li>
+<li>vary the continuum from 0 to 0.7 (0.3 is optimum)</li>
+</ul>
+<hr/>
+<h3>Spectra in Two Parts:</h3>
+
+<applet code="discharge.class" width="776" height="128">
+<param name="element" value="userdata.txt" />
+<param name="startWavelength" value="4000" />
+<param name="endWavelength" value="5500" />
+<param name="lineWidth" value="2" />
+<param name="contrast" value="10" />
+<param name="continuum" value="0.4" />
+</applet><p/>
+from 4000 to 5500 Ångstroms<br/>
+
+<applet code="discharge.class" width="776" height="128">
+<param name="element" value="userdata.txt" />
+<param name="startWavelength" value="5500" />
+<param name="endWavelength" value="7000" />
+<param name="lineWidth" value="2" />
+<param name="contrast" value="10" />
+<param name="continuum" value="0.4" />
+</applet>
+and from 5500 to 7000 Ångstroms<br/>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%"></td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

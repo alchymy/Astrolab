@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Install Chromoscope as Plugin ------------ [cInfo015ChromoPlugin]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js" type="text/javascript">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+
+<!-- Load common code for calculation pages -->
+<script src="../../cConstants.js">
+</script>
+<!-- End of common code -->
+
+<!-- Page Specific Code -->
+</head>
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderDev">
+  <tr>
+    <td style="width:75%">Install Chromoscope as Plugin</td>
+    <td style="width:25%" id="menuCell">
+          <nav>
+      <a href="mMain.html">mMain</a>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+
+
+
+<p>Download an unzip the Chromoscope folder, rename folder from current <b>
+  1.1.3</b> to chromoscope.&nbsp; Copy to Astrolab folder and delete original 
+  once tested ok.</p>
+  <p>If the &#39;tiles&#39; are downloaded separately then the files tested in our lab 
+  are as listed below.&nbsp; Astrolab points at index-local.html in the 
+  chromoscope folder to start,&nbsp; this file contains the information to point 
+  to the data &#39;tile&#39; folders.&nbsp; It may require editing to match the 
+  downloaded tile folders, the values used in our case are<br />
+  <br />
+
+// The spectral bands should be in order
+			chromo.addWavelength({key:'g',useasdefault:false,name:'gamma',tiles:'<span class="h1style"><strong>fermi-tiles</strong></span>/',ext:'jpg',title:'gamma',attribution:'
+			chromo.addWavelength({key:'x',useasdefault:false,name:'xray',tiles:'<span class="style1 h1style"><strong>RASS-tiles</strong></span>/',ext:'jpg',title:'xray',attribution:'
+			chromo.addWavelength({key:'v',useasdefault:true,name:'optical',tiles:'<span class="style1 h1style"><strong>DSS2-tiles</strong></span>/',ext:'jpg',title:'optical',attribution:'
+			chromo.addWavelength({key:'a',useasdefault:false,name:'halpha',tiles:'<span class="style1 h1style"><strong>H-alpha-tiles</strong></span>/',ext:'jpg',title:'halpha',attribution:'
+			chromo.addWavelength({key:'f',useasdefault:false,name:'farir',tiles:'<span class="style1 h1style"><strong>IRAS-tiles</strong></span>/',ext:'jpg',title:'farir',attribution:'
+			chromo.addWavelength({key:'m',useasdefault:false,name:'microwave',tiles:'<span class="style1 h1style"><strong>Planck-tiles</strong></span>/',ext:'jpg',title:'microwave',attribution:'
+			chromo.addWavelength({key:'r',useasdefault:false,name:'radio',tiles:'<span class="style1 h1style"><strong>Radio_vsmoothed-tiles</strong></span>/',ext:'jpg',title:'radio',attribution:'  </p>
+<p>Folder Name: fermi-tiles</p>
+  <p style="TEXT-ALIGN: center">
+  <img 
+style="DISPLAY: block; MARGIN-LEFT: auto; MARGIN-RIGHT: auto" alt="" 
+src="../fImageLib/img3008gamma.png" width="1024" height="221" /></p>
+<p style="TEXT-ALIGN: center"><strong>Gamma-Ray (<a 
+href="http://fermi.gsfc.nasa.gov/">Fermi All Sky Survey</a>) </strong></p>
+<p>The Fermi Gamma-ray Space Telescope, formerly GLAST, reveals the high-energy 
+sky between 10 keV – 300 GeV. With Fermi, astronomers can study black holes and 
+other highly energetic events in the universe. Physicists can use Fermi to study 
+subatomic particles at energies far greater than those seen in ground-based 
+particle accelerators. And cosmologists gain valuable information about the 
+birth and early evolution of the Universe.<br />
+  <br />
+  Folder Name: RASS-tiles</p>
+  <p style="TEXT-ALIGN: center">
+  <img class="aligncenter size-large wp-image-29" 
+alt="" src="../fImageLib/img3013xray.png" 
+width="1024" height="221" /></p>
+<p style="TEXT-ALIGN: center"><strong>X-Ray (ROSAT 
+All Sky Survey)</strong></p>
+  <p>The Roentgensatellit (ROSAT) was a joint German, US and British X-ray 
+astrophysics project. ROSAT carried a German-built imaging X-ray Telescope (XRT) 
+with three focal plane instruments that allowed researchers to probe high-energy 
+x-ray activity in the universe between 0.1 to 2 keV. ROSAT also performed an all 
+sky survey in revealing the structure of our galaxy in this energetic wavelength 
+regime.<br />
+<br />
+Folder Name: DSS2-tiles</p>
+  <p style="TEXT-ALIGN: center">
+  <img class="aligncenter size-large wp-image-29" 
+alt="" src="../fImageLib/img3012visible.png" 
+width="1024" height="221" /></p>
+<p style="TEXT-ALIGN: center"><strong>The Visual Sky (DSS / 
+  Wikisky)</strong></p>
+<p>The Digitized Sky Survey (DSS) comprises a set of all-sky photographic 
+surveys in E, V, J, R, and N bands conducted with the Palomar and UK Schmidt 
+telescopes. The photographic survey has been digitized to support the Hubble 
+Space Telescope observing programs but also as a service to the astronomical 
+community.</p>
+  <p>The particular blend of the DSS used for the Chromoscope comes from Wikisky, 
+a similar tool that allows you to explore individual objects in the night sky 
+and learn a little more about them.<br />
+<br />
+Folder Name: H-alpha-tiles</p>
+  <p style="TEXT-ALIGN: center">
+  <img class="aligncenter size-large wp-image-29" 
+alt="" src="../fImageLib/img3009halpha.png" 
+width="1024" height="221" /></p>
+<p style="TEXT-ALIGN: center"><strong>H-Alpha (WHAM 
+/ SHASSA / 
+  VTSS / 
+  Finkbeiner)</strong></p>
+<p>Hydrogen is the most abundant element in the universe and there is plenty of 
+it in our own Milky Way galaxy. H-alpha refers to a specific energy emitted by 
+hydrogen atoms and seen as red light with a wavelength of 656.3 nanometres. The 
+h-alpha part of the Chromoscope comes from several source including WHAM, The 
+Wisconsin H-Alpha Mapper, and SHASSA the Southern H-Alpha Sky Survey Atlas. WHAM 
+is funded by the American National Science Foundation.</p>
+  <p>H-alpha allows us to see features on the surface of the Sun as well as 
+tracing out the location of hydrogen gas in our galaxy.<br />
+<br />
+Folder Name: IRAS-tiles</p>
+  <p style="TEXT-ALIGN: center">
+  <img class="aligncenter size-large wp-image-29" 
+alt="" src="../fImageLib/img3007farir.png" 
+width="1024" height="221" /></p>
+<p style="TEXT-ALIGN: center"><strong>Far Infrared (IRAS)</strong></p>
+<p>The Infrared Astronomical Satellite (IRAS) was a joint project of the US, UK 
+and the Netherlands. The IRAS mission performed an unbiased, sensitive all sky 
+survey at 12, 25, 60 and 100 µm.&nbsp;IRAS increased the number of cataloged 
+astronomical sources by about 70%, detecting about 350,000 infrared sources.</p>
+  <p>IRAS discoveries included a disk of dust grains around the star Vega, six new 
+comets, and very strong infrared emission from interacting galaxies as well as 
+wisps of warm dust called infrared cirrus which could be found in almost every 
+direction of space. IRAS also revealed for the first time the core of our 
+galaxy, the Milky Way.<br />
+<br />
+Folder Name: Planck-tiles</p>
+  <p style="TEXT-ALIGN: center">
+  <img class="aligncenter size-large wp-image-29" 
+alt="" src="../fImageLib/img3010planck.jpg" 
+width="1024" height="221" /></p>
+<p style="TEXT-ALIGN: center"><strong>Microwave (Planck)</strong></p>
+  <p>The Planck satellite is an ESA mission that launched May 2009 to make 
+fundamental measurements of cosmology – the study of the properties of our 
+universe as a whole. Planck has been stunningly successful, building on the 
+success of the WMAP mission, and has completed one full sky survey. It has 
+mapped the Cosmic Microwave Background (CMB) radiation – the oldest light in the 
+universe – and produced a detailed, full-sky map, using data from nine microwave 
+wavelength bands ranging from 10mm to 0.35mm.&nbsp; As well as seeing the oldest 
+light in the Universe, it also sees gas and dust within our own Galaxy.<br />
+<br />
+Folder Name: Radio_vsmoothed-tiles</p>
+  <p style="TEXT-ALIGN: center">
+  <img class="aligncenter size-large wp-image-29" 
+alt="" src="../fImageLib/img3011radio.png" 
+width="1024" height="221" /></p>
+<p style="TEXT-ALIGN: center"><strong>Radio (Haslam)</strong></p>
+<p>408MHz, a relatively low radio frequency, allows us to measure radiation 
+produced by electrons travelling close to the speed of light and spiralling in 
+magnetic fields. The full-sky map of Haslam et al. (1981-1982), combining data 
+from 3 large (60-100m) radio telescopes around the world, shows strong emission 
+from the disk of our galaxy. Away from the disk, large features are also seen, 
+which are thought to be remnants of nearby ancient supernova. The map is also 
+dotted with distant radio galaxies.</p></DIV></DIV>
+
+
+</DIV>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cInfo015ChromoPlugin</td>
+    </tr>
+  </table>
+</footer>
+
+</body></html>

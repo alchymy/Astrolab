@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Gravitational force at a surface ------------ [cEqu022g]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Jquery and other code for equation pages -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+	
+<script src="../fJscriptLib/fJqFormatpage.js"></script>
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+<!-- 
+Page Specific Code using straight through process in this case - not MVC. 
+Use the process that is easiest to maintain for each case!
+-->
+
+<script>
+
+function main() {
+
+// Get Input values
+
+var r = document.inputDataForm1.input1.value;
+var M = document.inputDataForm1.input2.value;
+var G = 6.67E-11;
+
+var decPlaces = document.inputDataForm1.input99.value;
+
+// Calulate result
+
+var g =  (G * M ) / (r * r);
+
+
+// Output Results 
+
+var outputResult1 = new Number(g);
+document.outputResultForm1.result1.value = outputResult1.toExponential(decPlaces);
+
+
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Gravitational force at a surface</td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Equation and Calculation</a></li>
+		<li><a href="#tabs-2">Notes</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+            
+\[ g = \frac{GM}{r^2} \]    
+   
+   <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    Variables / Constants:
+      <ul>
+    <li><i>G</i> is the Gravitational Constant</li>
+    <li><i>M</i> Mass of the planet</li>
+    <li><i>r</i> is the planet radius</li>
+    <li><i>g</i> is the surface gravity</li>
+     </ul>
+<br>
+Example: Earth mass 5.98E24 Kg, Earth radius 6.378E6 m, g = 9.81 ms<sup>-2</sup>
+</td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td><i>r</i></td>
+    <td>
+      <input type="text" name="input1" id="input1" size="12" value="6.378E6" /></td>
+    <td>m</td>
+  </tr>
+  <tr>
+    <td><i>M</i></td>
+    <td>
+      <input type="text" name="input2" id="input2" size="12" value="5.98E24" /></td>
+    <td>Kg</td>
+  </tr>
+  <tr>
+    <td><i>G</i></td>
+    <td>6.67E-11</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td>g</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>m s<sup>-2</sup></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+
+
+<div id="tabs-2">
+  <p>
+You have learned that the <STRONG>surface gravity (g)</STRONG> of a body
+depends on the <STRONG>mass (M)</STRONG> and the <STRONG>radius (r)</STRONG>
+of the given body. The formula which relates these quantities is:<P>
+
+<BLOCKQUOTE>
+<STRONG>g = G * M / r<SUP>2</SUP></STRONG>
+</BLOCKQUOTE><P>
+
+where <STRONG>G</STRONG> is called the <STRONG>Gravitational
+constant</STRONG>. Remember that the notation <STRONG>r<SUP>2</SUP></STRONG>
+means <STRONG>r</STRONG> to the 2nd power, or <STRONG>r</STRONG> squared.<P>
+
+You will calculate the surface gravity for a number of
+bodies using the <STRONG>MKS</STRONG> system where the units for
+<STRONG>distance</STRONG> are <STRONG>meters</STRONG>, the units for
+<STRONG>mass</STRONG> are <STRONG>kilograms</STRONG>, and the units for
+<STRONG>time</STRONG> are <STRONG>seconds</STRONG>. In this system, the
+gravitational constant has the value:<P>
+
+<BLOCKQUOTE>
+<STRONG>G = 6.67 * 10<SUP>-11</SUP>
+Newton-meter<SUP>2</SUP>/kilogram<SUP>2</SUP>.</STRONG>
+</BLOCKQUOTE><P>
+
+As an example, the mass <STRONG>M</STRONG> of the Earth is 5.98 *
+10<SUP>24</SUP> kilograms. The radius <STRONG>r</STRONG> of the Earth is 6378
+kilometers, which is equal to 6.378 * 10<SUP>6</SUP> meters. The surface
+gravity on Earth can therefore be calculated by:<P>
+
+<CENTER>
+<TABLE>
+<TR>
+  <TD><STRONG>g</STRONG></TD>
+  <TD><STRONG>=</STRONG></TD>
+  <TD><STRONG>G * M / r<SUP>2</SUP></STRONG></TD>
+</TR>
+<TR>
+  <TD></TD>
+  <TD><STRONG>=</STRONG></TD>
+  <TD><STRONG>(6.67 * 10<SUP>-11</SUP>) * (5.98 * 10<SUP>24</SUP>) /
+    (6.378 * 10<SUP>6</SUP>)<SUP>2</SUP></STRONG></TD>
+</TR>
+<TR>
+  <TD></TD>
+  <TD><STRONG>=</STRONG></TD>
+  <TD><STRONG>9.81 meters/second<SUP>2</SUP></STRONG></TD>
+</TR>
+</TABLE>
+</CENTER><P>
+
+So, a simple formula from the science of Physics can be used to calculate
+the surface gravity for a body (in this case the Earth) if you know the
+mass of the body and its radius! The assumption in using this formula is
+that the body is spherical, but this is a pretty good assumption. If the
+radii of a body at its equator and pole are very different, then the
+surface gravity is different at those places and should be calculated
+separately.<P>
+
+The surface gravity for the Earth is therefore 9.81 meters per
+second<SUP>2</SUP>, or 9.81 meters per second per second. This is the
+<STRONG>acceleration</STRONG> due to gravity that an object feels near the
+surface of the Earth. For example, if an object were dropped from rest near
+the Earth's surface, it would accelerate to a velocity of 9.81 meters per
+second after one second, and the velocity would increase by another 9.81
+meters per second for every additional second that the object was falling
+(in the vicinity of the Earth's surface).<P>
+
+A table of masses and radii is given below for many bodies in the Solar
+System. Make sure to convert the radii from kilometers to meters when
+making the calculation, and make sure that you can calculate the surface
+gravity of the Earth correctly. Then, calculate the surface gravity at each
+of the other bodies. Think about how much you would weigh on the surface of
+these bodies relative to how much you weigh on the surface of the Earth.<P>
+
+<br/>
+</div>
+
+</div>
+<br/>
+</div>
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu022g</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

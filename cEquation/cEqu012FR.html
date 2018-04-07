@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Focal Ratio ------------ [cEqu012FR]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+
+<!-- 
+Page Specific Code using straight through process in this case - not MVC. 
+Use the process that is easiest to maintain for each case!
+-->
+
+<script>
+
+function main() {
+
+// Get Input values
+
+var f = document.inputDataForm1.input1.value;  // focal length in metres
+var D = document.inputDataForm1.input2.value;   // aperture in metres
+
+var decPlaces = document.inputDataForm1.input99.value;
+
+// Calulate result
+
+var fRatio =  f / D;
+
+
+// Output Results 
+
+var outputResult1 = new Number(fRatio);
+document.outputResultForm1.result1.value = outputResult1.toFixed(decPlaces);
+
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Focal Ratio</td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+         </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Equation and Calculation</a></li>
+		<li><a href="#tabs-2">Notes</a></li>
+        <li><a href="#tabs-3">Live Sheet</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+            
+ \[ 
+ Focal\; Ratio = f-ratio = f-number = \frac{f}{D} 
+ \]
+ 
+   <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>Variables / Constants: </p>
+      <p>
+      <ul>
+    <li><i>f</i>  is the focal length - here we use mm</li>
+    <li><i>D</i>  is the aperture diameter - again in mm</li>
+  </ul>&nbsp;</p>
+  Example: f/ratio is the focal length of the telescope divided by its aperture, the diameter of the main lens or mirror. So, for example, a common telescope design is a 120mm aperture (4.7") refractor with a focal length of 1 meter (1000mm). The f/ratio is thus 1000/120 = 8.3. Convention is to write this as "f/8.3".
+
+
+  </td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td>f</td>
+    <td>
+      <input type="text" name="input1" id="input1" size="12" value="1000" /></td>
+    <td>mm</td>
+  </tr>
+  <tr>
+    <td>D</td>
+    <td><input type="text" name="input2" id="input2" size="12" value="120" /></td>
+    <td>mm</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td>f/n</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>n/a&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+</div>
+
+<div id="tabs-2">
+    
+Focal Ratio or f-Number is a dimensionless number that is a quantitative measure of the ‘speed’ of a telescope’s optics, found by dividing the focal length by the aperture. The smaller the f/number, the lower the magnification, the wider the field, and the brighter the image with any given eyepiece or camera.
+<br/><br/>
+Fast f/4 to f/5 focal ratios are generally best for lower power wide field observing and deep space photography. Slow f/11 to f/15 focal ratios are usually better suited to higher power lunar, planetary, and binary star observing and high power photography. Medium f/6 to f/10 focal ratios work well with either.
+<br/><br/>
+An f/5 system can photograph a nebula or other faint extended deep space object in one-fourth the time of an f/10 system, but the image will be only one-half as large. Point sources, such as stars, are recorded based on the aperture, however, rather than the focal ratio – so that the larger the aperture, the fainter the star you can see or photograph, no matter what the focal ratio.
+<br/><br/>
+Figure 022 shows a diagram of decreasing apertures, that is, increasing f-numbers, in one-stop increments; each aperture has half the light gathering area of the previous one.
+<p>
+<img src="../fImageLib/fig022.png" width="500" height="199" alt=""/>
+</p>
+ </div>
+
+
+<div id="tabs-3">
+<iframe width="480" height="500" src="http://uncharted.livesheets.com/forms/7fa8ffd5cff96e78b941b8edb565311436289fd8"></iframe></div>
+
+</div>
+<br/>
+</div>
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu012FR</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

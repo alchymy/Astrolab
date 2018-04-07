@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="Description" content="Astrophysics Tools" />
+<meta name="Keywords" content="Astronomy, Cosmology, Astrophysics" />
+<meta name="Author" content="Alchymist" />
+
+
+<title>COS Astrolab Main Menu ------------ [mMain]</title>
+
+<!-- Load common environment -->
+<script src="fJscriptLib/jquery.js"></script>
+<script src="fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="fCss/fDefault.css" type="text/css" />
+
+<script src="fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+<script>
+$( function() {
+    $( ".widget input[type=submit], .widget a, .widget button" ).button();
+    $( "button, input, a" ).click( function( event ) {
+      event.preventDefault();
+    } );
+  } );
+</script>
+<script> 
+
+
+function pageStart() {
+
+displayVersion();
+
+}
+
+function displayVersion() {
+
+    var menu = document.getElementById("menuCell");
+    menu.innerHTML = APP_VERSION;
+
+/* 
+possible alternative route add a cell on end of row with text
+var firstRow = document.getElementById("headerTable").rows[0];
+var menu = firstRow.insertCell(-1);
+menu.innerHTML = '<a href="mMain.html"> mMain </a> &gt&gt cInfo016AppMap';
+where a link must contain an '&' enter it as &amp; otherwise HTML validators may
+show an error
+*/
+ 
+}
+
+
+</script>
+
+
+</head>
+
+<body onload="pageStart();">
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Astrolab Data Menu</td>
+    <td style="width:40%" id="menuCell">
+		<nav>
+                <button class="mnubutton2" type="button" onClick="location.href='mMain.html'" >Main Menu</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs" style="width:33%">
+	<ul>
+		<li><a href="#tabs-1">Data</a></li>
+	
+	</ul>
+    
+<div id="tabs-1">
+
+<table class="MenuTable" style="text-align:center;width:100%">
+
+  <tr>
+    <td style="width:33%;"><br>
+          <br/>
+    <b>Data</b><br/><br/>
+          <button class="mnubutton1" type="button" onClick="location.href='cData/cData002PT.html'">Periodic Table</button><br/>
+          <button class="mnubutton1" type="button" onClick="location.href='cData/cData001StarClass.html'">Star Classification</button><br/>
+      <br/>
+
+    </td>
+  </tr>
+</table>
+<br/>
+</div>
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">mMainData</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>
+  

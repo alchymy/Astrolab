@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Planetary Data - Moon ------------ [cData011Moon]</title>
+
+<!-- Load common environment -->
+
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+<script src="../fEnvironment.js"></script>
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page specific css and js -->
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<script src="../fJscriptLib/fFoundationObj.js"></script>
+
+<script>
+
+function pageStart() {
+
+
+
+}
+
+// jquery dialog and other setup
+
+	$(function() {
+		
+		$( "#button" ).button();
+	
+		$( "#tabs" ).tabs();
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	
+</script>
+    
+<!-- ********* Application specific functions ********* -->
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:75%">Planetary Data - Moon</td>
+    <td style="width:25%" id="menuCell">
+      <nav><button class="mnubutton2" onclick="location.href='../mMain.html'" type="button">mMain</button></nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Data</a></li>
+		<li><a href="#tabs-2">Additional Information</a></li>
+	
+	</ul>
+    
+<div id="tabs-1">
+
+<br/>
+
+
+<br/>
+<table class="InformationTable1">
+  <tr>
+    <th>Property</th>
+    <th>Value</th>
+    <th>Units</th>
+    <th>Property</th>
+    <th>Value</th>
+    <th>Units</th>
+    </tr>
+  <tr>
+    <td style="background-color:#00FF91">Physical Property</td>
+    <td style="background-color:#00FF91">&nbsp;</td>
+    <td style="background-color:#00FF91">&nbsp;</td>
+    <td style="background-color:#00FFFF">Orbital Data</td>
+    <td style="background-color:#00FFFF">&nbsp;</td>
+    <td style="background-color:#00FFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Equatorial Radius</td>
+    <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1738.1&nbsp; </td>
+    <td>km</td>
+    <td>Semimajor axis</td>
+    <td>0.3844 x 10<sup>6</sup></td>
+    <td>km</td>
+    </tr>
+  <tr>
+    <td>Polar radius</td>
+    <td> 1736.0</td>
+    <td>km</td>
+    <td>Perigee *</td>
+    <td>0.3633 x 10<sup>6</sup></td>
+    <td>km</td>
+    </tr>
+  <tr>
+    <td> Volumetric mean radius<br />    </td>
+    <td>1737.1</td>
+    <td>km</td>
+    <td>Apogee *</td>
+    <td>0.4055 x 10<sup>6</sup></td>
+    <td>km</td>
+    </tr>
+  <tr>
+    <td>Ellipticity (Flattening)&nbsp;&nbsp;&nbsp; </td>
+    <td>0.0012</td>
+    <td>&nbsp;</td>
+    <td>Revolution period&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+    <td>27.3217&nbsp; </td>
+    <td>days</td>
+    </tr>
+  <tr>
+    <td>Mass</td>
+    <td>0.07349 x 10<sup>24</sup></td>
+    <td>kg</td>
+    <td>Synodic period&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+    <td>29.53&nbsp; </td>
+    <td>days</td>
+    </tr>
+  <tr>
+    <td>Mean density&nbsp; </td>
+    <td>3350</td>
+    <td>kg/m<sup>3</sup></td>
+    <td>Sidereal rotation period&nbsp;&nbsp; </td>
+    <td>655.728</td>
+    <td>hrs</td>
+    </tr>
+  <tr>
+    <td>GM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+    <td>0.0049 x 10<sup>6</sup></td>
+    <td>km<sup>3</sup>/s<sup>2</sup></td>
+    <td>Min. orbital velocity</td>
+    <td>0.964</td>
+    <td>km/s</td>
+    </tr>
+  <tr>
+    <td>Moment of inertia</td>
+    <td>0.394</td>
+    <td>I/MR<sup>2</sup></td>
+    <td>Mean orbital velocity</td>
+    <td>1.023</td>
+    <td>km/s</td>
+    </tr>
+  <tr>
+    <td>J<sub>2</sub></td>
+    <td>202.7 x 10<sup>-6</sup></td>
+    <td>&nbsp;</td>
+    <td>Max. orbital velocity</td>
+    <td>1.076</td>
+    <td>km/s</td>
+    </tr>
+  <tr>
+    <td>Equatorial Surface Gravity</td>
+    <td>1.62&nbsp;&nbsp;&nbsp;&nbsp; </td>
+    <td>m/s<sup>2</sup></td>
+    <td>Orbital Eccentricity</td>
+    <td>0.0549&nbsp;&nbsp;&nbsp; </td>
+    <td>&nbsp;</td>
+    </tr>
+  <tr>
+    <td>Escape Velocity</td>
+    <td>2.38&nbsp;&nbsp;&nbsp; </td>
+    <td>km/s</td>
+    <td>Orbital Inclination to Ecliptic</td>
+    <td>5.145</td>
+    <td>deg</td>
+    </tr>
+  <tr>
+    <td>Surface acceleration&nbsp; </td>
+    <td>1.62</td>
+    <td>m/s<sup>2</sup></td>
+    <td>Inclination to equator&nbsp;&nbsp;&nbsp;&nbsp; </td>
+    <td>18.28 - 28.58</td>
+    <td>deg</td>
+    </tr>
+  <tr>
+    <td>Volume</td>
+    <td>2.1958 x&nbsp; 10<sup>10</sup>&nbsp; </td>
+    <td>km<sup>3</sup></td>
+    <td>Recession rate from Earth</td>
+    <td>3.8</td>
+    <td>cm/yr</td>
+    </tr>
+  <tr>
+    <td>Topographic range</td>
+    <td>16</td>
+    <td>km</td>
+    <td>Obliquity to orbit</td>
+    <td>6.68</td>
+    <td>deg</td>
+    </tr>
+  <tr>
+    <td>Atmosphere</td>
+    <td>See below</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Black-body temperature</td>
+    <td>270.7</td>
+    <td>K</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Solar Irradiance</td>
+    <td>1367.6</td>
+    <td>W/m<sup>2</sup></td>
+    <td style="background-color:#FFFFCC">Un-validated Data</td>
+    <td style="background-color:#FFFFCC">&nbsp;</td>
+    <td style="background-color:#FFFFCC">&nbsp;</td>
+    </tr>
+  <tr>
+    <td>Visual Magnitude V(1,0)</td>
+    <td>+0.21</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Geometric Albedo</td>
+    <td>0.12 </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Bond albedo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+    <td>0.11</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  </table>
+  <br/>
+  </div>
+  
+<div id="tabs-2">
+<div class="NotesBox1">
+<br/>
+Mean values at opposition from Earth<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Distance from Earth (equator, km)&nbsp;&nbsp; 378,000&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apparent diameter (seconds of arc)&nbsp;&nbsp;&nbsp;&nbsp; 1896<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apparent visual magnitude&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -12.74&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<br>
+* These represent mean apogee and perigee for the lunar orbit.&nbsp; <br>
+The orbit changes over the course of the year so the distance <br>
+from the Moon to Earth roughly ranges from 357,000 km to 407,000 km.
+<br/>
+<h3>Lunar Atmosphere</h3> 
+<pre>
+Diurnal temperature range: >100 K to &lt;400 K  (roughly -250 F to +250 F)
+Total mass of atmosphere:  ~25,000 kg
+Surface pressure (night): 3 x 10<sup>-15</sup> bar  (2 x 10<sup>-12</sup> torr)
+Abundance at surface: 2 x 10<sup>5</sup> particles/cm<sup>3</sup>
+
+Estimated Composition (particles per cubic cm):
+    Helium 4 (<sup>4</sup>He) - 40,000 ; Neon 20 (<sup>20</sup>Ne) - 40,000 ; Hydrogen (H<sub>2</sub>) - 35,000
+    Argon 40 (<sup>40</sup>Ar) - 30,000 ; Neon 22 (<sup>22</sup>Ne) - 5,000 ; Argon 36 (<sup>36</sup>Ar) - 2,000 
+    Methane - 1000 ; Ammonia - 1000 ; Carbon Dioxide (CO<sub>2</sub>) - 1000 
+    Trace Oxygen (O<sup>+</sup>), Aluminum (Al<sup>+</sup>), Silicon (Si<sup>+</sup>) 
+    Possible Phosphorus (P<sup>+</sup>), Sodium (Na<sup>+</sup>), Magnesium (Mg<sup>+</sup>)
+
+Composition of the tenuous lunar atmosphere is poorly known and variable, 
+these are estimates of the upper limits of the nighttime ambient atmosphere 
+composition.  Daytime levels were difficult to measure due to heating and 
+outgassing of Apollo surface experiments.
+
+</pre>
+
+<h3>External Links</h3>
+<a href="http://en.wikipedia.org/wiki/Portal:Moon " target="_blank">http://en.wikipedia.org/wiki/Portal:Moon </a>
+<br/>
+<br/>
+</div>
+</div>
+
+
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cData011Moon</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

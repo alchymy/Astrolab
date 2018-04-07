@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<title>Spectra from Gas Discharges ------------ [cCalc004SpectraHlp]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+
+<script language="JavaScript" src="../../fEnvironment.js" type="text/javascript">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Load common code for calculation pages -->
+<script language="JavaScript" src="../../fJscriptLib/fFoundationObj.js" type="text/javascript">
+</script>
+<!-- End of common code -->
+
+<!-- Page Specific Code -->
+
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<div class="Header" style="background-color:#FF00FF" >
+  <h3>Spectra Calculations ------------ []</h3>
+</div>
+
+<div class="MenuReturn">
+<!-- Only show main menu links for pda version -->
+<script language="JavaScript" type="text/javascript">
+<!--
+
+    if (APP_ENV == "PDA") {  
+    // single quote used as text already contains double quote
+    document.write('<a title="Main Page" href="mMain.html" >Main Page</a> &gt Lunar Phase Calc');
+    }
+    
+// -->
+</script>
+</div>
+
+<!-- **************** Content **************** -->
+
+<br/>
+
+<div class="description">
+<table border="0" cellspacing="1" cellpadding="0" bgcolor="white">
+  <tr>
+    <td valign="top" bgcolor="#66FFFF" height="56" width="70%">
+        <h1 align="left">Spectra of Gas Discharges - Help</h1>
+        </td>
+    <td width="10%"></td>
+        <td width="20%">Acknowledgments - John Talbot</td>
+  </tr>
+  <tr>
+    <td colspan="3" valign="top" bgcolor="#CCCCCC">      &nbsp;
+      <p> This Java program reads a file containing a list
+        of emission line wavelengths and their corresponding strengths
+        then simulates the appearance of the spectrum in a good visual
+        spectroscope. </p>
+      <p> <b><font color="FFFF00">Note</font></b>: This program generates deep 24 bit color plots,
+        therefore you may need to increase the color depth of your system
+        to view subtle details in these spectra.</p>
+      <p> <b><font color="FF0000">Warning</font></b>: There may be a small delay as the 
+        Applet loads it&#39;s element emission line file and computes the spectra...<br />
+        <br />
+      </p>
+      <ul>
+        <li>Click on an element name in the first column of the table below to launch
+          the spectra viewer </li>
+        <li>If you prefer not to run the Applet click corresponding JPG
+          in the next to last column to obtain an image.</li>
+        </ul>
+      <p>Note images for the spectra for each element were computed, screen captured
+and stored as a 784 X 8 pixel JPEG then expanded vertically
+by your web browser to 784 X 64 pixel.
+The narrow height is to reduce transmission time, it expands
+to 64 pixels using HEIGHT=64 option in IMG tag of HTML file.
+To use these images outside the context of a web browser,
+you should expand them vertically with image processor. </p>
+      <br/>
+    &nbsp;</td>
+  </tr>
+</table>
+</div>
+
+
+<hr/>
+
+<!--
+ID vs. Name in Form Fields
+When creating a form and form field, you should give them both an id and a name and make them the same, e.g. 
+
+<form id="form1" name="form1">
+<input type="text" id="form1Field1" name="form1Field1" />
+<input type="text" id="form1Field2" name="form1Field2" />
+</form>
+
+This is because browsers use the name field when they submit to a server, but when working with JavaScript it's best to use id (and the associated document.getElementById()) to identify elements. You could use something like document.getElementsByName(), but it is a lot harder to work with, because names aren't guaranteed to be unique and thus that function returns a collection of elements, not just one. 
+You should also always name your name and id the same thing (and not reuse that identifier anywhere else), 
+because of IE's poor implementation of getElementById() which can sometimes return an element whose "name" matches the "id"
+you asked for. 
+
+Always use both, make them the same string, and make that string unique in the document. 
+XHTML spec [1] says that name is deprecated for id, and that eventually name will go away completely.  
+The spec also recommends using both the name and the id attributes, set identically, for forwards and backwards compatibility.
+-->
+&nbsp;
+<center><table border="2" cellspacing="2" cellpadding="4">
+<tr><th  bgcolor="#FFFFFF">Atomic Number Z</th>
+<td>The number of protons in the nucleus of the element.</td>
+</tr>
+<tr><th>Element</th>
+<td>Click on the name in this column to launch the Applet
+which displays an emission line spectrum of the corresponding element</td>
+</tr>
+<tr><th>Symbol</th>
+<td>Symbol from the table of the elements</td>
+</tr>
+<tr><th>Data File</th>
+<td>Click on the name to download a text file containing an a list of emission lines
+in &Aring;ngstroms and their associated strengths for the corresponding element</td>
+</tr>
+<tr><th>Emission Lines<br/>
+  4000-7000 &Aring;</th>
+<td>Number of tabulated emission lines in the visible wavelength range</td>
+</tr>
+<tr><th>PNG Image</th>
+<td>PNG screen grab (784 X 64). The narrow
+height is to reduce transmission time, it expands to 64 pixels
+using HEIGHT=64 option in IMG tag of HTML file.
+To use images outside the context of a web browser,
+you should expand them vertically with image processor.</td>
+</tr>
+<tr><th>Original Data</th>
+<td>Spectra of neutral and singly ionized elements from the
+<a href="http://adc.gsfc.nasa.gov">Astronomical Data Center</a> (ADC)
+<a href="ftp://adc.gsfc.nasa.gov/pub/adc/archives/catalogs/6/6016">catalog A6016</a>,
+by Reader J., Corliss Ch.H. :1981, 'Line Spectra of the Elements',
+<i>CRC Handbook of Chemistry and Physics</i>; NSRDS-NBS 68</td>
+</tr>
+</table>
+</center>
+ 
+
+<p/>
+If you want to use the applet on one of your web pages, here
+are some helpful information:<p/>
+<p/>
+The element, wavelength range and line width are all
+controlled by applet parameter (PARAM) tags in the HTML source for this page.
+There are other options such as width and height of spectra in pixels and
+contrast which can also be controlled. There are also
+options to overlay a continuous spectrum
+of varying strength and to choose the wavelength range. But note that
+the data sets I use here contain only lines in the 4000 to 7000
+&Aring; range<br />
+For example here are the parameters for Neon :<p/>
+<pre>
+&lt;APPLET CODE=discharge.class WIDTH=600 HEIGHT=200&gt;
+&lt;PARAM NAME=version VALUE=0&gt;
+&lt;PARAM NAME=eye VALUE=0&gt;
+&lt;PARAM NAME=element VALUE=neon.txt&gt;
+&lt;PARAM NAME=startWavelength VALUE=4000&gt;
+&lt;PARAM NAME=endWavelength VALUE=7000&gt;
+&lt;PARAM NAME=lineWidth VALUE=2.5&gt;
+&lt;PARAM NAME=contrast VALUE=10&gt;
+&lt;PARAM NAME=continuum VALUE=0.3&gt;
+&lt;/APPLET&gt;
+</pre>
+
+
+<ul>
+<li><b>Version</b>:
+  <ul>
+  <li>Value = 0: show only the spectrum of the element  </li>
+  <li>Value = 1: the full applet with the controls tha permit the 
+                 user to change any parameter  </li>
+  <li>Value = 2: show only the spectrum of the element, but without
+                 the wavelength scale  </li>
+  </ul>
+</li>
+<li><b>Eye</b>:
+  <ul>
+  <li>Value = 0: this is how a young person with normal vision perceives
+       the spectral colours  </li>
+  <li>Value = 1: this is how I - at an age of 59 - perceive the colours. Note
+       that I can no longer look much more blueward than 
+       H<font face="Symbol">g</font>...  </li>
+  <li>Value = 2: this is how a person with yellow-green colour blindness
+       perceives the colours. I had asked a student to describe at which
+       wavelengths he perceives different colours, when looking at white
+       sunlight through a spectroscope.   </li>
+  <li>Value = 3: just a black and white view, as if we could see well
+      at all wavelengths  </li>
+  </ul>
+</li>
+</ul>
+
+The simulated gas discharge spectrum is synthesized by assuming that each
+each emission line has a gaussian line profile. Each point in the spectrum
+is computed as the sum of all the emission lines.
+<ul>
+<li><b>Contrast</b>:
+  <ul>
+  <li>Range: 1 to 10000  (the upper limit comes from intensity of the weakest line)  </li>
+  <li>Default: 1  (maximum of strongest line assigned to maximum intensity, no
+                   distortion of line profile)  </li>
+  <li>Increase this parameter to bring up the weaker lines. Of course, 
+one burns out the strongest lines and also the relative difference between 
+the various emission line strengths is lost. Find a compromise to get a 
+pleasing impression -- this applet was not designed to allow accurate 
+intensity measurements.  </li>
+  </ul>
+
+</li>
+<li><b>Line Width</b>:
+  <ul>
+  <li>Range: 0 to 100  </li>
+  <li>Default: 3</li>
+  <li>The width of emission lines can be set by the user
+so that the line profile covers at least one pixel: too small a width 
+causes undersampling to occur and some lines may disappear! 
+However too broad a line will cause blending of lines that are closer 
+together. Again, a compromise must be reached.  </li>
+  </ul>
+
+</li>
+<li><b>Continuum</b>: 
+  <ul>
+  <li>Range: 0 to 1  </li>
+  <li>Default: 0.3  </li>
+  <li>Physics: Apart from the line emission, there often is also
+a broadband background light, for instance by scattering from 
+an external white source or internal transitions involving the 
+ion continuum. This causes a smooth background to appear as 
+faint 'rainbow'. Here, we merely use it as a pleasing coloured 
+background to fill in the dark gaps between the lines.  </li>
+  </ul>
+</li>
+</ul>
+
+<p/>
+
+This Applet was created by John Talbot.<p/>
+<hr />
+
+<h2>Physics Background</h2>
+
+There are two basic line broadening mechanisms; instrumental and intrinsic :
+<ul>
+<li><b>Instrumental Broadening</b>
+  <ul>
+  <li>The first is due to finite spectroscopic resolution and can
+be controlled by the researcher. Often higher resolution can be
+achieved by larger gratings or coarse gratings operated in higher order
+or longer path lengths for fourier transform spectrometers.  </li>
+  </ul>
+</li>
+<li><b>Intrinsic Broadening</b>
+  <ul>
+  <li>The second is fundamental line broadening
+      which can be caused by at least three factors:
+  <ol>
+  <li>Doppler Broadening
+    <ul>
+    <li>Related to special relativity: Motion components
+of a particle along the line of sight causes a shift in
+radiation frequency. Since particles generally have a distribution
+of velocities, this creates a gaussian blurring in the spectral lines.    </li>
+    </ul>
+  </li>
+  <li>Lifetime Broadening
+  <ul>
+  <li>Quantum mechanical in origin : 
+Allowed transitions have a short lifetime and this
+translates to some uncertainty in the frequency of atomic
+oscillators creating a Lorentzian line profile.  </li>
+  </ul>
+
+  </li>
+  <li>Density Broadening
+    <ul>
+    <li>Combination of quantum mechanical and electromagnetic effects: 
+Ions are bombarded by transient electric and magnetic fields
+of high speed electrons zipping nearby, these electric fields
+split and shift the energy levels. This constant perturbation within
+the plasma environment depends most strongly on density and causes
+strong line broadening in higher density plasmas. Temperature,
+ionization level and the particular quantum transition involved
+also plays a role.    </li>
+    </ul>
+  </li>
+  </ol>
+  </li>
+  </ul>
+</li>
+</ul>
+
+In most thin plasmas one sees a combination of Doppler and
+Lorenztian broadening called Voigt profiles. The Lorentzian component
+affects mostly the low intensity 'wings' of the emission lines
+so line profiles can be approximated as gaussians, especially
+considering the dynamic range limitations of computer screens.
+Most of the time spectra taken by researchers do not fully
+resolve the intrinsic line profile so the lines are broadened
+mainly by instrumental imperfection.<p>&nbsp;
+
+</p>
+<hr />
+<i>The data for these spectra is courtesy of the
+Astronomical Data Center, and the National Space Science
+Data Center through the World Data Center A for Rockets
+and Satellites.</i>
+<hr />
+<h1>References</h1>
+<ul>
+<li>Spectra of neutral and singly ionized elements from the
+<a href="http://adc.gsfc.nasa.gov">Astronomical Data Center</a> (ADC)
+<a href="ftp://adc.gsfc.nasa.gov/pub/adc/archives/catalogs/6/6016">catalog A6016</a>,
+by Reader J., Corliss Ch.H. :1981, 'Line Spectra of the Elements',
+<i>CRC Handbook of Chemistry and Physics</i>; NSRDS-NBS 68</li>
+</ul>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">| cCalc004SpectraHlp</td>
+    </tr>
+  </table>
+</footer>
+
+
+
+</body>
+</html>

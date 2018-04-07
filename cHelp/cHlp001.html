@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Import Predict.txt ------------ [cHlp001]</title>
+
+<!-- Load common environment -->
+
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+<script src="../fEnvironment.js"></script>
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page specific css and js -->
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<script src="../fJscriptLib/fFoundationObj.js"></script>
+
+<script>
+
+function pageStart() {
+
+
+
+}
+
+// jquery dialog and other setup
+
+	$(function() {
+		
+		$( "#button" ).button();
+	
+		$( "#tabs" ).tabs();
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	
+</script>
+    
+<!-- ********* Application specific functions ********* -->
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:75%">Import 'Predict.txt'</td>
+    <td style="width:25%" id="menuCell">
+      <nav><button class="mnubutton2" onclick="location.href='../mMain.html'" type="button">mMain</button></nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Help</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<p><br />
+  <br />
+  Importing predict.txt into Excel / Open Office Sunspot data files.</p>
+<p>Using Excel - File / Open - and select Predict.txt<br />
+</p>
+<p><img src="../fImageLib/imgScrn001.png" width="699" height="587" /><br />
+Then open the text file, Excel will prompt for import.</p>
+<p><img src="../fImageLib/imgScrn002.png" width="653" height="573" /><br />
+Insert lines to separate columns for import. Once imported file can be saved as Predict.xls and the columns copied and pasted into the main data sheet.</p>
+<p><img src="../fImageLib/imgScrn003.png" width="653" height="573" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</div>
+</div>
+
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+	<script>
+        document.write( "Last updated "+ document.lastModified );
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cHlp001</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+
+</html>

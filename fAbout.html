@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Astrolab ------------ [fAbout]</title>
+
+<!-- Load common environment -->
+<script src="fJscriptLib/jquery.js"></script>
+<script src="fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="fCss/fDefault.css" type="text/css" />
+
+<script src="fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">COS Astrolab About</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+      <button class="mnubutton2" type="button" title="Main Menu" onClick="location.href='mMain.html'">mMain</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+  
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">About</a></li>
+        <li><a href="#tabs-2">Release - Readme.txt</a></li>
+        <li><a href="#tabs-3">Licence</a></li>
+        <li><a href="#tabs-4">Dependencies</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table>
+<tr>
+<td>
+
+  <img src="fImageLib/img0060a.png" width="150" height="150" alt="Logo"><br/>
+
+</td>
+<td>
+“To explain all 
+nature is too difficult a task for any one man or even for any one age. &#39;Tis 
+much better to do a little with certainty, &amp; leave the rest for others that come 
+after you, than to explain all things by conjecture without making sure of any 
+thing.” <i>(Isaac Newton)</i><br />
+</td>
+<tr>
+<td>
+<h3>Current Objective:</h3>
+</td>
+<td>
+
+ - to provide standard data sets on astronomical objects,
+equation information and calculation, and standard values for use in calculations.
+Future Objective to provide image data and processing.<br />
+<br/>
+Recommended screen resolution 1280 x 1024.<br/>
+
+<br />
+<br /><br />
+<a href="http://sourceforge.net/donate/index.php?group_id=224441"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32"  alt="Support This Project" /> </a> 
+</td>
+</tr>
+<tr>
+<td>
+<h3>Current Version Number:</h3>
+</td>
+<td>
+  <script>
+  document.write(APP_VERSION );
+  </script>
+</td>
+</tr>
+<tr>
+<td>
+<h3>Development Progress:</h3>
+</td>
+<td>
+  <img src="cDocuments/DevProgGraph.png" width="390" height="296" alt=""/></td>
+</tr>
+</table>
+  
+</div>
+
+<div id="tabs-2">
+<h3>Changes in this release</h3>
+ <object width="910" height="340" type="text/plain" data="cDocuments/Readme.txt" border="0"
+   style="overflow: hidden;">
+</object> 
+</div>
+
+<div id="tabs-3">
+<h3>License</h3>
+
+<p>This program is free software; you can redistribute it and/or modify it under 
+the terms of the GNU General Public License as published by the Free Software 
+Foundation;either version 2 of the License, or (at your option) any later 
+version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT 
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+FOR A PARTICULAR PURPOSE. See the <a href="http://www.gnu.org/copyleft/gpl.html">
+GNU General Public License</a> for more details.
+<br/><br/>
+Copyright Alchymist&#39;s Laboratory 2007 - 2016.</p>
+
+</div>
+
+<div id="tabs-4">
+
+<h3>Dependencies</h3>
+
+<script>
+document.write(JQUERY_VERSION, ", ", JQUERY_MIGRATE_VERSION, ", ", JQUERY_TOOLS_VERSION, ", ", JQUERY_UI_VERSION,", ", MATHJAX_VERSION);
+</script>
+
+</div>
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">fAbout</td>
+    </tr>
+  </table>
+</footer>
+
+
+</body>
+</html>

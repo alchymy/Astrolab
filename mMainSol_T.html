@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Astrolab Solar Data ------------ [mMainSol_T]</title>
+
+<!-- Load common environment -->
+<script src="fJscriptLib/jquery.js"></script>
+<script src="fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="fCss/fDefault.css" type="text/css" />
+
+<script src="fEnvironment.js"></script>
+
+<!-- End of common environment -->
+	
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bgndImg {
+    /* The image used */
+    background-image: url("soho-1400.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>	
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+
+</head>
+
+<body>
+
+<div class="bgndImg">
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Astrolab Solar Data Menu</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+       <button class="mnubutton2" type="button" onClick="location.href='mMain.html'" >Main Menu</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Sun Data</a></li>
+	
+	</ul>
+    
+<div id="tabs-1" style="width:33%">
+
+<table class="MenuTable" style="text-align:center;width:100%">  <tr>
+    <td style="width:33%;">
+      <br />
+      
+      <button class="mnubutton1" type="button" onClick="location.href='cDataSolarSystem/cData010Sun.html'">Sun</button><br/>
+      <button class="mnubutton1" type="button" onClick="location.href='cDataSolar/SunModel.xls'">Sun Model.xls</button><br/>
+      <br/>
+      </p>
+
+      </td>
+  </tr>
+</table>
+<br/>
+</div>
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">mMainSol_T</td>
+    </tr>
+  </table>
+</footer>
+
+</div>
+	
+</body>
+</html>

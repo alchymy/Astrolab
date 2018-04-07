@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Lunar Phase Calculations ------------ [cCalc002Lunar]</title>
+
+<!-- Load common environment -->
+<script src="../../fJscriptLib/jquery.js"></script>
+<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+
+<script src="../../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+<script src="../../fJscriptLib/fConstVar.js"></script>
+
+<script> 
+
+function pageStart() {
+
+var d = new Date();
+document.inputDataForm1.input1.value = d.getFullYear();
+document.inputDataForm1.input4.value = d.getMonth() + 1;
+document.inputDataForm1.input7.value = d.getDate();
+
+}
+
+// define all Global variables
+
+// var EARTH_RADII_TO_KM;   conv to Earth Radius in km loaded from fConstVar.js
+// var PI; loaded from fConstVar.js
+
+var n0 = parseInt( "0" );
+var f0 = parseFloat( "0.0" );
+
+var moonAge = 0.0;            // Moon's age
+var moonDistance = 0.0;       // Moon's distance in earth radii
+var eclipticLatitude = 0.0;   // Moon's ecliptic latitude
+var eclipticLongitude = 0.0;  // Moon's ecliptic longitude
+var moonPhase = " ";
+var zodiacSign = " ";
+var n28 = parseInt( "28" );
+var n30 = parseInt( "30" );
+var n31 = parseInt( "31" );
+var dim = new Array( n31, n28, n31, n30, n31, n30, n31, n31, n30, n31, n30, n31 );
+
+
+function splitDate() {
+	
+	var str = document.inputDataForm1.datepicker.value;
+	
+	document.inputDataForm1.input1.value = str.slice(0,4);
+	document.inputDataForm1.input4.value = str.slice(5,7);
+	document.inputDataForm1.input7.value = str.slice(8,10);
+}
+
+function main() {
+
+    var year  = parseInt( document.inputDataForm1.input1.value, 10 );    
+    var month = parseInt( document.inputDataForm1.input4.value, 10 );    
+    var day   = parseInt( document.inputDataForm1.input7.value, 10 );
+
+    if( !isDayOfMonth( year, month, day ) ) {
+        alert( "Invalid date" );
+        return;
+    }
+
+    moonPosition( year, month, day ); 
+    
+    document.outputResultsView1.result1.value = round2( moonAge );
+    document.outputResultsView1.result2.value = round2( moonDistance );
+    document.outputResultsView1.result3.value = moonPhase;
+    document.outputResultsView1.result4.value = round2( eclipticLatitude );
+    document.outputResultsView1.result5.value = round2( eclipticLongitude );
+    document.outputResultsView1.result6.value = zodiacSign;
+	document.outputResultsView1.result7.value = round2(moonDistance * EARTH_RADII_TO_KM);
+  	document.outputResultsView1.result8.value = round2(moonDistance * EARTH_RADII_TO_KM * 0.6);
+    document.outputResultsView1.result10.value = round2( (3476.2 / (moonDistance * EARTH_RADII_TO_KM)) * 57.3)
+    
+    if ( moonPhase == "NEW" ) {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunNew.png";
+    } else if( moonPhase == "Waxing crescent" ) {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunWaxingCrescent.png";
+    } else if( moonPhase == "First quarter" ) {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunFirstQuarter.png";
+    } else if( moonPhase == "Waxing gibbous" ) {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunWaxingGibbous.png";
+    } else if( moonPhase == "FULL" ) {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunFull.png";
+    } else if( moonPhase == "Waning gibbous" ) {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunWaningGibbous.png";
+    } else if( moonPhase == "Last quarter" ) {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunLastQtr.png";
+    } else if( moonPhase = "Waning crescent" ) {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunWaningCrescent.png";
+    } else {
+        document.outputResultsView1.phase.src = "ImageLibMoon/imgLunNew.png";
+    }
+
+
+
+}
+
+function initialize() {
+
+    var d = new Date();
+
+    document.inputDataForm1.input1.value  = d.getFullYear();
+    document.inputDataForm1.input4.value = d.getMonth() + 1;
+    document.inputDataForm1.input7.value   = d.getDate();
+}
+
+
+function isDayOfMonth( y, m, d ) {
+
+    if ( m != 2 ) {
+        if( 1 <= d && d <= dim[m-1] )
+            return true;
+        else
+            return false;
+    }
+
+    var feb = dim[1];
+ 
+    if ( isLeapYear( y ) ) {
+        feb += 1;                                   // is leap year
+    }
+    
+    if ( 1 <= d && d <= feb ) {
+        return true;
+    }
+
+    return false;       
+}
+
+function isLeapYear( y ) {
+
+    var x = Math.floor( y - 4 * Math.floor( y / 4 ) );
+    var w = Math.floor( y - 100 * Math.floor( y / 100 ) );
+    var z = Math.floor( y - 400 * Math.floor( y / 400 ) );
+
+    if( x == 0 ) {                          // possible leap year
+    
+        if( w == 0 && z != 0 ) {
+            return false;                  // not leap year
+        } else {
+            return true;                   // is leap year
+        }
+     }
+
+    return false;
+}
+
+function backup(n) {
+
+    var year = parseInt( document.inputDataForm1.input1.value, 10 );
+    var month = parseInt( document.inputDataForm1.input4.value, 10 );
+    var day = parseInt( document.inputDataForm1.input7.value, 10 );
+
+    switch(n)
+    {
+    case 1:
+        document.inputDataForm1.input1.value = year - 1;
+        main();
+        break;
+    case 2:
+        if( month < 2 ) {
+            document.inputDataForm1.input4.value = 12;
+            document.inputDataForm1.input1.value = year - 1;
+        } else {
+            document.inputDataForm1.input4.value = month - 1;
+            main();
+            break;
+        }
+    case 3:
+        if( day < 2 ) {
+        
+            if( month < 2 ) {
+                document.inputDataForm1.input4.value = 12;
+                document.inputDataForm1.input1.value = year - 1;
+            } else {
+                document.inputDataForm1.input4.value = month - 1; 
+                month = parseInt( document.inputDataForm1.input4.value, 10 );
+            }
+            
+            if( month == 2 && isLeapYear( year ) ) {
+                document.inputDataForm1.input7.value = 29;
+            } else {
+                document.inputDataForm1.input7.value = dim[month-1];
+            }
+        } else {
+                document.inputDataForm1.input7.value = day - 1;
+                main();
+                break;
+        }
+    }
+}
+
+function advance( n ) {
+
+    var year = parseInt( document.inputDataForm1.input1.value, 10 );
+    var month = parseInt( document.inputDataForm1.input4.value, 10 );
+    var day = parseInt( document.inputDataForm1.input7.value, 10 );
+
+    switch( n )
+    {
+    case 1:
+        document.inputDataForm1.input1.value = year + 1;
+        main();
+        break;
+    case 2:
+        if( month < 12 )
+            document.inputDataForm1.input4.value = month + 1;
+        else
+        {
+            document.inputDataForm1.input4.value = 1;
+            document.inputDataForm1.input1.value = year + 1;
+        }
+        main();
+        break;
+    case 3:
+        if( isDayOfMonth( year, month, day + 1 ) )
+            document.inputDataForm1.input7.value = day + 1;
+        else
+        {
+            if( month < 12 )
+                document.inputDataForm1.input4.value = month + 1;
+            else
+            {
+                document.inputDataForm1.input4.value = 1;
+                document.inputDataForm1.input1.value = year + 1;
+            }
+
+            document.inputDataForm1.input7.value = 1;
+        }
+        main();
+        break;
+    }
+}
+
+// compute moon position and phase
+function moonPosition( y, m, d ) {
+
+    var yy = 0;
+    var mm = 0;
+    var k1 = 0; 
+    var k2 = 0; 
+    var k3 = 0;
+    var jd = 0;
+    var ip = 0.0;
+    var dp = 0.0;
+    var np = 0.0;
+    var rp = 0.0;
+    
+    // calculate the Julian date at 12h UT
+    yy = y - Math.floor( ( 12 - m ) / 10 );       
+    mm = m + 9; 
+    
+    if( mm >= 12 ) {
+      mm = mm - 12;
+    }
+    
+    k1 = Math.floor( 365.25 * ( yy + 4712 ) );
+    k2 = Math.floor( 30.6 * mm + 0.5 );
+    k3 = Math.floor( Math.floor( ( yy / 100 ) + 49 ) * 0.75 ) - 38;
+    
+    jd = k1 + k2 + d + 59;                  // for dates in Julian calendar
+    if( jd > 2299160 ) jd = jd - k3;        // for Gregorian calendar
+        
+    // calculate moon's age in days
+    ip = normalize( ( jd - 2451550.1 ) / 29.530588853 );
+    moonAge = ip * 29.53;
+    
+    if(      moonAge <  1.84566 ) {
+        moonPhase = "NEW";
+    } else if( moonAge <  5.53699 ) {
+        moonPhase = "Waxing crescent";
+    } else if( moonAge <  9.22831 ) {
+        moonPhase = "First quarter";
+    } else if( moonAge < 12.91963 ) {
+        moonPhase = "Waxing gibbous";
+    } else if( moonAge < 16.61096 ) {
+        moonPhase = "FULL";
+    } else if( moonAge < 20.30228 ) {
+        moonPhase = "Waning gibbous";
+    } else if( moonAge < 23.99361 ) {
+        moonPhase = "Last quarter";
+    } else if( moonAge < 27.68493 ) {
+        moonPhase = "Waning crescent";
+    } else {
+        moonPhase = "NEW";
+    }
+
+    ip = ip * 2 * PI;                      // Convert phase to radians
+
+    // calculate moon's distance
+    dp = 2 * PI * normalize( ( jd - 2451562.2 ) / 27.55454988 );
+    moonDistance = 60.4 - 3.3 * Math.cos( dp ) - 0.6 * Math.cos( 2 * ip - dp ) - 0.5 * Math.cos( 2 * ip );
+
+    // calculate moon's ecliptic latitude
+    np = 2 * PI * normalize( ( jd - 2451565.2 ) / 27.212220817 );
+    eclipticLatitude = 5.1 * Math.sin( np );
+
+    // calculate moon's ecliptic longitude
+    rp = normalize( ( jd - 2451555.8 ) / 27.321582241 );
+    eclipticLongitude = 360 * rp + 6.3 * Math.sin( dp ) + 1.3 * Math.sin( 2 * ip - dp ) + 0.7 * Math.sin( 2 * ip );
+
+    if ( eclipticLongitude <  33.18 ) {
+        zodiacSign = "Pisces";
+    } else if( eclipticLongitude <  51.16 ) {
+        zodiacSign = "Aries";
+    } else if( eclipticLongitude <  93.44 ) {
+        zodiacSign = "Taurus";
+    } else if( eclipticLongitude < 119.48 ) {
+        zodiacSign = "Gemini";
+    } else if( eclipticLongitude < 135.30 ) {
+        zodiacSign = "Cancer";
+    } else if( eclipticLongitude < 173.34 ) {
+        zodiacSign = "Leo";
+    } else if( eclipticLongitude < 224.17 ) {
+        zodiacSign = "Virgo";
+    } else if( eclipticLongitude < 242.57 ) {
+        zodiacSign = "Libra";
+    } else if( eclipticLongitude < 271.26 ) {
+        zodiacSign = "Scorpio";
+    } else if( eclipticLongitude < 302.49 ) {
+        zodiacSign = "Sagittarius";
+    } else if( eclipticLongitude < 311.72 ) {
+        zodiacSign = "Capricorn";
+    } else if( eclipticLongitude < 348.58 ) {
+        zodiacSign = "Aquarius";
+    } else {       
+        zodiacSign = "Pisces";
+    }
+    
+    // so longitude is not greater than 360!
+    if ( eclipticLongitude > 360 ) {
+        eclipticLongitude = eclipticLongitude - 360;
+    }
+}
+
+// round to 2 decimal places    
+function round2( x ) {
+
+    return ( Math.round( 100*x )/100.0 );
+}
+    
+// normalize values to range 0...1    
+function normalize( v ) {
+
+    v = v - Math.floor( v  ); 
+    
+    if( v < 0 ) {
+        v = v + 1;
+    }    
+    
+    return v;
+}
+
+
+
+function openGraphic() {
+
+// used to display phase image derived from Clemantine satellite data
+
+//    diagWindow = window.open("","Diagnostics -","toolbar=no, location=no, directories=no, status=no,menubar=no, scrollbars=no, resizable=no, copyhistory=yes, width=220, height=350");
+
+    graphicWindow = window.open("","Large Image","width=665, height=690");
+    graphicWindow.document.open();
+    graphicWindow.document.write("<title>MoonPhase</title>");
+    graphicWindow.document.write("Detailed Moon Phase Image (Source: NRL Clementine Spacecraft projection)<p/>");
+
+    if (moonAge >= 29.00 && moonAge <= 29.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071011.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 0.01 && moonAge <= 0.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071012.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 1.00 && moonAge <= 1.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071013.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 2.00 && moonAge <= 2.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071014.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 3.00 && moonAge <= 3.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071015.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 4.00 && moonAge <= 4.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071016.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 5.00 && moonAge <= 5.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071017.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 6.00 && moonAge <= 6.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071018.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 7.00 && moonAge <= 7.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071019.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 8.00 && moonAge <= 8.98) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071020.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 9.00 && moonAge <= 9.98) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071021.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 10.00 && moonAge <= 10.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071022.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 11.00 && moonAge <= 11.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071023.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 12.00 && moonAge <= 12.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071024.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 13.00 && moonAge <= 13.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071025.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 14.00 && moonAge <= 14.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071026.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 15.00 && moonAge <= 15.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071027.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 16.00 && moonAge <= 16.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071028.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 17.00 && moonAge <= 17.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071029.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 18.00 && moonAge <= 18.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071030.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 19.00 && moonAge <= 19.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071031.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 20.00 && moonAge <= 20.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071101.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 21.00 && moonAge <= 21.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071102.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 22.00 && moonAge <= 22.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071103.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 23.00 && moonAge <= 23.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071104.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 24.00 && moonAge <= 24.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071105.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 25.00 && moonAge <= 25.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071106.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 26.00 && moonAge <= 26.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071107.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 27.00 && moonAge <= 27.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071108.png" alt="Moon phase" />');
+    }
+    if (moonAge >= 28.00 && moonAge <= 28.99) {
+      graphicWindow.document.write('<img border="0" src="ImageLibMoon/imgLun071109.png" alt="Moon phase" />');
+    }
+
+    graphicWindow.focus();
+
+}
+
+</script>
+
+</head>
+
+<body onload="pageStart();">
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Lunar Phase Calculations</td>
+    <td style="width:40%" id="menuCell">
+          <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../../mMain.html'" >mMain</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Calculation</a></li>
+		<li><a href="#tabs-2">User Guide</a></li>
+		<li><a href="#tabs-3">Libration Animation</a></li>
+	</ul>
+    
+
+<div id="tabs-1">
+
+
+<!--
+ID vs. Name in Form Fields
+When creating a form and form field, you should give them both an id and a name and make them the same, e.g. 
+
+<form id="form1" name="form1">
+<input type="text" id="form1Field1" name="form1Field1" />
+<input type="text" id="form1Field2" name="form1Field2" />
+</form>
+
+This is because browsers use the name field when they submit to a server, but when working with JavaScript it's best to use id (and the associated document.getElementById()) to identify elements. You could use something like document.getElementsByName(), but it is a lot harder to work with, because names aren't guaranteed to be unique and thus that function returns a collection of elements, not just one. 
+You should also always name your name and id the same thing (and not reuse that identifier anywhere else), 
+because of IE's poor implementation of getElementById() which can sometimes return an element whose "name" matches the "id"
+you asked for. 
+
+Always use both, make them the same string, and make that string unique in the document. 
+XHTML spec [1] says that name is deprecated for id, and that eventually name will go away completely.  
+The spec also recommends using both the name and the id attributes, set identically, for forwards and backwards compatibility.
+-->
+
+<form action="cCalc002Lunar.html" name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+
+<table class="CalcTable1" id="inputTable1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Select Date: 
+      <input onchange="javascript:splitDate()" type="text" id="datepicker" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="year">
+    <i>year</i></td>
+    <td>
+      <input type="button" value="&lt;" onclick="javascript:backup( 1 );" />
+      <input type="text" title="" name="input1" id="input1" size="12" value="" />
+      <input type="button" value="&gt;" onclick="advance( 1 )" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="month">
+    <i>month</i></td>
+    <td>
+      <input type="button" value="&lt;" onclick="javascript:backup( 2 );" />
+      <input type="text" name="input4" id="input4" size="12" value="" />
+      <input type="button" value="&gt;" onclick="advance( 2 )" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="day">
+    <i>day</i></td>
+    <td>
+      <input type="button" value="&lt;&lt;" onclick="backup( 3 )" />
+      <input type="text" name="input7" id="input7" size="12" value="" />
+      <input type="button" value="&gt;&gt;" onclick="advance( 3 )" />
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><i>&nbsp;</i></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="reset" value=" Click here to clear result values " />
+      &nbsp;&nbsp;&nbsp;
+      <input type="button" value="Large Phase Image" onclick="javascript:openGraphic()" />
+     
+    </td>
+  </tr>
+</table>
+
+
+</form>
+
+<hr/>
+
+<form action="cCalc002Lunar.html" name="outputResultsView1" id="outputResultsView1">
+<b>Output Results:
+
+  </b>
+  <br/>
+&nbsp;
+ <table class="CalcTable1" id="outputTable1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td title="age">
+    Moon&#39;s age from new</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>days</td>
+    <td>Distance</td>
+    <td>
+      <input type="text" name="result2" id="result2" size="12" /></td>
+    <td>Earth radii</td>
+    <td>Moon is</td>
+    <td>
+      <input type="text" name="result3" id="result3" size="15" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Ecliptic latitude</td>
+    <td>
+      <input type="text" name="result4" id="result4" size="12" /></td>
+    <td>degrees</td>
+    <td>Ecliptic longitude</td>
+    <td>
+      <input type="text" name="result5" id="result5" size="12" /></td>
+    <td>degrees</td>
+    <td>Moon is in</td>
+    <td>
+      <input type="text" name="result6" id="result6" size="12" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Distance (varies between approx 357000 to 407000 km)</td>
+    <td>
+      <input type="text" name="result7" id="result7" size="12" />
+    </td>
+    <td>km</td>
+    <td>Distance</td>
+    <td>
+      <input type="text" name="result8" id="result8" size="12" />
+    </td>
+    <td>miles</td>
+    <td>Phase - NORTH</td>
+    <td>
+      <img src="ImageLibMoon/imgLunFull.png" alt="phase change" id="phase" width="60" height="60" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Angular Size</td>
+    <td>
+      <input type="text" name="result10" id="result10" size="12" />
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="9">
+      <input type="reset" value=" Click here to clear result values " />      
+    </td>
+  </tr>
+</table>
+</form>
+<br/>
+</div>
+
+<div id="tabs-2">
+
+This page calculates the phase and position of the moon for a given date. <br/>
+        The calculator will try to initialize itself to your computer&#39;s 
+        day, month, and year, or the day, month, and year can be changed using 
+        the buttons on the calculator., or the dates can be typed in.<br/>This program helps anyone who needs to know the Moon's phase (age), distance, and position along the ecliptic on any date within several thousand years in the past or future.
+
+<br/>
+<br/>The ecliptic longitude is measured from the vernal equinox along the ecliptic 
+in the direction of the sun&#39;s apparent motion through the stars. The moon&#39;s 
+ecliptic longitude is calculated as well as the corresponding zodiac 
+constellation. The ecliptic latitude is positive if north of the ecliptic and 
+negative if south. The age of the moon in days as well as its visual phase are 
+given
+
+<br/><br/>
+    <img src="ImageLibMoon/imgLunPhases.png" alt="Moon phase in Northern hemisphere" width="455" height="90"/>NORTH
+    <img src="ImageLibMoon/imgLunPhasesSouth.png" alt="Moon phase in Southern hemisphere" width="453" height="89" />SOUTH<br/>
+    <br/>
+    <strong>Brief Explanation of the Moon Phases</strong>
+    <br/>
+    <br/>
+    The phases of the moon are caused by the relative positions of the earth, 
+    sun, and moon. The moon goes around the earth in 27.3 days, or 27 days 7 
+    hours 43 minutes, on average. This measurement is relative to the stars and 
+    is called the sidereal period or orbital period. However, because of the 
+    earth&#39;s motion around the sun, a complete moon cycle (New Moon to New Moon) 
+    appears to earthbound observers to take a couple of days longer: 29.5305882 
+    days to be exact. This number is called the synodic period or &quot;lunation&quot;, 
+    and is relative to the sun. <br/>
+    <br/>
+    The sun always illuminates the half of the moon facing the sun (except 
+    during lunar eclipses, when the moon passes through the earth&#39;s shadow). 
+    When the sun and moon are on opposite sides of the earth, the moon appears 
+    &quot;full&quot; to us, a bright, round disk. When the moon is between the earth and 
+    the sun, it appears dark, a &quot;new&quot; moon. In between, the moon&#39;s illuminated 
+    surface appears to grow (wax) to full, then decreases (wanes) to the next 
+    new moon. The edge of the shadow (the terminator) is always curved, being an 
+    oblique view of a circle, giving the moon its familiar crescent shape.&nbsp;
+    <button type="button" id="button" onclick="location.href('../../cDataSolarSystem/cData011Moon.html');">Moon Data</button><br/>
+    
+    <br/>&nbsp;
+
+</div>
+
+<div id="tabs-3">
+<img src="ImageLibMoon/librationWithPhaseOct2007.gif" alt="Image Credit - Public Domain" />
+</div>
+
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cCalc002Lunar</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

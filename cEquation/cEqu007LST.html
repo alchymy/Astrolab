@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Local Sidereal Time ------------ [cEqu007LST]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Jquery and other code for equation pages -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+	
+<script src="../fJscriptLib/fJqFormatpage.js"></script>
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+<!-- Page Specific Code using MVC
+
+Note the code below could easily be simplified and reduced to one 'main' function which gets the input values, does the calc
+and outputs the results - all driven by the calculate button.
+
+The way the code is laid out below simply tries to demo MVC, plus the actual equation functions could be split into a new .js
+file for re-use, rather than just being specified a one line in a main function.
+
+-->
+
+<script>
+
+// define all variables
+
+    var hourAngleDeg;   // HA in deg
+	var hourAngleHrs;  // HA in hrs
+    var localST;  // local sidereal time
+    var rightAscension;  // right ascension
+	var localSiderealT;
+	var obsLongitude;
+
+
+// CONTROLLER
+
+function main() {
+
+getParameters();
+hourAngleDeg = HA_deg(localST,rightAscension);
+hourAngleHrs = HA_hrs(localST,rightAscension);
+localSiderealT = LocalSiderealTime(greenwichST,obsLongitude);
+
+outputResult();
+
+}
+
+function getParameters()  {
+
+// get input parameters
+ 
+    localST = document.inputDataForm1.input1.value;
+    rightAscension = document.inputDataForm1.input2.value;
+  greenwichST = document.inputDataForm1.input3.value;
+ obsLongitude = document.inputDataForm1.input4.value;
+
+    decPlaces = document.inputDataForm1.input99.value;
+
+}
+
+function outputResult() {
+
+// Output Results grid on outputResultForm1
+
+    var outputResult1 = new Number(hourAngleDeg);
+    document.outputResultForm1.result1.value = outputResult1.toExponential(decPlaces);
+	   var outputResult2 = new Number(hourAngleHrs);
+    document.outputResultForm1.result2.value = outputResult2.toExponential(decPlaces);
+ 	   var outputResult3 = new Number(localSiderealT);
+    document.outputResultForm1.result3.value = outputResult3.toExponential(decPlaces);
+
+  
+}
+
+function clearInputValues() {
+
+    document.inputDataForm1.input1.value = "";
+    document.inputDataForm1.input2.value = "";
+    document.inputDataForm1.input3.value = "";
+    document.inputDataForm1.input4.value = "";
+    
+}
+
+
+// MODEL
+
+function HA_deg(LST,RA) {
+
+  var  HAdeg =  (LST-RA) * 15;
+
+return HAdeg;
+
+}
+
+function HA_hrs(LST,RA) {
+
+  var  HAhrs =  LST - RA;
+
+return HAhrs;
+
+}
+
+function LocalSiderealTime(GST,OLO) {
+
+  var  LST =  GST + OLO;
+
+return LST;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">Local Sidereal Time</td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+               </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Equation and Calculation</a></li>
+		<li><a href="#tabs-2">Live Sheet</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+    <br/>
+<br/>
+
+
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+\[ HA = LST - RA \] 
+<br/>
+\[ LST = GST - \lambda \]            
+
+   <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+  Variables / Constants:
+  <ul>
+    <li><i>R</i> is the average rate of star formation in our galaxy</li>
+    <li><i>f</i><sub><i>p</i></sub> is the fraction of those stars that have planets</li>
+  </ul>
+    </td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td>LST</td>
+    <td>
+      <input type="text" name="input1" id="input1" size="12" value="13" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>RA</td>
+    <td><input type="text" name="input2" id="input2" size="12" value="15" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>GST</td>
+    <td>
+      <input type="text" name="input3" id="input3" size="12" value="0" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Observers Longitude</td>
+    <td><input type="text" name="input4" id="input4" size="12" value="0" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td>HA</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>deg</td>
+  </tr>
+  <tr>
+    <td>HA</td>
+    <td>
+      <input type="text" name="result2" id="result2" size="12" />      
+    </td>
+    <td>hrs</td>
+  </tr>
+  <tr>
+    <td>LST</td>
+    <td>
+      <input type="text" name="result3" id="result3" size="12" />      
+    </td>
+    <td>deg</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+</div>
+
+
+
+<div id="tabs-2">
+<iframe width="480" height="670" src="http://uncharted.livesheets.com/forms/3f473d6ee4c034b03e8fcbdbd33b72a2f281cb89"></iframe>
+</div>
+
+</div>
+<br/>
+</div>
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu007LST</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Star Classification ------------ [cData001StarClass]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">Star Classification </td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+         <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+         </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+
+<br/>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Notes</a></li>
+		<li><a href="#tabs-2">History</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table>
+  <tr>
+    <td>
+               <br/>Stars are classified by their spectra (the elements that they absorb) and their temperature. There are 
+seven main types of stars. In order of decreasing temperature, O, B, A, F, G, K, 
+and M. <br />
+<br />
+O and B stars are uncommon but very bright; M stars are common 
+but dim.  The Sun is a as a G2V type star, a yellow dwarf and a main sequence star.
+</td>
+  </tr>
+</table>
+
+
+
+
+<br />
+<table>
+  <tr style="background-color:#000000;">
+    <th style="color:#ffffff;">Star Type</th>
+    <th style="color:#ffffff;">Color</th>
+    <th style="color:#ffffff;">Approximate Surface Temperature</th>
+    <th style="color:#ffffff;">Average Mass (The Sun = 1)</th>
+    <th style="color:#ffffff;">Average Radius (The Sun = 1)</th>
+    <th style="color:#ffffff;">Average Luminosity (The Sun = 1)</th>
+    <th style="color:#ffffff;">Main Characteristics</th>
+    <th style="color:#ffffff;">Examples</th></tr>
+  <tr style="background-color:#33ffff;">
+    <th style="background-color:#66CCCC;">O</th>
+    <td style="background-color:#66CCCC;">Blue</td>
+    <td style="background-color:#66CCCC;">over 25,000 K</td>
+    <th style="background-color:#66CCCC;">60</th>
+    <th style="background-color:#66CCCC;">15</th>
+    <th style="background-color:#66CCCC;">1,400,000</th>
+    <td style="background-color:#66CCCC;">Singly ionized helium lines (H I) either in emission or absorption. 
+      Strong UV continuum.</td>
+    <td style="background-color:#66CCCC;">10 Lacertra</td>
+  </tr>
+  <tr style="background-color:#33ffff;">
+    <th style="background-color:#66CCCC;">B</th>
+    <td style="background-color:#66CCCC;">Blue</td>
+    <td style="background-color:#66CCCC;">11,000 - 25,000 K</td>
+    <th style="background-color:#66CCCC;">18</th>
+    <th style="background-color:#66CCCC;">7</th>
+    <th style="background-color:#66CCCC;">20,000</th>
+    <td style="background-color:#66CCCC;">Neutral helium lines (H II) in absorption.</td>
+    <td style="background-color:#66CCCC;">Rigel<br />
+   Spica</td>
+  </tr>
+  <tr style="background-color:#33ffff;">
+    <th style="background-color:#66CCCC;">A</th>
+    <td style="background-color:#66CCCC;">Blue</td>
+    <td style="background-color:#66CCCC;">7,500 - 11,000 K</td>
+    <th style="background-color:#66CCCC;">3.2</th>
+    <th style="background-color:#66CCCC;">2.5</th>
+    <th style="background-color:#66CCCC;">80</th>
+    <td style="background-color:#66CCCC;">Hydrogen (H) lines strongest for A0 stars, decreasing for other 
+A's.</td>
+    <td style="background-color:#66CCCC;">Sirius, 
+   Vega</td>
+  </tr>
+  <tr style="background-color:#CCCCFF;">
+    <th style="background-color:#CCCCFF;">F</th>
+    <td style="background-color:#CCCCFF;">Blue to White</td>
+    <td style="background-color:#CCCCFF;">6,000 - 7,500 K</td>
+    <th style="background-color:#CCCCFF;">1.7</th>
+    <th style="background-color:#CCCCFF;">1.3</th>
+    <th style="background-color:#CCCCFF;">6</th>
+    <td style="background-color:#CCCCFF;">Ca II absorption. Metallic lines become noticeable.</td>
+   <td style="background-color:#CCCCFF;">Canopus, Procyon</td>
+  </tr>
+  <tr style="background-color:#ffffcc;">
+    <th style="background-color:#FFFF99;">G</th>
+    <td style="background-color:#FFFF99;">White to Yellow</td>
+    <td style="background-color:#FFFF99;">5,000 - 6,000 K</td>
+    <th style="background-color:#FFFF99;">1.1</th>
+    <th style="background-color:#FFFF99;">1.1</th>
+    <th style="background-color:#FFFF99;">1.2</th>
+    <td style="background-color:#FFFF99;">Absorption lines of neutral metallic atoms and ions (e.g. once-ionized 
+      calcium).</td>
+   <td style="background-color:#FFFF99;">Sun, Capella</td>
+  </tr>
+  <tr style="background-color:#FF9900;">
+    <th style="background-color:#FF9933;">K</th>
+    <td style="background-color:#FF9933;">Orange to Red</td>
+    <td style="background-color:#FF9933;">3,500 - 5,000 K</td>
+    <th style="background-color:#FF9933;">0.8</th>
+    <th style="background-color:#FF9933;">0.9</th>
+
+    <th style="background-color:#FF9933;">0.4</th>
+    <td style="background-color:#FF9933;">Metallic lines, some blue continuum.</td>
+    <td style="background-color:#FF9933;">Arcturus, 
+   Aldebaran</td>
+  </tr>
+  <tr style="background-color:#FF6699;">
+    <th style="background-color:#FF3333;">M</th>
+    <td style="background-color:#FF3333;">Red</td>
+    <td style="background-color:#FF3333;">under 3,500 K</td>
+    <th style="background-color:#FF3333;">0.3</th>
+    <th style="background-color:#FF3333;">0.4</th>
+    <th style="background-color:#FF3333;">0.04<br />
+    (very faint)</th>
+    <td style="background-color:#FF3333;">Some molecular bands of titanium oxide.</td>
+    <td style="background-color:#FF3333;">Betelgeuse, 
+Antares</td>
+  </tr>
+</table>
+
+
+<br />
+<b>Subtypes</b> - 
+Within 
+each stellar type, stars are placed into subclasses (from 0 to 9) based on its 
+position within the scale. <br />
+<br />
+<b>The Yerkes Luminosity Classes</b>: (by 
+William Wilson Morgan and Philip Keenan)<br />
+<br />
+<table>
+  <tr>
+    <td>
+      <table>
+        <tr style="background-color:#FFFF99;">
+          <th style="background-color:#999999;">TYPE</th>
+          <th style="background-color:#999999;">Star</th>
+        </tr>
+        <tr>
+          <td>Ia</td>
+          <td>Very luminous supergiants</td></tr>
+        <tr>
+          <td>Ib</td>
+          <td>Less luminous supergiants</td></tr>
+        <tr>
+          <td>II</td>
+          <td>Luminous giants</td></tr>
+        <tr>
+          <td>III</td>
+          <td>Giants</td></tr>
+        <tr>
+          <td>IV</td>
+          <td>Subgiants</td></tr>
+        <tr>
+          <td>V</td>
+          <td>Main sequence stars (dwarf stars)</td></tr>
+        <tr>
+          <td>VI</td>
+          <td>Subdwarf</td></tr>
+        <tr>
+          <td>VII</td>
+          <td>White Dwarf</td>
+        </tr>
+      </table>
+    </td>
+    <td>
+
+    </td>
+  </tr>
+</table>
+	<br/>
+In the Yerkes classification 
+scheme, stars are assigned to groups according to the width of their spectral 
+lines. For a group of stars with the same temperature, the luminosity class 
+differentiates between their sizes (supergiants, giants, main-sequence stars, 
+and subdwarfs). <br />
+<br/>
+      <table>
+        <tr>
+          <td>
+          <a href="../cEquation/cEqu003Luminosity.html">Luminosity</a> is the total brightness 
+of a star (galaxy or other object). Luminosity 
+is the total amount of energy that a star radiates each second (including all 
+wavelengths of electromagnetic radiation). Luminosity in derived SI units is measured in Watts (W) = Js<sup>-1</sup>, however, astronomers
+tend to use another expression--<span  class="textit">solar luminosities</span> where an
+object with twice the Sun's luminosity is considered to have two solar
+luminosities and so on. Luminosity is related to absolute magnitude. </td>
+        </tr>
+      </table>
+</div>
+
+<div id="tabs-2">
+  <h1>Classification History</h1>
+
+<p> In 1802, William Wollaston noted that the spectrum of sunlight did not 
+  appear to be a continuous band of colours, but rather had a series 
+  of dark lines superimposed on it. Wollaston attributed the lines to 
+  natural boundaries between colours. Joseph Fraunhofer made a more 
+  careful set of observations of the solar spectrum in 1814 and found 
+  some 600 dark lines, and he specifically measured the wavelength of 324 
+  of them. Many of the Fraunhofer lines in the solar spectrum retain the 
+  notations he created to designate them. In 1864, Sir William Huggins 
+  matched some of these dark lines in spectra from other stars with 
+  terrestrial substances, demonstrating that stars are made of the same
+  materials of everyday material rather than exotic substances.  This paved
+  the way for modern spectroscopy.
+<p> Since even before the discovery of spectra, scientists had tried to find 
+  ways to categorize stars.  By observing spectra, astronomers realized that large 
+  numbers of stars exhibit a small number of distinct patterns in their spectral 
+  lines.  Classification by spectral features quickly proved to be a powerful tool 
+  for understanding stars.
+<p> The current spectral classification scheme was developed at 
+  Harvard Observatory in the early 20th century.  Work was begun by Henry 
+  Draper who photographed the first spectrum of Vega in 1872. After his 
+  death, his wife donated the equipment and a sum of money to the 
+  Observatory to continue his work. The bulk of the classification work 
+  was done by Annie Jump Cannon from 1918 to 1924. The original scheme 
+  used capital letters running alphabetically, but subsequent revisions 
+  have reduced this as stellar evolution and typing has become better 
+  understood. The work was published in the Henry Draper Catalogue (HD)
+  and Henry Draper Extension (HDE) which contained spectra of 225,000 stars 
+  down to ninth magnitude.
+<p> The scheme is based on lines which are mainly sensitive to stellar 
+  surface temperatures rather than actual compositional differences, 
+  gravity, or luminosity. Important lines are the hydrogen Balmer lines, 
+  lines of neutral and singly ionized helium, iron lines, the H and K 
+  doublet of ionized calcium at 396.8 and 393.3 nm, the G band due to the 
+  CH molecule, the 422.7 nm neutral calcium line, several metal lines 
+  around 431 nm, and the lines of titanium oxide.</p>
+
+<h2>Standard Stellar Types (O, B, A, F, G, K, and M)</h2>
+While the differences in spectra might seem to indicate different 
+chemical compositions, in almost all instances, it actually reflects 
+different surface temperatures. With some exceptions (e.g. the R, N, 
+and S stellar types discussed below), material on the surface of stars 
+is &quot;primitive&quot;: there is no significant chemical or nuclear 
+processing of the gaseous outer envelope of a star once it has formed. 
+Fusion at the core of the star results in fundamental compositional 
+changes, but material does not generally mix between the visible 
+surface of the star and its core.
+<p> Ordered from highest temperature to lowest, the seven main stellar 
+  types are O, B, A, F, G, K, and M. Astronomers use <A HREF="obafgkmrns.html">one of several mnemonics </A>to remember the 
+  order of the classification scheme. O, B, and A type stars are often 
+  referred to as <i>early</i> spectral types, while cool stars (G, K, and 
+  M) are known as <i>late</i> type stars. The nomenclature is rooted in 
+  long-obsolete ideas about stellar evolution, but the terminology 
+  remains. The spectral characteristics of these types are summarized 
+  below:
+<center>
+</center>
+<h3>Subtypes</h3>
+Within each of these seven broad categories, Canon assigned subclasses 
+numbered 0 to 9. A star midway through the range between F0 and G0 
+would be an F5 type star. The Sun is a G2 type star.
+<p>
+<h3>Luminosity classes</h3>
+The Harvard scheme specifies only the surface temperature and some spectral
+features of the star.  A more precise classification would also include the 
+luminosity of the star.  The standard scheme used for this is called the 
+Yerkes classification (or MMK, based on the initials of the authors 
+William W. Morgan, Philip C. Keenan, and Edith Kellman).  This scheme measures 
+the shape and nature of certain spectral lines to measure surface gravities
+of stars.  The gravitational acceleration on the surface of a giant star is
+much lower than for a dwarf star (since g = G M / R<SUP>2</SUP> and the radius
+of a giant star is much larger than a dwarf).  Given the lower gravity, 
+gas pressures and densities are much lower in giant stars than in dwarfs.
+These differences manifest themselves in different spectral line shapes 
+which can be measured.
+<p> The Yerkes scheme uses the six luminosity classes shown on the first tab, so the Sun would be more fully specified as a G2V type star.
+<p>
+<h3>Additional categorization nomenclature</h3>
+Spectra can reveal many other things about stars. Accordingly, lowercase 
+letters are sometimes added to the end of a spectral type to indicate 
+peculiarities.
+</center>
+  <table BORDER=2 CELLPADDING=4 CELLSPACING=2>
+    <tr>
+      <TH COLSPAN=2 ALIGN=middle>Some Spectral Peculiarity Codes</th>
+    </tr>
+    <tr>
+      <td align="center"><i>Code</i></td>
+      <td align="center"><i>Meaning</i></td>
+    </tr>
+    <tr>
+      <td align="center">comp</td>
+      <td>Composite spectrum; two spectral types are blended, indicating that the star is an unresolved binary.
+    <tr>
+      <td align="center">e</td>
+      <td>Emission lines are present (usually hydrogen).
+    <tr>
+      <td align="center">m</td>
+      <td>Abnormally strong &quot;metals&quot; (elements other than hydrogen and helium) for a star of a given spectral type; usually applied to A stars.
+    <tr>
+      <td align="center">n</td>
+      <td>Broad (&quot;nebulous&quot;) absorption lines due to fast rotation.
+    <tr>
+      <td align="center">nn</td>
+      <td>Very broad lines due to very fast rotation.
+    <tr>
+      <td align="center">neb</td>
+      <td>A nebula's spectrum is mixed with the star's.
+    <tr>
+      <td align="center">p</td>
+      <td>Unspecified peculiarity, except when used with type A, where it denotes abnormally strong lines of &quot;metals&quot; (related to Am stars).
+    <tr>
+      <td align="center">s</td>
+      <td>Very narrow (&quot;sharp&quot;) lines.
+    <tr>
+      <td align="center">sh</td>
+      <td>Shell star (<i>B</i> to <i>F</i> main sequence star with emission lines from a shell of gas).
+    <tr>
+      <td align="center">var</td>
+      <td>Varying spectral type.
+    <tr>
+      <td align="center">wl</td>
+      <td>Weak lines (suggesting an ancient, &quot;metal&quot;-poor star)
+  </table>
+</center>
+<p> Symbols can be added for elements showing abnormally strong lines. For 
+  example, Epsilon Ursae Majoris in the Big Dipper is type <EM>A</EM>0p IV:(CrEu),
+  indicating strong chromium and europium lines. The colon means uncertainty in 
+  the IV luminosity class.
+<p>
+<h2>Asymptotic Giant Branch Stars (R, N, and S)</h2>
+After exhausting the hydrogen supply in its core, nuclear fusion of 
+hydrogen to helium will continue in a shell surrounding the core.  The core 
+will essentially be a hot degenerate helium star (or helium white 
+dwarf) encased in a hydrogen burning shell. Grossly simplifying the 
+process, helium produced in the shell around the inert core will add to 
+the core's mass until degenerate pressure heats the core sufficiently 
+to start helium fusion within the core.  Helium fusion will then continue in the 
+core until once again, the core fuel supply is exhausted and the star has an 
+inert hot carbon-oxygen white dwarf core surrounded by an inner shell of helium 
+fusion and an outer shell of hydrogen fusion.  This double-shell burning phase 
+is known as the <B>asymptotic giant branch</B> stage, a name based on how stellar 
+evolution proceeds when charted on a Hertzprung-Russell diagram.
+<p> Stars in the asymptotic giant branch are short-lived.  The degenerate core
+  of the star is more massive that it was in the single-shell burning phase, and
+  due to the peculiar nature of degenerate matter, the more massive core is 
+  physically smaller.  The gravity experienced by overlying layers is hence 
+  stronger, requiring higher luminosities to maintain the balance between 
+  pressure and gravity.  Thus the star expends energy at a very high rate and 
+  may well become a <B>red supergiant</B>.
+  
+  Stars in this phase of stellar evolution have proven to be challenging to
+  model.  One problem is that the helium shell burning is not stable.  The layer
+  of helium fusion is thin.  Slight positive perturbations in the nuclear energy 
+  generate extra pressure and the region is enlarged slightly.  But because the
+  layer is thin, the change in height is slight and hence the change in pressure
+  on the hotter region is changed very little.  The higher temperature will
+  likely increase the rate of nuclear reactions (many reactions processes are 
+  very temperature sensitive, such as the triple-alpha process which will most
+  likely be dominate in the helium shell).  Thus local reaction rates will pick
+  up, generating more heat before it can diffuse.  Thus large runaway reaction
+  spots can start from small local condition changes.  The runaway is only
+  checked after considerable expansion and the creation of a convective cycle
+  to carry away the excess energy.  Yet even once the runaway is checked and 
+  the layer resettles, the same underlying physical problem remains.  There is
+  no real stable helium shell burning mode.  Thus the star will experience spasms
+  of energy generation with convective cells which may carry material all the
+  way up to the hydrogen burning shell, followed by longer periods of relaxation
+  back to the thin shell.
+<p> If the convective cells created during this helium fusion runaways reach
+  all the way to the hydrogen fusion layer, this would potentially provide a 
+  mechanism for material deep within the star to be dredged up to its surface.
+  This may nicely explain several stellar types which seem analogous with K and
+  M stars temperature-wise, but show some other spectral features as if their
+  outer atmospheres had been enriched with heavier element.  These types are the
+  R, N, and S types.
+<h3>R and N type stars</h3>
+A number of giant stars appear to be K or M type stars, but also show 
+significant excess spectral features of carbon compounds.  They are often 
+referred to as &quot;carbon stars&quot; and many astronomers collectively refer 
+to them as C type stars.  The most common spectral features are from 
+C<SUB>2</SUB>, CN, and CH.  The abundance of carbon to oxygen in these stars
+is four to five times higher than in normal stars.  The presence of these
+carbon compounds will tend to absorb the blue portion of the spectrum,
+giving R and N type giants a distinctive red colour.  R stars are those with 
+hotter surfaces which otherwise more closely resemble K type stars.  S type stars
+have cooler surfaces and more closely resemble M stars.
+<p>
+<h3>S type stars</h3>
+S type stars have photospheres with enhanced abundances of <i>s</i>-process 
+elements.  These are isotopes of elements which have been formed from the 
+capture of a free neutron (changing the isotope of the element) followed by a 
+beta decay (a neutron decays into a proton and an electron, thus changing the 
+element to one with a higher atomic number and an isotope with one less 
+neutron).  The <i>s</i>-process is one of the mechanisms by which elements with 
+atomic numbers higher than 56 (Iron) can be made.  The <i>s</i> stands for slow.
+By way of contrast, its partner <i>r</i>-process (for rapid) takes place when 
+there are a sufficient supply of free neutrons for additional neutrons to be 
+acquired in the atomic nucleus before the captured neutron has a chance to 
+beta decay.
+<p> Instead of (or in addition to) the usual lines of titanium, scandium, and 
+  vanadium oxides characteristic of M type giants, S type stars show heavier 
+  elements such as zirconium, yttrium, and barium.  A significant fraction of all 
+  S type stars are variable.
+<p>
+<h2>Peculiar Stars</h2>
+<h3>Wolf-Rayet Stars (WR)</h3>
+Wolf-Rayet stars are similar to O type stars, but have broad emission
+lines of hydrogen and ionized helium, carbon, nitrogen, and oxygen with very
+few absorption lines.  Current theory holds that these stars exist in binary
+systems where the companion star has stripped away the Wolf-Rayet star's 
+outer layers.  Thus the spectra observed is from the exposed stellar interior
+rather than the normal surface material.  The broadness of the lines also
+indicates that the material observed may be from high velocity gases streaming
+away from the star, with the range of velocities smearing out the observed
+lines.
+<p>
+<h3>T Tauri Stars (T)</h3>
+T Tauri stars are very young stars, typically found in bright or dark
+interstellar clouds from which they have presumably just formed.  Typically
+T Tauri stars are irregular variable stars, with unpredictable changes in
+their brightness.  Their spectra contains bright emission lines and a number
+of &quot;forbidden lines&quot; (so-called because they are not observable in
+typical laboratory conditions) which indicate extremely low densities.  Spectral
+lines also show Doppler shifts with respect to the rest velocity of the star,
+indicating that matter is streaming out from them.
+<p> 
+  
+	
+	
+	
+</div>
+	
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cData001StarClass</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>

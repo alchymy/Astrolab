@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Equations ------------ [cEqu016Emc]</title>
+
+<!-- Load common environment -->
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+    
+<!-- Use latest MathJax code -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+
+<script type="text/javascript" src="../fJscriptLib/MathJax/MathJax.js"></script>
+
+<!-- 
+Page Specific Code using straight through process in this case - not MVC. 
+Use the process that is easiest to maintain for each case!
+-->
+
+<script>
+
+// NOTE 'Math.cos' requires degrees coverted to radians via PI/180
+
+function main() {
+
+// Get Input values
+
+var m = document.inputDataForm1.input1.value;
+var C =  299792458; //m s-1
+
+var decPlaces = document.inputDataForm1.input99.value;
+
+// Calulate result
+
+
+
+var E = m * C * C;
+
+
+// Output Results 
+
+var outputResult1 = new Number(E);
+document.outputResultForm1.result1.value = outputResult1.toExponential(decPlaces);
+
+}
+
+</script>
+
+
+</head>
+
+<body>
+
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:60%">E = MC<sup>2</sup></td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      &nbsp;
+         <button class="mnubutton2" type="button" onClick="location.href='mMainEqu.html'" >mMain Equ</button>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+	<li><a href="#tabs-1">Equation and Calculation</a></li>
+	<li><a href="#tabs-2">Notes</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<table id="split" style="width:100%">
+<tr>
+<td style="width:49%">
+   <br/>
+<br/>
+<table class="FormulaTable1">
+  <tr>
+    <td style="font-size: 150%;">
+      <br/>
+            
+      \[ E = m c^2 \]
+
+   <br/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+     Variables / Constants:
+      <ul>
+    <li><i>E</i> energy in Joules</li>
+    <li><i>m</i> mass in Kg</li>
+    <li><i>c</i> = speed of light</li>
+     </ul>
+</td>
+  </tr>
+</table>
+
+</td>
+<td style="width:2%">
+</td>
+<td style="width:49%">
+
+
+<form name="inputDataForm1" id="inputDataForm1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="table1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+
+  </tr>
+  <tr>
+    <td><i>m</i></td>
+    <td>
+      <input type="text" title="" name="input1" id="input1" size="12" value="0.001" /></td>
+    <td>kg</td>
+  </tr>
+  <tr>
+    <td><i>C</i></td>
+    <td>299792458</td>
+    <td>m s<sup>-1</sup></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="default decimal places">dp</td>
+    <td><input type="text" name="input99" id="input99" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  <tr>
+    <td colspan="3">
+      <input type="button" value="Calculate" onclick="javascript:main();" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      <input type="button" value=" Click here to clear input values " onclick="javascript:clearInputValues();"/>
+    </td>
+  </tr>
+</table>
+</form>
+
+<br/>
+
+<form name="outputResultForm1" id="outputResultForm1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+<table class="CalcTable1" id="table2">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td>E</td>
+    <td>
+      <input type="text" name="result1" id="result1" size="12" />      
+    </td>
+    <td>Joules</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="reset" value=" Click here to clear result values " />      </td>
+  </tr>
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+
+
+<div id="tabs-2">
+<p>
+  Einstein used the CGS system of units (centimeters, grams, seconds, dynes, and ergs), but the formula is independent of the system of units. In the SI system (expressing the ratio E/m in joules per kilogram using the value of c in meters per second):
+E/m = c<sup>2</sup> = (299792458 m/s)<sup>2</sup> = 89875517873681764 J/kg (≈ 9.0 × 10<sup>16</sup> joules per kilogram).
+So the energy equivalent of one gram (1/1000 of a kilogram) of mass is equivalent to 89.9 terajoules.
+  </p>
+
+</div>
+
+
+<div id="tabs-3">
+  
+</div>
+
+
+</div>
+<br/>
+</div>
+
+    
+
+    
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cEqu016Emc</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Planckoscope - View the Universe in different wavelengths ------------ [index_freq]</title>
+
+<!-- Load common environment -->
+
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+
+<script src="../../fEnvironment.js"></script>
+
+<script>
+
+// run any page startup functions
+function pageStart() {
+
+}
+</script>
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page specific css and js for formating and layout -->
+
+<script src="../../fJscriptLib/jquery.js"></script>
+<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+
+<script>
+
+// jquery dialog and other setup
+
+	$(function() {
+		
+		$( "#button" ).button();
+	
+		$( "#tabs" ).tabs();
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	
+</script>
+
+<!-- Page specific code for this application -->
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:75%">Chromoscope - index.html stub</td>
+    <td style="width:25%" id="menuCell">
+          <nav>
+      <a href="../../mMainAddIn.html">mMainAddIn</a>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<div class="ui-widget">
+	<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+		<p><span style="float: left; margin-right: .3em;"><img src="../../fImageLib/img2015.png" width="47" height="48" alt="info"></span>
+		  This page contains a link to original version of Chromoscope online - this html page can be replaced by contents of our downloadable version of Chromoscope, if the downloaded app contents are copied into the folder &quot;Astrolab/cAddIn/Chromoscope/&quot;. The downloadable Chromoscope app is available on sf.net.</p>
+		<p>Link to original online version of Planckoscope:</p>
+  <p><a href="http://www.chromoscope.net" title="Link to Original Online Planckoscope">http://www.chromoscope.net</a><br/>
+        </p>
+	</div>
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">index_freq.html</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+
+</html>

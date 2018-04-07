@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Messier Object M3 ------------ [cInfo014MessierM003]</title>
+
+<!-- Load common environment -->
+
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
+<script src="../../fEnvironment.js"></script>
+<script src="../../fJscriptLib/jquery.js"></script>
+<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page specific css and js -->
+
+<link rel="stylesheet" href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+
+<script>
+<!--
+
+// jquery dialog and other setup
+
+	$(function() {
+		
+		$( "#button" ).button();
+	
+		$( "#tabs" ).tabs();
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
+
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+
+// -->
+</script>
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:75%">Messier Object M3</td>
+    <td style="width:25%" id="menuCell">
+      <nav>
+         <a href="cInfo014MessierMain.html">cInfo014MessierMain</a></nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">M3 - Globular Cluster</a></li>
+	</ul>
+    
+<div id="tabs-1">
+
+<!-- **************** Content **************** -->
+        
+<table class="InformationTable1">
+<tr>
+<th>Image Credit: S.Kafka and K.Honeycutt, Indiana University/WIYN/NOAO/NSF</th>
+</tr>
+<tr>
+<td>
+  <img src="ImageLibMessier/imgM003.png" alt="Messier 3" width="512" height="576"></td>
+</tr>
+</table>
+</p>
+
+</div>
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cInfo014MessierM003</td>
+    </tr>
+  </table>
+</footer>
+  
+</body>
+</html>

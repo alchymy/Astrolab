@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Example JavaScript - "moving graphics" ------------ [cInfo008Clock]</title>
+
+<!-- Load common environment -->
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js" type="text/javascript">
+  </script>
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+</head>
+
+<body>
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+  <tr>
+    <td style="width:75%">Example JavaScript - "moving graphics"</td>
+    <td style="width:25%" id="menuCell">
+          <nav>
+      <a href="mMain.html">mMain</a>
+      </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+<br/>
+
+
+<!-- **************** Content **************** -->
+<div class="Content">
+
+
+<script>
+<!--
+
+    D_COL = "#000000"; // date colour
+    F_COL = "#000000"; // face colour
+    S_COL = "#800000"; // seconds colour
+    M_COL = "#000000"; // minutes colour
+    H_COL = "#000000"; // hours colour
+    CLOCK_HEIGHT = 40;
+    CLOCK_WIDTH = 40;
+    CLOCK_FROM_MOUSE_Y = 0;
+    CLOCK_FROM_MOUSE_X = 100;
+    
+//Alter nothing below! Alignments will be lost!
+
+    d = new Array("SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY");
+    m = new Array("JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER");
+    date = new Date();
+    day = date.getDate();
+    year = date.getYear();
+
+    if (year < 2000) year = year + 1900;
+    
+    todaysDate = " " + d[date.getDay()] + " " + day + " " + m[date.getMonth()] + " " + year;
+    
+// ***************************************** CODE JAVA STYLED TO THIS POINT *************************
+    D = todaysDate.split("");
+    H = "...";
+    H = H.split("");
+    M = "....";
+    
+    M = M.split("");
+    S = ".....";
+    S = S.split("");
+    Face = "1 2 3 4 5 6 7 8 9 10 11 12";
+    font = "Arial";
+    size = 1;
+    speed = 0.6;
+    ns = (document.layers);
+    ie = (document.all);
+    Face = Face.split(' ');
+    n = Face.length;
+    a = size*10;
+    ymouse = 0;
+    xmouse = 0;
+    scrll = 0;
+    props = "<font face=" + font + " size=" + size + " color=" + F_COL + "><b>";
+    props2 = "<font face=" + font + " size=" + size + " color=" + D_COL + "><b>";
+    Split = 360/n;
+    Dsplit = 360/D.length;
+    handHeight = CLOCK_HEIGHT / 4.5
+    HandWidth = CLOCK_WIDTH / 4.5
+    HandY = -7;
+    HandX = -2.5;
+    scrll = 0;
+    step = 0.06;
+    currStep = 0;
+    y = new Array(); x=new Array(); Y=new Array(); X=new Array();
+    
+    for (i=0; i < n; i++){
+        y[i]=0;x[i]=0;Y[i]=0;X[i]=0
+    }
+    
+    Dy = new Array();
+    Dx = new Array();
+    DY = new Array();
+    DX = new Array();
+    
+    for (i=0; i < D.length; i++){
+
+    Dy[i]=0;
+    Dx[i]=0;
+    DY[i]=0;
+    DX[i]=0
+
+    };
+ 
+
+//    if (ie) {
+
+        document.write('<div id="Od" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+        
+        for (i=0; i < D.length; i++)
+        document.write('<div id="ieDate" style="position:absolute;top:0px;left:0;height:' + a + ';width:' + a + ';text-align:center">' + props2 + D[i] + '</b></font></div>');
+        document.write('</div></div>');
+        document.write('<div id="Of" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+                
+        for (i=0; i < n; i++)
+        document.write('<div id="ieFace" style="position:absolute;top:0px;left:0;height:'+a+';width:'+a+';text-align:center">' + props + Face[i] + '</b></font></div>');
+        document.write('</div></div>');
+        document.write('<div id="Oh" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+
+        for (i=0; i < H.length; i++)
+        document.write('<div id="ieHours" style="position:absolute;width:16px;height:16px;font-family:Arial;font-size:16px;color:' + H_COL + ';text-align:center;font-weight:bold">'+H[i]+'</div>');
+        document.write('</div></div>');
+        document.write('<div id="Om" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+
+        for (i=0; i < M.length; i++)
+        document.write('<div id="ieMinutes" style="position:absolute;width:16px;height:16px;font-family:Arial;font-size:16px;color:' + M_COL + ';text-align:center;font-weight:bold">'+M[i]+'</div>');
+        document.write('</div></div>')
+        document.write('<div id="Os" style="position:absolute;top:0px;left:0px"><div style="position:relative">');
+
+        for (i=0; i < S.length; i++)
+        document.write('<div id="ieSeconds" style="position:absolute;width:16px;height:16px;font-family:Arial;font-size:16px;color:' + S_COL + ';text-align:center;font-weight:bold">'+S[i]+'</div>');
+        document.write('</div></div>')
+
+//    }
+
+
+
+// (ns)?window.captureEvents(Event.MOUSEMOVE):0;
+
+function Mouse(evnt){
+
+//    ymouse = (ns)?evnt.pageY + CLOCK_FROM_MOUSE_Y - (window.pageYOffset):event.y + CLOCK_FROM_MOUSE_Y;
+    ymouse = event.y + CLOCK_FROM_MOUSE_Y;
+//    xmouse = (ns)?evnt.pageX + CLOCK_FROM_MOUSE_X:event.x + CLOCK_FROM_MOUSE_X;
+    xmouse = event.x + CLOCK_FROM_MOUSE_X;
+    
+    }
+
+// (ns)?window.onMouseMove=Mouse:document.onmousemove=Mouse;
+
+document.onmousemove = Mouse;
+
+function clockAndAssign(){
+    time = new Date ();
+    secs = time.getSeconds();
+    sec = -1.57 + Math.PI * secs/30;
+    mins = time.getMinutes();
+    min = -1.57 + Math.PI * mins/30;
+    hr = time.getHours();
+    hrs = -1.575 + Math.PI * hr/6+Math.PI*parseInt(time.getMinutes())/360;
+    
+    if (ie) {
+        Od.style.top=window.document.body.scrollTop;
+        Of.style.top=window.document.body.scrollTop;
+        Oh.style.top=window.document.body.scrollTop;
+        Om.style.top=window.document.body.scrollTop;
+        Os.style.top=window.document.body.scrollTop;
+    }
+
+    for (i=0; i < n; i++) {
+//         var F=(ns)?document.layers['nsFace'+i]:ieFace[i].style;
+        var F = ieFace[i].style;
+        F.top = y[i] + CLOCK_HEIGHT*Math.sin(-1.0471 + i * Split * Math.PI / 180) + scrll;
+        F.left = x[i] + CLOCK_WIDTH*Math.cos(-1.0471 + i * Split * Math.PI / 180);
+    }
+    
+    for (i=0; i < H.length; i++){
+//        var HL=(ns)?document.l ayers['nsHours'+i]:ieHours[i].style;
+        var HL = ieHours[i].style;
+        HL.top=y[i]+HandY+(i*handHeight)*Math.sin(hrs)+scrll;
+        HL.left=x[i]+HandX+(i*HandWidth)*Math.cos(hrs);
+    }
+ 
+    for (i=0; i < M.length; i++) {
+// var ML=(ns)?document.layers['nsMinutes'+i]:ieMinutes[i].style;
+        var ML = ieMinutes[i].style;
+        ML.top=y[i]+HandY+(i*handHeight)*Math.sin(min)+scrll;
+        ML.left=x[i]+HandX+(i*HandWidth)*Math.cos(min);
+    }
+ 
+    for (i=0; i < S.length; i++) {
+//      var SL=(ns)?document.layers['nsSeconds'+i]:ieSeconds[i].style;
+        var SL = ieSeconds[i].style;
+        SL.top = y[i]+HandY+(i*handHeight)*Math.sin(sec) + scrll;
+        SL.left = x[i]+HandX+(i*HandWidth)*Math.cos(sec);
+    }
+ 
+    for (i=0; i < D.length; i++) {
+// var DL = (ns)?document.layers['nsDate'+i]:ieDate[i].style;
+        var DL = ieDate[i].style;
+        DL.top = Dy[i] + CLOCK_HEIGHT * 1.5 * Math.sin(currStep + i * Dsplit * Math.PI / 180) + scrll;
+        DL.left=Dx[i] + CLOCK_WIDTH*1.5*Math.cos(currStep + i * Dsplit * Math.PI / 180);
+    }
+ 
+    currStep -= step;
+
+}
+
+function delay(){
+
+//    scrll = (ns)?window.pageYOffset:0;
+    scrll = 0;
+    Dy[0] = Math.round(DY[0] += ((ymouse)-DY[0]) * speed);
+    Dx[0] = Math.round(DX[0] += ((xmouse)-DX[0]) * speed);
+    
+    for (i=1; i < D.length; i++) {
+        Dy[i]=Math.round(DY[i]+=(Dy[i-1]-DY[i]) * speed);
+        Dx[i]=Math.round(DX[i]+=(Dx[i-1]-DX[i]) * speed);
+    }
+    
+    y[0] = Math.round(Y[0] += ((ymouse)-Y[0]) * speed);
+    x[0] = Math.round(X[0] += ((xmouse)-X[0]) * speed);
+
+    for (i = 1; i < n; i++) {
+        y[i] = Math.round(Y[i] += (y[i-1]-Y[i]) * speed);
+        x[i] = Math.round(X[i]+=(x[i-1]-X[i])*speed);
+    }
+    
+    clockAndAssign();
+    setTimeout('delay()',20);
+}
+
+// if (ns || ie) window.onload = delay;
+    window.onload = delay;
+
+// -->
+</script>
+
+<br />
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cInfo007Clock</td>
+    </tr>
+  </table>
+</footer>
+
+
+</body>
+</html>
