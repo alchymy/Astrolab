@@ -19,27 +19,6 @@
 <script src="fEnvironment.js"></script>
 
 <!-- End of common environment -->
-	
-<style>
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-.bgndImg {
-    /* The image used */
-    background-image: url("Cosmos02.jpg");
-
-    /* Full height */
-    height: 100%; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-</style>	
-	
 
 <!-- Above is Standard Header For All Application Pages -->
 
@@ -85,17 +64,13 @@ show an error
 
 <body onload="pageStart();">
 
-<div class="bgndImg">
-
-	
 <!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
 
 <!-- **************** Header **************** -->
-<br/>	
 <header>
 <table class="HeaderLive">
   <tr>
-    <td style="width:60%">COS Astrolab Main Menu</td>
+    <td style="width:60%">Astrolab Information Menu</td>
     <td style="width:40%" id="menuCell">
     </td>
   </tr>
@@ -122,7 +97,7 @@ show an error
 
 <!-- Tabs -->
 
-<div id="tabs" style="width:66%">
+<div id="tabs">
 	<ul>
 		<li><a href="#tabs-1">Main Menu</a></li>
 	
@@ -130,28 +105,34 @@ show an error
     
 <div id="tabs-1">
 
-<table class="MenuTable" style="text-align:center;width:100%">
+<table class="MenuTable" style="text-align:center;width:33%">
 
   <tr>
-    <td style="width:33%"><br>
-    <br/>
-      
-        <button class="mnubutton1" type="button" onClick="location.href='mMainCalculations.html'">Calculations</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='mMainConstants.html'">Constants</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='mMainConversions.html'">Conversions</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='mMainData.html'">Data</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='cDataSets/mMainDataSets.html'">Data Sets</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='cEquation/mMainEquations.html'">Equations</button><br/>
-		<button class="mnubutton1" type="button" onClick="location.href='mMainExtApps.html'">External Apps</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='mMainExtTools.html'">External Tools</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='mMainInfo.html'">Information</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='mMainAddIns.html'">Add-Ins</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='mMainSolarSystemData.html'">Solar System Data</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='mMainUtilities.html'">Utilities</button><br/>
-      <br/>
+  
+    <td style="width:33%;">
+    
+    
+    
+<p><strong>Information</strong><br />
+	</p>
+	
+    <button class="mnubutton1" type="button" onClick="location.href='http://astrothesaurus.org/'">Astrothesaurus</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo001EHubble.html'">Edwin Hubble paper</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo003ExtResources.html'">External Resources</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo005Gloss.html'">Glossary</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo004HRDiag.html'">HR Diagram</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo007Help.html'">List of Help Pages</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo014Messier/cInfo014MessierMain.html'">Messier Objects</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cReferenceDocs/mMainRefDocs.html'">[m] Reference Docs</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo011SciMeth.html'">Scientific Method</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo019Search.html'">Search Engines</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cReferenceDocs/Stars.ppt'">Star Life Cycle</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cSupp001Stellarium/cSupp001StelMain.html'">Stellarium Support</button><br/>
+    <button class="mnubutton1" type="button" onClick="location.href='cInfo/cInfo002SIUnits.html'">Units of Measurement</button><br/>
+	<br/>
+   
+       
     </td>
-	  <td style="width:33%"><img src="fImageLib/main-astronomy.png" width="282" height="352" alt=""/>
-	  </td>
   </tr>
 </table>
 <br/>
@@ -179,7 +160,6 @@ show an error
   </table>
 </footer>
 
-</div>
 </body>
 </html>
   

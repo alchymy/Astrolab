@@ -1,6 +1,6 @@
 # Astrolab
 -------------------------------------------------------------------------- 
-CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.045_20180406
+CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.049_20180410
 -------------------------------------------------------------------------- 
 
 This release brings a few new features and fixes: 
@@ -12,6 +12,10 @@ This release brings a few new features and fixes:
 - Added: MathJax v2.7.3
 - Fixed: Broken link in MonthlySunSpotNo.ods for Predict.txt
 - Added: added to GITHUB
+- Fixed: updated menu pages
+- Fixed: removed surplus add-ins, linked to original web sites in 'Ext Apps'
+- Added: mMainUtilities - moved old main menu entries here
+- Added: mMainSolarSystemData - moved old main menu entries here
 
 --------------------------------------------------------------------------
 

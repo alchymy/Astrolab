@@ -19,26 +19,6 @@
 <script src="fEnvironment.js"></script>
 
 <!-- End of common environment -->
-	
-<style>
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-.bgndImg {
-    /* The image used */
-    background-image: url("Cosmos02.jpg");
-
-    /* Full height */
-    height: 100%; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-</style>	
 
 <!-- Above is Standard Header For All Application Pages -->
 
@@ -57,9 +37,19 @@ $( function() {
 function pageStart() {
 
 
-
 }
 
+
+/* 
+possible alternative route add a cell on end of row with text
+var firstRow = document.getElementById("headerTable").rows[0];
+var menu = firstRow.insertCell(-1);
+menu.innerHTML = '<a href="mMain.html"> mMain </a> &gt&gt cInfo016AppMap';
+where a link must contain an '&' enter it as &amp; otherwise HTML validators may
+show an error
+*/
+ 
+}
 
 
 </script>
@@ -69,19 +59,17 @@ function pageStart() {
 
 <body onload="pageStart();">
 
-<div class="bgndImg">
-	
 <!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
 
 <!-- **************** Header **************** -->
 <header>
 <table class="HeaderLive">
   <tr>
-    <td style="width:60%">Astrolab Constants Menu</td>
+    <td style="width:60%">Astrolab Utilities Menu</td>
     <td style="width:40%" id="menuCell">
-	<nav>
-        <button class="mnubutton2" type="button" onClick="location.href='mMain.html'" >Main Menu</button>
-      </nav>	
+		<nav>
+          <button class="mnubutton2" type="button" onClick="location.href='mMain.html'" >Main Menu</button>
+        </nav>
     </td>
   </tr>
 </table>
@@ -93,12 +81,11 @@ function pageStart() {
 <!-- **************** Content **************** -->
 <div class="Content">
 
-
 <!-- Tabs -->
 
 <div id="tabs" style="width:33%">
 	<ul>
-		<li><a href="#tabs-1">Constants</a></li>
+		<li><a href="#tabs-1">Utilities</a></li>
 	
 	</ul>
     
@@ -108,15 +95,15 @@ function pageStart() {
 
   <tr>
     <td style="width:33%;"><br>
-    
-    <br/>
-	    
-	    <button class="mnubutton1" type="button" onClick="location.href='cData/cConst001Astro.html'">Astrophysical Constants</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='cData/cConst002Math.html'">Mathematical Constants</button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='cData/cConst003Phy.html'">Physical Constants<br/></button><br/>
-        <button class="mnubutton1" type="button" onClick="location.href='cData/cConst004Disp.html'">List Constants</button><br/>
-	    <br/>
-      <br/>
+		
+    </p>
+  <button class="mnubutton1" type="button" onClick="location.href='Utility/cUtil001WebBrTst.html'">Test Browser</button><br/>
+  <button class="mnubutton1" type="button" onClick="location.href='http://www.html5test.com/index.html'">Test Browser HTML5</button><br/>
+  <button class="mnubutton1" type="button" onClick="location.href='https://sourceforge.net/speedtest/'">SF.NET HTML 5 Internet Speed Test</button><br/>
+  <button class="mnubutton1" type="button" onClick="location.href='Utility/cSys001WebBr.html'">Browser Info</button><br/>
+  
+<br/>
+
     </td>
   </tr>
 </table>
@@ -125,7 +112,7 @@ function pageStart() {
 </div>
 <br/>
 </div>
-  
+
 <!-- ************************* Footer **************************************** -->
 <footer>
   <table>
@@ -136,12 +123,11 @@ function pageStart() {
         </script>
       </td>
       <td style="width:50%"></td>
-      <td style="width:25%">mMainConstants</td>
+      <td style="width:25%">mMainUtilities</td>
     </tr>
   </table>
 </footer>
 
-	</div>
 </body>
 </html>
   
