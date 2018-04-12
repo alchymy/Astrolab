@@ -1,6 +1,6 @@
 # Astrolab
 -------------------------------------------------------------------------- 
-CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.049_20180410
+CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.053_20180412
 -------------------------------------------------------------------------- 
 
 This release brings a few new features and fixes: 
@@ -16,6 +16,10 @@ This release brings a few new features and fixes:
 - Fixed: removed surplus add-ins, linked to original web sites in 'Ext Apps'
 - Added: mMainUtilities - moved old main menu entries here
 - Added: mMainSolarSystemData - moved old main menu entries here
+- Added: mMainExtApps added link to cratering app
+- Added: mMainExtApps added link to original cratering app
+- Added: further reading link added to Seager Equation page
+- Fixed: mMainExtApps <title> and <footer> 
 
 --------------------------------------------------------------------------
 
