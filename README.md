@@ -1,25 +1,12 @@
 # Astrolab
 -------------------------------------------------------------------------- 
-CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.053_20180412
+CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.057_20180417
 -------------------------------------------------------------------------- 
 
 This release brings a few new features and fixes: 
 
-- Fixed: updated DevProgGraph.ods
-- Added: latest Sun spot data to Feb 2018
-- Added: jQuery v3.3.1 added
-- Added: jQuery Migrate v3.0.1
-- Added: MathJax v2.7.3
-- Fixed: Broken link in MonthlySunSpotNo.ods for Predict.txt
-- Added: added to GITHUB
-- Fixed: updated menu pages
-- Fixed: removed surplus add-ins, linked to original web sites in 'Ext Apps'
-- Added: mMainUtilities - moved old main menu entries here
-- Added: mMainSolarSystemData - moved old main menu entries here
-- Added: mMainExtApps added link to cratering app
-- Added: mMainExtApps added link to original cratering app
-- Added: further reading link added to Seager Equation page
-- Fixed: mMainExtApps <title> and <footer> 
+- Fixed: removed redundant text from READ.md
+- Added: Solar Indices link to cData001Sun
 
 --------------------------------------------------------------------------
 
@@ -38,7 +25,7 @@ suitability for any purpose. Currently the software is in a beta stage.
 2. INTRODUCTION TO ASTROLAB      7. NOTE
 3. INSTALLATION INSTRUCTIONS     8. FULL REFERENCES & CREDITS
 4. REQUIREMENT                   9. LICENSE
-5. QUICK START                  10. DATA SETS
+5. QUICK START                  
 6. CONFIGURATION                
 
 --------------------------------------------------------------------------
@@ -57,15 +44,6 @@ being built in PDF format.
 Windows full version - Extract the zip file into a folder anywhere, the 
 extract will output a folder called "astrolab" containing the whole 
 application and data sets.
-
-Windows nightly build - Extract the zip file into a folder anywhere, the 
-extract will output a folder called "astrolab" containing the whole 
-application and data sets.  If the data is also required then download the 
-separate data set from sourceforge.net and install as described below.
-
-Apple OS X version comes as an install Package on a standard Disc image 
-containing the application and the data sets. It will normally extract to 
-a folder called "astrolab".
 
 If the data sets are downloaded separately the zip file will extract a 
 folder called "cDataSets". This folder can be simply dragged / copied into 
@@ -134,23 +112,3 @@ e. HTML Reference - www.w3schools.com
    (You may find the terms are somewhat irrelevant as you can copy the 
    software anyway!)
  
-
-----------------------------------------------------------------------------
-10. DATA SETS
-----------------------------------------------------------------------------
-
-
-----------------------------------------------------------------------------
-INSTALLATION INSTRUCTIONS
-----------------------------------------------------------------------------
-
-Windows version - Extract the zip file into a folder to anywhere, the extract will
-produce a folder called "DataSets" containing the data sets.
-
-Apple OS X - Extract the zip file into a folder to anywhere, the extract will
-produce a folder called "DataSets" containing the data sets.
-
-If the data sets are downloaded separately and the zip file extracted to a folder 
-called "DataSets", then this folder can be simply dragged / copied into the "Astrolab" 
-app folder to replace the existing DataSets folder, which can be deleted first.
-

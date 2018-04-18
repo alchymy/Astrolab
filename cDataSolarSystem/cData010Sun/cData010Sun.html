@@ -1,71 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Star Data - the Sun ------------ [cData010Sun]</title>
-	<!-- Load common environment -->
-	<link href="../../fCss/fDefault.css" rel="stylesheet" type="text/css" />
-	<script src="../../fEnvironment.js"></script>
-	<script src="../../fJscriptLib/jquery.js"></script>
-	<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
-	<!-- End of common environment -->
-	<!-- Above is Standard Header For All Application Pages -->
-	<!-- Page specific css and js -->
-	<link href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" rel="stylesheet" type="text/css" />
-	<script src="../../fJscriptLib/fFoundationObj.js"></script><script>
+<head>
+<meta charset="utf-8">
 
-function pageStart() {
+<title>Star Data - the Sun ------------ [cData010Sun]</title>
 
-}
+<!-- Load common environment -->
+					
+<script src="../../fJscriptLib/jquery.js"></script>
+<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
 
-// jquery dialog and other setup
+<link href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../fCss/fDefault.css" rel="stylesheet" type="text/css" />
 
-	$(function() {
-		
-		$( "#button" ).button();
-	
-		$( "#tabs" ).tabs();
-		
-		$( "#dialog" ).dialog({
-			autoOpen: false,
-			width: 400,
-			buttons: [
-				{
-					text: "Ok",
-					click: function() {
-						$( this ).dialog( "close" );
-					}
-				},
-				{
-					text: "Cancel",
-					click: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			]
-		});
+<script src="../../fEnvironment.js"></script>
 
-		// Link to open the dialog
-		$( "#dialog-link" ).click(function( event ) {
-			$( "#dialog" ).dialog( "open" );
-			event.preventDefault();
-		});
-		
-		// Hover states on the static widgets
-		$( "#dialog-link, #icons li" ).hover(
-			function() {
-				$( this ).addClass( "ui-state-hover" );
-			},
-			function() {
-				$( this ).removeClass( "ui-state-hover" );
-			}
-		);
-	});
-	
-</script>
-
-<!-- ********* Application specific functions ********* -->
-
-
+<!-- End of common environment -->
+								   
+<!-- Above is Standard Header For All Application Pages -->
 
 </head>
 <body>
@@ -75,7 +27,7 @@ function pageStart() {
 <header>
 <table class="HeaderLive">
 	<tr>
-	  <td style="width:75%">Star Data - the Sun</td>
+	  <td style="width:75%">Solar Data</td>
 	  <td id="menuCell" style="width:25%">
 	    <nav><button class="mnubutton2" onclick="location.href='../../mMain.html'" type="button">mMain</button></nav>
 	  </td>
@@ -84,6 +36,7 @@ function pageStart() {
 </header>
 
 <p><br />
+																								
 <!-- **************** Content **************** --></p>
 
 <div class="Content">
@@ -94,7 +47,7 @@ function pageStart() {
 <ul>
 	<li><a href="#tabs-1">Data</a></li>
 	<li><a href="#tabs-2">Additional Data Sets</a></li>
-	<li><a href="#tabs-3">Additional Information</a></li>
+	<li><a href="#tabs-3">Additional Resources</a></li>
 	<li><a href="#tabs-4">Elements</a></li>
 </ul>
 
@@ -256,12 +209,12 @@ function pageStart() {
 			<td class="LiveDat"><a href="http://bass2000.obspm.fr/solar_spect.php?step=1">http://bass2000.obspm.fr/solar_spect.php?step=1</a></td>
 		</tr>
 		<tr>
-			<td class="DevDat"></td>
-			<td class="DevDat"><a href=" "></a></td>
+			<td class="LiveDat">Solar Data Analysis Center</td>
+			<td class="LiveDat"><a href="https://umbra.nascom.nasa.gov/index.html/">https://umbra.nascom.nasa.gov/index.html/</a></td>
 		</tr>
 		<tr>
-			<td></td>
-			<td></td>
+			<td class="LiveDat">Solar Indices - NOAA</td>
+			<td class="LiveDat"><a href="https://www.ngdc.noaa.gov/stp/solar/solar-indices.html">https://www.ngdc.noaa.gov/stp/solar/solar-indices.html</a></td>
 		</tr>
 	</tbody>
 </table>

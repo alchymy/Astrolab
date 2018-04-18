@@ -2,14 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="Description" content="Astrophysics Tools" />
-<meta name="Keywords" content="Astronomy, Cosmology, Astrophysics" />
-<meta name="Author" content="Alchymist" />
 
-
-<title>COS Astrolab Main Menu ------------ [mMain]</title>
+<title>Information Main Menu ------------ [mMainInfo]</title>
 
 <!-- Load common environment -->
+	
 <script src="fJscriptLib/jquery.js"></script>
 <script src="fJscriptLib/jquery-ui/jquery-ui.js"></script>
 
@@ -23,6 +20,7 @@
 <!-- Above is Standard Header For All Application Pages -->
 
 <!-- Page Specific environment -->
+	
 <script>
 $( function() {
     $( ".widget input[type=submit], .widget a, .widget button" ).button();
@@ -31,38 +29,11 @@ $( function() {
     } );
   } );
 </script>
-<script> 
-
-
-function pageStart() {
-
-displayVersion();
-
-}
-
-function displayVersion() {
-
-    var menu = document.getElementById("menuCell");
-    menu.innerHTML = APP_VERSION;
-
-/* 
-possible alternative route add a cell on end of row with text
-var firstRow = document.getElementById("headerTable").rows[0];
-var menu = firstRow.insertCell(-1);
-menu.innerHTML = '<a href="mMain.html"> mMain </a> &gt&gt cInfo016AppMap';
-where a link must contain an '&' enter it as &amp; otherwise HTML validators may
-show an error
-*/
- 
-}
-
-
-</script>
 
 
 </head>
 
-<body onload="pageStart();">
+<body>
 
 <!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
 
@@ -72,6 +43,9 @@ show an error
   <tr>
     <td style="width:60%">Astrolab Information Menu</td>
     <td style="width:40%" id="menuCell">
+	<nav>
+                <button class="mnubutton2" type="button" onClick="location.href='mMain.html'" >Main Menu</button><br>
+      </nav>
     </td>
   </tr>
 </table>
@@ -82,17 +56,6 @@ show an error
 
 <!-- **************** Content **************** -->
 <div class="Content">
-
-<!-- Warn if JavaScript is turned off -->
-<noscript>
-<div style="background-color:#FF00FF;">
-<p>
-<b>*** WARNING! YOU DO NOT HAVE JAVASCRIPT ENABLED! ***<br/>
-*** The calculations on this page require the use of JavaScript so please enable before continuing. ***
-</b>
-</p>
-</div>
-</noscript>
 
 
 <!-- Tabs -->
@@ -152,10 +115,8 @@ show an error
         //end hiding contents -->
         </script>
       </td>
-      <td style="width:50%"><a href="http://sourceforge.net/donate/index.php?group_id=224441"><img src="http://images.sourceforge.net/images/project-support.jpg" style="border:0;width:88px;height:32px" alt="Support This Project" /> </a> </td>
-      <td style="width:25%">
-        <a href="http://validator.w3.org/#validate_by_upload">
-        <img src="fImageLib/HTML5_Logo_32.png" style="border:0;width:32px;height:32px" alt="HTML5"></a> - mMain</td>
+      <td style="width:50%"></td>
+      <td style="width:25%">mMainInfo</td>
     </tr>
   </table>
 </footer>

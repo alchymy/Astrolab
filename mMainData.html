@@ -2,14 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="Description" content="Astrophysics Tools" />
-<meta name="Keywords" content="Astronomy, Cosmology, Astrophysics" />
-<meta name="Author" content="Alchymist" />
 
-
-<title>COS Astrolab Main Menu ------------ [mMain]</title>
+<title>Data Main Menu ------------ [mMainData]</title>
 
 <!-- Load common environment -->
+	
 <script src="fJscriptLib/jquery.js"></script>
 <script src="fJscriptLib/jquery-ui/jquery-ui.js"></script>
 
@@ -23,6 +20,7 @@
 <!-- Above is Standard Header For All Application Pages -->
 
 <!-- Page Specific environment -->
+	
 <script>
 $( function() {
     $( ".widget input[type=submit], .widget a, .widget button" ).button();
@@ -31,38 +29,11 @@ $( function() {
     } );
   } );
 </script>
-<script> 
-
-
-function pageStart() {
-
-displayVersion();
-
-}
-
-function displayVersion() {
-
-    var menu = document.getElementById("menuCell");
-    menu.innerHTML = APP_VERSION;
-
-/* 
-possible alternative route add a cell on end of row with text
-var firstRow = document.getElementById("headerTable").rows[0];
-var menu = firstRow.insertCell(-1);
-menu.innerHTML = '<a href="mMain.html"> mMain </a> &gt&gt cInfo016AppMap';
-where a link must contain an '&' enter it as &amp; otherwise HTML validators may
-show an error
-*/
- 
-}
-
-
-</script>
 
 
 </head>
 
-<body onload="pageStart();">
+<body>
 
 <!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
 
