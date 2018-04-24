@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Plot Sun Spot Data ------------ [cData013SunSpot]</title>
+
+<!-- Load common environment -->
+					
+<script src="../../fJscriptLib/jquery.js"></script>
+<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../fCss/fDefault.css" rel="stylesheet" type="text/css" />
+
+<script src="../../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+								   
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+</head>
+<body>
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderLive">
+	<tr>
+	  <td style="width:75%">Plot Sun Spot Data</td>
+	  <td id="menuCell" style="width:25%">
+	    <nav><button class="mnubutton2" onclick="location.href='../../mMain.html'" type="button">mMain</button></nav>
+	  </td>
+	</tr>
+</table>
+</header>
+
+<p><br />
+																								
+<!-- **************** Content **************** --></p>
+
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+<ul>
+	<li><a href="#tabs-1">Test Plot</a></li>
+</ul>
+
+<div id="tabs-1">&nbsp;
+
+<canvas id="plot1" width="500" height="500"
+style="border:1px solid #000000;">
+</canvas>
+	
+<script>
+	
+var canvas = document.getElementById("plot1");
+var ctx = canvas.getContext("2d");
+
+// draw axis
+
+ctx.lineWidth = 1;
+ctx.strokeStyle = "#FF0000";
+ctx.beginPath();
+	// plot origin starts top left of canvas
+ctx.moveTo(250, 0);  // move to x=250, y=0
+ctx.lineTo(250, 500);  // draw line to x=250, y=500
+ctx.moveTo(0, 250);  // move to x=0, y=250
+ctx.lineTo(500, 250);  // draw line to x=500, y=250
+ctx.stroke();
+
+// view origin is now x=250, y=250
+
+xorigin = 250;
+yorigin = 250;
+
+// plot data arrays
+xdata = [2, 3, 4, 5, 6, 7];
+ydata = [4, 9, 16, 25, 36, 49];
+
+// draw points
+
+ctx.strokeStyle = "#000000";
+var dot = 2;
+
+ctx.beginPath();
+ctx.moveTo(xorigin + xdata[0], yorigin - ydata[0]);
+ctx.lineTo(xorigin + xdata[0], yorigin - ydata[0] + dot);
+ctx.moveTo(xorigin + xdata[1], yorigin - ydata[1]);
+ctx.lineTo(xorigin + xdata[1], yorigin - ydata[1] + dot);
+ctx.moveTo(xorigin + xdata[2], yorigin - ydata[2]);
+ctx.lineTo(xorigin + xdata[2], yorigin - ydata[2] + dot);
+ctx.moveTo(xorigin + xdata[3], yorigin - ydata[3]);
+ctx.lineTo(xorigin + xdata[3], yorigin - ydata[3] + dot);
+ctx.moveTo(xorigin + xdata[4], yorigin - ydata[4]);
+ctx.lineTo(xorigin + xdata[4], yorigin - ydata[4] + dot);
+ctx.moveTo(xorigin + xdata[5], yorigin - ydata[5]);
+ctx.lineTo(xorigin + xdata[5], yorigin - ydata[5] + dot);
+
+ctx.stroke();
+                
+/* var i;
+
+for (i = 10; i < 100; i++) { 
+
+ctx.moveTo(i,i+4);
+ctx.lineTo(i,i+x);
+
+	ctx.stroke();
+    
+}
+*/
+	
+	
+</script>
+
+</div>
+
+</div>
+<br/>
+
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+<table>
+  <tr>
+    <td style="width:25%">
+    <script>
+        document.write( "Last updated "+ document.lastModified );
+    </script>
+    </td>
+    <td style="width:50%"></td>
+    <td style="width:25%">cData013SunSpot</td>
+  </tr>
+</table>
+</footer>
+</body>
+</html>
