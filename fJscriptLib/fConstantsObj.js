@@ -49,24 +49,24 @@ var MCONST = {
 // PHYSICAL CONSTANTS - as PCONST object with properties (global var = PC_xx)
 
 var PCONST = {
-                C: { value: 2.99792458e8, error:0, desc:"Speed of Light", units:"m/s",  origin:""},          
-                G: { value:6.67384e-11, error:8.0e-15, desc:"Gravitational constant", units:"N m2 kg-2 / m3 kg-1 s-2", origin:"" },
+                C: { value: 2.99792458e8, error:0, desc:"Speed of Light", units:"m/s",  origin:"CODATA"},          
+                G: { value:6.67384e-11, error:8.0e-15, desc:"Gravitational constant", units:"N m2 kg-2 / m3 kg-1 s-2", origin:"CODATA" },
               GAE: { value:9.80665, error:0, desc:"Acceleration due to gravity on Earth", units:"m sñ2" },
                RH: { value:13.60569253, error:0, desc:"Rydberg constant (energy units)", units:"eV" },
                HM: { value:1.67E-27, error:0, desc:"Mass of hydrogen atom", units:"kg" },  
-               AN: { value:6.02214129E23, error:2.7e-30, desc:"Avogadro's number", units:"molñ1" },
-                K: { value:1.3806488E-23, error:1.3e-29, desc:"Boltzmannís constant", units:"J Kñ1" },         		
+               AN: { value:6.02214129E23, error:2.7e-30, desc:"Avogadro's number", units:"/mol" },
+                K: { value:1.3806488E-23, error:1.3e-29, desc:"Boltzmannís constant", units:"J Kñ1", origin:"CODATA" },         		
                PM: { value:1.672621777E-27, error:0, desc:"Proton mass", units:"kg" },
                NM: { value:1.674927351E-27, error:0, desc:"Neutron mass", units:"kg" },
                EM: { value:9.10938291E-31, error:0, desc:"Rest mass electron", units:"kg" }, 
               AMU: { value:1.660538921e-27, error:7.3e-35, desc:"(unified) atomic mass unit", units:"kg", origin:"" },
-               EV: { value:1.602176565e-19, error:3.5e-27, desc:"Electron Volt", units:"J" },
-                H: { value:6.62606957e-34, error:2.9e-41, desc:"Planck constant", units:"J.s" },
+               EV: { value:1.602176565e-19, error:3.5e-27, desc:"Electron Volt", units:"J", origin:"CODATA" },
+                H: { value:6.62606957e-34, error:2.9e-41, desc:"Planck constant", units:"J.s", origin:"CODATA" },
               RYD: { value:10973731.568539, error:0.000055, desc:"Rydberg constant", units:"m^-1" },
-         SIGMA_SB: { value:5.670373e-8, error:2.1e-13, desc:"Stefan-Boltzmann constant", units:"J/m^2/K^4/s" },
-            ALPHA: { value:7.2973525698e-3, error:2.4e-12, desc:"Fine Structure constant", units:"" },
+         SIGMA_SB: { value:5.670373e-8, error:2.1e-13, desc:"Stefan-Boltzmann constant", units:"J/m^2/K^4/s", origin:"CODATA" },
+            ALPHA: { value:7.2973525698e-3, error:2.4e-12, desc:"Fine Structure constant", units:"", origin:"CODATA" },
                 R: { value:8.3144621, error:0.0000075, desc:"Universal Gas constant", units:"J/mol/K" },
-             HBAR: { value:1.054571726e-34, error:4.7e-42, desc:"Reduced Planck constant", units:"J.s" },
+             HBAR: { value:1.054571726e-34, error:4.7e-42, desc:"Reduced Planck constant", units:"J.s", origin""CODATA" },
 	            E: { value:1.602176565e-19, error:3.5e-27, desc:"Electron charge", units:"C" },
            MICRO0: { value:4E-7, error:0, desc:"Permeability of free space µ0", units:"H mñ1 " },
                E0: { value:8.854E12, error:0, desc:"Permittivity of free space", units:"F m-1" },
@@ -85,5 +85,12 @@ var  CONV = {
 };
 	 
    
+/*
+		// TIME
+		YR = new Constant(31557600,0,'Year','','s');
 
+		// SOLAR QUANTITIES
+		L_sun = new Constant(3.839e26,-1,'Solar luminosity','','J/s');
+		T_sun = new Constant(5.780e3,-1,'Solar temperature','','K');
 
+*/

@@ -6,13 +6,13 @@
 <title>Periodic Table of the Elements ------------ [cData015PT]</title>
 
 <!-- Load common environment -->
-<script src="../fJscriptLib/jquery.js"></script>
-<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+<script src="../../fJscriptLib/jquery.js"></script>
+<script src="../../fJscriptLib/jquery-ui/jquery-ui.js"></script>
 
-<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
-<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+<link rel="stylesheet" href="../../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../../fCss/fDefault.css" type="text/css" />
 
-<script src="../fEnvironment.js"></script>
+<script src="../../fEnvironment.js"></script>
 
 <!-- End of common environment -->
 
@@ -21,12 +21,38 @@
 <!-- Page Specific environment -->
 
 <style type="text/css">
-<!--
+
 .Element {font-family: Arial; color:#CC0000; text-decoration:underline; font-weight:bold}
 .AtomicNo {font-family: Arial; font-weight:bold; font-size: 9px;}
-}
-body         {font-family: Arial}
-// -->
+.Group {width:35px; height:35px; background-color:#FFFFFF; text-align:center; font-size:11px; border-spacing: 0px;
+     border: 1px solid black; }
+.Period {width:35px; height:35px; background-color:#FFFFFF; text-align:center; font-size:11px; border-spacing: 0px;
+     border: 1px solid black;}
+.Actinide {width=35px; height:35px; background-color:#FF99CC; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Lanthanide {width=35px; height:35px; background-color:#FFBFFF; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Alkali {width=35px; height:35px; background-color:#FF6666; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Alkaline {width=35px; height:35px; background-color:#FFDEAD; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Transition {width=35px; height:35px; background-color:#FFC0C0; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Boron {width=35px; height:35px; background-color:#6699FF; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Carbon {width=35px; height:35px; background-color:#CC66FF; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Noble {width=35px; height:35px; background-color:#C0FFFF; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Halogens {width=35px; height:35px; background-color:#FFFFCC; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Chalcogens {width=35px; height:35px; background-color:#CC9900; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+.Pnictogens {width=35px; height:35px; background-color:#FF6600; text-align: center; border-spacing: 0px;
+     border: 1px solid black;}
+
+body {font-family: Arial}
+
 </style>
 
 <script>
@@ -79,7 +105,7 @@ function outputData(atomicNumber, symbol, name, massNumber, neutronNumber, perio
     <td style="width:60%">Periodic Table of the Elements</td>
     <td style="width:40%" id="menuCell">
       <nav>
-      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >mMain</button>
+      <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >Main Menu</button>
       </nav>
     </td>
   </tr>
@@ -98,6 +124,8 @@ function outputData(atomicNumber, symbol, name, massNumber, neutronNumber, perio
 <div id="tabs">
 	<ul>
 		<li><a href="#tabs-1">Data</a></li>
+		<li><a href="#tabs-2">Elements Spectra</a></li>
+		<li><a href="#tabs-3">Notes</a></li>
 	</ul>
     
 <div id="tabs-1">
@@ -105,595 +133,602 @@ function outputData(atomicNumber, symbol, name, massNumber, neutronNumber, perio
 
 <!-- data passed to a javascript in this table - data items are enclosed in single quotes as the whole parameters are already enclosed in double quotes -->
 
-<a name="Top" id="Top"></a>
+<a id="Top"></a>
 
-<table id="container" width="873">
+<table id="container" style="width:873px">
   <tr>
-    <td id="leftPane" width="671">
-      <table id="periodicTable" cellspacing="0" border="1" width="665" >
+    <td id="leftPane" style="width:671px">
+      <table id="periodicTable" style="width:665px; border-spacing: 0px;
+     border: 1px solid black" >
         <tr>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">Group</font>
+          <td class="Group" >
+            Group
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">1<br/>IA</font>
+          <td class="Group" >
+            1<br/>IA
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">2<br/>IIA</font>
+          <td class="Group" >
+            2<br/>IIA
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">3<br/>IIIB</font>
+          <td class="Group" >
+            3<br/>IIIB
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">4<br/>IVB</font>
+          <td class="Group" >
+            4<br/>IVB
           </td>   
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">5<br/>VB</font>
+          <td class="Group" >
+            5<br/>VB
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">6<br/>VIB</font>
+          <td class="Group" >
+            6<br/>VIB
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">7<br/>VIIB</font>
+          <td class="Group" >
+            7<br/>VIIB
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">8<br/>----</font>
+          <td class="Group" >
+            8<br/>----
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">9<br/>VIII</font>
+          <td class="Group" >
+            9<br/>VIII
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">10<br/>----</font>
+          <td class="Group" >
+            10<br/>----
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">11<br/>IB</font>
+          <td class="Group" >
+            11<br/>IB
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">12<br/>IIB</font>
+          <td class="Group" >
+            12<br/>IIB
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">13<br/>IIIA</font>
+          <td class="Group" >
+            13<br/>IIIA
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">14<br/>IVA</font>
+          <td class="Group" >
+            14<br/>IVA
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">15 <br/>VA</font>
+          <td class="Group" >
+            15 <br/>VA
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">16<br/>VIA</font>
+          <td class="Group" >
+            16<br/>VIA
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">17<br/>VIIA</font>
+          <td class="Group" >
+            17<br/>VIIA
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">18<br/>VIIIA</font>
+          <td class="Group" >
+            18<br/>VIIIA
           </td>
         </tr>
         <tr>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">Period<br/>1</font></td>
-          <td width="35" height="35" align="center" bgcolor="#ffff33"><span class="AtomicNo">1</span><br />
+          <td class="Period" >
+            Period<br/>1
+			</td>
+          <td style="width:35px; height:35px; background-color:#FFFF33; text-align:center; border-spacing: 0px;
+     border: 1px solid black;" ><span class="AtomicNo">1</span><br />
             <a class="Element" href="#Top" onmouseover="javascript:outputData('1','H','Hydrogen','1','0','1','1','IA','IA','Alkali Metals',
             '1.00794','7','13.5984','Gases','0.084','-259.1','14.05','-252.9','20.25','1766','Cavendish');">H</a>
           </td>
-          <td colspan="16" align="center" height="35" bgcolor="white" width="35"><br />
+          <td colspan="16" style="width:35px; height:35px; background-color:white; text-align:center; border-spacing: 0px;
+     border: 1px solid black;" ><br />
           </td>
-          <td width="35" height="35" align="center" bgcolor="#C0FFFF"><span class="AtomicNo">2</span><br />
+          <td class="Noble"><span class="AtomicNo">2</span><br />
             <a href="#Top" class="Element" onmouseover="javascript:outputData('2','He','Helium','4','2','1','18','0','VIIIA','Noble Gases',
             '4.002602','2','24.58740','Gases','0.17','-272.2','0.95','-268.9','4.25','1895','Ramsay and Cleve');">He</a>
           </td>
         </tr>
         <tr>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF"><font size="1">2</font>
+          <td class="Period">
+			  2
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6666"><span class="AtomicNo">3</span><br />
+          <td class="Alkali"><span class="AtomicNo">3</span><br />
             <a class="Element" href="#Top" onmouseover="javascript:outputData('3','Li','Lithium','7','4','2','1','IA','IA','Alkali Metals',
 			'6.941','2','5.3917','Solids','530','180.5','453.65','1317','1590.15','1817','Arfvedson');">Li</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFDEAD"><span class="AtomicNo">4</span><br />
+          <td class="Alkaline"><span class="AtomicNo">4</span><br />
             <a href="#Top" class="Element" onmouseover="javascript:outputData('4','Be','Beryllium','9','5','2','2','IIA','IIA','Alkaline Earth Metals',
             '9.012182','3','9.32270','Solids','1850','1278','1551.15','2970','3243.15','1797','Vauquelin');">Be</a>
           </td>
-          <td colspan="10" align="center" height="35" bgcolor="white" width="35"><br />
+          <td colspan="10" style="width:35px; height:35px; background-color:white; text-align:center; border-spacing: 0px;
+     border: 1px solid black;"><br />
           </td>
-          <td width="35" height="35" align="center" bgcolor="#6699FF"><span class="AtomicNo">5</span><br />
+          <td class="Boron"><span class="AtomicNo">5</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('5','B','Boron','11','6','2','13','IIIB','IIIA','Boron Group',
 			  '10.811','7','8.298','Solids','2460','2300','2573.15','2550','2823.15','1808','Davy and Gay-Lussac');">B</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC66FF"><span class="AtomicNo">6</span><br />
+          <td class="Carbon"><span class="AtomicNo">6</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('6','C','Carbon','12','6','2','14','IVB','IVA','Carbon Group',
 			  '12.0107','8','11.2603','Solids','3510','3550','3823.15','4827','5100.15','prehistoric','unknown');">C</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6600"><span class="AtomicNo">7</span><br />
+          <td class="Pnictogens"><span class="AtomicNo">7</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('7','N','Nitrogen','14','7','2','15','VB','VA','Pnictogens',
 			  '14.0067','2','14.5431','Gases','1.17','-209.9','63.25','-195.8','77.35','1772','Rutherford');">N</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC9900"><span class="AtomicNo">8</span><br />
+          <td class="Chalcogens"><span class="AtomicNo">8</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('8','O','Oxygen','16','8','2','16','VIB','VIA','Chalcogen',
 			  '15.9994','3','13.6181','Gases','1.33','-218.4','54.75','-182.9','90.25','1774','Priestley and Scheele');">O</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFCC"><span class="AtomicNo">9</span><br />
+          <td class="Halogens"><span class="AtomicNo">9</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('9','F','Fluorine','19','10','2','17','VIIB','VIIA','Halogen',
 			  '18.9984032','5','17.4228','Gases','1.58','-219.6','53.55','-188.1','85.05','1886','Moissan');">F</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#C0FFFF"><span class="AtomicNo">10</span><br />
+          <td class="Noble"><span class="AtomicNo">10</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('10','Ne','Neon','20','10','2','18','0','VIIIA','Noble Gases',
 			  '20.1797','6','21.5645','Gases','0.84','-248.7','24.45','-246.1','27.05','1898','Ramsay and Travers');">Ne</a>
           </td>
         </tr>
         <tr>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-          <font size="1">3</font>
+          <td class="Period" >
+          3
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6666"><span class="AtomicNo">11 </span><br />
+          <td class="Alkali"><span class="AtomicNo">11 </span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('11','Na','Sodium','23','12','3','1','IA','IA','Alkali Metals',
 			  '22.98977693','2','5.1391','Solids','970','97.8','370.95','892','1165.15','1807','Davy');">Na</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFDEAD"><span class="AtomicNo">12</span><br />
+          <td class="Alkaline"><span class="AtomicNo">12</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('12','Mg','Magnesium','24','12','3','2','IIA','IIA','Alkaline Earth Metals',
 			  '24.305','6','7.6462','Solids','1740','648.8,921.95,1107,1380.15,1755,Black');">Mg</a>
           </td>
-          <td colspan="10" height="35" align="center" bgcolor="#FFFFFF" width="35">
+          <td colspan="10" style="width:35px; height:35px; background-color:white; text-align:center; border-spacing: 0px;
+     border: 1px solid black;">
           </td>           
-          <td width="35" height="35" align="center" bgcolor="#6699FF"><span class="AtomicNo">13</span><br />
+          <td class="Boron"><span class="AtomicNo">13</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('13','Al','Aluminium','27','14','3','13','IIIB','IIIA','Boron Group',
 			  '26.9815386','8','5.9858','Solids','2700','660.5','933.65','2467','2740.15','1825','Oersted');">Al</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC66FF"><span class="AtomicNo">14</span><br />
+          <td class="Carbon"><span class="AtomicNo">14</span><br />
               <a href="#Top" class="Element"   onmouseover="javascript:outputData('14','Si','Silicon','28','14','3','14','IVB','IVA','Carbon Group',
 			  '28.0855','3','8.1517','Solids','2330','1410','1683.15','2355','2628.15','1824','Berzelius');">Si</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6600"><span class="AtomicNo">15</span><br />
+          <td class="Pnictogens"><span class="AtomicNo">15</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('15','P','Phosphorus','31','16','3','15','VB','VA','Pnictogens',
 			  '30.973762','2','10.4867','Solids','1820','44','317.15','280','553.15','1669','Brandt');">P</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC9900"><span class="AtomicNo">16</span><br />
+          <td class="Chalcogens"><span class="AtomicNo">16</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('16','S','Sulphur','32','16','3','16','VIB','VIA','Chalcogen',
 			  '32.065','5','10.36','Solids','2060','113','386.15','444.7','717.85','prehistoric','unknown');">S</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFCC"><span class="AtomicNo">17</span><br />
+          <td class="Halogens"><span class="AtomicNo">17</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('17','Cl','Chlorine','35','18','3','17','VIIB','VIIA','Halogen',
 			  '35.453','2','12.9676','Gases','2.95','-34.6','238.55','-101','172.15','1774','Scheele');">Cl</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#C0FFFF"><span class="AtomicNo">18</span><br />
+          <td class="Noble"><span class="AtomicNo">18</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('18','Ar','Argon','40','22','3','18','0','VIIIA','Noble Gases',
 			  '39.948','1','15.7596','Gases','1.66','-189.4','83.75','-185.9','87.25','1894','Ramsay and Rayleigh');">Ar</a>
           </td>
         </tr>
         <tr>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">4</font></td>
-          <td width="35" height="35" align="center" bgcolor="#FF6666"><span class="AtomicNo"> 19 </span><br />
+          <td class="Period" >
+            4
+			</td>
+          <td class="Alkali"><span class="AtomicNo"> 19 </span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('19','K','Potassium','39','20','4','1','IA','IA','Alkali Metals',
 			  '39.0983','1','4.3407','Solids','860','63.7','336.85','774','1047.15','1807','Davy');">K</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFDEAD"><span class="AtomicNo">20</span><br />
+          <td class="Alkaline"><span class="AtomicNo">20</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('20','Ca','Calcium','40','20','4','2','IIA','IIA','Alkaline Earth Metals',
 			  '40.078','4','6.1132','Solids','1540','839','1112.15','1487','1760.15','1808','Davy');">Ca</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">21</span><br />
+          <td class="Transition"><span class="AtomicNo">21</span><br />
               <b><a href="#Top" class="Element"  onmouseover="javascript:outputData('21','Sc','Scandium','45','24','4','3','IIIA','IIIB','Transition Metals',
 			  '44.955912','6','6.5615','Solids','2990','1539','1812.15','2832','3105.15','1879','Nilson');">Sc</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">22</span><br />
+          <td class="Transition"><span class="AtomicNo">22</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('22','Ti','Titanium','48','26','4','4','IVA','IVB','Transition Metals',
 			  '47.867','1','6.8281','Solids','4510','1660','1933.15','3260','3533.15','1791','Gregor and Klaproth');">Ti</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">23</span><br />
+          <td class="Transition"><span class="AtomicNo">23</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('23','V','Vanadium','51','28','4','5','VA','VB','Transition Metals',
 			  '50.9415','1','6.7462','Solids','6090','1890','2163.15','3380','3653.15','1801','del Rio');">V</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">24</span><br />
+          <td class="Transition"><span class="AtomicNo">24</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('24','Cr','Chromium','52','28','4','6','VIA','VIB','Transition Metals',
 			  '51.9961','6','6.7665','Solids','7140','1857','2130.15','2482','2755.15','1797','Vauquelin');">Cr</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">25</span><br />
+          <td class="Transition"><span class="AtomicNo">25</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('25','Mn','Manganese','55','30','4','7','VIIA','VIIB','Transition Metals',
 			  '54.938045','5','7.434','Solids','7440','1244','1517.15','2097','2370.15','1774','Gahn');">Mn</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">26</span><br />
+          <td class="Transition"><span class="AtomicNo">26</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('26','Fe','Iron','56','30','4','8','VIII','VIII','Transition Metals',
 			  '55.845','2','7.9024','Solids','7870','1535','1808.15','2750','3023.15','prehistoric','unknown');">Fe</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">27</span><br />
+          <td class="Transition"><span class="AtomicNo">27</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('27','Co','Cobalt ,59,32,4,9,VIII,VIII,Transition Metals',
 			  '58.933195','5','7.881','Solids','8890','1495','1768.15','2870','3143.15','1735','Brandt');" >Co</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">28</span><br />
+          <td class="Transition"><span class="AtomicNo">28</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('28','Ni','Nickel ,59,31,4,10,VIII,VIII,Transition Metals',
 			  '58.6934','4','7.6398','Solids','8910','1453','1726.15','2732','3005.15','1751','Cronstedt');">Ni</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">29</span><br />
+          <td class="Transition"><span class="AtomicNo">29</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('29','Cu','Copper','64','35','4','11','IB','IB','Transition Metals',
 			  '63.546,3,7.7264,Solids,8920,1083.5,1356.65,2595,2868.15,prehistoric ,unknown');">Cu</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">30</span><br />
+          <td class="Transition"><span class="AtomicNo">30</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('30','Zn','Zinc ,65,35,4,12,IIB,IIB,Transition Metals',
 			  '65.38','2','9.3942','Solids','7140','419.6','692.75','907','1180.15','prehistoric','unknown');">Zn</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#6699FF"><span class="AtomicNo">31</span><br />
+          <td class="Boron"><span class="AtomicNo">31</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('31','Ga','Gallium','70','39','4','13','IIIB','IIIA','Boron Group',
 			  '69.723','1','5.9993','Solids','5910','29.8','302.95','2403','2676.15','1875','Lecoq de Boiskaudran');">Ga</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC66FF"><span class="AtomicNo">32</span><br />
+          <td class="Carbon"><span class="AtomicNo">32</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('32','Ge','Germanium','73','41','4','14','IVB','IVA','Carbon Group',
 			  '72.64','1','7.8994','Solids','5320','937.4','1210.55','2830','3103.15','1886','Winkler');">Ge</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6600"><span class="AtomicNo">33</span><br />
+          <td class="Pnictogens"><span class="AtomicNo">33</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('33','As','Arsenic','75','42','4','15','VB','VA','Pnictogens',
 			  '74.9216','2','9.7886','Solids','5720','613','886.15','613','886.15','ca. 1250','Albertus Magnus');">As</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC9900"><span class="AtomicNo">34</span><br />
+          <td class="Chalcogens"><span class="AtomicNo">34</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('34','Se','Selenium','79','45','4','16','VIB','VIA','Chalcogen',
 			  '78.96','3','9.7524','Solids','4820','217','490.15','685','958.15','1817','Berzelius');">Se</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFCC"><span class="AtomicNo">35</span><br />
+          <td class="Halogens"><span class="AtomicNo">35</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('35','Br','Bromine','80','45','4','17','VIIB','VIIA','Halogen',
 			  '79.904','1','11.8138','Liquids','3140','-7.3','265.85','58.8','331.95','1826','Balard');">Br</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#C0FFFF"><span class="AtomicNo">36</span><br />
+          <td class="Noble"><span class="AtomicNo">36</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('36','Kr','Krypton','84','48','4','18','0','VIIIA','Noble Gases',
 			  '83.798','2','13.9996','Gases','3.48','-156.6','116.55','-152.3','120.85','1898','Ramsay and Travers');">Kr</a>
           </td>
         </tr>
         <tr>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">5</font>
+          <td class="Period" >
+            5
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6666"><span class="AtomicNo">37</span> <br />
+          <td class="Alkali"><span class="AtomicNo">37</span> <br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('37','Rb','Rubidium','85','48','5','1','IA','IA','Alkali Metals',
 			  '85.4678','3','4.1771','Solids','1530','39','312.15','688','961.15','1861','Bunsen and Kirchhoff');">Rb</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFDEAD"><span class="AtomicNo">38</span><br />
+          <td class="Alkaline"><span class="AtomicNo">38</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('38','Sr','Strontium','88','50','5','2','IIA','IIA','Alkaline Earth Metals',
 			  '87.62','1','5.6949','Solids','2630','769','1042.15','1384','1657.15','1790','Crawford');">Sr</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">39</span><br />
+          <td class="Transition"><span class="AtomicNo">39</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('39','Y','Yttrium','89','50','5','3','IIIA','IIIB','Transition Metals',
 			  '88.90585','2','6.2173','Solids','4470','1523','1796.15','3337','3610.15','1794','Gadolin');">Y</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">40</span><br />
+          <td class="Transition"><span class="AtomicNo">40</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('40','Zr','Zirconium','91','51','5','4','IVA','IVB','Transition Metals',
 			  '91.224','2','6.6339','Solids','6510','1852','2125.15','4377','4650.15','1789','Klaproth');">Zr</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">41</span><br />
+          <td class="Transition"><span class="AtomicNo">41</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('41','Nb','Niobium','93','52','5','5','VA','VB','Transition Metals',
 			  '92.90638','2','6.7589','Solids','8580','2468','2741.15','4927','5200.15','1801','Hatchet');">Nb</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">42</span><br />
+          <td class="Transition"><span class="AtomicNo">42</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('42','Mo','Molybdenum','96','54','5','6','VIA','VIB','Transition Metals',
 			  '95.96','2','7.0924','Solids','10280','2617','2890.15','5560','5833.15','1778','Scheele');">Mo</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">43</span><br />
+          <td class="Transition"><span class="AtomicNo">43</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('43','Tc','Technetium','98','55','5','7','VIIA','VIIB','Transition Metals',
 			  '[98]','','7.28','Artificially Prepared','11490','2172','2445.15','5030','5303.15','1937','Perrier and Segrè');" >Tc</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">44</span><br />
+          <td class="Transition"><span class="AtomicNo">44</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('44','Ru','Ruthenium','101','57','5','8','VIII','VIII','Transition Metals',
 			  '101.07','2','7.3605','Solids','12450','2310','2583.15','3900','4173.15','1844','Claus');">Ru</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">45</span><br />
+          <td class="Transition"><span class="AtomicNo">45</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('45','Rh','Rhodium','103','58','5','9','VIII','VIII','Transition Metals',
 			  '102.9055','2','7.4589','Solids','12410','1966','2239.15','3727','4000.15','1803','Wollaston');" >Rh</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">46</span><br />
+          <td class="Transition"><span class="AtomicNo">46</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('46','Pd','Palladium','106','60','5','10','VIII','VIII','Transition Metals',
 			  '106.42','1','8.3369','Solids','12020','1552','1825.15','3140','3413.15','1803','Wollaston');">Pd</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">47</span><br />
+          <td class="Transition"><span class="AtomicNo">47</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('47','Ag','Silver','108','61','5','11','IB','IB','Transition Metals',
 			  '107.8682','2','7.5762','Solids','10490','961.9','1235.05','2212','2485.15','prehistoric','unknown');">Ag</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">48</span><br />
+          <td class="Transition"><span class="AtomicNo">48</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('48','Cd','Cadmium','112','64','5','12','IIB','IIB','Transition Metals',
 			  '112.411','8','8.9938','Solids','8640','321','594.15','765','1038.15','1817','Stromeyer and Hermann');">Cd</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#6699FF"><span class="AtomicNo">49</span><br />
+          <td class="Boron"><span class="AtomicNo">49</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('49','In','Indium','115','66','5','13','IIIB','IIIA','Boron Group',
 			  '114.818','3','5.7864','Solids','7310','156.2','429.35','2080','2353.15','1863','Reich and Richter');">In</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC66FF"><span class="AtomicNo">50</span><br />
+          <td class="Carbon"><span class="AtomicNo">50</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('50','Sn','Tin','119','69','5','14','IVB','IVA','Carbon Group',
 			  '118.71','7','7.3439','Solids','7290','232','505.15','2270','2543.15','prehistoric','unknown');">Sn</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6600"><span class="AtomicNo">51</span><br />
+          <td class="Pnictogens"><span class="AtomicNo">51</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('51','Sb','Antimony','122','71','5','15','VB','VA','Pnictogens',
 			  '121.76','1','8.6084','Solids','6690','630.7','903.85','1750','2023.15','prehistoric','unknown');">Sb</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC9900"><span class="AtomicNo">52</span><br />
+          <td class="Chalcogens"><span class="AtomicNo">52</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('52','Te','Tellurium','128','76','5','16','VIB','VIA','Chalcogen',
 			  '127.6','3','9.0096','Solids','6250','449.6','722.75','990','1263.15','1782','von Reichenstein');">Te</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFCC"><span class="AtomicNo">53</span><br />
+          <td class="Halogens"><span class="AtomicNo">53</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('53','I','Iodine','127','74','5','17','VIIB','VIIA','Halogen',
 			  '126.90447','3','10.4513','Solids','4940','113.5','386.65','184.4','457.55','1811','Courtois');">I</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#C0FFFF"><span class="AtomicNo">54</span><br />
+          <td class="Noble"><span class="AtomicNo">54</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('54','Xe','Xenon','131','77','5','18','0','VIIIA','Noble Gases',
 			  '131.293','6','12.1298','Gases','4.49','-111.9','161.25','-107','166.15','1898','Ramsay and Travers');">Xe</a>
           </td>
         </tr>
         <tr>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">6</font>
+          <td class="Period" >
+            6
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6666"><span class="AtomicNo">55</span><br />
+          <td class="Alkali"><span class="AtomicNo">55</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('55','Cs','Caesium','133','78','6','1','IA','IA','Alkali Metals',
 			  '132.9054519','2','3.8939','Solids','1900','28.4','301.55','690','963.15','1860','Kirchhoff and Bunsen');">Cs</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFDEAD"><span class="AtomicNo">56</span><br />
+          <td class="Alkaline"><span class="AtomicNo">56</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('56','Ba','Barium','137','81','6','2','IIA','IIA','Alkaline Earth Metals',
 			  '137.327','7','5.2117','Solids','3650','725','998.15','1640','1913.15','1808','Davy');" >Ba</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF">
+          <td class="Lanthanide">
             <span class="AtomicNo">*</span><br />
               &nbsp;</td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">72</span><br />
+          <td class="Transition"><span class="AtomicNo">72</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('72','Hf','Hafnium','178','106','6','4','IVA','IVB','Transition Metals',
 			  '178.49','2','6.8251','Solids','13310','2150','2423.15','5400','5673.15','1923','Coster and vón Hevesy');" >Hf</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">73</span><br />
+          <td class="Transition"><span class="AtomicNo">73</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('73','Ta','Tantalum','181','108','6','5','VA','VB','Transition Metals',
 			  '180.94788','2','7.5496','Solids','16680','2996','3269.15','5425','5698.15','1802','Ekeberg');">Ta</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">74</span><br />
+          <td class="Transition"><span class="AtomicNo">74</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('74','W','Tungsten','184','110','6','5','VA','VIB','Transition Metals',
 			  '183.84','1','7.864','Solids','19260','3407','3680.15','5927','6200.15','1783','Gebrüder de Elhuyar');">W</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">75</span><br />
+          <td class="Transition"><span class="AtomicNo">75</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('75','Re','Rhenium','186','111','6','7','VIIA','VIIB','Transition Metals',
 			  '186.207','1','7.8335','Solids','21030','3180','3453.15','5627','5900.15','1925','Noddack, Tacke and Berg');">Re</a></td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">76</span><br />
+          <td class="Transition"><span class="AtomicNo">76</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('76','Os','Osmium','190','114','6','8','VIII','VIII','Transition Metals',
 			  '190.23','3','8.4382','Solids','22610','3045','3318.15','5027','5300.15','1803','Tenant');">Os</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">77</span><br />
+          <td class="Transition"><span class="AtomicNo">77</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('77','Ir','Iridium','192','115','6','9','VIII','VIII','Transition Metals',
 			  '192.217','3','8.967','Solids','22650','2410','2683.15','4130','4403.15','1803','Tenant and andere');">Ir</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">78</span><br />
+          <td class="Transition"><span class="AtomicNo">78</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('78','Pt','Platinum','195','117','6','10','VIII','VIII','Transition Metals',
 			  '195.084','9','8.9588','Solids','21450','1772','2045.15','3827','4100.15','1557','Scaliger');">Pt</a></td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">79</span><br />
+          <td class="Transition"><span class="AtomicNo">79</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('79','Au','Gold','197','118','6','11','IB','IB','Transition Metals',
 			  '196.966569','4','9.2255','Solids','19320','1064.4','1337.55','2940','3213.15','prehistoric','unknown');">Au</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">80</span><br />
+          <td class="Transition"><span class="AtomicNo">80</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('80','Hg','Mercury','200','120','6','12','IIB','IIB','Transition Metals',
 			  '200.59','2','10.4375','Liquid','13550','-38.9','234.25','356.6','629.75','prehistoric','unknown');">Hg</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#6699FF"><span class="AtomicNo">81</span><br />
+          <td class="Boron"><span class="AtomicNo">81</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('81','Tl','Thallium','204','123','6','13','IIIB','IIIA','Boron Group',
 			  '204.3833','2','6.1082','Solids','11850','303.6','576.75','1457','1730.15','1861','Crookes');">Tl</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#CC66FF"><span class="AtomicNo">82</span><br />
+          <td class="Carbon"><span class="AtomicNo">82</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('82','Pb','Lead','207','125','6','14','IVB','IVA','Carbon Group',
 			  '207.2','1','7.4167','Solids','11340','327.5','600.65','1740','2013.15','prehistoric','unknown');">Pb</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6600"><span class="AtomicNo">83</span><br />
+          <td class="Pnictogens"><span class="AtomicNo">83</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('83','Bi','Bismuth','209','126','6','15','VB','VA','Pnictogens',
 			  '208.9804','1','7.2855','Solids','9800','271.4','544.55','1560','1833.15','1540','Agricola');">Bi</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#CC9900"><span class="AtomicNo">84</span><br />
+          <td class="Chalcogens"><span class="AtomicNo">84</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('84','Po','Polonium','209','125','6','16','VIB','VIA','Chalcogen',
 			  '[209]','','8.414','Solids','9200','254','527.15','962','1235.15','1898','Marie and Pierre Curie');">Po</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFCC"><span class="AtomicNo">85</span><br />
+          <td class="Halogens"><span class="AtomicNo">85</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('85','At','Astatine','210','125','6','17','VIIB','VIIA','Halogen',
 			  '[210]','','','Solids','','302','575.15','337','610.15','1940','Corson and MacKenzie');">At</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#C0FFFF"><span class="AtomicNo">86</span><br />
+          <td class="Noble"><span class="AtomicNo">86</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('86','Rn','Radon','222','136','6','18','0','VIIIA','Noble Gases',
 			  '[222]','','10.7485','Gases','9.23','-71','202.15','-61.8','211.35','1900','Dorn');">Rn</a>
 			    </td>
         </tr>
         <tr>
-          <td width="35" height="35" align="center" bgcolor="#FFFFFF">
-            <font size="1">7</font>
+          <td class="Period" >
+            7
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6666"><span class="AtomicNo">87</span><br />
+          <td class="Alkali"><span class="AtomicNo">87</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('87','Fr','Francium','223','136','7','1','IA','IA','Alkali Metals',
 			  '[223]','','4.0727','Solids','','27','300.15','677','950.15','1939','Perey');">Fr</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFDEAD"><span class="AtomicNo">88</span><br />
+          <td class="Alkaline"><span class="AtomicNo">88</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('88','Ra','Radium','226','138','7','2','IIA','IIA','Alkaline Earth Metals',
               '[226]','','5.2784','Solids','5500','700','973.15','1140','1413.15','1898','Marie and Pierre Curie');" >Ra</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC">
+          <td class="Actinide">
             <span class="AtomicNo">**</span>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">104</span><br />
+          <td class="Transition"><span class="AtomicNo">104</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('104','Rf','Rutherfordium','265','161','7','4','IVA','IVB','Transition Metals',
               '[265]','','6','Artificially Prepared','','','','','','1964/69','Flerow oder Ghiorso');">Rf</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">105</span><br />
+          <td class="Transition"><span class="AtomicNo">105</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('105','Db','Dubnium','268','163','7','5','VA','VB','Transition Metals',
               '[268]','','','Artificially Prepared','','','','','','1967/70','Flerow oder Ghiorso');">Db</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">106</span><br />
+          <td class="Transition"><span class="AtomicNo">106</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('106','Sg','Seaborgium','271','165','7','6','VIA','VIB','Transition Metals',
               '[271]','','','Artificially Prepared','','','','','','1974','Oganessian');">Sg</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">107</span><br />
+          <td class="Transition"><span class="AtomicNo">107</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('107','Bh','Bohrium','272','165','7','7','VIIA','VIIB','Transition Metals',
               '[272]','','','Artificially Prepared','','','','','','1976','Oganessian');">Bh</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">108</span><br />
+          <td class="Transition"><span class="AtomicNo">108</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('108','Hs','Hassium','277','169','7','8','VIII','VIII','Transition Metals',
               '[277]','','','Artificially Prepared','','','','','','1984','Society for Heavy Ion Research');">Hs</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">109</span><br />
+          <td class="Transition"><span class="AtomicNo">109</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('109','Mt','Meitnerium','276','167','7','9','VIII','VIII','Transition Metals',
               '[276]','','','Artificially Prepared','','','','','','1982','Society for Heavy Ion Research');">Mt</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">110</span><br />
+          <td class="Transition"><span class="AtomicNo">110</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('110','Ds','Darmstadtium','281','171','7','10','VIII','VIII','Transition Metals',
               '[281]','','','Artificially Prepared','','','','','','1994','Society for Heavy Ion Research');">Ds</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">111</span><br />
+          <td class="Transition"><span class="AtomicNo">111</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('111','Rg','Roentgenium','280','169','7','11','IB','IB','Transition Metals',
               '[280]','','','Artificially Prepared','','','','','','1994','Society for Heavy Ion Research');">Rg</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFC0C0"><span class="AtomicNo">112</span><br />
+          <td class="Transition"><span class="AtomicNo">112</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('112','Uub','Ununbium','285','173','7','12','IIB','IIB','Transition Metals',
               '[285]','','','Artificially Prepared','','','','','','1996','Society for Heavy Ion Research');">Uub</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#6699FF"><span class="AtomicNo">113</span><br />
+          <td class="Boron"><span class="AtomicNo">113</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('113','Uut','Ununtrium','284','171','7','13','IIIB','IIIA','Boron Group',
               '[284]','','','Artificially Prepared','','','','','','','');">Uut</a><br />
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC66FF"><span class="AtomicNo">114</span><br />
+          <td class="Carbon"><span class="AtomicNo">114</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('114','Uuq','Ununquadium','289','175','7','14','IVB','IVA','Carbon Group',
               '[289]','','','Artificially Prepared','','','','','','','');">Uuq</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF6600"><span class="AtomicNo">115</span><br />
+          <td class="Pnictogens"><span class="AtomicNo">115</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('115','Uup','Ununpentium','288','173','7','15','VB','VA','Pnictogens',
               '[288]','','','Artificially Prepared','','','','','','','');">Uup</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#CC9900"><span class="AtomicNo">116</span><br />
+          <td class="Chalcogens"><span class="AtomicNo">116</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('116','Uuh','Ununhexium','293','177,7','16','VIB','VIA','Chalcogen',
               '[293]','','','Artificially Prepared','','','','','','','');">Uuh</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFFFCC"><span class="AtomicNo">117</span><br />
+          <td class="Halogens"><span class="AtomicNo">117</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('117','Uus','Ununseptium','','','7','17','VIIB','VIIA','Halogen',
               '','','','Artificially Prepared','','','','','','','');">Uus</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#C0FFFF"><span class="AtomicNo">118</span><br />
+          <td class="Noble"><span class="AtomicNo">118</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('118','Uuo','Ununoctium','294','176','7','18','0','VIIIA','Noble Gases',
               '[294]','','','Artificially Prepared','','','','','','','');">Uuo</a>
           </td>
         </tr>
         <tr>
-          <td height="35" colspan="19" align="center" width="35"><br/>
+          <td colspan="19" style="width:35px; height:35px; background-color:white; text-align:center; border-spacing: 0px;
+     border: 1px solid black;"><br/>
           </td>
         </tr>
         <tr>
-          <td colspan="4" valign="middle" height="35" bgcolor="#FFBFFF" align="center" ><center>
-                <b>* Lanthanide series</b>
-              </center>
+          <td colspan="4" class="Lanthanide" >
+                <b>* Lanthanide series</b>   
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">57</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">57</span><br />
               <a href="#Top" class="Element"  onmouseover="javascript:outputData('57','La','Lanthanum','139','82','6','3','IIIA','IIIB','Lanthanoids',
 			  '138.90547','7','5.5769','Solids','6160','920','1193.15','3454','3727.15','1839','Mosander');">La</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">58</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">58</span><br />
               <a href="#Top" class="Element"   onmouseover="javascript:outputData('58','Ce','Cerium','140','82','6','3','IIIA','IIIB','Lanthanoids',
 			  '140.116','1','5.5387','Solids','6770','798','1071.15','3257','3530.15','1803','von Hisinger and Berzelius');">Ce</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">59</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">59</span><br />
               <a href="#Top" class="Element"   onmouseover="javascript:outputData('59','Pr','Praseodymium','141','82','6','3','IIIA','IIIB','Lanthanoids',
 			  '140.90765','2','5.473','Solids','6480','931','1204.15','3212','3485.15','1895','von Welsbach');">Pr</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">60</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">60</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('60','Nd','Neodymium','144','84','6','3','IIIA','IIIB','Lanthanoids',
 			  '144.242','3','5.525','Solids','7000','1010','1283.15','3127','3400.15','1895','von Welsbach');" >Nd</a></td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">61</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">61</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('61','Pm','Promethium','145','84','6','3','IIIA','IIIB','Lanthanoids',
 			  '[145]','','5.582','Artificially Prepared','7220','1080','1353.15','2730','3003.15','1945','Marinsky and Glendenin');">Pm</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">62</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">62</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('62','Sm','Samarium','150','88','6','3','IIIA','IIIB','Lanthanoids',
 			  '150.36','2','5.6437','Solids','7540','1072','1345.15','1778','2051.15','1879','Lecoq de Boisbaudran');">Sm</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">63</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">63</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('63','Eu ,Europium ,152,89,6,3,IIIA,IIIB','Lanthanoids',
 			  '151.964','1','5.6704','Solids','5250','822','1095.15','1597','1870.15','1901','Demaçay');">Eu</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">64</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">64</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('64','Gd','Gadolinium','157','93','6','3','IIIA','IIIB','Lanthanoids',
 			  '157.25','3','6.1498','Solids','7890','1311','1584.15','3233','3506.15','1880','de Marignac');">Gd</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">65</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">65</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('65','Tb','Terbium','159','94','6','3','IIIA','IIIB','Lanthanoids',
 			  '158.92535','2','5.8638','Solids','8250','1360','1633.15','3041','3314.15','1843','Mosander');">Tb</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">66</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">66</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('66','Dy','Dysprosium','163','97','6','3','IIIA','IIIB','Lanthanoids',
 			  '162.5','1','5.9389','Solids','8560','1409','1682.15','2335','2608.15','1886','Lecoq de Boisbaudran');">Dy</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">67</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">67</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('67','Ho','Holmium','165','98','6','3','IIIA','IIIB','Lanthanoids',
 			  '164.93032','2','6.0215','Solids','8780','1470','1743.15','2720','2993.15','1878','Soret');">Ho</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">68</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">68</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('68','Er','Erbium','167','99','6','3','IIIA','IIIB','Lanthanoids',
 			  '167.259','3','6.1077','Solids','9050','1522','1795.15','2510','2783.15','1842','Mosander');">Er</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">69</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">69</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('69','Tm','Thulium','169','100','6','3','IIIA','IIIB','Lanthanoids',
 			  '168.93421','2','6.1843','Solids','9320','1545','1818.15','1727','2000.15','1879','Cleve');">Tm</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">70</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">70</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('70','Yb','Ytterbium','173','103','6','3','IIIA','IIIB','Lanthanoids',
 			  '173.054','5','6.2542','Solids','6970','824','1097.15','1193','1466.15','1878','de Marignac');">Yb</a>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FFBFFF"><span class="AtomicNo">71</span><br />
+          <td class="Lanthanide"><span class="AtomicNo">71</span><br />
               <a href="#Top" class="Element" onmouseover="javascript:outputData('71','Lu','Lutetium','175','104','6','3','IIIA','IIIB','Lanthanoids',
 			  '174.9668','1','5.4259','Solids','9840','1656','1929.15','3315','3588.15','1907','Urbain');">Lu</a>
 			    </td>
         </tr>
         <tr>
-          <td colspan="4" valign="middle" height="35" bgcolor="#FF99CC" align="center" ><center>
+          <td colspan="4" class="Actinide" >
                 <b>** Actinide series</b>
-              </center>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">89</span><br />
+          <td class="Actinide"><span class="AtomicNo">89</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('89','Ac','Actinium','227','138','7','3','IIIA','IIIB','Actinoids',
 			  '[227]','','5.17000','Solids','10070','1047','1320.15','3197','3470.15','1899','Debierne');">Ac</a> </b>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">90</span><br />
+          <td class="Actinide"><span class="AtomicNo">90</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('90','Th','Thorium','232','142','7','3','IIIA','IIIB','Actinoids',
 			  '232.03806','2','6.3067','Solids','11720','1750','2023.15','4787','5060.15','1829','Berzelius');">Th</a> </b>
 			    </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">91</span><br />
+          <td class="Actinide"><span class="AtomicNo">91</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('91','Pa','Protactinium','231','140','7','3','IIIA','IIIB','Actinoids',
               '231.03588','2','5.89','Solids','15370','1554','1827.15','4030','4303.15','1917','Soddy','Cranston and Hahn');">Pa</a> </b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">92</span><br />
+          <td class="Actinide"><span class="AtomicNo">92</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('92','U','Uranium','238','146','7','3','IIIA','IIIB','Actinoids',
               '238.02891','3','6.1941','Solids','18970','1132.4','1405.55','3818','4091.15','1789','Klaproth');">U</a> </b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">93</span><br />
+          <td class="Actinide"><span class="AtomicNo">93</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('93','Np','Neptunium','237','144','7','3','IIIA','IIIB','Actinoids',
               '[237]','','6.2657','Artificially Prepared','20480','640','913.15','3902','4175.15','1940','McMillan and Abelson');">Np</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">94</span><br />
+          <td class="Actinide"><span class="AtomicNo">94</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('94','Pu','Plutonium','244','150','7','3','IIIA','IIIB','Actinoids',
               '[244]','','6.026','Artificially Prepared','19740','641','914.15','3327','3600.15','1940','Seaborg');">Pu</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">95</span><br />
+          <td class="Actinide"><span class="AtomicNo">95</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('95','Am','Americium','243','148','7','3','IIIA','IIIB','Actinoids',
               '[243]','','5.9738','Artificially Prepared','13670','994','1267.15','2607','2880.15','1944','Seaborg');">Am</a></b></td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">96</span><br />
+          <td class="Actinide"><span class="AtomicNo">96</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('96','Cm','Curium','247','151','7','3','IIIA','IIIB','Actinoids',
               '[247]','','5.9914','Artificially Prepared','13510','1340','1613.15','','','1944','Seaborg');">Cm</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">97</span><br />
+          <td class="Actinide"><span class="AtomicNo">97</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('97','Bk','Berkelium','247','150','7','3','IIIA','IIIB','Actinoids',
               '[247]','','6.1979','Artificially Prepared','13250','986','1259.15','','','1949','Seaborg');">Bk</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">98</span><br />
+          <td class="Actinide"><span class="AtomicNo">98</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('98','Cf','Californium','251','153','7','3','IIIA','IIIB','Actinoids',
               '[251]','','6.2817','Artificially Prepared','15100','900','1173.15','','','1950','Seaborg');">Cf</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">99</span><br />
+          <td class="Actinide"><span class="AtomicNo">99</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('99','Es','Einsteinium','252','153','7','3','IIIA','IIIB','Actinoids',
               '[252]','','6.42','Artificially Prepared','','860','1133.15','','','1952','Seaborg');">Es</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">100</span><br />
+          <td class="Actinide"><span class="AtomicNo">100</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('100','Fm','Fermium','257','157','7','3','IIIA','IIIB','Actinoids',
-              '[257]','','6.5','Artificially Prepared','','','',','','1952','Seaborg');">Fm</a></b>
+              '[257]','','6.50','Artificially Prepared','','','','','','1952','Seaborg');">Fm</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">101</span><br />
+          <td class="Actinide"><span class="AtomicNo">101</span><br />
             <a href="#Top" class="Element" onmouseover="javascript:outputData('101','Md','Mendeleviu','258','157','7','3','IIIA','IIIB','Actinoids',
               '[258]','','6.58','Artificially Prepared','','','','','','1955','Seaborg');">Md</a>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">102</span><br />
+          <td class="Actinide"><span class="AtomicNo">102</span><br />
               <b><a href="#Top" class="Element" onmouseover="javascript:outputData('102','No','Nobelium','259','157','7','3','IIIA','IIIB','Actinoids',
               '[259]','','6.65','Artificially Prepared','','','','','','1958','Seaborg');">No</a></b>
           </td>
-          <td width="35" height="35" align="center" bgcolor="#FF99CC"><span class="AtomicNo">103</span><br />
+          <td class="Actinide"><span class="AtomicNo">103</span><br />
               <b> <a class="Element" href="#Top" onmouseover="javascript:outputData('103','Lr','Lawrencium','262','159','7','3','IIIA','IIIB','Actinoids',
               '[262]','','4.9','Artificially Prepared','','','','','','1961','Ghiorso');">Lr</a></b>
           </td>
@@ -704,42 +739,42 @@ function outputData(atomicNumber, symbol, name, massNumber, neutronNumber, perio
         <p>&nbsp;</p>
     </td>
     <td>
-      <table width="100%" id="table1">
+      <table style="width:100%" id="table1">
         <tr>
           <td>Groups</td>
         </tr>
         <tr>
-          <td bgcolor="#FF6666">Alkali Metals</td>
+          <td style="background-color:#FF6666">Alkali Metals</td>
         </tr>
         <tr>
-          <td bgcolor="#FFDEAD">Alkaline Earth Metals</td>
+          <td style="background-color:#FFDEAD">Alkaline Earth Metals</td>
         </tr>
         <tr>
-          <td bgcolor="#FF99CC">Actinides</td>
+          <td style="background-color:#FF99CC">Actinides</td>
         </tr>
         <tr>
-          <td bgcolor="#6699FF">Boron Group</td>
+          <td style="background-color:#6699FF">Boron Group</td>
         </tr>
         <tr>
-          <td bgcolor="#FFBFFF">Lanthanides</td>
+          <td style="background-color:#FFBFFF">Lanthanides</td>
         </tr>
         <tr>
-          <td bgcolor="#CC66FF">Carbon Group</td>
+          <td style="background-color:#CC66FF">Carbon Group</td>
         </tr>
         <tr>
-          <td bgcolor="#C0FFFF">Noble Gases</td>
+          <td style="background-color:#C0FFFF">Noble Gases</td>
         </tr>
         <tr>
-          <td bgcolor="#FFC0C0">Transition Metals</td>
+          <td style="background-color:#FFC0C0">Transition Metals</td>
         </tr>
         <tr>
-          <td bgcolor="#FF6600">Pnictogens</td>
+          <td style="background-color:#FF6600">Pnictogens</td>
         </tr>
         <tr>
-          <td bgcolor="#FFFFCC">Halogens</td>
+          <td style="background-color:#FFFFCC">Halogens</td>
         </tr>
         <tr>
-          <td bgcolor="#CC9900">Chalcogens</td>
+          <td style="background-color:#CC9900">Chalcogens</td>
         </tr>
       </table>
     </td>
@@ -748,106 +783,110 @@ function outputData(atomicNumber, symbol, name, massNumber, neutronNumber, perio
   
 
 <hr/>
-<font size="3">Additional Data
-</font>
-<form action="cData002PT.html" name="outputDataForm1" id="outputDataForm1">
-  <table border="0" width="100%">
+
+	
+
+	<h3>Data</h3>
+	<div>
+		
+	<form name="outputDataForm1" id="outputDataForm1">
+  <table style="width:100%">
     <tr>
-      <td width="192"><i>Atomic Number - Z (or proton number)</i></td>
+      <td style="width:192px"><i>Atomic Number - Z (or proton number)</i></td>
       <td>
         <input type="text" name = "dataValue1" id="dataValue1" title="Atomic Number" size="15" value=" " />
       </td>
-      <td width="144"><i>Symbol</i></td>
+      <td style="width:144px"><i>Symbol</i></td>
       <td>
         <input type="text" name = "dataValue2" id="dataValue2" title="Symbol" size="15" value=" " />
       </td>
       <td><i>Standard Atomic Weight&nbsp;</i></td>
-      <td width="318">
+      <td style="width:318px">
          <input type="text" name = "dataValue3" id="dataValue3" title="Standard Atomic Weight" size="15" value=" " />
       </td>
     </tr>
     <tr>
-      <td width="192" bgcolor="#FFFF00"><i>Mass Number - A</i> (Z + N)</td>
+      <td style="width:192px; background-color:#FFFF00"><i>Mass Number - A</i> (Z + N)</td>
       <td>
         <input type="text" name = "dataValue4" id="dataValue4" title="Mass Number" size="15" value=" " />
       </td>
-      <td width="144" bgcolor="#FFFF00"><i>Neutron Count - N</i></td>
+      <td style="width:144px; background-color:#FFFF00"><i>Neutron Count - N</i></td>
       <td>
         <input type="text" name = "dataValue5" id="dataValue5" title="Neutron Number" size="15" value=" " />
       </td>
-      <td bgcolor="#FFFF00"><i>Period </i></td>
-      <td width="318">
+      <td style="background-color:#FFFF00"><i>Period </i></td>
+      <td style="width:318px">
         <input type="text" name = "dataValue6" id="dataValue6" title="Periodic table period" size="15" value=" " />
       </td>
     </tr>
     <tr>
-      <td width="192" bgcolor="#FFFF00"><i>IUPAC Group</i></td>
+      <td style="width:192px; background-color:#FFFF00;"><i>IUPAC Group</i></td>
       <td>
-        <input type="text" name = "dataValue7" id="dataValue7" title="Periodic table IUPAC Group" size="15 " value=" " />
+        <input type="text" name = "dataValue7" id="dataValue7" title="Periodic table IUPAC Group" size="15" value=" " />
       </td>
-      <td width="144"><i>Old IUPAC</i></td>
+      <td style="width:144px"><i>Old IUPAC</i></td>
       <td>
-        <input type="text" name = "dataValue8" id="dataValue8" title="Old IUPAC Group" size="15 " value=" " />
+        <input type="text" name = "dataValue8" id="dataValue8" title="Old IUPAC Group" size="15" value=" " />
       </td>
       <td>Old CAS Group</td>
-      <td width="318">
-        <input type="text" name = "dataValue9" id="dataValue9" title="Old CAS Group" size="15 " value=" " />
+      <td style="width:318px">
+        <input type="text" name = "dataValue9" id="dataValue9" title="Old CAS Group" size="15" value=" " />
       </td>
     </tr>
     <tr>
-      <td width="192" bgcolor="#FFFF00">Category</td>
+      <td style="width:192px; background-color:#FFFF00;">Category</td>
       <td>
-        <input type="text" name = "dataValue10" id="dataValue10" title="Category" size="15 " value=" " />
+        <input type="text" name = "dataValue10" id="dataValue10" title="Category" size="15" value=" " />
       </td>
-      <td width="144">Standard Atomic Weight</td>
+      <td style="width:144px">Standard Atomic Weight</td>
       <td>
-        <input type="text" name = "dataValue11" id="dataValue11" title="Standard Atomic Weight" size="15 " value=" " />
+        <input type="text" name = "dataValue11" id="dataValue11" title="Standard Atomic Weight" size="15" value=" " />
       </td>
       <td>Last digit +-</td>
-      <td width="318">
-        <input type="text" name = "dataValue12" id="dataValue12" title="Last Digit +-" size="15 " value=" " />
+      <td style="width:318px">
+        <input type="text" name = "dataValue12" id="dataValue12" title="Last Digit +-" size="15" value=" " />
       </td>
     </tr>
     <tr>
-      <td width="192" bgcolor="#FFFF00">Ionisation eV</td>
+      <td style="width:192px; background-color:#FFFF00;" >Ionisation eV</td>
       <td>
-        <input type="text" name = "dataValue13" id="dataValue13" title="Ionisation" size="15 " value=" " />
+        <input type="text" name = "dataValue13" id="dataValue13" title="Ionisation" size="15" value=" " />
       </td>
-      <td width="144">Normal State</td>
+      <td style="width:144px">Normal State</td>
       <td>
-        <input type="text" name = "dataValue14" id="dataValue14" title="Normal State" size="15 " value=" " />
+        <input type="text" name = "dataValue14" id="dataValue14" title="Normal State" size="15" value=" " />
       </td>
       <td>Density kg m3</td>
-      <td width="318">
-        <input type="text" name = "dataValue15" id="dataValue15" title="Density Kg m3" size="15 " value=" " />
+      <td style="width:318px">
+        <input type="text" name = "dataValue15" id="dataValue15" title="Density Kg m3" size="15" value=" " />
       </td>
     </tr>
     <tr>
-      <td width="192" bgcolor="#FFFF00">Melting point C</td>
+      <td style="width:192px; background-color:#FFFF00" >Melting point C</td>
       <td>
-        <input type="text" name = "dataValue16" id="dataValue16" title="Melting Point Centigrade" size="15 " value=" " />
+        <input type="text" name = "dataValue16" id="dataValue16" title="Melting Point Centigrade" size="15" value=" " />
       </td>
-      <td width="144">Melting point K</td>
+      <td style="width:144px">Melting point K</td>
       <td>
-        <input type="text" name = "dataValue17" id="dataValue17" title="Melting Point Kelvin" size="15 " value=" " />
+        <input type="text" name = "dataValue17" id="dataValue17" title="Melting Point Kelvin" size="15" value=" " />
       </td>
       <td>Boiling point C</td>
-      <td width="318">
-        <input type="text" name = "dataValue18" id="dataValue18" title="Old CAS Group" size="15 " value=" " />
+      <td style="width:318px">
+        <input type="text" name = "dataValue18" id="dataValue18" title="Old CAS Group" size="15" value=" " />
       </td>
     </tr>
     <tr>
-      <td width="192" bgcolor="#FFFF00">Boiling Point K</td>
+      <td style="width:192px; background-color:#FFFF00;" >Boiling Point K</td>
       <td>
-        <input type="text" name = "dataValue19" id="dataValue19" title="Boiling Point Kelvin" size="15 " value=" " />
+        <input type="text" name = "dataValue19" id="dataValue19" title="Boiling Point Kelvin" size="15" value=" " />
       </td>
-      <td width="144">Year of Discovery</td>
+      <td style="width:144px">Year of Discovery</td>
       <td>
-        <input type="text" name = "dataValue20" id="dataValue20" title="Discovered in" size="15 " value=" " />
+        <input type="text" name = "dataValue20" id="dataValue20" title="Discovered in" size="15" value=" " />
       </td>
       <td>Discovered by</td>
-      <td width="318">
-        <input type="text" name = "dataValue21" id="dataValue21" title="Discovered by" size="15 " value=" " />
+      <td style="width:318px">
+        <input type="text" name = "dataValue21" id="dataValue21" title="Discovered by" size="15" value=" " />
       </td>
     </tr>
     <tr>
@@ -855,12 +894,142 @@ function outputData(atomicNumber, symbol, name, massNumber, neutronNumber, perio
     </tr>
   </table>
 </form>
+		
+	</div>
+	</div>
+	
+<div id="tabs-2">
+<br/>
+  <b>Colour spectra of elements undergoing electrical discharge excitation in Atomic Number Order.<br/>
+&nbsp;</b>
+
+<table class="InformationTable1">
+  <tr>
+    <th>Z</th>
+    <th>Element</th>
+    <th>Spectra images in PNG format</th>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Approx Solar Continuum</td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/continuum.png" alt="Approx Solar Continuum" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='hydrogen.html'">Hydrogen</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/hydrogen.png" alt="Hydrogen Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='helium.html'">Helium</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/helium.png" alt="Helium Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='carbon.html'">Carbon</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/carbon.png" alt="Carbon Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='nitrogen.html'">Nitrogen</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/nitrogen.png" alt="Nitrogen Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='oxygen.html'">Oxygen</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/oxygen.png" alt="Oxygen Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='neon.html'">Neon</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/neon.png" alt="Neon Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='sodium.html'">Sodium</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/sodium.png" alt="Sodium Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='magnesium.html'">Magnesium</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/magnesium.png" alt="Magnesium Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='aluminium.html'">Aluminium</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/aluminium.png" alt="Aluminium Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='silicon.html'">Silicon</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/silicon.png" alt="Silicon Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='sulphur.html'">Sulphur</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/sulphur.png" alt="Sulphur Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='argon.html'">Argon</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/argon.png" alt="Argon Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='argon.html'">Potassium</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/potassium.png" alt="Potassium Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='calcium.html'">Calcium</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/calcium.png" alt="Calcium Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='iron.html'">Iron</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/iron.png" alt="Iron Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>36</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='krypton.html'">Krypton</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/krypton.png" alt="Krypton Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>38</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='argon.html'">Strontium</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/strontium.png" alt="Argon Spectra" width="784" height="64" /></td>
+  </tr>
+  <tr>
+    <td>54</td>
+    <td><button class="mnubutton2" type="button" onClick="location.href='xenon.html'">Xenon</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/xenon.png" alt="Xenon Spectra" width="784" height="64" /></td>
+  </tr>
+	  <tr>
+    <td>56</td>
+    <td><button class="mnubutton2" type="button" >Barium</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/barium.png" alt="Barium Spectra" width="784" height="64" /></td>
+  </tr>
+	  <tr>
+    <td>80</td>
+    <td><button class="mnubutton2" type="button" >Mercury</button></td>
+    <td><img src="../../cDataSets/SpectraData/ImageLibSpectra/mercury.png" alt="Mercury Spectra" width="784" height="64" /></td>
+  </tr>
+</table>
 
 </div>
+
+<div id="tabs-3">
+Reference: Data sources and Java Applet simulation of spectra<br/>
+<a href="http://astro.u-strasbg.fr/~koppen/discharge/" target="_blank">Joachim Köppen - Strasbourg - Spectra of Gas Discharges</a>	
+
+</div>	
 
 </div>
 <br/>
+
 </div>
+
+
 
 <!-- ************************* Footer **************************************** -->
 <footer>
@@ -868,13 +1037,11 @@ function outputData(atomicNumber, symbol, name, massNumber, neutronNumber, perio
     <tr>
       <td style="width:25%">
 		<script>
-        <!-- //hide script from old browsers
         document.write( "Last updated "+ document.lastModified );
-        //end hiding contents -->
         </script>
       </td>
       <td style="width:50%"></td>
-      <td style="width:25%">cData002PT</td>
+      <td style="width:25%">cPTable001</td>
     </tr>
   </table>
 </footer>

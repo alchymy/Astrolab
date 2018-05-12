@@ -6,85 +6,20 @@
 <title>Current Web Browser Standard Check ------------ [cUtil001WebBrTst]</title>
 
 <!-- Load common environment -->
-<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
-
-<script src="../fEnvironment.js">
-  </script>
-  
-<script> 
-<!--
-
-// Note missing out the start and end comment lines within 'script' tag can give html validation errors.
-
-function pageStart() {
-
-}
-
-// -->
-</script>
-
-<!-- Above is Standard Header For All Application Pages -->
-
-<!-- Page specific css and js for formating and layout -->
-
+	
 <script src="../fJscriptLib/jquery.js"></script>
 <script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
 
 <link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
 
-<script>
+<script src="../fEnvironment.js"></script>
 
-// jquery dialog and other setup
-
-	$(function() {
-		
-		
-		$( "#button" ).button();
+<!-- End of common environment -->
 	
-		
-		$( "#tabs" ).tabs();
-		
-		
-		$( "#dialog" ).dialog({
-			autoOpen: false,
-			width: 400,
-			buttons: [
-				{
-					text: "Ok",
-					click: function() {
-						$( this ).dialog( "close" );
-					}
-				},
-				{
-					text: "Cancel",
-					click: function() {
-						$( this ).dialog( "close" );
-					}
-				}
-			]
-		});
+<!-- Above is Standard Header For All Application Pages -->
 
-		// Link to open the dialog
-		$( "#dialog-link" ).click(function( event ) {
-			$( "#dialog" ).dialog( "open" );
-			event.preventDefault();
-		});
-		
-	
-
-		// Hover states on the static widgets
-		$( "#dialog-link, #icons li" ).hover(
-			function() {
-				$( this ).addClass( "ui-state-hover" );
-			},
-			function() {
-				$( this ).removeClass( "ui-state-hover" );
-			}
-		);
-	});
-</script>
-
-<!-- Page specific code for this application -->
+<!-- Page Specific environment -->
 
 </head>
 
@@ -99,7 +34,7 @@ function pageStart() {
     <td style="width:75%">Current Web Browser Standard Check</td>
     <td style="width:25%" id="menuCell">
           <nav>
-      <a href="../mMain.html">mMain</a>
+             <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >Main Menu</button>
       </nav>
     </td>
   </tr>

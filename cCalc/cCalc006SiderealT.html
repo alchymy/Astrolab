@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Astronomical Calculations ------------ [cCalc000_T]</title>
+
+<!-- Load common environment -->
+	
+<script src="../fJscriptLib/jquery.js"></script>
+<script src="../fJscriptLib/jquery-ui/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="../fJscriptLib/jquery-ui/css/redmond/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="../fCss/fDefault.css" type="text/css" />
+
+<script src="../fEnvironment.js"></script>
+
+<!-- End of common environment -->
+
+<!-- Above is Standard Header For All Application Pages -->
+
+<!-- Page Specific environment -->
+
+<!-- Use latest MathJax code -->
+	
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script src="../fJscriptLib/fConstVar.js"></script>
+<script src="../fJscriptLib/fMagnitudes.js"></script>
+
+<script>
+
+//  MathJax.Hub.Config({
+//    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+//  });
+
+
+// ***************** MODEL *****************
+
+
+var G = 6.67384E-11;               // Gravitational Constant (kg m s)
+var AU = 1.49597870700E+11;        // Astronomical Unit (m)
+var MASS_SUN = 1.9889E+30;         // Solar Mass (kg)
+var siderealYear = 3.15581450E+07; // Sidereal Year (s)
+var PI = 3.1415926535898;          // std value
+   
+   
+	
+// get input parameters
+ 
+var distanceLY = document.inputDataView1.input1.value;
+    var visualMag = document.inputDataView1.input2.value;
+
+
+    var M = 0;
+
+
+ 
+// ***************** VIEW *****************
+
+ // Update results view
+ 
+function updateorv1 () {
+
+// var distanceLY = document.inputDataView1.input1.value;
+//    var visualMag = document.inputDataView1.input2.value;
+
+	M = magnitude.calcAbsoluteMagLY (distanceLY,visualMag);
+	
+ document.outputResultsView1.result1.value = M;
+// document.outputResultsView1.result2.value = b;
+// document.outputResultsView1.result3.value = c;
+
+}
+
+
+// ***************** CONTROLLER *****************
+
+
+function main () {
+
+updateorv1();
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- sections standard indent is 2 or 4 spaces where possible for readability, one line between sections -->
+
+<!-- **************** Header **************** -->
+<header>
+<table class="HeaderTest">
+  <tr>
+    <td style="width:60%">Astronomical Calculations</td>
+    <td style="width:40%" id="menuCell">
+      <nav>
+          <button class="mnubutton2" type="button" onClick="location.href='../mMain.html'" >Main Menu</button>
+         </nav>
+    </td>
+  </tr>
+</table>
+<br/>
+</header>
+
+    
+<!-- **************** Content **************** -->
+<div class="Content">
+
+<!-- Tabs -->
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Calculation</a></li>
+		<li><a href="#tabs-2">Notes</a></li>
+		<li><a href="#tabs-3">Credits</a></li>
+	</ul>
+    
+<div id="tabs-1">
+<!--
+ID vs. Name in Form Fields
+When creating a form and form field, you should give them both an id and a name and make them the same, e.g. 
+
+<form id="form1" name="form1">
+<input type="text" id="form1Field1" name="form1Field1" />
+<input type="text" id="form1Field2" name="form1Field2" />
+</form>
+
+This is because browsers use the name field when they submit to a server, but when working with JavaScript it's best to use id (and the associated document.getElementById()) to identify elements. You could use something like document.getElementsByName(), but it is a lot harder to work with, because names aren't guaranteed to be unique and thus that function returns a collection of elements, not just one. 
+You should also always name your name and id the same thing (and not reuse that identifier anywhere else), 
+because of IE's poor implementation of getElementById() which can sometimes return an element whose "name" matches the "id"
+you asked for. 
+
+Always use both, make them the same string, and make that string unique in the document. 
+XHTML spec [1] says that name is deprecated for id, and that eventually name will go away completely.  
+The spec also recommends using both the name and the id attributes, set identically, for forwards and backwards compatibility.
+-->
+
+<form name="inputDataView1" id="inputDataView1">
+<b>Input Parameters:
+
+</b>
+
+<br/>
+&nbsp;
+<table class="CalcTable1" id="inputTable1">
+  <tr>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+    <th>Variable</th>
+    <th>Value</th>
+    <th>units</th>
+  </tr>
+  <tr>
+    <td title="Input data value 1">Input data Value 1</td>
+    <td>
+      <input type="text" title="" name="input1" id="input1" size="12" value="0" /></td>
+    <td>&nbsp;</td>
+    <td title="Input data value 2">Input data value 2</td>
+    <td>      
+      <input type="text" title="" name="input2" id="input2" size="12" value="0" />
+    </td>
+    <td>&nbsp;</td>
+    <td title="Input data value 3">Input data value 3</td>
+    <td><input type="text" title="" name="input3" id="input3" size="12" value="0" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td title="Input data value 4">Input data value 4</td>
+    <td><input type="text" title="" name="input4" id="input4" size="12" value="0" />
+</td>
+    <td>&nbsp;</td>
+    <td title="Input data value 5">Input data value 5</td>
+    <td>
+      <input type="text" title="" name="input5" id="input5" size="12" value="0" /></td>
+    <td>&nbsp;</td>
+    <td title="Input data value 6">Input data value 6</td>
+    <td><input type="text" title="" name="input6" id="input6" size="12" value="0" /></td>
+     <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td title="default decimal places">dec places</td>
+    <td>
+      <input type="text" name="input12" id="input12" size="12" value="2" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="9"><input type="button" value="Calculate" onclick="main();" />
+                <input type="reset" name="cntrlrResetidv1" value=" Click here to clear input values " />
+       </td>
+  </tr>
+</table>
+</form>
+
+<hr/>
+
+<form name="outputResultsView1" id="outputResultsView1">
+<b>Output Results:
+  </b>
+  <br/>
+&nbsp;
+  <table class="CalcTable1" id="outputTable1">
+    <tr>
+      <th>Results</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Results</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+      <th>Results</th>
+      <th>&nbsp;</th>
+      <th>units</th>
+    </tr>
+    <tr>
+      <td title="Output calculation result 1">Output result 1</td>
+      <td>
+        <input type="text" name="result1" id="result1" size="18" />      </td>
+      <td></td>
+      <td title="Output calculation result 2">Output result 2</td>
+      <td>
+        <input type="text" name="result2" id="result2" size="18" /></td>
+      <td></td>
+      <td title="Output calculation result 3">Output result 3</td>
+      <td>
+        <input type="text" name="result3" id="result3" size="12" /></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td title="Output calculation result 4">Output result 4</td>
+      <td><input type="text" name="result4" id="result4" size="12" />
+        </td>
+      <td>&nbsp;</td>
+      <td title="Output calculation result 5">Output result 5</td>
+      <td><input type="text" name="result5" id="result5" size="12" /></td>
+      <td>&nbsp;</td>
+      <td title="Output calculation result 6">Output result 6</td>
+      <td><input type="text" name="result6" id="result6" size="12" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td title="Output calculation result 7">Output Result 7</td>
+      <td><input type="text" name="result7" id="result7" size="17" />
+        </td>
+      <td>&nbsp;</td>
+      <td title="Output calculation result 8">Output result 8</td>
+      <td><input type="text" name="result8" id="result8" size="17" /></td>
+      <td>&nbsp;</td>
+      <td title="Output calculation result 9">Output result 9</td>
+      <td><input type="text" name="result9" id="result9" size="30" /></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="9"><input type="reset" name="cntrlrResetoRv1" value=" Click here to clear result values " /></td>
+    </tr>
+  </table>
+</form>
+</div>
+
+<div id="tabs-2">
+<b>Notes:</b>
+<br/>
+<pre>
+INTRODUCTION
+
+ 
+
+Sidereal Time us used by Astronomers to keep track of 'Star
+
+Time'. It runs faster than Greenwich Mean Time by about 3 minutes
+
+56 seconds a day to complete an extra 24 hours in one year. This
+
+rate matches that of the Sidereal Heavens and so the time, once
+
+set, will show  the  Right Ascension of the object passing the
+
+observer's Meridian (due South).
+
+ 
+
+This display of Sidereal Time is useful in knowing what is in the
+
+sky at any time by reference to star atlases; for setting drive
+
+systems in Equatorial telescopes; and for use in calculations,
+
+typically for converting coordinates of stars to horizon
+
+coordinates so that an Alt-Azimuth telescope can be pointed
+
+directly at an object. It is also very easy to predict rising
+
+times of objects and useful in locating planets in the daytime.
+
+
+
+Sidereal time clocks can be purchased in the form of Observatory
+
+Clocks from AWR Technology or computer programmes running on
+
+personal computers. Most planetarium programmes will have a real
+
+time display of Sidereal Time. Observatory clocks are designed to
+
+be left running permanently and so will require very little re-
+
+setting. A good clock will include battery back-up in the event
+
+of mains.  A quartz crystal is used in preference to the mains as
+
+a reference frequency as the mains frequency wanders unacceptably
+
+through the day, dropping at periods of heavy load and speeding
+
+up at night.
+
+
+DETERMINING SIDEREAL TIME 
+
+ 
+Setting up of Sidereal Time can be done by several different
+
+methods but the end result is the same. All tables and
+
+calculation methods tell the Sidereal Time at Greenwich
+
+(Longitude 0 degrees) ie Greenwich Sidereal Time (G.S.T.). The
+
+time should be set to Local Sidereal Time which is unique to the
+
+position of your observatory. Thus it is important to obtain the
+
+longitude of your observatory as it is used in several of these
+
+methods. 
+
+                        L.S.T. = G.S.T. - L 
+
+ 
+
+Where L is the longitude measured positively westwards from
+
+Greenwich. Convert degrees to angle expressed in hours,
+
+minutes and seconds (15 degrees = 1 hour). 
+
+ 
+
+The accuracy required depends on what purpose the Sidereal Time
+
+is to be used for. If it is for locating objects within a medium
+
+power telescopic field then about 1/8th degree in angle is
+
+required, corresponding to a 30 second accuracy on Sidereal time. 
+
+
+
+Look up Table. 
+
+The table below gives the sidereal time throughout any year but
+
+it is accurate to +/- 3 minutes only. It has been compiled from a
+
+mean table from the Astronomical Ephemeris. 
+
+ 
+
+                     GREENWICH SIDEREAL TIME AT 00.00HRS 
+
+                 DAY  JAN    FEB    MAR    APR    MAY    JUN 
+
+                  1   6 41   8 44  10 34  12 36  14 35  16 37 
+
+                  6   7 01   9 03  10 54  12 56  14 54  16 57 
+
+                 11   7 21   9 23  11 14  13 16  15 14  17 16 
+
+                 16   7 41   9 43  11 33  13 36  15 34  17 36 
+
+                 21   8 00  10 03  11 53  13 55  15 53  17 56 
+
+                 26   8 20  10 22  12 13  14 15  16 13  18 15 
+
+ 
+
+                 DAY  JLY    AUG    SEP    OCT    NOV    DEC 
+
+                  1  18 35  20 37  22 40   0 38   2 40   4 38 
+
+                  6  18 55  20 57  22 59   0 58   3 00   4 58 
+
+                 11  19 15  21 17  23 19   1 17   3 20   5 18 
+
+                 16  19 34  21 36  23 39   1 37   3 39   5 37 
+
+                 21  19 54  21 56  23 58   1 57   3 59   5 57 
+
+                 26  20 14  22 16   0 18   2 16   4 19   6 17 
+
+ 
+
+Standard Stars. 
+
+If the telescope can be accurately set to run on the meridian, ie
+
+due North through the Zenith to due South, then when a standard
+
+star of known position transits in the telescope the clock should
+
+be adjusted to this value. This gives Local Sidereal Time
+
+directly. 
+
+ 
+
+      Star               RA  (1988.5)  DEC       Mag        1 yr
+
+PREC. (RA) 
+
+                        h  m  s        o  '                   s 
+
+Alpha And (Alpheratz)  00:07:47      +29 02      2.06       +3.07
+
+Beta Cet  (Diphda)     00:43:01      -18 03      2.04       +2.94
+
+Beta Per  (Algol)      03:07:25      +40 55      2.12v      +3.84
+
+Delta Ori (Mintaka)    05:31:25      -00 18      2.23       +3.07
+
+Alpha CMi (Procyon)    07:38:42      +05 15      0.34       +3.07
+
+Alpha Hya (Alphard)    09:27:01      -08 36      1.98       +2.88
+
+Beta Leo  (Denebola)   11:48:28      +14 38      2.14       +3.15
+
+Alpha Vir (Spica)      13:24:35      -11 06      0.97       +3.15
+
+Alpha Sco (Antares)    16:28:42      -26 24      0.96       +3.66
+
+Alpha Oph (Rasalhague) 17:34:24      +12 34      2.08       +2.76
+
+Alpha Aql (Altair)     19:50:13      +08 50      0.77       +2.88
+
+Alpha Cyg (Deneb)      20:41:02      +45 14      1.25       +2.04  
+
+
+
+
+This method is not without its drawbacks as the position of a
+
+star  changes with the passing of years and a correction must be
+
+added for Precession to maintain the accuracy. See Norton's Star
+
+Atlas & Reference Handbook. Use the value in the table above and
+
+multiply by the number of years since 1988.5 
+
+ 
+
+
+Annual Handbook. 
+
+In a publication such as the British Astronomical Association 
+
+Handbook produced annually, there is a tabulation of Sidereal
+
+Time at Greenwich (0 degrees longitude) for 00:00hr every fifth
+
+day.  There is also an interpolation table for days and parts of
+
+days. This will give an accuracy of +/- 3 seconds, sufficient for
+
+most uses. 
+
+ 
+
+Calculation Method 1. 
+
+Using a formula involving the number of days from January 0 and a
+
+table of constants (Sidereal Time at Jan 0.0) it can be computed
+
+to an accuracy of +/- 0.2 seconds. A correction must then be
+
+applied for the longitude. 
+
+ 
+
+               G.S.T. = K + n * d 
+
+ 
+
+              Where K is tabulated 
+
+               n = 236.55536 seconds 
+
+               d = number of days (including decimal parts of)
+
+                   since January 0.0
+
+
+
+              Year       K     Year       K 
+
+             1995   6.612651  1998	
+
+             1996   6.596736  1999
+
+             1997   6.646532  2000
+
+ 
+
+Note.  The longitude correction must be better than 0.1 seconds
+
+accuracy corresponding to knowing where your observatory is to
+
+the  nearest 33 yards (at latitude 50 degrees). 
+
+ 
+
+Calculation Method 2. 
+
+This method involves calculation like method 1 but the constant
+
+is computed first. Again it must be corrected for longitude. See
+
+Practical Astronomy with your Calculator for the details. 
+
+
+
+
+USING SIDEREAL TIME 
+
+ 
+
+Visibility of objects. 
+
+For any given latitude any object will be above the horizon for a
+
+given time. The time from horizon to culmination on the meridian 
+
+is called the Semi-Diurnal Arc and is tabled below for various
+
+declinations and latitudes. Pick out the nearest that matches the
+
+object/your latitude and this will tell you the range  of Right
+
+Ascensions that are visible when added/subtracted from  the
+
+Sidereal Time shown. A realistic horizon of +5 degrees in
+
+altitude is used. This table works for northern and southern
+
+latitudes.
+
+
+
+                         TABLE OF SEMI DIURNAL ARCS 
+
+ 
+
+     Dec          NORTHERN LATITUDES        HORIZON = +5 DEGREES 
+
+            35     45     50     52     54     56     58     60 
+
+      50   8:47  11:59   0:00   0:00   0:00   0:00   0:00   0:00 
+
+      45   8:13   9:42  11:59   0:00   0:00   0:00   0:00   0:00 
+
+      40   7:46   8:50   9:41  10:11  10:56   0:00   0:00   0:00 
+
+      35   7:24   8:13   8:47   9:05   9:26   9:51  10:27  11:59 
+
+      30   7:05   7:43   8:08   8:20   8:34   8:50   9:08   9:32 
+
+      25   6:48   7:17   7:35   7:44   7:54   8:05   8:17   8:31 
+
+      20   6:32   6:53   7:07   7:13   7:20   7:27   7:36   7:45 
+
+      15   6:17   6:32   6:41   6:45   6:49   6:54   6:59   7:05 
+
+      10   6:03   6:11   6:16   6:18   6:21   6:23   6:26   6:29 
+
+       5   5:49   5:51   5:52   5:53   5:53   5:53   5:54   5:54 
+
+       0   5:35   5:31   5:28   5:27   5:25   5:24   5:22   5:19 
+
+      -5   5:21   5:11   5:04   5:01   4:57   4:53   4:48   4:43 
+
+     -10   5:06   4:49   4:38   4:33   4:27   4:20   4:13   4:04 
+
+     -15   4:50   4:26   4:10   4:02   3:54   3:44   3:32   3:19 
+
+     -20   4:33   4:01   3:38   3:27   3:15   3:00   2:43   2:21 
+
+     -25   4:14   3:31   3:00   2:44   2:25   2:01   1:27   0:00 
+
+     -30   3:52   2:55   2:09   1:42   1:00   0:00   0:00   0:00 
+
+     -35   3:26   2:06   0:00   0:00   0:00   0:00   0:00   0:00 
+
+     -40   2:53   0:00   0:00   0:00   0:00   0:00   0:00   0:00 
+
+
+
+           For SOUTHERN LATITUDES reverse the Declination sign. 
+
+ 
+
+Rising Time. 
+
+For a particular declination look up the semi-diurnal arc.
+
+Subtract this from the object's Right Ascension to obtain the
+
+sidereal time at which the object will be rising. A glance at the
+
+clock will show how much longer to wait.
+
+ 
+
+Use with an Alt-Azimuth telescope mounting. 
+
+Using an application of spherical triangles to transform
+
+coordinate systems you can adjust the Right Ascension,
+
+Declination of an  object to horizon coordinates of Altitude and
+
+Azimuth using the value of Sidereal time. This makes it easy to
+
+set up an  Alt-Azimuth telescope when fitted with fixed setting
+
+circles for altitude and azimuth. 
+
+
+
+For an object of Right Ascension R, Declination d, azimuth A,
+
+Altitude a with the observer at latitude lat: 
+
+ 
+
+1) Hour Angle            	H = L.S.T. - R 
+
+2) Convert to degrees     	H = H * 15 
+
+3) Altitude      sin a = sin d sin lat + cos d cos lat cos H 
+
+4) Azimuth       cos A' = (sin d - sin lat sin a)/(cos lat cos a)
+
+
+
+     If the value of sin H is positive the true azimuth is 360 - A'
+
+                        	else true azimuth = A' 
+
+ 
+
+Use with equatorially mounted telescopes. 
+
+For setting up equatorial telescopes with setting circles two
+
+methods can be used for driven and non-driven polar axes: 
+
+ 
+
+1)  For driven polar axis set the central meridian on the
+
+Sidereal circle to the time shown on the Sidereal Clock, then
+
+switch on the drive. 
+
+ 
+
+2)  For non-driven polar axis use a fixed setting circle on this
+
+axis calibrated in hours and minutes and fix 00:00hr on the 
+
+central meridian ie due south. To find the position of an object
+
+it is necessary to calculate the hour angle of the object by 
+
+reference to its catalogued position and the Sidereal Time shown.
+
+The telescope can then be set at this hour angle. 
+
+
+</pre>
+
+<br/>
+</div>
+
+<div id="tabs-3">
+  <p><br/>
+    <i><b>References:</b></i><br/>
+<pre> 
+
+1) Norton's Star Atlas & Reference Handbook. 
+
+                 For general information on Sidereal time
+
+                 ,setting up a telescope, precession 
+
+2) Practical Astronomy with your Calculator - P Duffett-Smith 
+
+                 Calculation methods 1, 2  and coordinate
+
+                 conversion.
+
+3) British Astronomical Association Handbook  (Annual) 
+
+                 Annual positions of bright stars and sidereal
+
+                 time every fifth day 
+</pre>
+    <br/>
+  </p>
+</div>
+
+</div>
+<br/>
+</div>
+
+<!-- ************************* Footer **************************************** -->
+<footer>
+  <table>
+    <tr>
+      <td style="width:25%">
+		<script>
+        <!-- //hide script from old browsers
+        document.write( "Last updated "+ document.lastModified );
+        //end hiding contents -->
+        </script>
+      </td>
+      <td style="width:50%"></td>
+      <td style="width:25%">cCalc000_T</td>
+    </tr>
+  </table>
+</footer>
+
+</body>
+</html>     

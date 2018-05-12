@@ -1,12 +1,13 @@
 # Astrolab
 -------------------------------------------------------------------------- 
-CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.057_20180417
+CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.070_20180509
 -------------------------------------------------------------------------- 
 
 This release brings a few new features and fixes: 
 
-- Fixed: removed redundant text from READ.md
-- Added: Solar Indices link to cData001Sun
+- Fixed: Utility Pages renamed to be consistent
+- Added: References added to cPTable001 Periodic Table data
+
 
 --------------------------------------------------------------------------
 

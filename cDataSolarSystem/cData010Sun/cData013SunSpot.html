@@ -27,7 +27,7 @@
 
 <!-- **************** Header **************** -->
 <header>
-<table class="HeaderLive">
+<table class="HeaderDev">
 	<tr>
 	  <td style="width:75%">Plot Sun Spot Data</td>
 	  <td id="menuCell" style="width:25%">
@@ -52,6 +52,9 @@
 
 <div id="tabs-1">&nbsp;
 
+
+
+
 <canvas id="plot1" width="500" height="500"
 style="border:1px solid #000000;">
 </canvas>
@@ -72,20 +75,83 @@ ctx.lineTo(250, 500);  // draw line to x=250, y=500
 ctx.moveTo(0, 250);  // move to x=0, y=250
 ctx.lineTo(500, 250);  // draw line to x=500, y=250
 ctx.stroke();
+	
+// X and Y labels
+	
+ctx.font="20px Arial";
+ctx.fillStyle = "red";
+ctx.textAlign = "center";
+ctx.fillText("X", canvas.width/25
+, (canvas.height/2) - 5);
+ctx.fillText("Y", (canvas.width/2) + 8
+, canvas.height/20);
+
+
+ctx.strokeStyle = "#000000";
+	
+ctx.lineWidth = 1;
+ctx.beginPath();
+	// plot origin starts top left of canvas
+ctx.moveTo(10, 0);  // move to x=250, y=0
+ctx.lineTo(10, 500);  
+ctx.stroke;
 
 // view origin is now x=250, y=250
 
 xorigin = 250;
 yorigin = 250;
+	
+// draw grid vertical
+
+ctx.lineWidth = 0.5;
+ctx.beginPath();
+ctx.moveTo(50,0);
+ctx.lineTo(50,500);
+ctx.moveTo(100,0);
+ctx.lineTo(100,500);
+ctx.moveTo(150,0);
+ctx.lineTo(150,500);
+ctx.moveTo(200,0);
+ctx.lineTo(200,500);
+ctx.moveTo(300,0);
+ctx.lineTo(300,500);
+ctx.moveTo(350,0);
+ctx.lineTo(350,500);
+ctx.moveTo(400,0);
+ctx.lineTo(400,500);
+ctx.moveTo(450,0);
+ctx.lineTo(450,500);
+	
+// draw grid horizontal
+	
+ctx.moveTo(0,50);
+ctx.lineTo(500,50);
+ctx.moveTo(0,100);
+ctx.lineTo(500,100);
+ctx.moveTo(0,150);
+ctx.lineTo(500,150);
+ctx.moveTo(0,200);
+ctx.lineTo(500,200);
+ctx.moveTo(0,300);
+ctx.lineTo(500,300);
+ctx.moveTo(0,350);
+ctx.lineTo(500,350);
+ctx.moveTo(0,400);
+ctx.lineTo(500,400);
+ctx.moveTo(0,450);
+ctx.lineTo(500,450);
+	
+ctx.stroke();     
 
 // plot data arrays
+	
 xdata = [2, 3, 4, 5, 6, 7];
 ydata = [4, 9, 16, 25, 36, 49];
 
 // draw points
 
 ctx.strokeStyle = "#000000";
-var dot = 2;
+var dot = 3;
 
 ctx.beginPath();
 ctx.moveTo(xorigin + xdata[0], yorigin - ydata[0]);
