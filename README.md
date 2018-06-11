@@ -1,12 +1,13 @@
 # Astrolab
 -------------------------------------------------------------------------- 
-CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.070_20180509
+CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.071_20180530
 -------------------------------------------------------------------------- 
 
 This release brings a few new features and fixes: 
 
 - Fixed: Utility Pages renamed to be consistent
 - Added: References added to cPTable001 Periodic Table data
+- Added: cConst005Info.html - information on constants sources
 
 
 --------------------------------------------------------------------------

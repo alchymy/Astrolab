@@ -26,6 +26,8 @@ In this case the Application environment is for Full screen browser version (not
 // jquery common formating for astrolab pages, jquery dialog and other setup
 
 	$(function() {
+
+		$( "#accordion" ).accordion();
 		
 		$( "#button" ).button();
 	
