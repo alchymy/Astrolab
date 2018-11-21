@@ -1,13 +1,14 @@
 # Astrolab
--------------------------------------------------------------------------- 
-CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.071_20180530
--------------------------------------------------------------------------- 
+----------------------------------------------------------
+CHANGES FOR ASTROLAB DEVELOPMENT RELEASE v1.074_20181117
+----------------------------------------------------------
 
 This release brings a few new features and fixes: 
 
-- Fixed: Utility Pages renamed to be consistent
-- Added: References added to cPTable001 Periodic Table data
-- Added: cConst005Info.html - information on constants sources
+- Fixed: Jquery updated to 3.3.1
+- Added: 'Famous Quotes' to mMain.html
+- Added: Solar sun spot data up to end Oct 2018
+- Added: MathJax v2.7.5
 
 
 --------------------------------------------------------------------------

@@ -59,7 +59,7 @@ $( function() {
 function pageStart() {
 
 displayVersion();
-
+displayQuote();
 }
 
 function displayVersion() {
@@ -78,9 +78,44 @@ show an error
  
 }
 
+function displayQuote() {
+	
+	var Quotes = [
+		'"The problem in society is not kids not knowing science. The problem is adults not knowing science. They outnumber kids five to one, they wield power, they write legislation. When you have scientifically illiterate adults, you have undermined the very fabric of what makes a society wealthy and strong. - Neil deGrasse Tyson. Astronomer and science popularizer"',
+		'"Truth is ever to be found in simplicity, and not in the multiplicity and confusion of things. - Isaac Newton"',
+		'"Black holes ain’t as black as they are painted. They are not the eternal prisons they were once thought. Things can get out of a black hole both on the outside and possibly to another universe. So if you feel you are in a black hole, don’t give up—there’s a way out. - Steven Hawking"',
+		'"Any intelligent fool can make things bigger and more complex… It takes a touch of genius – and a lot of courage to move in the opposite direction. - Albert Einstein"'
+	];
+	
+	var quoteNo = Math.floor((Math.random() * 4) );
+    var quoteNow = document.getElementById("quote");
+	var quoteToday = Quotes[quoteNo];
+		
+    quoteNow.innerHTML = "QUOTE OF THE DAY: - " + "<br/><br/>" + quoteToday;
+	
+}
+	
+/**
+ * Returns a random number between min (inclusive) and max (exclusive)
+ */
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive).
+ * The value is no lower than min (or the next integer greater than min
+ * if min isn't an integer) and no greater than max (or the next integer
+ * lower than max if max isn't an integer).
+ * Using Math.round() will give a non-uniform distribution.
+ */
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 </script>
-
 
 </head>
 
@@ -152,6 +187,9 @@ show an error
       <br/>
     </td>
 	  <td style="width:33%"><img src="fImageLib/main-astronomy.png" width="282" height="352" alt=""/>
+	  </td>
+	  <td id="quote">
+		 
 	  </td>
   </tr>
 </table>

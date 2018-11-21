@@ -35,8 +35,8 @@ document.inputDataForm1.input7.value = d.getDate();
 
 // define all Global variables
 
-// var EARTH_RADII_TO_KM;   conv to Earth Radius in km loaded from fConstVar.js
-// var PI; loaded from fConstVar.js
+var GC_EARTH_RADII_TO_KM;  // conv to Earth Radius in km loaded from fConstVar.js
+var GC_PI; // loaded from fConstVar.js
 
 var n0 = parseInt( "0" );
 var f0 = parseFloat( "0.0" );
@@ -81,9 +81,9 @@ function main() {
     document.outputResultsView1.result4.value = round2( eclipticLatitude );
     document.outputResultsView1.result5.value = round2( eclipticLongitude );
     document.outputResultsView1.result6.value = zodiacSign;
-	document.outputResultsView1.result7.value = round2(moonDistance * EARTH_RADII_TO_KM);
-  	document.outputResultsView1.result8.value = round2(moonDistance * EARTH_RADII_TO_KM * 0.6);
-    document.outputResultsView1.result10.value = round2( (3476.2 / (moonDistance * EARTH_RADII_TO_KM)) * 57.3)
+	document.outputResultsView1.result7.value = round2(moonDistance * GC_EARTH_RADII_TO_KM);
+  	document.outputResultsView1.result8.value = round2(moonDistance * GC_EARTH_RADII_TO_KM * 0.6);
+    document.outputResultsView1.result10.value = round2( (3476.2 / (moonDistance * GC_EARTH_RADII_TO_KM)) * 57.3)
     
     if ( moonPhase == "NEW" ) {
         document.outputResultsView1.phase.src = "ImageLibMoon/imgLunNew.png";
@@ -299,14 +299,14 @@ function moonPosition( y, m, d ) {
         moonPhase = "NEW";
     }
 
-    ip = ip * 2 * PI;                      // Convert phase to radians
+    ip = ip * 2 * GC_PI;                      // Convert phase to radians
 
     // calculate moon's distance
-    dp = 2 * PI * normalize( ( jd - 2451562.2 ) / 27.55454988 );
+    dp = 2 * GC_PI * normalize( ( jd - 2451562.2 ) / 27.55454988 );
     moonDistance = 60.4 - 3.3 * Math.cos( dp ) - 0.6 * Math.cos( 2 * ip - dp ) - 0.5 * Math.cos( 2 * ip );
 
     // calculate moon's ecliptic latitude
-    np = 2 * PI * normalize( ( jd - 2451565.2 ) / 27.212220817 );
+    np = 2 * GC_PI * normalize( ( jd - 2451565.2 ) / 27.212220817 );
     eclipticLatitude = 5.1 * Math.sin( np );
 
     // calculate moon's ecliptic longitude
@@ -488,7 +488,7 @@ function openGraphic() {
     <td style="width:60%">Lunar Phase Calculations</td>
     <td style="width:40%" id="menuCell">
           <nav>
-      <button class="mnubutton2" type="button" onClick="location.href='../../mMain.html'" >mMain</button>
+      <button class="mnubutton2" type="button" onClick="location.href='../../mMain.html'" >Main Menu</button>
       </nav>
     </td>
   </tr>
